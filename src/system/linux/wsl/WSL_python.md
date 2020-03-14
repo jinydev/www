@@ -1,0 +1,205 @@
+---
+layout: home
+---
+
+# 우분투 WSL 파이썬 환경설치
+
+우분투 windows Subsystems Linux를 설치하게 되면 기본적으로 파이썬3 가 설치가 되어 있습니다.
+
+
+
+## 버전확인
+
+우분투 터미널 창에서 `python3 -V` 를 입력해 봅니다. 아래와 같이 파이썬 3.5.2 가 설치가 된것을 확인해 보실 수 있습니다.
+
+ ![version](D:\onedrive\▣책쓰기(집필)\우분투(WSL)\img_wsl_python\version.png)
+
+
+
+우분투는 기본적으로 파이썬3와 여러 페키지들이 같이 설치가 되어 있습니다. 우분투 페키지 목록에서 `python`만 확인을 해보도록 합니다.
+
+```
+dpkg -l | grep "python"
+```
+
+그럼 다음과 같이 기본 설치된 파이썬 페키지 목록을 출력합니다.
+
+```console
+hojin@DESKTOP-8QECJCI:~$ dpkg -l | grep "python"
+
+ii  dh-python                        2.20151103ubuntu1.1                        all          Debian helper tools for packaging Python libraries and applications
+
+ii  libpython3-stdlib:amd64          3.5.1-3                                    amd64        interactive high-level object-oriented language (default python3 version)
+
+ii  libpython3.5:amd64               3.5.2-2ubuntu0~16.04.2                     amd64        Shared Python runtime library (version 3.5)
+
+ii  libpython3.5-minimal:amd64       3.5.2-2ubuntu0~16.04.2                     amd64        Minimal subset of the Python language (version 3.5)
+
+ii  libpython3.5-stdlib:amd64        3.5.2-2ubuntu0~16.04.2                     amd64        Interactive high-level object-oriented language (standard library, version 3.5)
+
+ii  python-apt-common                1.1.0~beta1build1                          all          Python interface to libapt-pkg (locales)
+
+ii  python3                          3.5.1-3                                    amd64        interactive high-level object-oriented language (default python3 version)
+
+ii  python3-apport                   2.20.1-0ubuntu2.10                         all          Python 3 library for Apport crash report handling
+
+ii  python3-apt                      1.1.0~beta1build1                          amd64        Python 3 interface to libapt-pkg
+
+ii  python3-blinker                  1.3.dfsg2-1build1                          all          fast, simple object-to-object and broadcast signaling library
+
+ii  python3-cffi-backend             1.5.2-1ubuntu1                             amd64        Foreign Function Interface for Python 3 calling C code - runtime
+
+ii  python3-chardet                  2.3.0-2                                    all          universal character encoding detector for Python3
+
+ii  python3-commandnotfound          0.3ubuntu16.04.2                           all          Python 3 bindings for command-not-found.
+
+ii  python3-configobj                5.0.6-2                                    all          simple but powerful config file reader and writer for Python 3
+
+ii  python3-cryptography             1.2.3-1ubuntu0.1                           amd64        Python library exposing cryptographic recipes and primitives (Python 3)
+
+ii  python3-dbus                     1.2.0-3                                    amd64        simple interprocess messaging system (Python 3 interface)
+
+ii  python3-debian                   0.1.27ubuntu2                              all          Python 3 modules to work with Debian-related data formats
+
+ii  python3-distupgrade              1:16.04.22                                 all          manage release upgrades
+
+ii  python3-gdbm:amd64               3.5.1-1                                    amd64        GNU dbm database support for Python 3.x
+
+ii  python3-gi                       3.20.0-0ubuntu1                            amd64        Python 3 bindings for gobject-introspection libraries
+
+ii  python3-idna                     2.0-3                                      all          Python IDNA2008 (RFC 5891) handling (Python 3)
+
+ii  python3-jinja2                   2.8-1                                      all          small but fast and easy to use stand-alone template engine
+
+ii  python3-json-pointer             1.9-3                                      all          resolve JSON pointers - Python 3.x
+
+ii  python3-jsonpatch                1.19-3                                     all          library to apply JSON patches - Python 3.x
+
+ii  python3-jwt                      1.3.0-1ubuntu0.1                           all          Python 3 implementation of JSON Web Token
+
+ii  python3-markupsafe               0.23-2build2                               amd64        HTML/XHTML/XML string library for Python 3
+
+ii  python3-minimal                  3.5.1-3                                    amd64        minimal subset of the Python language (default python3 version)
+
+ii  python3-newt                     0.52.18-1ubuntu2                           amd64        NEWT module for Python3
+
+ii  python3-oauthlib                 1.0.3-1                                    all          generic, spec-compliant implementation of OAuth for Python3
+
+ii  python3-pkg-resources            20.7.0-1                                   all          Package Discovery and Resource Access using pkg_resources
+
+ii  python3-prettytable              0.7.2-3                                    all          library to represent tabular data in visually appealing ASCII tables (Python3)
+
+ii  python3-problem-report           2.20.1-0ubuntu2.10                         all          Python 3 library to handle problem reports
+
+ii  python3-pyasn1                   0.1.9-1                                    all          ASN.1 library for Python (Python 3 module)
+
+ii  python3-pycurl                   7.43.0-1ubuntu1                            amd64        Python bindings to libcurl (Python 3)
+
+ii  python3-requests                 2.9.1-3                                    all          elegant and simple HTTP library for Python3, built for human beings
+
+ii  python3-serial                   3.0.1-1                                    all          pyserial - module encapsulating access for the serial port
+
+ii  python3-six                      1.10.0-3                                   all          Python 2 and 3 compatibility library (Python 3 interface)
+
+ii  python3-software-properties      0.96.20.7                                  all          manage the repositories that you install software from
+
+ii  python3-systemd                  231-2build1                                amd64        Python 3 bindings for systemd
+
+ii  python3-update-manager           1:16.04.9                                  all          python 3.x module for update-manager
+
+ii  python3-urllib3                  1.13.1-2ubuntu0.16.04.1                    all          HTTP library with thread-safe connection pooling for Python3
+
+ii  python3-yaml                     3.11-3build1                               amd64        YAML parser and emitter for Python3
+
+ii  python3.5                        3.5.2-2ubuntu0~16.04.2                     amd64        Interactive high-level object-oriented language (version 3.5)
+
+ii  python3.5-minimal                3.5.2-2ubuntu0~16.04.2                     amd64        Minimal subset of the Python language (version 3.5)
+
+hojin@DESKTOP-8QECJCI:~$
+
+```
+
+
+
+## 파이썬 페키지
+
+기본적으로 처음 우분투를 설치했을때 pip3는  제외되어 있습니다. 우분투 페키지 관리 툴 `apt`를 통하여 pip3를 추가로 설치해 줍니다. 터미널에서 다음과 같이 입력을 하시면 됩니다.
+
+```
+sudo apt install python3-pip
+```
+
+만일 위와 같이 입력을 했는데,  `Unable to locate package python3-pip`과 같이 pip3 설치가 실패한 경우가 발생될 수 있습니다.
+
+```
+hojin@DESKTOP-8QECJCI:~$ sudo apt install python3-pip
+[sudo] password for hojin:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package python3-pip
+```
+
+이런경우 `apt`를 목록이 업데이트 되지 않았기 때문입니다. 업데이투 후에 다시 실행하시면 됩니다. 업데이트 방법은 다음과 같습니다.
+
+```
+sudo apt update
+```
+
+
+
+정상적으로 pip3가 설치가 되었으면 확인을 해보도록 합니다.
+
+```
+hojin@DESKTOP-8QECJCI:~$ pip3 -V
+pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
+```
+
+
+
+
+
+
+
+
+
+
+
+apt 페키지 목록 초기화 및 다시 업데이트 받기
+
+```
+sudo rm -rf /var/lib/apt/lists/*
+sudo apt clean
+sudo apt update
+```
+
+
+
+
+
+## 파이썬 페키지설치
+
+pip3를 통하여 몇개의 페키지를 설치해 보도록 합니다.
+
+
+
+```
+sudo pip3 install beautifulsoup4
+```
+
+
+
+
+
+```
+sudo pip3 install numpy
+```
+
+
+
+### 파이썬 mysql
+
+```
+sudo pip3 install pymysql
+```
+

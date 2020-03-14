@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Jiny Mysql</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Jiny</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/start">시작하기</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/code">프로그래밍</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/database">데이터베이스</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/system">시스템</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h1 id="애저-등록">애저 등록</h1>
+<p>변환된 pfx 파일을 애저에 등록하여 도메인 바인등을 처리합니다. 애저 포털로 이동후에 웹앱을 선택하여 주세요.</p>
+
+<p>좌측에서 인증서를 선택합니다. 이제 생성한 인증서 파일을 애저 webapp에 등록을 해보도록 하겠습니다.</p>
+
+<p><img src="./img/azure_ssl_01.png" alt="azure_ssl" /></p>
+
+<p>아직 개인 인증서 등록이 되어 있지 안습니다.
+화면 하단에 보면 개인 인증서가 없는 것을 확인 할 수 있습니다.</p>
+
+<p><code class="highlighter-rouge">인증서 업로드</code>를 선택합니다.</p>
+
+<p><img src="./img/azure_ssl_02.png" alt="azure_ssl" /></p>
+
+<p>우측에 인증서 추가 화면이 생성된 것을 확인 할 수 있습니다. 이곳에 생성해 놓은 <code class="highlighter-rouge">azurewebsitecertificate.pfx</code> 인증서 파일을 찾아 등록을 합니다. 
+이때 openssl로 생성시 등록한 비밀번호를 같이 입력을 하도록 합니다. 업로드를 하게 되면 개인 인증서 Azure에 등록이 됩니다.</p>
+
+<p><img src="./img/azure_ssl_03.png" alt="azure_ssl" /></p>
+
+<p>개인 인증서 정보가 표기가 되지 않는 다면 화면을 다시 갱신해 주시면 됩니다.
+하단에 새롭게 추가한 인증서 목록이 출력되는 것을 보실 수 있습니다.</p>
+
+<p><br /></p>
+
+<h2 id="도메인-바인딩">도메인 바인딩</h2>
+<p>등록한 도메인과 인증서를 통하여 바인딩을 설정합니다. 바인딩을 하게 되면 해당 도메인으로 https 접속이 가능해 집니다.</p>
+
+<p><img src="./img/azure_ssl_04.png" alt="azure_ssl" /></p>
+
+<p>도메인을 선택하고, 인증서를 선택합니다. 선택후에 <code class="highlighter-rouge">바인딩추가</code>를 해주시면 됩니다. 등록한 모든 도메인을 각각이 다 설정해 주시면 됩니다.</p>
+
+<p><img src="./img/azure_ssl_05.png" alt="azure_ssl" /></p>
+
+<p>정상적으로 바인딩이 완료과 되었다면, <code class="highlighter-rouge">HTTPS</code>로 사이트 접속이 가능한 것을 확인 할 수 있습니다.</p>
+
+<p>애저에 성공적으로 자신의 도메인을 등록하였다면, 이제는 보다 안전을 위하여 HTTPS 를 설정하는 것이 좋습니다.</p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/start">시작하기</a></li>
+    <li class="list-group-item"><a href="/code">프로그래밍</a></li>
+    <li class="list-group-item"><a href="/database">데이터베이스</a></li>
+    <li class="list-group-item"><a href="git.jiny.dev">Git</a></li>
+    <li class="list-group-item"><a href="/system">시스템</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/lecture">강의</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<br>
+
+            <!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>
