@@ -1,0 +1,55 @@
+I"�<p>UNION은 여러 개의 테이블 데이터를 묶어 하나의 결과로 출력합니다. 각각의 테이블에 대해서 SELECT 결과를 통하여 서로 결합된 내용을 출력합니다.</p>
+
+<ul>
+  <li>2개 또는 여러 개의 SELECT 결과를 결합니다.</li>
+  <li>결합되는 테이블의 컬럼의 자료형은 동일해야 합니다.</li>
+  <li>구조가 다른 테이블도 결과를 결합할 수 있습니다.</li>
+  <li>각각의 SELECT문의 컬럼 또한 동일한 순서로 있어야 합니다.</li>
+</ul>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span> <span class="p">...</span> <span class="k">FROM</span> <span class="err">테이블</span><span class="mi">1</span> 
+<span class="k">UNION</span> 
+<span class="k">SELECT</span> <span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span> <span class="p">...</span> <span class="k">FROM</span> <span class="err">테이블</span><span class="mi">2</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>2개의 SELECT 문장 사이에 UNION 키워드를 삽입하면 됩니다. 2개의 SELECT 결과를 모두 출력하게 됩니다.</p>
+
+<h2 id="1911-쿼리-실습">19.1.1 쿼리 실습</h2>
+<p>다음은 UNION 결합을 통하여 2개의 회원 테이블을 하나의 데이터로 출력하는 실습입 니다. 아래 쿼리를 콘솔 모드에서 입력합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">FirstName</span><span class="p">,</span> <span class="n">LastName</span> <span class="k">from</span> <span class="n">members</span> 
+<span class="k">union</span> 
+<span class="k">select</span> <span class="n">FirstName</span><span class="p">,</span> <span class="n">LastName</span> <span class="k">from</span> <span class="n">members1</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>2개의 select 쿼리 문장이 union으로 결합되어 있습니다. 실행을 하면 다음과 같습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select FirstName, LastName from members union select FirstName, LastName from members1;
++-----------+----------+
+| FirstName | LastName |
++-----------+----------+
+| lee       | hojin    |
+| NULL      | jiny     |
+| kim       | james    |
+| jung      | eric     |
++-----------+----------+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>위의 예제는 2개의 SELECT 내용이 결합되어 하나의 결과로 출력되었습니다.</p>
+
+<p>만일 SELECT로 결합 출력하려고 하는 2개의 테이블의 컬럼의 수가 동일하다면 전체를 의미하는 와일드 카드(*) 기호를 이용할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span><span class="p">)</span> 
+<span class="k">union</span> 
+<span class="p">(</span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>여러 개의 union을 결합할 때 혼동을 방지하기 위하여 괄호를 같이 사용하면 편리합니다.</p>
+
+:ET

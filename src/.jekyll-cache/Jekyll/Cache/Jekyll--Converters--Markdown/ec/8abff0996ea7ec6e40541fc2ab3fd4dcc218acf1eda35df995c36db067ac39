@@ -1,0 +1,117 @@
+I"� <p>테이블의 컬럼을 삭제할 수 있습니다. 컬럼을 삭제할 때는 매우 조심스러운 주의가 필요 합니다. 컬럼을 삭제하게 되면 컬럼 안에 있는 데이터 모두 삭제됩니다. 또한 삭제된 컬럼 
+의 자료는 복구되지 않습니다.</p>
+
+<p>컬럼을 삭제할 때는 DROP 키워드를 함께 사용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">DROP</span> <span class="err">컬럼명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="0851-쿼리-실습">08.5.1 쿼리 실습</h2>
+<p>테이블에 존재하는 컬럼 하나를 삭제해 보도록 합니다. desc 쿼리 명령을 통하여 테이블의 구조를 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+-------------------+-----------------------------+
+| Field     | Type         | Null | Key | Default           | Extra                       |
++-----------+--------------+------+-----+-------------------+-----------------------------+
+| age       | varchar(10)  | YES  |     | NULL              |                             |
+| Id        | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| LastName  | varchar(255) | YES  |     | NULL              |                             |
+| FirstName | varchar(255) | YES  |     | NULL              |                             |
+| regdate   | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| Address   | varchar(255) | YES  |     | NULL              |                             |
+| City      | varchar(255) | YES  |     | NULL              |                             |
+| Country   | varchar(255) | YES  |     | NULL              |                             |
++-----------+--------------+------+-----+-------------------+-----------------------------+
+8 rows in set (0.01 sec)
+
+</code></pre></div></div>
+<p>테이블의 컬럼 regdate를 삭제합니다 .</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">members</span> <span class="k">drop</span> <span class="n">regdate</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; alter table members drop regdate;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+</code></pre></div></div>
+
+<p>쿼리가 정상적으로 수행되었습니다. desc 쿼리 명령을 통하여 테이블의 구조를 다시 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| age       | varchar(10)  | YES  |     | NULL    |                |
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>테이블의 regdate 컬럼이 삭제된 것을 확인할 수 있습니다.</p>
+
+<h2 id="0852-php-실습">08.5.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 테이블의 컬럼을 삭제해 봅니다. 관련 메서드를 하나 더 추가하여 실 습해 보겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테이블 컬럼필드를 삭제합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">tableFieldDrop</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="nv">$field</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> DROP </span><span class="nv">$field</span><span class="s2">"</span><span class="p">;</span>
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 컬럼삭제!"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | alter-06.php</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$field</span> <span class="o">=</span> <span class="s2">"regdate"</span><span class="p">;</span>
+    
+	<span class="c1">// 필드를 삭제합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableFieldDrop</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members DROP regdate
+컬럼삭제!
+
+</code></pre></div></div>
+:ET

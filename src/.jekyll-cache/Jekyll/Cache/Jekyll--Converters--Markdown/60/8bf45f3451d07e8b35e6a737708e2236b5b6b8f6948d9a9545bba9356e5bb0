@@ -1,0 +1,52 @@
+I"�<p>엑셀 파일에서 좌측에 1,2,3,4,5처럼 표시가 되는 숫자를 본 적이 있을 것입니다. 테이블 은 각각의 컬럼을 기준으로 다수의 데이터 열(Rows)을 가지고 있습니다.</p>
+
+<p>테이블에 데이터를 저장할 때 각각의 데이터를 지정하기 위한 고유의 아이디 값이 필요로 합니다. 이러한 고유의 식별 값을 Primary Key 로 지정을 합니다. 프라이머리 키의 값은 앞에서 학습한 유일값 (UNIQUE) 속성의 특징도 가지고 있습니다. 따라서 프라이머리 키의 값은 중복되지 않습니다. 또한 NOT NULL 속성도 가지고 있기 때문에 NULL을 허용하 지 않고 반드시 값을 가지고 있습니다.</p>
+
+<p>프라이머리 키는 테이블에 기본 키가 하나만 있을 수 있습니다. 기본 키는 하나 또는 여러 개의 필드로 구성될 수 있습니다.</p>
+
+<h2 id="0941-쿼리-실습">09.4.1 쿼리 실습</h2>
+<p>다음 예제는 정수형 Id 값을 프라이머리 키로 설정합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="p">(</span>
+    <span class="n">Id</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">LastName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">FirstName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">Id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>또는 다음처럼 프라이머리 키 값을 여러 개의 필드로 구성할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="p">(</span>
+    <span class="n">Id</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">LastName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">FirstName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="n">PK_members</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">Id</span><span class="p">,</span><span class="n">LastName</span><span class="p">)</span>
+<span class="p">);</span>
+
+</code></pre></div></div>
+
+<p>위의 예제는 2개의 필드를 하나의 프라이머리 키로 설정합니다. 하지만 프라이머리 키는 1개만 설정할 수 있기 때문에 CONSTRAINT 키워드를 통하여 PK_members 키 이름을 생성합니다.</p>
+
+<p>프라이머리 키는 ALTER 명령을 통하여 추가하거나 삭제할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">ADD</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">Id</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>CONSTRAINT 키워드를 통하여 2개의 컬럼 필드를 가지는 프라이머리 키를 추가할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">PK_members</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">Id</span><span class="p">,</span><span class="n">LastName</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>2개의 필드를 가지는 프라이머리 키 생성 시 각각의 컬럼은 NULL 값이 허용되지 않은 컬 럼이어야 합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">DROP</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>프라이머리 키를 삭합니다.</p>
+:ET

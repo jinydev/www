@@ -1,0 +1,52 @@
+I"f<p>MySQL의 각각의 접속은 독립적인 스레드로 동작합니다. 또한 멀티 스레드를 생성할 수 있습니다. 멀티 스레드를 통하여 동시에 같은 테이블에 여러 쿼리를 처리할 수 있습니다. 
+모든 스레드에서 인덱스 파일은 공유합니다.</p>
+
+<h2 id="2941-processlist">29.4.1 ProcessList</h2>
+<p>현재 접속하여 동작하는 스레드를 확인할 수 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; show processlist;
++----+------+-----------------+------+---------+------+-------+------------------+
+| Id | User | Host            | db   | Command | Time | State | Info             |
++----+------+-----------------+------+---------+------+-------+------------------+
+| 79 | root | localhost:62222 | jiny | Query   |    0 | init  | show processlist |
+| 80 | root | localhost:62401 | jiny | Sleep   | 1168 |       | NULL             |
++----+------+-----------------+------+---------+------+-------+------------------+
+2 rows in set (0.01 sec)
+
+</code></pre></div></div>
+
+<p>스레드 접속 확인은 셸 명령창에서도 확인할 수 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\Bitnami\wampstack-5.6.30-0\mysql\bin&gt;mysqladmin -u root -p processlist
+Enter password: ********
++----+------+-----------------+------+---------+------+-------+------------------+
+| Id | User | Host            | db   | Command | Time | State | Info             |
++----+------+-----------------+------+---------+------+-------+------------------+
+| 79 | root | localhost:62222 | jiny | Sleep   | 152  |       |                  |
+| 85 | root | localhost:63007 |      | Query   | 0    | init  | show processlist |
++----+------+-----------------+------+---------+------+-------+------------------+
+
+</code></pre></div></div>
+
+<h2 id="2942-접속-해제">29.4.2 접속 해제</h2>
+<p>KILL 명령은 사용하지 않는 스레드를 강제로 종료할 수 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; KILL 80;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; show processlist;
++----+------+-----------------+------+---------+------+-------+------------------+
+| Id | User | Host            | db   | Command | Time | State | Info             |
++----+------+-----------------+------+---------+------+-------+------------------+
+| 79 | root | localhost:62222 | jiny | Query   |    0 | init  | show processlist |
++----+------+-----------------+------+---------+------+-------+------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>사용하지 않은 스레드를 정리함으로써 MySQL의 접속 및 성능을 높여 충분한 자원 관리 를 할 수 있습니다.</p>
+
+:ET

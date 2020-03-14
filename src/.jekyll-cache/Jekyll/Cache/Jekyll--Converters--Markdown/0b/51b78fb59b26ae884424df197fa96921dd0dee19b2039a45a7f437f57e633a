@@ -1,0 +1,122 @@
+I"[%<p>생성된 테이블의 컬럼 이름을 변경할 수 있습니다. 컬럼의 이름은 데이터베이스에서 쉽게 변경할 수 있습니다. 하지만 데이터베이스와 연결된 응용프로그램에서는 데이터에 접근 할 때 컬럼명을 많이 사용합니다. 컬럼명 변경과 프로그램 코드를 잘 반영하여 적절하게 수정하는 것이 중요합니다.</p>
+
+<p>컬럼명을 변경할 때는 CHANGE 키워드를 사용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="n">CHANGE</span> <span class="err">변경</span> <span class="err">전</span><span class="n">_</span><span class="err">컬럼명</span> <span class="err">변경</span> <span class="err">후</span><span class="n">_</span><span class="err">컬럼명</span> <span class="err">자료형</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>CHANGE는 컬럼명 변경과 함께 자료형도 같이 변경할 수 있습니다.</p>
+
+<h2 id="0841-쿼리-실습">08.4.1 쿼리 실습</h2>
+<p>기존 테이블의 컬럼명을 변경하는 실습을 하겠습니다. desc 쿼리 명령을 통하여 기존 테 이블의 구조를 확인합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| age       | varchar(10)  | YES  |     | NULL    |                |
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| birth     | datetime     | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+8 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>기존 birth 컬럼명을 새로운 컬럼명 regdate로 이름을 변경해 보겠습니다. 또한 자료형도 datetime에서 timestamp 타입으로 함께 변경하겠습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">members</span> <span class="n">change</span> <span class="n">birth</span> <span class="n">regdate</span> <span class="nb">timestamp</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; alter table members change birth regdate timestamp;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+</code></pre></div></div>
+
+<p>쿼리 명령이 잘 실행되었습니다. desc 쿼리 명령을 통하여 다시 한번 테이블의 구조를 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+-------------------+-----------------------------+
+| Field     | Type         | Null | Key | Default           | Extra                       |
++-----------+--------------+------+-----+-------------------+-----------------------------+
+| age       | varchar(10)  | YES  |     | NULL              |                             |
+| Id        | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| LastName  | varchar(255) | YES  |     | NULL              |                             |
+| FirstName | varchar(255) | YES  |     | NULL              |                             |
+| regdate   | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| Address   | varchar(255) | YES  |     | NULL              |                             |
+| City      | varchar(255) | YES  |     | NULL              |                             |
+| Country   | varchar(255) | YES  |     | NULL              |                             |
++-----------+--------------+------+-----+-------------------+-----------------------------+
+8 rows in set (0.01 sec)
+
+</code></pre></div></div>
+
+<h2 id="0842-php-실습">08.4.2 PHP 실습</h2>
+<p>컬럼명 변경을 PHP 코드로 실습해 보도록 합니다. 새로운 메서드를 추가하여 실습 코드 를 작성합니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테이블 컬럼필드를 수정합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">tableFieldChange</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$src</span><span class="p">,</span> <span class="nv">$dst</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">){</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> CHANGE </span><span class="nv">$src</span><span class="s2"> </span><span class="nv">$dst</span><span class="s2"> </span><span class="nv">$datatype</span><span class="s2">"</span><span class="p">;</span>
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">){</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 컬럼명 변경"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>    
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | alter-05.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$src</span> <span class="o">=</span> <span class="s2">"birth"</span><span class="p">;</span>
+	<span class="nv">$dst</span> <span class="o">=</span> <span class="s2">"regdate"</span><span class="p">;</span>
+	<span class="nv">$datatype</span> <span class="o">=</span> <span class="s2">"varchar(20)"</span><span class="p">;</span>
+    
+	<span class="c1">// 필드를 추가합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableFieldChange</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$src</span><span class="p">,</span> <span class="nv">$dst</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members CHANGE birth regdate varchar(20)
+컬럼명 변경!
+
+</code></pre></div></div>
+:ET

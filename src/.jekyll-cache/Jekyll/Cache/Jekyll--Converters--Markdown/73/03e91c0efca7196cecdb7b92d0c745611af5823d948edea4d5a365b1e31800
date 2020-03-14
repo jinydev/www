@@ -1,0 +1,71 @@
+I"�<p>가상 테이블 VIEW의 일부분만 업데이트하는 방법은 없습니다. 하지만 기존의 가상 테이 블 조건 전체로 덮어쓰기 형태로 업데이트할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">VIEW</span> <span class="n">view_name</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="n">column1</span><span class="p">,</span> <span class="n">column2</span><span class="p">,</span> <span class="err">…</span> <span class="k">FROM</span> <span class="k">table_name</span> <span class="k">WHERE</span> <span class="n">condition</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>CREATE 를 통하여 VIEW를 생성할 때 OR REPLACE 키워드를 함께 사용하면 기존의 생 성된 view를 덮어쓰기 하여 업데이트할 수 있습니다.</p>
+
+<h2 id="2151-쿼리-실습">21.5.1 쿼리 실습</h2>
+<p>다음과 같은 예로 VIEW 테이블을 업데이트하는 쿼리를 작성할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">VIEW</span> <span class="p">[</span><span class="k">Current</span> <span class="n">Product</span> <span class="n">List</span><span class="p">]</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="n">ProductID</span><span class="p">,</span> <span class="n">ProductName</span><span class="p">,</span> <span class="n">Category</span> <span class="k">FROM</span> <span class="n">Products</span> <span class="k">WHERE</span> <span class="n">enable</span> <span class="o">=</span> <span class="err">‘</span><span class="k">on</span><span class="err">’</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="2152-php-실습">21.5.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 실습해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">updateView</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$selectQuery</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$selectQuery</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"CREATE OR REPLACE VIEW </span><span class="nv">$view</span><span class="s2"> AS </span><span class="nv">$selectQuery</span><span class="s2">"</span><span class="p">;</span>
+                    <span class="c1">// 쿼리를 전송합니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 뷰 생성!"</span><span class="p">);</span>
+
+                        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 조건 select 쿼리를 입력해 주세요.."</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 뷰 이름을 적어주세요."</span><span class="p">);</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | view-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="c1">// 뷰를 업데이트 합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">updateView</span><span class="p">(</span><span class="s2">"viewtest"</span><span class="p">,</span> <span class="s2">"select * from members where Id=1"</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] CREATE OR REPLACE VIEW viewtest AS select * from members where Id=1
+뷰 생성!
+</code></pre></div></div>
+:ET

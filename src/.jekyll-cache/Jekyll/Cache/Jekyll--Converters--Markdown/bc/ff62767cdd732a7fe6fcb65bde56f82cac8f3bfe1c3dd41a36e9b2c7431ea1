@@ -1,0 +1,6 @@
+I"�<p>백업과 복원은 mysql의 외부 유틸리티 프로그램을 통하여 실행됩니다. 하지만 별도의 SQL 명령을 통하여 외부 파일을 읽어올 수 있습니다. 읽은 파일을 통하여 테이블에 데이 터를 삽입합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">LOAD</span> <span class="k">DATA</span> <span class="n">INFILE</span> <span class="err">파일명</span> <span class="k">INTO</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="err">옵션</span><span class="p">;</span> 
+</code></pre></div></div>
+:ET

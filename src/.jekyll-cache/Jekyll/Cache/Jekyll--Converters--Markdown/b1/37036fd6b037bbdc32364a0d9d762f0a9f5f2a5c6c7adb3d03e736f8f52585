@@ -1,0 +1,11 @@
+I"<p>MySQL에 등록한 사용자를 삭제할 수 있습니다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">drop</span> <span class="k">user</span> <span class="err">사용자</span> <span class="n">ID</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; drop user hojin@localhost;
+Query OK, 0 rows affected (0.00 sec)
+
+</code></pre></div></div>
+:ET

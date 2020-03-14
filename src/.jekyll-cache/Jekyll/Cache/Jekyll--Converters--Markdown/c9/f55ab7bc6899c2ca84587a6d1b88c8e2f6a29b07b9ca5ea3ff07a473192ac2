@@ -1,0 +1,110 @@
+I"D*<p>SELECT 쿼리는 테이블의 모든 데이터를 가지고 와서 출력합니다. 테이블에 여러 임의의 데이터들이 무작위로 들어가다 보면 중복된 데이터들이 발생하게 됩니다.</p>
+
+<p>이때 DISTINCT 키워드는 SELECT 쿼리를 통하여 데이터를 출력할 때 중복된 데이터를 배제하고 출력할 수 있습니다. SELECT DISTINCT 쿼리 명령은 데이터에서 중복된 값은 
+배제하고 결과를 출력합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">,</span> <span class="err">…</span> <span class="k">FROM</span> <span class="err">테이블명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="1151-쿼리-실습">11.5.1 쿼리 실습</h2>
+<p>먼저 아래 쿼리는 고객 명단에서 국가 컬럼 필드만 출력합니다. 하지만 각 나라별 회원수 는 아주 많을 것입니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Country</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>그런데 회원 정보를 기준으로 가입된 국가의 정보를 알고 싶다고 해봅시다. 국가의 목록 들은 회원들로 인하여 중복될 것입니다. 중복된 국가를 제외하고 1개의 국가들만 출력하고 싶습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">Country</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>DISTINCT를 사용하면 중복된 내용을 배제하기 때문에 회원수의 국가 목록을 하나씩만 출력합니다. DISTINCT 키워드는 SQL 내장 함수의 인자로도 넣을 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">Country</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 예제 쿼리는 가입된 회원의 국가명의 개수를 확인할 수 있습니다.</p>
+
+<h2 id="1152-php-실습">11.5.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 중복을 배제한 목록을 출력해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">selectDistinct</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="nv">$field</span><span class="p">,</span><span class="nv">$where</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"SELECT DISTINCT "</span><span class="p">;</span>
+                
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$field</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">""</span><span class="o">.</span><span class="nv">$field</span> <span class="o">.</span> <span class="s2">" FROM </span><span class="nv">$tbname</span><span class="s2">"</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">"* FROM </span><span class="nv">$tbname</span><span class="s2">"</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$where</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">" where "</span><span class="o">.</span><span class="nv">$where</span><span class="o">.</span><span class="s2">";"</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">";"</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$rowss</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                    <span class="nv">$row_cnt</span> <span class="o">=</span> <span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$row_cnt</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                    <span class="p">}</span>
+
+                    <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
+                    <span class="k">return</span> <span class="nv">$rowss</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>  
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | select-04.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+
+	<span class="c1">// 컬럼, 조건 지정조회 </span>
+	<span class="k">echo</span> <span class="s2">"===== 컬럼조회 =====&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">selectDistinct</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="s2">"FirstName, LastName"</span><span class="p">,</span><span class="s2">"Id&lt;=3"</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span> 
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+===== 컬럼조회 =====
+쿼리성공] SELECT DISTINCT FirstName, LastName FROM members where Id&lt;=3;
+tables fields = 3
+0=stdClass Object ( [FirstName] =&gt; lee [LastName] =&gt; hojin )
+1=stdClass Object ( [FirstName] =&gt; [LastName] =&gt; jiny )
+2=stdClass Object ( [FirstName] =&gt; kim [LastName] =&gt; james ) 
+
+</code></pre></div></div>
+:ET

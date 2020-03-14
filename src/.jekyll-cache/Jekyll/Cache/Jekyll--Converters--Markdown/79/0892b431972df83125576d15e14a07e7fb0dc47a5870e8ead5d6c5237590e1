@@ -1,0 +1,35 @@
+I"�
+<p>앞에 IN, ANY, ALL 등의 연사자를 설명하면서 서브 쿼리를 미리 사용해 보았습니다. 서 브 쿼리란 SELECT로 조회한 데이터를 가지고 다시 메인 SELECT의 연산의 기초 값이 되 는 것입니다. 즉, SELECT를 연결하여 이중 조회하는 것을 말합니다.</p>
+
+<p>서브 쿼리는 MySQL 4.1 이상 버전에서만 지원합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="err">테이블</span> <span class="k">where</span> <span class="err">컬럼</span> <span class="err">연산자</span> <span class="p">(</span><span class="err">서브</span> <span class="err">쿼리</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<h2 id="1271-쿼리-실습">12.7.1 쿼리 실습</h2>
+<p>서브 쿼리를 작성할 때는 괄호를 이용하여 감싸 줍니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select * from members where manager IN (select manager from members where City='seoul'); 
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">select manager from members where City='seoul'</code> 쿼리가 괄호 안에 있기 때문에 먼 저 실행이 됩니다. 결과값은 IN 연산자의 대입 값으로 처리되고, 이에 따라서 메인 쿼리</p>
+
+<p><code class="highlighter-rouge">select * from members where manager IN ()</code>이 실행됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members where manager IN (select manager from members where City='seoul');
++----+----------+-----------+-------------+-------+---------+-----------+-------------------+
+| Id | LastName | FirstName | Address     | City  | Country | manager   | email             |
++----+----------+-----------+-------------+-------+---------+-----------+-------------------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   | infohojin | hojin@jinyphp.com |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   | infohojin | jiny@jinyphp.com  |
+|  3 | james    | kim       | youngdun-po | seoul | korea   | info      | james@jinyphp.com |
+|  4 | eric     | jung      | seocho-gu   | busan | korea   | info      | eric@jinyphp.com  |
++----+----------+-----------+-------------+-------+---------+-----------+-------------------+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+<p>값을 포함하고 있는지 검사할 때는 IN 연산자를 사용합니다. 크기를 비교할 때는 &gt;, &gt;=, &lt;, &lt;=를 사용할 수 있습니다.</p>
+:ET

@@ -1,0 +1,39 @@
+I"�<p>MySQL은 다양한 환경과 목적으로 사용될 것입니다. 이로 인한 목적에 따라 설정이 필요 할 수 있습니다. MySQL의 환경 설정은 윈도우 환경에서는 my.ini 파일, 리눅스 계열에 서는 my.cnf에서 설정할 수 있습니다.</p>
+
+<p>my.ini 환경 설정 파일에서는 문자코드셋, 포트, 엔진 등을 여러 설정 옵션을 지정할 수 있습니다. 설정에 대한 보다 자세한 것은 관련 자료를 찾아보기 바랍니다.</p>
+
+<p>Mysql을 실행 도중에 명령을 통하여 환경 설정값과 상태를 확인할 수 있습니다.</p>
+
+<p>|쿼리 문법|</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>STATUS 
+</code></pre></div></div>
+
+<p>|콘솔|</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; STATUS;
+--------------
+mysql  Ver 14.14 Distrib 5.6.35, for Win64 (x86_64)
+
+Connection id:          17
+Current database:       jiny
+Current user:           root@localhost
+SSL:                    Not in use
+Using delimiter:        ;
+Server version:         5.6.35 MySQL Community Server (GPL)
+Protocol version:       10
+Connection:             localhost via TCP/IP
+Server characterset:    utf8
+Db     characterset:    utf8
+Client characterset:    utf8
+Conn.  characterset:    utf8
+TCP port:               3306
+Uptime:                 8 days 1 hour 47 min 21 sec
+
+Threads: 1  Questions: 494  Slow queries: 0  Opens: 121  Flush tables: 1  Open tables: 85  Queries per second avg: 0.000
+--------------
+
+mysql&gt;
+</code></pre></div></div>
+
+<p>콘솔 <code class="highlighter-rouge">mysql&gt;</code> 입력 화면에서 SQL 명령어 status를 입력하면 상태를 확인할 수 있습니다. 
+<code class="highlighter-rouge">status</code> 명령은 직접 환경 설정 파일을 열어보지 않고도 간략하게 설정과 동작 상태를 확 인해 볼 수 있는 장점이 있습니다.</p>
+:ET

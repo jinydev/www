@@ -1,0 +1,94 @@
+I"D!<p>작성한 프로시저들은 데이터베이스의 프로시저 목록에 등록됩니다. 등록된 프로시저의 내용을 출력하여 확인할 수 있습니다. 프로시저의 내용을 출력할 때는 SHOW CREATE PROCEDURE 명령을 사용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SHOW</span> <span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="err">프로시저명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="2251-쿼리-실습">22.5.1 쿼리 실습</h2>
+<p>데이터베이스의 프로시저 내용을 출력 확인해 보겠습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show create procedure mem; 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; show create procedure mem;
++-----------+------------------------+------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| Procedure | sql_mode               | Create Procedure                                                                                           | character_set_client | collation_connection | Database Collation |
++-----------+------------------------+------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| mem       | NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`root`@`localhost` PROCEDURE `mem`()
+BEGIN
+select * from members;
+select * from orders;
+END | utf8                 | utf8_general_ci      | utf8_general_ci    |
++-----------+------------------------+------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>작성한 프로시저의 내용이 출력됩니다.</p>
+
+<h2 id="2252-php-실습">22.5.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 프로시저를 확인해 보도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">isProcedure</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"SHOW CREATE PROCEDURE </span><span class="nv">$name</span><span class="s2">"</span><span class="p">;</span>
+                
+                <span class="k">if</span><span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$rowss</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                    <span class="nv">$row_cnt</span> <span class="o">=</span> <span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$row_cnt</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                    <span class="p">}</span>
+
+                    <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
+                    <span class="k">return</span> <span class="nv">$rowss</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 프로시저명을 적어주세요."</span><span class="p">);</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | pro-04.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"mem"</span><span class="p">;</span>
+    
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">isProcedure</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] SHOW CREATE PROCEDURE mem
+tables fields = 1
+0=stdClass Object ( [Procedure] =&gt; mem [sql_mode] =&gt; NO_ENGINE_SUBSTITUTION [Create Procedure] =&gt; CREATE DEFINER=`root`@`localhost` PROCEDURE `mem`(a INT) BEGIN SELECT * FROM members WHERE Id=a; END [character_set_client] =&gt; utf8 [collation_connection] =&gt; utf8_general_ci [Database Collation] =&gt; utf8_general_ci ) 
+
+</code></pre></div></div>
+:ET

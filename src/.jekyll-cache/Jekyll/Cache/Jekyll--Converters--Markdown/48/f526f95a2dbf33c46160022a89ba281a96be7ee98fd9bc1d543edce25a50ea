@@ -1,0 +1,99 @@
+I"'<p>조건 분기는 if else처럼 SQL에서도 컬럼의 데이터 값을 비교하여 처리할 수 있습니다. 컬럼 필드 선택 부분에 CASE WHEN ~ 문장을 넣어주면 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CASE</span> <span class="k">WHEN</span> <span class="err">조건</span><span class="mi">1</span> <span class="k">THEN</span> <span class="err">값</span><span class="mi">1</span> <span class="k">WHEN</span> <span class="err">조건</span><span class="mi">2</span> <span class="k">THEN</span> <span class="err">값</span><span class="mi">2</span> <span class="k">WHEN</span> <span class="err">조건</span><span class="mi">3</span> <span class="k">THEN</span> <span class="err">값</span><span class="mi">3</span> <span class="k">ELSE</span> <span class="err">값</span><span class="mi">4</span> 
+<span class="k">END</span> <span class="k">AS</span> <span class="err">별칭</span> 
+</code></pre></div></div>
+
+<h2 id="1261-쿼리-실습">12.6.1 쿼리 실습</h2>
+<p>다음은 Id 값에 따라서 서수 번호를 NO라는 이름으로 처리하는 예제 쿼리입니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">FirstNAme</span><span class="p">,</span><span class="n">LastName</span><span class="p">,</span> 
+	<span class="k">case</span>
+		<span class="k">when</span> <span class="n">Id</span><span class="o">&gt;=</span> <span class="mi">5</span> <span class="k">then</span> <span class="s1">'5th'</span>
+		<span class="k">when</span> <span class="n">Id</span><span class="o">&gt;=</span> <span class="mi">4</span> <span class="k">then</span> <span class="s1">'4th'</span>
+		<span class="k">when</span> <span class="n">Id</span><span class="o">&gt;=</span> <span class="mi">3</span> <span class="k">then</span> <span class="s1">'3th'</span>
+		<span class="k">when</span> <span class="n">Id</span><span class="o">&gt;=</span> <span class="mi">2</span> <span class="k">then</span> <span class="s1">'2th'</span>
+		<span class="k">else</span> <span class="s1">'1th'</span>
+	<span class="k">end</span> <span class="k">as</span> <span class="k">No</span>
+<span class="k">from</span> <span class="n">members</span><span class="p">;</span>
+ 
+</code></pre></div></div>
+
+<p>출력은 FirstNAme, LastName, No 형태로 3개의 컬럼이 출력이 됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select FirstNAme,LastName,
+    -&gt; case
+    -&gt; when Id&gt;= 5 then '5th'
+    -&gt; when Id&gt;= 4 then '4th'
+    -&gt; when Id&gt;= 3 then '3th'
+    -&gt; when Id&gt;= 2 then '2th'
+    -&gt; else '1th'
+    -&gt; end as No
+    -&gt; from members;
+
++-----------+----------+-----+
+| FirstNAme | LastName | No  |
++-----------+----------+-----+
+| lee       | hojin    | 1th |
+| NULL      | jiny     | 2th |
+| kim       | james    | 3th |
+| jung      | eric     | 4th |
++-----------+----------+-----+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>No 컬럼은 별칭으로 선언되어 처리를 합니다. 별칭 기능은 나중에 다시 학습하겠습니다.</p>
+
+<h2 id="1262-php-실습">12.6.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 조건 분기 쿼리를 실행해 봅니다.</p>
+
+<p>예제 파일 | where-09.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"select FirstNAme,LastName, 
+        case
+            when Id&gt;= 5 then '5th'
+            when Id&gt;= 4 then '4th'
+            when Id&gt;= 3 then '3th'
+            when Id&gt;= 2 then '2th'
+            else '1th'
+        end as No
+    from members;"</span><span class="p">;</span>
+    
+	<span class="k">if</span><span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">selectRowss</span><span class="p">(</span><span class="nv">$queryString</span><span class="p">)){</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] select FirstNAme,LastName, case when Id&gt;= 5 then '5th' when Id&gt;= 4 then '4th' when Id&gt;= 3 then '3th' when Id&gt;= 2 then '2th' else '1th' end as No from members;
+tables fields = 6
+0=stdClass Object ( [FirstNAme] =&gt; lee [LastName] =&gt; hojin [No] =&gt; 1th )
+1=stdClass Object ( [FirstNAme] =&gt; hojin [LastName] =&gt; lee [No] =&gt; 2th )
+2=stdClass Object ( [FirstNAme] =&gt; kim [LastName] =&gt; james [No] =&gt; 3th )
+3=stdClass Object ( [FirstNAme] =&gt; jiny [LastName] =&gt; 1234 [No] =&gt; 5th )
+4=stdClass Object ( [FirstNAme] =&gt; jiny [LastName] =&gt; 1234 [No] =&gt; 5th )
+5=stdClass Object ( [FirstNAme] =&gt; jiny [LastName] =&gt; 123400 [No] =&gt; 5th ) 
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,91 @@
+I"�<p>작성한 트리거를 삭제할 수 있습니다. 트리거 삭제 또한 기존에 익숙한 DROP 명령을 통 하여 삭제할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">TRIGGER</span> <span class="err">트리거명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="2331-쿼리-실습">23.3.1 쿼리 실습</h2>
+<p>기존에 실습한 트리거를 삭제해 보도록 합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">drop</span> <span class="k">trigger</span> <span class="n">backup_mem</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; drop trigger backup_mem;
+Query OK, 0 rows affected (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2332-php-실습">23.3.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 트리거 삭제 메서드를 만들어 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 생성한 트리거를 삭제합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">dropTrigger</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"DROP TRIGGER </span><span class="nv">$name</span><span class="s2">"</span><span class="p">;</span>
+                
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">){</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 트리거 삭제!"</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 트리거명을 적어주세요."</span><span class="p">);</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | tri-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"backup_mem"</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">dropTrigger</span><span class="p">(</span><span class="nv">$name</span><span class="p">)){</span>
+		<span class="k">echo</span> <span class="nv">$name</span><span class="o">.</span><span class="s2">" 트리거 삭제성공! &lt;br&gt;"</span><span class="p">;</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">showTriggers</span><span class="p">()){</span>
+			<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+			<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+				<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+				<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$name</span><span class="o">.</span><span class="s2">" 트리거를 찾을 수 없습니다."</span><span class="p">;</span>
+		<span class="p">}</span>
+        
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"트리거를 삭제 할 수 없습니다.&lt;br&gt;"</span><span class="p">;</span>
+	<span class="p">}</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] DROP TRIGGER backup_mem
+트리거 삭제!
+backup_mem 트리거 삭제성공! 
+쿼리성공] SHOW TRIGGERS
+backup_mem 트리거를 찾을 수 없습니다.
+
+</code></pre></div></div>
+:ET

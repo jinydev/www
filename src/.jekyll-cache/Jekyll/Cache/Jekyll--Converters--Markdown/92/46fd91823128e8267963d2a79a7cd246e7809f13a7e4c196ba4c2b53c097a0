@@ -1,0 +1,94 @@
+I"C<p>NULL은 프로그램, 데이터베이스 에서도 공백과는 또 다른 의미입니다. NULL은 ‘아무것 도 없다’는 뜻입니다. 테이블에 데이터를 입력할 때 값을 지정하기 않거나 없을 경우에는 해당 컬럼을 NULL로 자동 설정됩니다.</p>
+
+<p>물론, 제약사항 속성을 통하여 NULL이 지정되지 않게 할 수도 있습니다. 또는 초기값을 지정하여 설정할 수도 있습니다.</p>
+
+<h2 id="1241-null-확인">12.4.1 NULL 확인</h2>
+<p>NULL로 설정된 컬럼을 조건을 통하여 검색할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">쿼리</span><span class="o">~</span> <span class="k">WHERE</span> <span class="err">컬럼명</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>컬럼의 상태가 NULL인지를 확인하기 위해서는 IS NULL 연산을 통하여 확인할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span> <span class="k">where</span> <span class="n">address</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 쿼리 예제는 주소가 NULL로 설정된 데이터만 검색하여 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members where address IS NULL;
++----+----------+-----------+---------+------+---------+
+| Id | LastName | FirstName | Address | City | Country |
++----+----------+-----------+---------+------+---------+
+|  2 | jiny     | NULL      | NULL    | NULL | korea   |
++----+----------+-----------+---------+------+---------+
+1 row in set (0.00 sec)
+</code></pre></div></div>
+
+<p>결과를 확인하면 주소 컬럼이 NULL로 설정된 것을 확인할 수 있습니다.</p>
+
+<h2 id="1242-not-null-확인">12.4.2 NOT NULL 확인</h2>
+<p>반대로 NULL이 아닌 값 검색은 IS NOT NULL 로 사용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~ WHERE 컬럼명 IS NOT NULL; 
+</code></pre></div></div>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span> <span class="k">where</span> <span class="n">address</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">;</span> 
+</code></pre></div></div>
+<p>위의 쿼리 예제는 주소 부분이 NULL이 아닌 회원 목록만을 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members where address IS NOT NULL;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+3 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>주소를 가지고 있는 회원만 출력했습니다.</p>
+
+<h2 id="1243-php-실습">12.4.3 PHP 실습</h2>
+<p>PHP 코드를 통하여 컬럼의 NULL을 확인해 봅니다.</p>
+
+<p>예제 파일 | sql-.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"select * from members WHERE address IS NOT NULL"</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">selectRowss</span><span class="p">(</span><span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] select * from members WHERE address IS NOT NULL
+tables fields = 2
+0=stdClass Object ( [Id] =&gt; 1 [LastName] =&gt; hojin [FirstName] =&gt; lee [Address] =&gt; shinchon [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; infohojin [email] =&gt; hojin@jinyphp.com )
+1=stdClass Object ( [Id] =&gt; 3 [LastName] =&gt; james [FirstName] =&gt; kim [Address] =&gt; youngdun-po [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; info [email] =&gt; james@jinyphp.com ) 
+
+</code></pre></div></div>
+:ET

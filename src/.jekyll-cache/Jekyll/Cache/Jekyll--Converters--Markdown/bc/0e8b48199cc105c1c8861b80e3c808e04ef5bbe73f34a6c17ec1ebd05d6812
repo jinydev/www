@@ -1,0 +1,59 @@
+I"�<p>MySQL에서 추가한 사용자 각각의 권한은 SHOW GRANTS 명령으로 확인할 수 있습 
+니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; show grants;
++-----------------------------------------------------------------------------------------------------+
+| Grants for root@localhost                                                                                                         |
++-----------------------------------------------------------------------------------------------------+
+| GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY PASSWORD '*822DBCD38A3CD19B2C3404B458CD48525B846E22' WITH GRANT OPTION |
+| GRANT PROXY ON ''@'' TO 'root'@'localhost' WITH GRANT OPTION                                                           |
++-----------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>권한을 설정하는 방법은 grant 명령을 이용하여 처리할 수 있습니다. 만일 권한 설정과 
+비밀번호를 같이 할 경우에는 뒤에 identified by ‘비밀번호’를 추가하면 됩니다.<br />
+특정 계정에 대한 권한만을 확인하고자 할 때는 SHOW GRANTS 뒤에 for 계정 정보를 넣어 주면 됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; show grants for hojin@localhost;
++-----------------------------------------------------------------------------------------------------+
+| Grants for hojin@localhost                                                                                   |
++-----------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'hojin'@'localhost' IDENTIFIED BY PASSWORD '*A51F6BE471B9F2B7CB6F8A21ED1A4EA61846A50A' |
++-----------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h3 id="2921-사용자-db-권한">29.2.1 사용자 DB 권한</h3>
+<p>호스팅과 같이 하나의 서버에서 다수의 MySQL 사용자와 데이터베이스가 있을 경우 기존 insert 방식으로 사용자나 DB를 추가하면 다른 사용자의 DB가 접속되어 목록으로 볼 
+수 있습니다.</p>
+
+<p>하지만 grant 명령을 통하여 사용자 DB 권한을 설정하면 해당 사용자에 한하여 DB 접속 권한 및 목록을 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; grant all privileges on DB명.* to '유저명'@'localhost' identified by '비밀번호'; 
+</code></pre></div></div>
+
+<p>위의 예는 기존에 등록된 MySQL 계정의 권한과 비밀번호를 변경합니다.</p>
+
+<h3 id="2922-일부-권한">29.2.2 일부 권한</h3>
+<p>MySQL 사용자 계정에게 일부 기능에 대한 권한만 부여할 수도 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; grant select, insert, update on DB명.* to '유저명'@'localhost' identified by '비밀번호'; 
+</code></pre></div></div>
+
+<p>위의 예는 해당 계정은 select, insert, update만 가능하다는 의미입니다.</p>
+
+<h3 id="2923-권한-삭제">29.2.3 권한 삭제</h3>
+<p>권한을 제거할 때는 REVOKE 명령을 사용합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; revoke all on DB명.테이블 from 사용자ID
+mysql&gt; revoke all on test.* from hojin@localhost;
+</code></pre></div></div>
+:ET

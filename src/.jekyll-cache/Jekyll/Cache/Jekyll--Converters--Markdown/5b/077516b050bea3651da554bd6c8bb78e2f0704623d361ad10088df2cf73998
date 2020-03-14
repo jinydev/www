@@ -1,0 +1,137 @@
+I"O+<p>기존 콘솔의 MySql 접속과 PHP 연동 접속에 대해서 차이점을 살펴보도록 하겠습니다.</p>
+
+<p>MySQL 데이터베이스에 쿼리를 전송하기 위해서는 먼저 데이터베이스 서버에 접속을 해 야 합니다. 기존 콘솔 방법으로 접속할 때는 mysql -u계정명 -p패스워드처럼 계정명과 패 스워드를 입력했습니다.</p>
+
+<p>하지만 콘솔이 아닌 PHP 언어에서는 콘솔 클라이언트 프로그램을 사용할 수는 없습니다. PHP 코드상에서는 직접 접속을 위한 클래스 생성, 메서드 인자를 호출하여 DB에 접속 해야 합니다.</p>
+
+<h2 id="0431-접속-계정">04.3.1 접속 계정</h2>
+<p>PHP에서도 MySQL 데이터베이스에 접속하기 위해서는 기본적인 계정 정보가 필요합 니다. 콘솔상에서는 아이디와 패스워드만 있어도 되지만 PHP 언어를 통하여 DB에 접속 하기 위해서는 완전한 접속 정보 네 가지가 필요합니다.</p>
+
+<ul>
+  <li>첫 번째 인자값: 호스트 주소</li>
+</ul>
+
+<p>첫 번째 인자값으로 mysql 서버 IP 접속 정보를 설정합니다. 동일한 서버일 때는 localhost를 사용하면 됩니다. 만일 외부의 MySQL 서버로 접속할 때는 도메인명 또는 주소를 입력하면 됩니다.</p>
+
+<ul>
+  <li>두 번째 인자값: 데이터베이스명 설정</li>
+</ul>
+
+<p>두 번째 인자값으로 mysql의 데이터베이스명을 입력합니다. MySQL은 다수의 DB를 관 리할 수 있습니다. 접속 기본이 되는 데이터베이스 이름을 입력합니다.</p>
+
+<ul>
+  <li>세 번째 인자값: 사용자 아이디</li>
+</ul>
+
+<p>세 번째 인자값으로 MySQL 사용자 아이디를 입력합니다. MySQL은 루트 (root)사용자를 포함하여 다수의 사용자 계정을 만들어 서비스할 수 있습니다. 생성된 사용자 계정 아이 디를 입력하면 됩니다.</p>
+
+<ul>
+  <li>네 번째 인자값: 사용자 패스워드</li>
+</ul>
+
+<p>네 번째 인자값으로 MySQL의 사용자 패스워드를 입력합니다.</p>
+
+<h2 id="0432-설정값">04.3.2 설정값</h2>
+<p>MySql 데이터베이스에 접속하기 위한 4개의 인자값을 직접 코드상에서 일일이 적기에는 불편합니다. 접속 정보들은 언제든지 변경될 수 있기 때문입니다. 또한 보안상 직접 작성 을 하지도 않습니다.</p>
+
+<p>편리하게 접속 정보를 관리하는 방법은 PHP 변수에 저장하여 별도의 외부 파일로 분리 해 놓는 것입니다. 이렇게 저장한 환경 파일은 include하여 실제적인 PHP 소스에 삽입 하여 사용하면 편리합니다.</p>
+
+<p>예제 파일 | dbconf.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="nv">$mysql_host</span> <span class="o">=</span> <span class="s2">"localhost"</span><span class="p">;</span>
+	<span class="nv">$mysql_user</span> <span class="o">=</span> <span class="s2">"root"</span><span class="p">;</span>
+	<span class="nv">$mysql_password</span> <span class="o">=</span> <span class="s2">"root123"</span><span class="p">;</span>
+	<span class="nv">$mysql_database</span> <span class="o">=</span> <span class="s2">"jiny"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+<p>위의 예처럼 MySQL 접속에 관련된 값을 변수나 상수로 지정하여 사용하면 편리합니다.</p>
+
+<h2 id="0433-mysqli-객체지향적">04.3.3 mysqli 객체지향적</h2>
+<p>Mysqli는 PHP의 MySQL 전용 확장 클래스입니다. 또한 가장 일반적으로 사용하는 PHP &amp; Mysql 접속 방법입니다.</p>
+
+<p>예제 파일 | sql-01.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$mysqli</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mysqli</span><span class="p">(</span><span class="nv">$mysql_host</span><span class="p">,</span> <span class="nv">$mysql_user</span><span class="p">,</span> <span class="nv">$mysql_password</span><span class="p">,</span> <span class="nv">$mysql_database</span><span class="p">);</span>
+ 
+	<span class="cm">/* check connection */</span>
+	<span class="k">if</span><span class="p">(</span><span class="nv">$mysqli</span><span class="o">-&gt;</span><span class="na">connect_errno</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">die</span><span class="p">(</span><span class="s1">'DB Connect Error'</span><span class="o">.</span><span class="nv">$mysqli</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">);</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    		<span class="k">echo</span> <span class="s2">"mysql connect&lt;br&gt;"</span><span class="p">;</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connect 
+</code></pre></div></div>
+
+<p>위의 예제는 mysqli 방식을 통하여 MySQL 데이터베이스에 접속하는 방법입니다. 먼저 접속에 필요한 mysqli 인스턴스를 생성해야 합니다. new 키워드를 통하여 mysqli 클래 
+스 타입으로 객체를 생성하면 됩니다.</p>
+
+<p>mysqli 접속 인스턴스 객체를 생성할 때 접속에 필요한 계정 정보를 초기 인자값으로 함께 전달합니다. mysqli 클래스는 함께 전달받은 계정 정보로 DB에 접속합니다. 만일 접 속 성공하면 정상적인 객체를 반환하고, 실패하면 $mysqli-&gt;connect_errno 프로퍼티 를 true로 설정합니다.</p>
+
+<p>항상 DB를 접속할 때 접속의 성공 여부를 확인하는 조건문을 삽입하는 것을 추천합니다. 다른 외부적인 환경들로 인하여 DB 접속이 실패할 수도 있기 때문입니다. 접속 실패 상 태에서 쿼리를 실행하는 것은 또 다른 오류를 발생할 수도 있습니다.</p>
+
+<h2 id="0434-mysqli-절차적">04.3.4 mysqli 절차적</h2>
+<p>Mysqli를 클래스 방식으로 인스턴스를 생성하여 사용하는 것 외에 기존에 <code class="highlighter-rouge">mysql_ ***</code>처 럼 절차적인 함수 형태로도 사용할 수 있습니다.</p>
+
+<p>예제 파일 | sql-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 절차적 연결</span>
+	<span class="nv">$conn</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="nv">$mysql_host</span><span class="p">,</span> <span class="nv">$mysql_user</span><span class="p">,</span> <span class="nv">$mysql_password</span><span class="p">,</span> <span class="nv">$mysql_database</span><span class="p">);</span>
+    
+	<span class="c1">// Check connection</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$conn</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">die</span><span class="p">(</span><span class="s2">"Connection failed: "</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">());</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"mysql 절차적 connect&lt;br&gt;"</span><span class="p">;</span>
+	<span class="p">}</span>
+ 
+	<span class="nx">mysqli_close</span><span class="p">(</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="cp">?&gt;</span> 
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql 절차적 connect 
+</code></pre></div></div>
+
+<p>사용법은 <code class="highlighter-rouge">mysql_ ***</code> 기존과 거의 유사하지만 함수의 이름이 <code class="highlighter-rouge">mysqli_ ***</code>로 <code class="highlighter-rouge">i</code> 글자가 하나 더 추가됐습니다.</p>
+
+<h2 id="0435-pdo">04.3.5 PDO</h2>
+<p>PDO는 또 하나의 PHP의 데이터 접속 방법 중 하나입니다. PDO는 MySql 이외에 다양 한 데이터베이스에 접속하여 처리할 수 있다는 장점이 있습니다.</p>
+
+<p>예제 파일 | sql-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+ 
+ 	<span class="c1">// ++ PDO DB 연결</span>
+	<span class="k">try</span> <span class="p">{</span>
+		<span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s2">"mysql:host=</span><span class="nv">$mysql_host</span><span class="s2">;dbname=</span><span class="nv">$mysql_database</span><span class="s2">"</span><span class="p">,</span> <span class="nv">$mysql_user</span><span class="p">,</span> <span class="nv">$mysql_password</span><span class="p">);</span>
+		<span class="c1">// set the PDO error mode to exception</span>
+		<span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+ 		<span class="k">echo</span> <span class="s2">"mysql PDO connect"</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">){</span>
+		<span class="k">echo</span> <span class="nv">$sql</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+	<span class="p">}</span>
+ 
+	<span class="nv">$conn</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql PDO connect 
+</code></pre></div></div>
+
+<p>PDO는 DB 접속 및 처리하는 데 예외 오류를 발생할 수 있습니다. 따라서 오류로 인하여 시스템이 중단되는 것을 방지하기 위해서 예외 처리 루틴인 <code class="highlighter-rouge">try~cath{ }</code>를 적용하여 사용 해야 합니다.</p>
+:ET

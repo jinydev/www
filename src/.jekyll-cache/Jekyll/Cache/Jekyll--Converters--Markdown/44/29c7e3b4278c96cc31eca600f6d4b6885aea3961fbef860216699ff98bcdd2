@@ -1,0 +1,117 @@
+I"s+<p>제약사항 ‘NOT NULL ’은 컬럼의 NULL 값에 대한 처리 여부를 지정하는 속성입니다. 보 통 컬럼에 아무런 데이터가 입력되지 않으면 NULL 값으로 설정됩니다.</p>
+
+<p>컬럼의 데이터에 반드시 들어가야 하는 필수 데이터 값은 ‘NOT NULL’ 속성을 부여하는 것이 좋습니다. NOT NULL 제약사항이 설정된 컬럼은 데이터를 필수적으로 입력해야 하기 때문에 데이터 값이 없는 경우 SQL 쿼리 구문은 오류로 실행되지 않습니다.</p>
+
+<p>NULL로 비어 있는 컬럼 값으로 인하여 발생할 수 있는 오류를 미리 방지할 수 있는 유용 한 제약사항입니다.</p>
+
+<h2 id="0911-쿼리-실습">09.1.1 쿼리 실습</h2>
+<p>다음 예제는 ‘Customers’ 테이블에서 ‘ID’, ‘LastName’, ‘FirstName’ 컬럼 필드 값의 NULL을 허용하지 않는 형태로 테이블을 생성합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="p">(</span>
+    <span class="n">Id</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">LastName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">FirstName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>  <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="p">);</span> 
+
+</code></pre></div></div>
+
+<p>컬럼의 NULL 허용 및 방지는 테이블 생성 후에도 ALTER TABLE 명령을 사용하여 수정 할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="n">CHANGE</span> <span class="k">COLUMN</span> <span class="nv">`컬럼명`</span> <span class="nv">`컬럼명`</span> <span class="err">데이터</span> <span class="err">타입</span> <span class="k">NOT</span> <span class="k">NULL</span> 
+</code></pre></div></div>
+
+<p>또는 다음과 같이 사용하여 수정할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="n">CHANGE</span> <span class="k">COLUMN</span> <span class="nv">`이전 컬럼명`</span> <span class="nv">`변경 컬럼명`</span> <span class="err">데이터</span> <span class="err">타입</span> <span class="k">NULL</span> 
+</code></pre></div></div>
+
+<h2 id="0912-php-실습">09.1.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 NOT NULL 제약사항 속성을 실습해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">constraintNOTNULL</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">)</span>
+<span class="p">{</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> CHANGE COLUMN `</span><span class="nv">$field</span><span class="s2">` `</span><span class="nv">$field</span><span class="s2">` </span><span class="nv">$datatype</span><span class="s2"> NOT NULL"</span><span class="p">;</span> 
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" NOT NULL 설정!"</span><span class="p">);</span>
+
+                    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>                
+            
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span>
+               <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">constraintNULL</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">)</span>
+<span class="p">{</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> CHANGE COLUMN `</span><span class="nv">$field</span><span class="s2">` `</span><span class="nv">$field</span><span class="s2">` </span><span class="nv">$datatype</span><span class="s2"> NULL"</span><span class="p">;</span> 
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" NULL 설정!"</span><span class="p">);</span>
+
+                    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>                
+            
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span>
+               <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>예제 파일 | attr-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+    
+	<span class="c1">// 컬럼필드 NULL 허용하지 않습니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">constraintNOTNULL</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="s2">"City"</span><span class="p">,</span> <span class="s2">"varchar(30)"</span><span class="p">);</span>
+
+	<span class="c1">// 컬럼필드 NULL 허용.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">constraintNULL</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="s2">"FirstName"</span><span class="p">,</span> <span class="s2">"varchar(20)"</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+ 
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members CHANGE COLUMN `City` `City` varchar(30) NOT NULL
+NOT NULL 설정!
+쿼리성공] ALTER TABLE members CHANGE COLUMN `FirstName` `FirstName` varchar(20) NULL
+NULL 설정!
+</code></pre></div></div>
+
+<p>NOT NULL 설정은 MySQL 검색 및 처리 성능을 향상시킬 수 있습니다. 만일 모든 컬럼을 NOT NULL 로 설정하면 각각의 컬럼마다 1비트의 공간을 절약할 수 있습니다.</p>
+:ET

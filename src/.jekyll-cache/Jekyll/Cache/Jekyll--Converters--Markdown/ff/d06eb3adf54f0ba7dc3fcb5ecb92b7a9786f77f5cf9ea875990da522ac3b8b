@@ -1,0 +1,75 @@
+I"�<p>테이블의 컬럼 전체를 출력하고자 할 때 컬럼명 모두를 나열하는 것은 불편한 작성일 것 입니다. 만일 모든 컬럼을 출력할 때 쉽게 처리할 수 있는 와일드 기호를 지원합니다.</p>
+
+<p><code class="highlighter-rouge">*</code> 와일드 기호는 일반적으로 모두 선택을 의미합니다. SELECT 쿼리에서도 컬럼명 대신 에 <code class="highlighter-rouge">*</code> 기호를 사용하게 되면 모든 컬럼을 선택하는 효과를 볼 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="err">테이블명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="1121-쿼리-실습">11.2.1 쿼리 실습</h2>
+<p>컬럼을 하나씩 선택하는 방법 이외에도 컬럼 전체 데이터를 쉽게 출력할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>다수의 컬럼명을 와일드 기호 *로 대체하여 모든 컬럼을 선택할 수 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT * from members;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+<p>위의 예제를 보면 와일드 기호 <code class="highlighter-rouge">*</code>로 모든 컬럼을 선택하여 데이터 결과를 출력합니다.</p>
+
+<h2 id="1122-php-실습">11.2.2 PHP 실습</h2>
+<p>PHP 코드를 이용하여 전체 컬럼 데이터 목록을 출력합니다.</p>
+
+<p>예제 파일 | select-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+
+	<span class="c1">// 전체조회</span>
+	<span class="k">echo</span> <span class="s2">"===== 전체조회 =====&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+===== 전체조회 =====
+쿼리성공] SELECT * FROM members;
+tables fields = 6
+0=stdClass Object ( [Id] =&gt; 1 [LastName] =&gt; hojin [FirstName] =&gt; lee [Address] =&gt; shinchon [City] =&gt; seoul [Country] =&gt; korea [manager] =&gt; infohojin [email] =&gt; hojin@jinyphp.com )
+1=stdClass Object ( [Id] =&gt; 2 [LastName] =&gt; jiny [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; korea [manager] =&gt; infohojin [email] =&gt; jiny@jinyphp.com )
+2=stdClass Object ( [Id] =&gt; 3 [LastName] =&gt; james [FirstName] =&gt; kim [Address] =&gt; youngdun-po [City] =&gt; seoul [Country] =&gt; korea [manager] =&gt; info [email] =&gt; james@jinyphp.com )
+3=stdClass Object ( [Id] =&gt; 5 [LastName] =&gt; 1234 [FirstName] =&gt; jiny [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; )
+4=stdClass Object ( [Id] =&gt; 6 [LastName] =&gt; 1234 [FirstName] =&gt; jiny [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; )
+5=stdClass Object ( [Id] =&gt; 7 [LastName] =&gt; 123400 [FirstName] =&gt; jiny [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; ) 
+
+</code></pre></div></div>
+:ET

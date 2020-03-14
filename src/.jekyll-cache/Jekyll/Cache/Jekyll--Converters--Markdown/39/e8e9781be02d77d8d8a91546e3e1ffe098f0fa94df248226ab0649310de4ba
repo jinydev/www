@@ -1,0 +1,66 @@
+I"c<p>트랜잭션의 명령은 DB 시스템의 커밋 상태를 임시로 변경하게 됩니다. 기본적으로 커밋 상태는 자동 모드입니다.</p>
+
+<p>트랜잭션 시작 명령 이외에도 기본적으로 동작하는 모드를 변경할 수도 있습니다.</p>
+
+<h2 id="2441-자동-커밋">24.4.1 자동 커밋</h2>
+<p>설정 명령을 통하여 자동 커밋 상태를 활성화합니다.</p>
+
+<p>| 자동 커밋 OFF |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SET</span> <span class="n">AUTOCOMMIT</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>콘솔에서 명령을 입력하여 커밋 모드를 변경해 보도록 합니다. 0의 값은 자동 커밋 모드 상태를 의미합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SET AUTOCOMMIT=0;
+Query OK, 0 rows affected (0.01 sec)
+
+</code></pre></div></div>
+
+<h2 id="2442-수동-커밋">24.4.2 수동 커밋</h2>
+<p>설정 명령을 통하여 수동 커밋 상태로 활성화합니다.</p>
+
+<p>| 자동 커밋 OFF |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SET AUTOCOMMIT=1; 
+</code></pre></div></div>
+
+<p>콘솔에서 명령을 입력하여 커밋 모드를 변경해 보도록 합니다. 1의 값은 수동 커밋 모드 상태를 의미합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SET AUTOCOMMIT=1;
+Query OK, 0 rows affected (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2443-php-실습">24.4.3 PHP 실습</h2>
+<p>PHP 코드를 통하여 커밋 모드 상태를 변경하는 메서드를 만들어 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">autoCommit</span><span class="p">(</span><span class="nv">$mode</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$mode</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"SET AUTOCOMMIT=1;"</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"SET AUTOCOMMIT=0;"</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// 쿼리를 전송합니다.</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$mode</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 자동커밋 상태전환!"</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 자동커밋 OFF!"</span><span class="p">);</span>
+                <span class="p">}</span>
+                
+                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,104 @@
+I"><p>ALTER VIEW 키워드를 통하여 VIEW의 컬럼 구조를 변경할 수 있습니다. ALTER VIEW는 CREATE VIEW 를 통하여 새로 생성하는 것과 거의 유사합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">VIEW</span> <span class="err">뷰</span> <span class="err">이름</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="err">컬럼명</span> <span class="k">FROM</span> <span class="err">테이블명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="2161-쿼리-실습">21.6.1 쿼리 실습</h2>
+<p>기존 가상 테이블의 데이터를 출력해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from viewtest;
++----+----------+-----------+----------+-------+---------+-----------+-------------------+
+| Id | LastName | FirstName | Address  | City  | Country | manager   | email             |
++----+----------+-----------+----------+-------+---------+-----------+-------------------+
+|  1 | hojin    | lee       | shinchon | seoul | Korea   | infohojin | hojin@jinyphp.com |
++----+----------+-----------+----------+-------+---------+-----------+-------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>가상 테이블의 컬럼을 새롭게 지정합니다. 뷰의 출력 컬럼 필드를 수를 변경해 보겠습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">view</span> <span class="n">viewtest</span> <span class="k">as</span> <span class="k">select</span> <span class="n">FirstName</span><span class="p">,</span> <span class="n">Lastname</span> <span class="k">from</span> <span class="n">members</span> <span class="k">where</span> <span class="n">Id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; alter view viewtest as select FirstName, Lastname from members where Id = 1;
+Query OK, 0 rows affected (0.01 sec)
+
+</code></pre></div></div>
+
+<p>정상적으로 뷰가 변경이 되었습니다. 다시 한번 가상 테이블의 목록을 출력해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from viewtest;
++-----------+----------+
+| FirstName | Lastname |
++-----------+----------+
+| lee       | hojin    |
++-----------+----------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>2개의 컬럼만 출력되는 것을 확인할 수 있습니다.</p>
+
+<h2 id="2162-php-실습">21.6.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 실습해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">alterView</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$selectQuery</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$selectQuery</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER VIEW </span><span class="nv">$view</span><span class="s2"> AS </span><span class="nv">$selectQuery</span><span class="s2">"</span><span class="p">;</span>
+                    <span class="c1">// 쿼리를 전송합니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 뷰 생성!"</span><span class="p">);</span>
+
+                        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 조건 select 쿼리를 입력해 주세요.."</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 뷰 이름을 적어주세요."</span><span class="p">);</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | view-05.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="c1">// 뷰를 업데이트 합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">alterView</span><span class="p">(</span><span class="s2">"viewtest"</span><span class="p">,</span> <span class="s2">"select FirstName, LastName from members where Id=1"</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER VIEW viewtest AS select FirstName, LastName from members where Id=1
+뷰 생성!
+</code></pre></div></div>
+:ET

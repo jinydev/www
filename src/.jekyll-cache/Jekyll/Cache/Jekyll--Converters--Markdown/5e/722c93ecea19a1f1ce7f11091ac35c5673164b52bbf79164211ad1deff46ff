@@ -1,0 +1,157 @@
+I"�a<p>1개의 데이터베이스 이름 그룹 안에는 다수의 테이블을 포함하고 있습니다. 데이터베이 스 안에 있는 테이블의 목록을 SQL 명령을 통해서 확인할 수 있습니다.</p>
+
+<h2 id="0631-테이블-목록">06.3.1 테이블 목록</h2>
+<p>현재 선택된 데이터베이스 이름 그룹 안에 들어 있는 모든 테이블명을 출력합니다. 실행 명령은 <code class="highlighter-rouge">SHOW TABLES;</code>입니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SHOW</span> <span class="n">TABLES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="o">|</span> <span class="n">Tables_in_jiny</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="o">|</span> <span class="n">members</span>        <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>위와 같이 콘솔로 확인해 보면 생성된 테이블의 목록을 확인할 수 있습니다.</p>
+
+<h2 id="0632-목록-출력">06.3.2 목록 출력</h2>
+<p>PHP를 통하여 데이터베이스명 그룹 안에 있는 테이블의 목록을 출력하도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 데이터베이스 목록을 읽어 옵니다</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">showTables</span><span class="p">()</span>
+<span class="p">{</span>
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"show tables"</span><span class="p">;</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="nv">$queryString</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$rowss</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                <span class="nv">$row_cnt</span> <span class="o">=</span> <span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$row_cnt</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
+                <span class="k">return</span> <span class="nv">$rowss</span><span class="p">;</span>
+            <span class="p">}</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>예제 파일 | sql-12.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 현재 데이터베이스 이름을 확인합니다.</span>
+	<span class="nv">$dbname</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">currentDatabase</span><span class="p">();</span>
+	<span class="k">echo</span> <span class="s2">"현재 데이터베이스 = "</span><span class="o">.</span> <span class="nv">$dbname</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	<span class="nv">$key</span> <span class="o">=</span> <span class="s2">"Tables_in_"</span><span class="o">.</span><span class="nv">$dbname</span><span class="p">;</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">showTables</span><span class="p">()){</span>
+		<span class="k">echo</span> <span class="s2">"tables Count = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+		<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="k">echo</span> <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="o">-&gt;</span><span class="nv">$key</span><span class="p">;</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>    
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+SELECT DATABASE()
+현재 데이터베이스 = jiny
+show tables
+tables Count = 5
+0=members
+stdClass Object ( [Tables_in_jiny] =&gt; members )
+1=members1
+stdClass Object ( [Tables_in_jiny] =&gt; members1 )
+2=members5
+stdClass Object ( [Tables_in_jiny] =&gt; members5 )
+3=orders1
+stdClass Object ( [Tables_in_jiny] =&gt; orders1 )
+4=products
+stdClass Object ( [Tables_in_jiny] =&gt; products ) 
+
+</code></pre></div></div>
+
+<h2 id="0633-테이블-상세-정보">06.3.3 테이블 상세 정보</h2>
+<p>SHOW TABLES 명령은 데이터베이스의 테이블의 이름 목록을 출력합니다. 각각의 테이 블의 상세한 정보를 알고 싶을 경우에는 뒤에 STATUS 명령을 함께 사용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SHOW</span> <span class="k">TABLE</span> <span class="n">STATUS</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">SHOW TABLE STATUS;</code> 쿼리 명령은 테이블 목록과 더불어 테이블의 상세 정보도 같 이 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="k">table</span> <span class="n">status</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+---------------------+-----------------+----------+--------------------+---------+</span>
+<span class="o">|</span> <span class="n">Name</span>        <span class="o">|</span> <span class="n">Engine</span> <span class="o">|</span> <span class="k">Version</span> <span class="o">|</span> <span class="n">Row_format</span> <span class="o">|</span> <span class="k">Rows</span> <span class="o">|</span> <span class="n">Avg_row_length</span> <span class="o">|</span> <span class="n">Data_length</span> <span class="o">|</span> <span class="n">Max_data_length</span> <span class="o">|</span> <span class="n">Index_length</span> <span class="o">|</span> <span class="n">Data_free</span> <span class="o">|</span> <span class="n">Auto_increment</span> <span class="o">|</span> <span class="n">Create_time</span>         <span class="o">|</span> <span class="n">Update_time</span>         <span class="o">|</span> <span class="n">Check_time</span>          <span class="o">|</span> <span class="k">Collation</span>       <span class="o">|</span> <span class="n">Checksum</span> <span class="o">|</span> <span class="n">Create_options</span>     <span class="o">|</span> <span class="k">Comment</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+---------------------+-----------------+----------+--------------------+---------+</span>
+<span class="o">|</span> <span class="n">board</span>       <span class="o">|</span> <span class="n">InnoDB</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="n">Compact</span>    <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="mi">8192</span> <span class="o">|</span>       <span class="mi">16384</span> <span class="o">|</span>               <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>              <span class="mi">7</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">15</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span>                    <span class="o">|</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">mem_view</span>    <span class="o">|</span> <span class="k">NULL</span>   <span class="o">|</span>    <span class="k">NULL</span> <span class="o">|</span> <span class="k">NULL</span>       <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>           <span class="k">NULL</span> <span class="o">|</span>        <span class="k">NULL</span> <span class="o">|</span>            <span class="k">NULL</span> <span class="o">|</span>         <span class="k">NULL</span> <span class="o">|</span>      <span class="k">NULL</span> <span class="o">|</span>           <span class="k">NULL</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="k">NULL</span>            <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span> <span class="k">NULL</span>               <span class="o">|</span> <span class="k">VIEW</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">members</span>     <span class="o">|</span> <span class="n">MyISAM</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="k">Dynamic</span>    <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>             <span class="mi">45</span> <span class="o">|</span>         <span class="mi">316</span> <span class="o">|</span> <span class="mi">281474976710655</span> <span class="o">|</span>         <span class="mi">2048</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">101</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">07</span> <span class="mi">17</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">47</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">07</span> <span class="mi">17</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">46</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">11</span> <span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">08</span> <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span>                    <span class="o">|</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">members1</span>    <span class="o">|</span> <span class="n">MyISAM</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="k">Dynamic</span>    <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>             <span class="mi">23</span> <span class="o">|</span>         <span class="mi">448</span> <span class="o">|</span> <span class="mi">281474976710655</span> <span class="o">|</span>         <span class="mi">2048</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>             <span class="mi">20</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">34</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">06</span> <span class="mi">18</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">45</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span> <span class="n">row_format</span><span class="o">=</span><span class="k">DYNAMIC</span> <span class="o">|</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">members3</span>    <span class="o">|</span> <span class="n">MyISAM</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="k">Dynamic</span>    <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>           <span class="mi">0</span> <span class="o">|</span> <span class="mi">281474976710655</span> <span class="o">|</span>         <span class="mi">1024</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>              <span class="mi">8</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">06</span> <span class="mi">18</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">10</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">06</span> <span class="mi">18</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">10</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span> <span class="n">row_format</span><span class="o">=</span><span class="k">DYNAMIC</span> <span class="o">|</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">members_1</span>   <span class="o">|</span> <span class="n">MyISAM</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="k">Dynamic</span>    <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>             <span class="mi">48</span> <span class="o">|</span>         <span class="mi">288</span> <span class="o">|</span> <span class="mi">281474976710655</span> <span class="o">|</span>         <span class="mi">2048</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>              <span class="mi">8</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">05</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">22</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span>                    <span class="o">|</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">members_all</span> <span class="o">|</span> <span class="n">InnoDB</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="n">Compact</span>    <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>       <span class="mi">16384</span> <span class="o">|</span>               <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>           <span class="k">NULL</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">02</span> <span class="mi">16</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">01</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span>                    <span class="o">|</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">orders</span>      <span class="o">|</span> <span class="n">InnoDB</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="n">Compact</span>    <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>           <span class="mi">1638</span> <span class="o">|</span>       <span class="mi">16384</span> <span class="o">|</span>               <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>             <span class="mi">11</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">22</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">25</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span>                    <span class="o">|</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">products</span>    <span class="o">|</span> <span class="n">InnoDB</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span> <span class="n">Compact</span>    <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>           <span class="mi">8192</span> <span class="o">|</span>       <span class="mi">16384</span> <span class="o">|</span>               <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">22</span> <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="k">NULL</span>                <span class="o">|</span> <span class="n">utf8_general_ci</span> <span class="o">|</span>     <span class="k">NULL</span> <span class="o">|</span>                    <span class="o">|</span>         <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+---------------------+-----------------+----------+--------------------+---------+</span>
+<span class="mi">9</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">06</span> <span class="n">sec</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>목록과 출력되는 테이블의 상세 정보는 다음과 같습니다.</p>
+<ul>
+  <li>Name</li>
+  <li>Engine</li>
+  <li>Version</li>
+  <li>Row_format</li>
+  <li>Rows</li>
+  <li>Avg_row_length</li>
+  <li>Data_length</li>
+  <li>Max_data_length</li>
+  <li>Index_length</li>
+  <li>Data_free</li>
+  <li>Auto_increment</li>
+  <li>Create_time</li>
+  <li>Update_time</li>
+  <li>Check_time</li>
+  <li>Collation</li>
+  <li>Checksum</li>
+  <li>Create_options</li>
+  <li>Comment</li>
+</ul>
+
+<p>또는 셸 명령창에서 <code class="highlighter-rouge">mysqlshow -- status</code> DB명으로 확인할 수도 있습니다.</p>
+
+<p>| 터미널 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\Bitnami\wampstack-5.6.30-0\mysql\bin&gt;mysqlshow -u root -p --status jiny
+Enter password: ********
+Database: jiny
+…….
+…….
+C:\Bitnami\wampstack-5.6.30-0\mysql\bin&gt;
+</code></pre></div></div>
+
+<p>셸 명령을 이용하면 직접 콘솔로 접속하여 SQL 쿼리 명령을 실행하지 않아도 되는 편리함이 있습니다.</p>
+:ET

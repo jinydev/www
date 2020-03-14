@@ -1,0 +1,110 @@
+I"�<p>MySQL은 데이터를 처리할 수 있는 다수의 데이터베이스 엔진이 존재합니다. 여러 개의 데이터베이스 엔진은 MySQL을 보다 유연하고 확장된 형태로 시스템을 운영할 수 있도 록 환경을 제공합니다.</p>
+
+<p>데이터베이스 엔진의 특성별로 장단점이 있습니다. 자신의 데이터의 성격에 맞는 엔진을 설정하여 사용할 수 있습니다. 
+MySQL은 다음과 같은 엔진을 지원합니다.</p>
+
+<ul>
+  <li>MyISAM</li>
+  <li>InnoDB</li>
+  <li>ISAM</li>
+</ul>
+
+<h2 id="0691-엔진-확인">06.9.1 엔진 확인</h2>
+<p>현재 테이블에 적용되어 있는 엔진을 확인할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">show</span> <span class="k">create</span> <span class="k">table</span> <span class="err">테이블명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; show create table members;
++---------+------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                               |
++---------+-----------------------------------------------------------------------------------------+
+| members | CREATE TABLE `members` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `LastName` varchar(255) DEFAULT NULL,
+  `FirstName` varchar(255) DEFAULT NULL,
+  `Address` varchar(255) DEFAULT NULL,
+  `City` varchar(255) DEFAULT NULL,
+  `Country` varchar(255) DEFAULT NULL,
+  `manager` varchar(100) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 |
++---------+------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+</code></pre></div></div>
+
+<p>현재 테이블이 InnoDB로 설정되어 있다는 것을 표시합니다.</p>
+
+<h2 id="0692-엔진-변경">06.9.2 엔진 변경</h2>
+<p>테이블의 엔진 설정은 처음에 테이블을 생성할 때 지정합니다. 하지만 이렇게 설정한 테이블은 나중에 다른 엔진으로 변경할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">데이블명</span> <span class="n">ENGINE</span><span class="o">=</span><span class="err">엔진명</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; alter table members ENGINE=MyISAM;
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+</code></pre></div></div>
+
+<p>기존에 <code class="highlighter-rouge">InnoDB</code>로 설정되어 있던 엔진을 <code class="highlighter-rouge">MyISAM</code>으로 변경했습니다.</p>
+
+<h2 id="0693-php-코드">06.9.3 PHP 코드</h2>
+<p>PHP를 통하여 엔진 변경 메서드를 생성하도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테이블 엔진을 설정합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">setEngine</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="nv">$engine</span><span class="o">=</span><span class="s2">"InnoDB"</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> ENGINE=</span><span class="nv">$engine</span><span class="s2">"</span><span class="p">;</span>
+                
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 엔진변경(</span><span class="nv">$engine</span><span class="s2">)!"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | sql-17.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 테이블 엔진을 변경합니다.</span>
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">setEngine</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="s2">"MyISAM"</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members ENGINE=MyISAM
+엔진변경(MyISAM)!
+</code></pre></div></div>
+:ET

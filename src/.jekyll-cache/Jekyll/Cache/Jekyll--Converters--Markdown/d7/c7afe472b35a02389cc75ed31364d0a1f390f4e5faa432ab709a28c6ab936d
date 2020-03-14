@@ -1,0 +1,25 @@
+I"�<p>서브 쿼리를 이용하여 이중 검색을 할 때 첫 번째 쿼리의 조건에 대한 결과값이 없을 수도 있습니다. 존재하지 않는 결과값을 이용하여 메인 쿼리를 실행하게 되면 오류가 발생합 니다. 
+이런 경우 첫 번째 실행되는 서브 쿼리의 결과값이 있는지를 확인할 수 있는 키워드를 제 공합니다. EXISTS는 서브 쿼리의 존재 여부를 판단하여 메인 쿼리를 실행하게 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span><span class="p">,</span> <span class="err">컬럼명</span><span class="p">...</span> <span class="k">FROM</span> <span class="err">테이블명</span> <span class="k">WHERE</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">column_name</span> <span class="k">FROM</span> <span class="k">table_name</span> <span class="k">WHERE</span> <span class="n">condition</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>EXISTS는 해당 쿼리의 결과값을 TRUE/FALSE로 반환합니다. EXISTS의 반대로 NOT EXISTS를 사용할 수 있습니다. NOT EXISTS 는 서브 쿼리 결과가 없다는 의미입니다.</p>
+
+<h2 id="1281-쿼리-실습">12.8.1 쿼리 실습</h2>
+<p>예로 들면 특정한 고객의 주문이 있는 경우에 회원 정보를 출력하는 쿼리를 작성할 때 매 우 유용합니다.</p>
+
+<p>다음 SQL문은 TRUE를 반환하고 제품 가격이 20 미만인 공급 업체를 나열합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">SupplierName</span> <span class="k">FROM</span> <span class="n">Suppliers</span> <span class="k">WHERE</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ProductName</span> <span class="k">FROM</span> <span class="n">Products</span> <span class="k">WHERE</span> <span class="n">SupplierId</span> <span class="o">=</span> <span class="n">Suppliers</span><span class="p">.</span><span class="n">supplierId</span> <span class="k">AND</span> <span class="n">Price</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">);</span> 
+</code></pre></div></div>
+<p>위의 SQL문은 TRUE를 반환하고 제품 가격이 20 미만인 공급 업체를 나열합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">SupplierName</span> <span class="k">FROM</span> <span class="n">Suppliers</span> <span class="k">WHERE</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ProductName</span> <span class="k">FROM</span> <span class="n">Products</span> <span class="k">WHERE</span> <span class="n">SupplierId</span> <span class="o">=</span> <span class="n">Suppliers</span><span class="p">.</span><span class="n">supplierId</span> <span class="k">AND</span> <span class="n">Price</span> <span class="o">=</span> <span class="mi">22</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>EXISTS 서브 쿼리의 결과값이 존재하면 select 쿼리를 실행합니다.</p>
+:ET

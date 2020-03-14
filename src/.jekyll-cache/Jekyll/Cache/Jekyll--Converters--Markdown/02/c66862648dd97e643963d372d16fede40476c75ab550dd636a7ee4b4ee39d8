@@ -1,0 +1,93 @@
+I"�<p>작성한 프로시저를 삭제할 수 있습니다. 프로시저를 삭제할 때도 기존에 익숙한 DROP 명령어를 이용하여 삭제할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">PROCEDURE</span> <span class="err">프로시저명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="2261-쿼리-실습">22.6.1 쿼리 실습</h2>
+<p>기존에 실습하던 프로시저를 삭제해 보도록 하겠습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">drop</span> <span class="k">procedure</span> <span class="n">mem1</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; drop procedure mem1;
+Query OK, 0 rows affected (0.00 sec)
+
+</code></pre></div></div>
+
+<p>정상적으로 프로시저가 삭제되었습니다.</p>
+
+<h2 id="2262-php-실습">22.6.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 작성한 프로시저를 삭제해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 생성한 프로시저를 삭제합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">dropProcedure</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"DROP PROCEDURE </span><span class="nv">$name</span><span class="s2">"</span><span class="p">;</span>
+                
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 프로시저 삭제!"</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 프로시저명을 적어주세요."</span><span class="p">);</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | pro-05.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"mem"</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">dropProcedure</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="nv">$name</span><span class="o">.</span><span class="s2">" 프로시저 삭제성공! &lt;br&gt;"</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">isProcedure</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+			<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+				<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+				<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$name</span><span class="o">.</span><span class="s2">" 프로시저를 찾을 수 없습니다."</span><span class="p">;</span>
+		<span class="p">}</span>
+        
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"프로시저를 삭제 할 수 없습니다.&lt;br&gt;"</span><span class="p">;</span>
+	<span class="p">}</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] DROP PROCEDURE mem
+프로시저 삭제!
+mem 프로시저 삭제성공!
+Error] SHOW CREATE PROCEDURE mem
+mem 프로시저를 찾을 수 없습니다.
+
+</code></pre></div></div>
+:ET

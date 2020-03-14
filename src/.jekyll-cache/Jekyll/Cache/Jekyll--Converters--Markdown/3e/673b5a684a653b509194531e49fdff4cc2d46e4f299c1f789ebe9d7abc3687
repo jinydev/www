@@ -1,0 +1,45 @@
+I"<p>다수의 SQL 명령을 작성하는 경우도 있을 것입니다. 명령들이 많아 별도의 .sql 파일 로 저장할 수도 있습니다. 하지만 모든 명령이 실행되는 것으로 작성해야 하는 것은 아닙 니다.</p>
+
+<p>SQL 언어도 PHP와 같이 특정 SQL을 배제하거나 설명하기 위해서 주석 처리 기능을 제 공합니다. 주석 처리는 1개씩 명령을 수행하는 것과 달리 별도의 SQL 명령 파일을 통하 여 일괄 작업할 때 사용하면 편리합니다.</p>
+
+<p>SQL 주석은 PHP와 같이 두 가지 방법을 모두 지원합니다. 주석으로 처리된 내용은 MySQL에서는 실행되지 않습니다.</p>
+
+<h2 id="0371-한-줄-주석">03.7.1 한 줄 주석</h2>
+<p>한 줄 주석은 라인의 시작 부분에 –를 입력하면 됩니다. 한 줄 주석은 지정한 한 줄만 주석으로 처리되어 실행되지 않습니다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 이부분은 주석입니다.</span>
+<span class="c1">--Select all:</span>
+<span class="c1">--SELECT * FROM members;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+
+</code></pre></div></div>
+
+<p>주석은 SQL의 설명 또는 명령을 주석으로 처리할 수 있습니다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="c1">--WHERE City='Seoul'; </span>
+</code></pre></div></div>
+
+<p>또한 문장의 중간에 <code class="highlighter-rouge">--</code>가 삽입되면 시작 위치부터 한 줄 끝까지 주석으로 처리되어 실행 부분에서 제외됩니다.</p>
+
+<h2 id="0372-여러-줄-주석">03.7.2 여러 줄 주석</h2>
+<p>여러 줄의 주석은 <code class="highlighter-rouge">/*</code>로 시작하여 <code class="highlighter-rouge">*/</code>로 끝나는 부분으로 다중 주석 처리를 할 수 있습니다. 지정한 블록 부분 전체를 주석으로 처리하는 방법입니다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*Select all the columns 
+of all the records 
+in the members table:*/</span> 
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>또한 명령 중간에도 <code class="highlighter-rouge">/* ~ */ </code>부분을 만나면 sql 실행에서 제외됩니다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*SELECT * FROM Customers;
+ SELECT * FROM Products;
+ SELECT * FROM Orders;
+ SELECT * FROM Categories;*/</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Suppliers</span><span class="p">;</span> 
+
+<span class="k">SELECT</span> <span class="n">userName</span><span class="p">,</span> <span class="cm">/*City,*/</span> <span class="n">Country</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>주석 처리는 베이터베이스를 백업하거나 복구할 때 유용하게 사용할 수 있는 기능입니다. 보통 mysqldump와 같이 백업 명령을 수행하여 작업할 때 기본적인 주석 설명이 함께 생성됩니다.</p>
+:ET

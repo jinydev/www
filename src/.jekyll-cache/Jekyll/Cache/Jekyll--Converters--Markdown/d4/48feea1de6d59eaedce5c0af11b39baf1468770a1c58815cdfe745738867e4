@@ -1,0 +1,71 @@
+I"(<p>등호, 부등호와 같은 연산자는 크기와 양을 비교합니다. 크기를 비교하는 것은 숫자나 날 짜 등의 값일 경우 쉽게 적용할 수 있습니다. 하지만 문자 데이터의 경우에는 다른 방법의 검색을 적용해야 합니다.</p>
+
+<p>물론 등호 (=)를 통하여 동일한 문자를 검색할 수도 있습니다. 하지만 등호는 정확이 일치 하는 데이터만 검색되기 때문에 제한적입니다. SQL에서는 문자열 안의 일부 내용을 포함 하고 있는지 검색할 수 있는 패턴 검색을 지원합니다. 패턴 검색은 다른 말로 퍼지 검색이 라고도 합니다. SQL에서 대표적인 퍼지 검색 키워드는 LIKE입니다.</p>
+
+<h2 id="1231-패턴이란">12.3.1 패턴이란</h2>
+<p>SQL은 LIKE 연산자를 지원합니다. LIKE는 영어 표현으로 ‘~와 같다, 비슷하다’의 의미 로 유사하다는 뜻입니다. 즉, LIKE 패턴은 문자열 안에 지정한 문자의 내용이 포함하고 있는지를 검사하는 것입니다.</p>
+
+<h2 id="1232-와일드-기호">12.3.2 와일드 기호</h2>
+<p>LIKE 연산자는 패턴의 유사성을 지정하기 위해서 와일드 카드와 같은 기호를 사용합 니다. LIKE에서 사용하는 대표적인 와일드 카드 기호는 두 가지가 있습니다.</p>
+
+<ul>
+  <li>%: 다수의 문자를 포함하는 문자열을 가리킵니다.</li>
+  <li>_: 하나의 문자를 가리킵니다.</li>
+</ul>
+
+<p>이 2개의 와일드 카드 기호는 LIKE 연산자와 함께 사용합니다. LIKE 연산 시 패턴 앞 또 는 뒤에 같이 사용하여 패턴 규약을 정할 수 있습니다.</p>
+
+<h2 id="1233-퍼센트">12.3.3 퍼센트</h2>
+<p>퍼센트 기호 (%)는 여러 개의 문자열을 매칭 처리하는 와일드 기호입니다. 다음과 같이 쿼 리 명령이 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">Country</span> <span class="k">LIKE</span> <span class="s1">'k%'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 쿼리는 회원 목록을 출력합니다. 출력 조건은 Country LIKE ‘k%’입니다. 회원의 국 가 컬럼에 퍼지 패턴 검색을 적용했습니다. k%는 첫 글자는 k로 시작해야 한다고 강제 지 정을 했습니다. %는 이후에 글자가 몇 개가 와도 상관이 없다는 것입니다. 즉, k로 시작 되는 문자열을 검색하라는 의미입니다. 
+% 기호는 문자 앞뒤에 양쪽으로 적을 수도 있습니다. 양쪽에 % 기호가 있다는 것은 중간 의 글자가 포함되는 내용을 출력하라는 의미입니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">City</span> <span class="k">LIKE</span> <span class="s1">'%es%'</span><span class="p">;</span> 
+</code></pre></div></div>
+<p>위의 예는 도시 이름 중에서 es가 들어 있는 모든 회원 정보를 출력합니다.</p>
+
+<h2 id="1234-밑줄">12.3.4 밑줄</h2>
+<p>밑줄(_) 기호는 한 글자를 의미합니다. %는 문자열을 의미하지만 _은 단일 1개의 문자를 의미합니다. 만일 _기호를 두 번 사용할 때는 두 글자를 의미합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">City</span> <span class="k">LIKE</span> <span class="s1">'__san'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 예는 앞에 두 글자는 어떤 글자가 와도 됩니다. 하지만 이후에는 <code class="highlighter-rouge">san</code> 문자열로 끝나 야 합니다. 즉, busan, ulsan 등의 도시들이 출력될 것입니다.</p>
+
+<p>밑줄 와일드 기호는 문자열 중간에도 사용할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">City</span> <span class="k">LIKE</span> <span class="s1">'s_o_l'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="1235-지정-문자">12.3.5 지정 문자</h2>
+<p>한 글자를 의미하는 밑줄 (_) 와일드 기호는 A~Z 또는 어떤 문자가 와도 허용됩니다. 전체 글자가 아니라 지정한 문자만의 패턴을 지정할 수도 있습니다. 대괄호 [ ] 안에 해당 글자 만 적으면 됩니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">City</span> <span class="k">LIKE</span> <span class="s1">'[abcd]%'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 예는 대괄호로 [ abcd]로 정의되어 있습니다. 이는 어떤 문자가 와도 되지만 반드시 a, b, c, d 글자로 시작해야 한다는 것입니다.</p>
+
+<p>반대로 지정 글자 이외의 단어들도 선언할 수 있습니다. 예외 문자는 대괄호 안에 부정을 의미하는 느낌표(!)를 삽입하여 문자를 적습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">City</span> <span class="k">LIKE</span> <span class="s1">'[!efg]%'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 예제는 e, f, g 글자가 제외된 글자로 시작된 도시들만 선택됩니다. 또는 NOT LIKE 명령을 사용할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">City</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">'[bsp]%'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="1236--_-조합">12.3.6 %, _ 조합</h2>
+<p>퍼지 검색 시 사용되는 퍼센트(%)와 밑줄(<em>) 기호는 서로 조합하여 사용이 가능합니다. 예를 들어, LIKE ‘a%’ , LIKE ‘%a’ , LIKE ‘%or%’ , LIKE ‘_r%’ , LIKE ‘a</em>%_%’ , LIKE ‘a%o’ 와 같이 섞어서 사용이 가능합니다.</p>
+:ET

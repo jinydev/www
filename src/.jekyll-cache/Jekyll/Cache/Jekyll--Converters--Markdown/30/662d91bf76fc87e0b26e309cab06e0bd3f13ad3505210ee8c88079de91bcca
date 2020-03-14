@@ -1,0 +1,124 @@
+I"�-<p>제약사항 <code class="highlighter-rouge">UNIQUE</code>는 컬럼에 데이터의 중복 여부를 처리하는 속성입니다. 컬럼에는 다 양한 값들이 입력될 수 있는데, 특정한 컬럼의 경우 데이터를 구분하기 위하여 중복되지 않은 고유의 값만 처리해야 되는 경우도 많이 발생합니다.</p>
+
+<p>컬럼의 UNIQUE 속성을 지정하게 되면 컬럼의 데이터 값은 중복을 허용하지 안습니다. 입력된 모든 데이터는 서로 다른 값을 가지고 있습니다. 만일 중복된 컬럼 데이터가 입력 될 때 SQL 쿼리 명령은 오류를 발생합니다. 간단한 설정값으로 중복으로 인하여 발생될 수 있는 오류를 사전에 방지할 수 있습니다.</p>
+
+<p>프라이머리 키 (PRIMARY KEY) 제약사항 또한 자동적으로 유일값 (UNIQUE) 속성과 같은 유일성이 보장되는 값을 가집니다.</p>
+
+<h2 id="0931-쿼리-실습">09.3.1 쿼리 실습</h2>
+<p>UNIQUE 설정은 컬럼들을 선언한 뒤에 마지막에 별도의 추가 선언을 합니다. UNIQUE(컬럼명) 형태로 더 추가하면 됩니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="p">(</span> 
+<span class="n">Id</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+<span class="n">LastName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+<span class="n">FirstName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> 
+<span class="k">UNIQUE</span> <span class="p">(</span><span class="n">Id</span><span class="p">)</span> 
+<span class="p">);</span> 
+</code></pre></div></div>
+
+<p>또는 CONSTRAINT 키워드를 통하여 여러 컬럼을 UNIQUE로 정의할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Persons</span> <span class="p">(</span> <span class="n">ID</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">LastName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">FirstName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> 
+<span class="k">CONSTRAINT</span> <span class="n">UC_members</span> <span class="k">UNIQUE</span> <span class="p">(</span><span class="n">Id</span><span class="p">,</span><span class="n">LastName</span><span class="p">)</span> 
+<span class="p">);</span> 
+</code></pre></div></div>
+
+<p>ALTER TABLE 명령으로 기본값을 추가로 설정을 변경할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">ADD</span> <span class="k">UNIQUE</span> <span class="p">(</span><span class="n">Id</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>CONSTRAINT 키워드를 통하여 다수의 컬럼 필드를 유일값으로 추가할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">UC_members</span> <span class="k">UNIQUE</span> <span class="p">(</span><span class="n">Id</span><span class="p">,</span><span class="n">LastName</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>유일값을 삭제할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">DROP</span> <span class="k">INDEX</span> <span class="n">UC_members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="0932-php-실습">09.3.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 UNIQUE 속성 처리에 대한 실습입니다. 관련 메서드를 추가하여 소스에 적용합니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">constraintUNIQUE</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> ADD UNIQUE (</span><span class="nv">$field</span><span class="s2">)"</span><span class="p">;</span>
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 기본값 설정!"</span><span class="p">);</span>
+
+                    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>                
+            
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span>
+               <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">constraintUNIQUE_Drop</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">){</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> DROP INDEX `</span><span class="nv">$field</span><span class="s2">`"</span><span class="p">;</span>
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">){</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 기본값 설정!"</span><span class="p">);</span>
+
+                    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>                
+            
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span>
+               <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | attr-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$field</span> <span class="o">=</span> <span class="s2">"email"</span><span class="p">;</span>
+    
+	<span class="c1">// 컬럼필드 유일필드 설정</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">constraintUNIQUE</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span> 
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members ADD UNIQUE (email)
+기본값 설정!
+
+</code></pre></div></div>
+:ET

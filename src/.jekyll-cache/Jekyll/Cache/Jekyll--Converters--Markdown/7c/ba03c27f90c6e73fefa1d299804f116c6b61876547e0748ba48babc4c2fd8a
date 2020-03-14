@@ -1,0 +1,74 @@
+I"z<p>데이터 삭제 시 또한 범위를 지정한 영역의 데이터만 삭제하게 됩니다. 데이터를 정렬 키 워드 또는 제한 키워드를 함께 사용하여 데이터를 삭제할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="err">테이블이름</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="err">컬럼명</span> <span class="k">LIMIT</span> <span class="err">제한</span> <span class="err">개수</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="1831-php-코드">18.3.1 PHP 코드</h2>
+<p>PHP 코드를 통해서 데이터를 삭제해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 최상의 데이터 몇개만 삭제합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">deleteLimit</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$num</span><span class="p">,</span> <span class="nv">$orderby</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nv">$num</span><span class="p">)</span> <span class="p">{</span>
+
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$orderby</span><span class="p">){</span>
+                        <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"DELETE FROM </span><span class="nv">$tbname</span><span class="s2"> ORDER BY </span><span class="nv">$orderby</span><span class="s2"> LIMIT </span><span class="nv">$num</span><span class="s2">"</span><span class="p">;</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"DELETE FROM </span><span class="nv">$tbname</span><span class="s2"> LIMIT </span><span class="nv">$num</span><span class="s2">"</span><span class="p">;</span> 
+                    <span class="p">}</span>
+                    
+
+                    <span class="c1">// 쿼리를 전송합니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 데이터 </span><span class="nv">$Id</span><span class="s2"> 삭제!"</span><span class="p">);</span>
+
+                        <span class="c1">// 객체 반환, 매서드체인</span>
+                        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="p">}</span>
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 삭제할 테이터 갯수가 없습니다."</span><span class="p">);</span> 
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | delete-04.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members3"</span><span class="p">;</span>
+
+	<span class="c1">// 최상위 데이터 2개만 삭제합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">deleteLimit</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+	<span class="c1">// LastName 정렬후에  데이터 2개만 삭제합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">deleteLimit</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"LastName desc"</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] DELETE FROM members3 ORDER BY LastName desc LIMIT 2
+데이터 삭제!
+
+</code></pre></div></div>
+:ET

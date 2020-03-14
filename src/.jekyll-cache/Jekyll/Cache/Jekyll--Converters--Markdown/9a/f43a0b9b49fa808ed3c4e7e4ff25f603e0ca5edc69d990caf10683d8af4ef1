@@ -1,0 +1,174 @@
+I"�3<p>테이블의 데이터를 삭제할 때 조건을 추가로 지정하지 않으면 모든 데이터가 삭제됩니다. 이는 매우 위험한 삭제 방법입니다. 
+실제적으로 모든 데이터를 삭제를 원하는 경우는 별로 없습니다. 데이터를 삭제할 때는 항상 조건을 선택하여 삭제하는 것이 좋습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="err">테이블이름</span> <span class="k">WHERE</span> <span class="err">컬럼명</span> <span class="o">=</span> <span class="err">컬럼</span> <span class="err">데이터</span> 
+</code></pre></div></div>
+
+<p>또한 조건을 지정하더라도 정확한 데이터의 열을 지정했는지 꼭 확인하는 습관이 필요합니다.</p>
+
+<h2 id="1821-쿼리-실습">18.2.1 쿼리 실습</h2>
+<p>테이블의 열을 지정하여 데이터를 삭제해 봅니다. members1 테이블에는 여러 데이터들이 들어 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members1;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+4 rows in set (0.00 sec) 
+
+</code></pre></div></div>
+
+<p>이중에서 Id 값이 4인 데이터만 삭제해 보겠습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">members1</span> <span class="k">where</span> <span class="n">Id</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; DELETE FROM members1 where Id=4;
+Query OK, 1 row affected (0.01 sec)
+
+</code></pre></div></div>
+
+<p>삭제가 정상적으로 처리되었습니다. 다시 한번 select를 통하여 데이터의 목록을 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members1;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+3 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="1822-php-실습">18.2.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 선택한 데이터만 삭제해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 선택한 데이터 Id를 삭제합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">deleteID</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$Id</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nv">$Id</span><span class="p">){</span>
+                    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"DELETE FROM </span><span class="nv">$tbname</span><span class="s2"> where Id = '</span><span class="nv">$Id</span><span class="s2">'"</span><span class="p">;</span>
+
+                    <span class="c1">// 쿼리를 전송합니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 데이터 </span><span class="nv">$Id</span><span class="s2"> 삭제!"</span><span class="p">);</span>
+
+                        <span class="c1">// 객체 반환, 매서드체인</span>
+                        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="p">}</span>
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 삭제할 Id값이 없습니다."</span><span class="p">);</span> 
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | delete-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members2"</span><span class="p">;</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">deleteID</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+ 
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] DELETE FROM members2 where Id = '2'
+데이터 2 삭제!
+ 
+</code></pre></div></div>
+
+<p>이처럼 항상 데이터를 삭제할 때는 고유 Id 값 또는 조건을 이용하여 삭제하는 것이 안전 합니다. 실수로 전체 데이터를 삭제한다면 복구하기 힘듭니다. 
+또는 특정 문자열을 검색하여 삭제를 할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">Customers</span> <span class="k">WHERE</span> <span class="n">city</span><span class="o">=</span><span class="s1">'seoul'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>조건으로 문자열을 지정하는 것은 데이터의 조건 범위를 지정하는 것과 같습니다. 고객 테이블에서 도시가 seoul인 모든 데이터를 삭제합니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 조건에 맞는 데이터를 모두 삭제합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">deleteWhere</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$where</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="nv">$where</span><span class="p">){</span>
+                    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"DELETE FROM </span><span class="nv">$tbname</span><span class="s2"> where </span><span class="nv">$where</span><span class="s2">"</span><span class="p">;</span>
+
+                    <span class="c1">// 쿼리를 전송합니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">){</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 데이터 조건 삭제!"</span><span class="p">);</span>
+
+                        <span class="c1">// 객체 반환, 매서드체인</span>
+                        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="p">}</span>
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 삭제조건이 없습니다."</span><span class="p">);</span> 
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | delete-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members2"</span><span class="p">;</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">deleteWhere</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="s2">"FirstName = 'jiny'"</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] DELETE FROM members2 where FirstName = 'jiny'
+데이터 조건 삭제!
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,28 @@
+I"q<p>SQL 쿼리 명령의 동작에는 크게 두 가지의 종류가 있습니다. 출력 결과 반환이 있는 명령 문과 출력 반환이 없는 명령문입니다.</p>
+
+<p>use, delimiter와 같은 명령은 데이터베이스에 실행 명령을 하지만 출력 결과는 없는 명령입니다. 그냥 데이터베이스 시스템에 명령을 전달하는 역할만 수행합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">jiny</span><span class="p">;</span>
+<span class="k">Database</span> <span class="n">changed</span>
+
+</code></pre></div></div>
+
+<p>데이터 출력은 없고 결과 메시지만 출력합니다.</p>
+
+<p>이와 달리 show, select와 같은 명령은 데이터를 반환하는 명령문입니다. 데이터베이스 는 입력된 명령을 분석하여 실행 후에 결과값을 다시 화면에 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+----------+-----------+-------------+-------+---------+-----------+-------------------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span> <span class="n">LastName</span> <span class="o">|</span> <span class="n">FirstName</span> <span class="o">|</span> <span class="n">Address</span>     <span class="o">|</span> <span class="n">City</span>  <span class="o">|</span> <span class="n">Country</span> <span class="o">|</span> <span class="n">manager</span>   <span class="o">|</span> <span class="n">email</span>             <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+-----------+-------------+-------+---------+-----------+-------------------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">hojin</span>    <span class="o">|</span> <span class="n">lee</span>       <span class="o">|</span> <span class="n">shinchon</span>    <span class="o">|</span> <span class="n">seoul</span> <span class="o">|</span> <span class="n">korea</span>   <span class="o">|</span> <span class="n">infohojin</span> <span class="o">|</span> <span class="n">hojin</span><span class="o">@</span><span class="n">jinyphp</span><span class="p">.</span><span class="n">com</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">jiny</span>     <span class="o">|</span> <span class="k">NULL</span>      <span class="o">|</span> <span class="k">NULL</span>        <span class="o">|</span> <span class="k">NULL</span>  <span class="o">|</span> <span class="n">korea</span>   <span class="o">|</span> <span class="n">infohojin</span> <span class="o">|</span> <span class="n">jiny</span><span class="o">@</span><span class="n">jinyphp</span><span class="p">.</span><span class="n">com</span>  <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">james</span>    <span class="o">|</span> <span class="n">kim</span>       <span class="o">|</span> <span class="n">youngdun</span><span class="o">-</span><span class="n">po</span> <span class="o">|</span> <span class="n">seoul</span> <span class="o">|</span> <span class="n">korea</span>   <span class="o">|</span> <span class="n">info</span>      <span class="o">|</span> <span class="n">james</span><span class="o">@</span><span class="n">jinyphp</span><span class="p">.</span><span class="n">com</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+-----------+-------------+-------+---------+-----------+-------------------+</span>
+<span class="mi">3</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위의 화면은 회원 목록을 출력하는 select 명령입니다. 명령에 반응한 데이터를 출력합니다.</p>
+:ET

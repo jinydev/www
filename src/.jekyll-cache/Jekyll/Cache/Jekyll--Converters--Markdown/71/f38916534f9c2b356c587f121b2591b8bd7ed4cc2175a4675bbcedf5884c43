@@ -1,0 +1,68 @@
+I"�<p>데이터베이스에서 각각의 데이터 자체만으로도 의미가 있겠지만 데이터의 생성 및 처리 에 대한 시간 또한 중요합니다. MySQL에서는 데이터의 날짜와 시간을 저장할 수 있는 다양한 데이터 타입을 제공합니다.</p>
+
+<h2 id="0731-datetime">07.3.1 DATETIME</h2>
+<p>datetime형은 날짜와 시간을 같이 표시하는 데이터 타입입니다. 연도-월-일 시간:분:초 까지 저장합니다.</p>
+
+<p>| 테이블 생성 시 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`tableName`</span> <span class="p">(</span> 
+<span class="err">컬럼명</span> <span class="nb">datetime</span><span class="p">,</span> 
+<span class="err">…</span><span class="p">.</span> 
+<span class="err">}</span> 
+</code></pre></div></div>
+
+<p>| 컬럼 추가 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">ADD</span> <span class="err">컬럼명</span> <span class="nb">datetime</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="0732-date">07.3.2 DATE</h2>
+<p>date형은 날짜만 표시합니다. 연도-월-일까지 표시합니다.</p>
+
+<p>| 테이블 생성 시 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`tableName`</span> <span class="p">(</span> <span class="err">컬럼명</span> <span class="nb">date</span><span class="p">,</span> <span class="err">…</span><span class="p">.</span> <span class="err">}</span> 
+</code></pre></div></div>
+
+<p>| 컬럼 추가 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">ADD</span> <span class="err">컬럼명</span> <span class="nb">date</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="0733-year">07.3.3 YEAR</h2>
+<p>연도만 표시합니다.</p>
+
+<p>| 테이블 생성 시 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`tableName`</span> <span class="p">(</span> <span class="err">컬럼명</span> <span class="nb">year</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="err">…</span><span class="p">.</span> 
+<span class="err">}</span> 
+</code></pre></div></div>
+
+<p>| 컬럼 추가 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">ADD</span> <span class="err">컬럼명</span> <span class="nb">year</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<h2 id="0734-time">07.3.4 TIME</h2>
+<p>time 형은 시간을 표시합니다. 시간은 콜론 기호를 구분으로 시간:분:초로 표시합니다. 최대 표시 가능한 시간은 -838:59:59~838:59:59까지입니다.</p>
+
+<p>| 테이블 생성 시 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`tableName`</span> <span class="p">(</span>
+<span class="err">컬럼명</span> <span class="nb">time</span><span class="p">,</span>
+<span class="err">…</span><span class="p">.</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p>| 컬럼 추가 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">ADD</span> <span class="err">컬럼명</span> <span class="nb">time</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="0735-timestamp">07.3.5 TIMESTAMP</h2>
+<p>TIMESTAMP는 년, 월, 일,시, 분, 초 값을 숫자값으로 변환하여 저장합니다. Timestamp 는 항상 UTC 타임존을 기준으로 저장됩니다.</p>
+
+<p>| 테이블 생성 시 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nv">`tableName`</span> <span class="p">(</span>
+<span class="err">컬럼명</span> <span class="nb">timestamp</span><span class="p">,</span>
+<span class="err">…</span><span class="p">.</span>
+<span class="err">}</span>
+
+</code></pre></div></div>
+<p>| 컬럼 추가 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">ADD</span> <span class="err">컬럼명</span> <span class="nb">timestamp</span><span class="p">;</span> 
+</code></pre></div></div>
+
+:ET

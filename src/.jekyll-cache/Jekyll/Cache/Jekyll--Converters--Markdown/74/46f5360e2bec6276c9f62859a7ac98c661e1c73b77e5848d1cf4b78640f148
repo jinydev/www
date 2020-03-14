@@ -1,0 +1,78 @@
+I"�<p>테이블은 컬럼 데이터형 타입과 별개로 제약사항 속성을 추가할 수 있습니다. 추가된 제 약사항 속성은 컬럼의 데이터를 처리하는 데 별도의 규칙이 적용됩니다.</p>
+
+<p>컬럼의 제약사항 속성은 반드시 사용해야 하는 것은 아닙니다. 옵션과 같은 성격을 띕니다. 
+속성을 설정하게 되면 데이터의 무결성을 보완하고 테이블의 데이터 검색 속도 개 선 등의 이점이 있습니다.</p>
+
+<p>테이블을 생성할 때 기본적으로 많이 사용하는 Primary Key, Auto Increament 등 몇 가지의 속성이 있습니다. 
+제약사항 속성은 CREATE TABLE 명령을 통하여 테이블을 생 성할 때 함께 설정합니다. 또는 ALTER TABLE 명령을 통하여 나중에 추가할 수 있습 니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table_name</span> <span class="p">(</span>
+     <span class="n">column1</span> <span class="n">datatype</span> <span class="k">constraint</span><span class="p">,</span>
+     <span class="n">column2</span> <span class="n">datatype</span> <span class="k">constraint</span><span class="p">,</span>
+     <span class="n">column3</span> <span class="n">datatype</span> <span class="k">constraint</span><span class="p">,</span>
+    <span class="p">....</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>제약사항(constraint)은 컬럼의 데이터 타입 설정 뒤에 위치합니다. 
+MySQL은 일곱 가지의 제약사항 속성을 지원합니다.</p>
+
+<ul>
+  <li>NOT NULL : 컬럼 필드의 NULL 입력을 허용/방지합니다.</li>
+  <li>UNIQUE: 중복값 입력을 방지합니다.</li>
+  <li>PRIMARY KE: NOT NULL 과 UNIQUE 결합된 기본 데이터 키입니다.</li>
+  <li>FOREIGN KEY : 다른 테이블의 값을 참조하여 연결합니다.</li>
+  <li>CHECK: 데이터 입력 유효성을 설정합니다.</li>
+  <li>DEFAULT: 컬럼 필드의 초기값을 설정합니다.</li>
+  <li>INDEX: 빠른 접근을 위한 인덱스입니다.</li>
+</ul>
+
+<h4 id="091-제약사항-not-null">09.1 제약사항 <a href="09.1">NOT NULL</a></h4>
+<ul>
+  <li>09.1.1 쿼리 실습</li>
+  <li>09.1.2 PHP 실습</li>
+</ul>
+
+<h4 id="092-기본값-속성---default">09.2 <a href="09.2">기본값 속성</a> - DEFAULT</h4>
+<ul>
+  <li>09.2.1 쿼리 실습</li>
+  <li>09.2.2 PHP 실습</li>
+</ul>
+
+<h4 id="093-유일값----unique">09.3 <a href="09.3">유일값</a>  - UNIQUE</h4>
+<ul>
+  <li>09.3.1 쿼리 실습</li>
+  <li>09.3.2 PHP 실습</li>
+</ul>
+
+<h4 id="094-프라이머리-키---primary-key">09.4 <a href="09.4">프라이머리 키</a> - PRIMARY KEY</h4>
+<ul>
+  <li>09.4.1 쿼리 실습</li>
+</ul>
+
+<h4 id="095-check">09.5 <a href="09.5">CHECK</a></h4>
+<ul>
+  <li>09.5.1 쿼리 실습</li>
+</ul>
+
+<h4 id="096-자동-증가---auto-increment">09.6 <a href="09.6">자동 증가</a> - AUTO INCREMENT</h4>
+<ul>
+  <li>09.6.1 쿼리 실습</li>
+  <li>09.6.2 PHP 실습</li>
+</ul>
+
+<h4 id="097-색인---index">09.7 <a href="09.7">색인</a> - INDEX</h4>
+<ul>
+  <li>09.7.1 색인 생성</li>
+  <li>09.7.2 색인 확인</li>
+  <li>09.7.3 색인 삭제</li>
+</ul>
+
+<h4 id="098-외래-키---foreign-key">09.8 <a href="09.8">외래 키</a> - FOREIGN KEY</h4>
+<ul>
+  <li>09.8.1 외래 키 설정</li>
+  <li>09.8.2 외래 키 수정</li>
+  <li>09.8.3 외래 키 삭제</li>
+</ul>
+:ET

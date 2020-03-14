@@ -1,0 +1,66 @@
+I"+<p>대부분의 DBMS는 서버형으로 클라이언트와 연동하여 동작하게 됩니다. 하지만 데이터 를 조작하기 위해서 처음부터 프로그램을 개발하기에는 어렵습니다.</p>
+
+<p>MySQL은 기본적으로 직접 데이터의 조작 명령을 입력하고 실행할 수 있도록 콘솔 입력 모드를 제공합니다. 콘솔 입력 모드를 이용하여 SQL 명령을 입력하고 데이터 조작 명령 을 실행하게 됩니다.</p>
+
+<h2 id="0221-접속">02.2.1 접속</h2>
+<p>MySQL의 콜솔 명령을 입력하기 위해서는 터미널 창에서 mysql을 실행해야 합니다. 먼 저 운영체제에서 터미널 창을 실행합니다. 실행 후 mysql이 설치된 경로를 찾아서 이동 합니다. 대부분 mysql 실행 프로그램은 ~경로\mysql\bin 폴더 안에 위치해 있습니다.</p>
+
+<p>터미널 창에서 mysql 실행 파일로 데이터베이스를 실행합니다. 다음과 같이 입력하면 mysql을 실행할 수 있습니다.</p>
+
+<p>|명령|</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span><span class="err">계정명</span> <span class="o">-</span><span class="n">p</span> 
+</code></pre></div></div>
+
+<p>|터미널 화면|</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:<span class="se">\B</span>itnami<span class="se">\w</span>ampstack-5.6.30-0<span class="se">\m</span>ysql<span class="se">\b</span><span class="k">in</span><span class="o">&gt;</span>mysql <span class="nt">-uroot</span> <span class="nt">-p</span>
+Enter password: <span class="k">********</span>
+</code></pre></div></div>
+<p>터미널에서 mysql 명령을 입력하면 이전에 설정한 패스워드를 물어보게 됩니다. 설정한 패스워드를 정확히 입력합니다.</p>
+
+<p>계정과 패스워드가 일치하면 다음과 같이 성공 화면이 출력됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Welcome</span> <span class="k">to</span> <span class="n">the</span> <span class="n">MySQL</span> <span class="n">monitor</span><span class="p">.</span>  <span class="n">Commands</span> <span class="k">end</span> <span class="k">with</span> <span class="p">;</span> <span class="k">or</span> <span class="err">\</span><span class="k">g</span><span class="p">.</span>
+<span class="n">Your</span> <span class="n">MySQL</span> <span class="k">connection</span> <span class="n">id</span> <span class="k">is</span> <span class="mi">1</span>
+<span class="n">Server</span> <span class="k">version</span><span class="p">:</span> <span class="mi">5</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">35</span> <span class="n">MySQL</span> <span class="n">Community</span> <span class="n">Server</span> <span class="p">(</span><span class="n">GPL</span><span class="p">)</span>
+
+<span class="n">Copyright</span> <span class="p">(</span><span class="k">c</span><span class="p">)</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="n">Oracle</span> <span class="k">and</span><span class="o">/</span><span class="k">or</span> <span class="n">its</span> <span class="n">affiliates</span><span class="p">.</span> <span class="k">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="p">.</span>
+
+<span class="n">Oracle</span> <span class="k">is</span> <span class="n">a</span> <span class="n">registered</span> <span class="n">trademark</span> <span class="k">of</span> <span class="n">Oracle</span> <span class="n">Corporation</span> <span class="k">and</span><span class="o">/</span><span class="k">or</span> <span class="n">its</span>
+<span class="n">affiliates</span><span class="p">.</span> <span class="n">Other</span> <span class="k">names</span> <span class="n">may</span> <span class="n">be</span> <span class="n">trademarks</span> <span class="k">of</span> <span class="n">their</span> <span class="n">respective</span>
+<span class="n">owners</span><span class="p">.</span>
+
+<span class="k">Type</span> <span class="s1">'help;'</span> <span class="k">or</span> <span class="s1">'</span><span class="se">\h</span><span class="s1">'</span> <span class="k">for</span> <span class="n">help</span><span class="p">.</span> <span class="k">Type</span> <span class="s1">'</span><span class="se">\c</span><span class="s1">'</span> <span class="k">to</span> <span class="n">clear</span> <span class="n">the</span> <span class="k">current</span> <span class="k">input</span> <span class="k">statement</span><span class="p">.</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">mysql&gt;</code> 프롬프트가 뜨면 실행이 성공한 것입니다. 이곳에 SQL 조작 명령을 입력하면 데이터베이스는 작업을 하여 결과를 화면에 출력할 것입니다.</p>
+
+<p>또는 패스워드를 바로 같이 
+입력하여 접속할 수도 있습니다.</p>
+
+<p>|명령|</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="err">계정명</span> <span class="o">-</span><span class="n">p</span><span class="err">패스워드</span> 
+</code></pre></div></div>
+
+<p>여기서 주의할 점은 -p와 패스워드 사이는 공백이 들어가면 안 됩니다. 하지만 -u와 계 정명 사이에는 공백을 추가해도 됩니다.</p>
+
+<p>보다 자세한 mysql의 사용법은 –help 옵션으로 상세하게 사용법을 알아볼 수 있습 니다.</p>
+
+<h2 id="0222-종료">02.2.2 종료</h2>
+<p>콘솔을 통하여 모든 데이터 작업이 완료하면 실행된 mysql 프로그램을 종료해야 합니다. 
+콘솔 접속 종료는 exit 명령어를 입력하면 됩니다.</p>
+
+<p>|콘솔|</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; exit
+Bye
+C:\Bitnami\wampstack-5.6.30-0\mysql\bin&gt;
+</code></pre></div></div>
+
+<p>exit는 MySQL 접속 콘솔을 종료하는 것입니다. 콘솔을 실행시킨 윈도우 커맨드 창 또는 리눅스/맥의 터미널 창과는 다릅니다.</p>
+
+<h2 id="0223-포트">02.2.3 포트</h2>
+<p>MySQL은 기본적으로 3306 포트를 이용합니다. 만일 설치할 때 포트번호를 변경했을 경 우 mysql 접속 시 포트명도 같이 입력해야 합니다.</p>
+
+:ET

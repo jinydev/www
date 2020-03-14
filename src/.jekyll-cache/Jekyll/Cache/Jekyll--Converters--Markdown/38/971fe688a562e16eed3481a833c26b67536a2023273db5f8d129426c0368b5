@@ -1,0 +1,26 @@
+I"Q<p>새로운 데이터를 삽입할 때 동작을 지정할 수 있는 몇 가지의 옵션을 추가로 지원합니다.</p>
+
+<h2 id="1071-low_priority">10.7.1 LOW_PRIORITY</h2>
+<p>삽입 우선순위를 변경하여 처리합니다. 만일 누군가가 데이터를 읽기 작업을 하고 있으면 해당 작업들이 모두 끝날 때까지 삽입을 지연합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="n">LOW_PRIORITY</span> <span class="n">board</span> <span class="p">(</span><span class="k">level</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="k">level</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="k">row</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>우선순위를 낮춰 작업하는 것은 수많은 사용자가 동시에 다수의 INSERT 작업이 이뤄질 때 INSERT 작업들을 모아서 처리하는 효과를 가져올 수 있습니다.</p>
+
+<p>한꺼번에 모아서 처리를 하는 것은 빠른 삽입 속도와 성능 향상을 기대할 수 있습니다.</p>
+
+<h2 id="1072-ignore">10.7.2 IGNORE</h2>
+<p>데이터 중복 시 무시합니다. 이 옵션은 다수의 데이터를 테이블 삽입 시 발생될 수 있는 오류들을 예방할 수 있습니다. 예로 unique 속성을 가지는 프라이머리 키는 중복 입력이 되지 않기 때문에 MySQL은 삽입 실행 도중 에러를 출력하게 되고 중단합니다.</p>
+
+<p>하지만 IGNORE 옵션을 사용을 하게 되면 해당 데이터는 무시하고 다음 데이터로 넘어 가서 처리를 계속하게 됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">IGNORE</span>  <span class="n">board</span> <span class="p">(</span><span class="k">level</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="k">level</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="k">row</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+
+</code></pre></div></div>
+:ET

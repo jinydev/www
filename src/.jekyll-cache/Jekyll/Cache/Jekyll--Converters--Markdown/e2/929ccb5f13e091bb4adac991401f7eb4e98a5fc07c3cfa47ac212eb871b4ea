@@ -1,0 +1,12 @@
+I"C<p>아스테리스크(<code class="highlighter-rouge">*</code>) 와일드 카드는 앞의 전체 컬럼을 출력할 때 한 번 사용했습니다. <code class="highlighter-rouge">*</code> 기호 는 전체를 대신하는 기호입니다. SELECT 컬럼명을 나열하는 <code class="highlighter-rouge">*</code> 와일드 카드를 적용하면 전체의 컬럼 지정을 의미합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="err">테이블명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>다음 select 쿼리는 회원 테이블에서 전체의 컬럼 필드의 정보를 가지고 옵니다.</p>
+:ET

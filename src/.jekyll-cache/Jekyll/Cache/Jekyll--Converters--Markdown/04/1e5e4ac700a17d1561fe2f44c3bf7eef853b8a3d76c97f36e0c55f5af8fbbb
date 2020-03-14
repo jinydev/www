@@ -1,0 +1,59 @@
+I"�<p>MySQL은 쿼리 명령을 통하여 MySQL의 상태나 정보를 확인할 수 있는 내장 함수를 제공하고 있습니다. 유용한 함수 몇 가지만 여기서 소개하도록 하겠습니다.</p>
+
+<h2 id="2651-version">26.5.1 VERSION()</h2>
+<p>현재 MySQL의 버전을 출력합니다. 만일 자신의 응용프로그램이 MySQL의 버전을 체크 
+해야 한다면 이 함수를 사용하여 처리하면 좋을 듯합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select version();
++-----------+
+| version() |
++-----------+
+| 5.6.35    |
++-----------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="652-database">6.5.2 DATABASE()</h2>
+<p>MySQL은 수많은 데이터베이스(폴더)명을 관리합니다. 현재 작업 선택되어 있는 데이터 베이스명을 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select database();
++------------+
+| database() |
++------------+
+| jiny       |
++------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2653-user">26.5.3 USER()</h2>
+<p>현재 접속된 user 정보를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2654-charset문자열">26.5.4 CHARSET(문자열)</h2>
+<p>입력 매개 값(문자열)의 문자 코드 세트 정보를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select charset('jiny');
++-----------------+
+| charset('jiny') |
++-----------------+
+| utf8            |
++-----------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+:ET

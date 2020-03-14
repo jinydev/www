@@ -1,0 +1,56 @@
+I"E<p>앞에서 우리는 컬럼에 데이터를 삽입할 때 중복 처리 및 필수, 초기값 등의 제약사항에 대 해서 학습했습니다. 제약사항 ‘CHECK’는 입력되는 데이터의 특정 조건을 필터링하여 데 이터를 처리하는 것입니다.</p>
+
+<p>특정 값의 필터링은 보통 프로그램 코드 작성 시에 조건 값을 판별하여 처리합니다. 하 지만 간단한 로직은 CHECK 속성을 부과하여 데이터의 처리를 제한할 수 있습니다. CHECK 설정된 조건을 벗어나게 되면 SQL 쿼리는 오류를 발생하고 처리되지 않습니다.</p>
+
+<p>CEHCK 속성을 통하여 프로그램 로직과 이중으로 처리하는 것은 데이터의 안전한 유효 성을 유지하는 데 유용합니다.</p>
+
+<h2 id="0951-쿼리-실습">09.5.1 쿼리 실습</h2>
+<p>CHECK 속성은 컬럼 목록을 선언 후에 별도로 추가 설정을 합니다. CEHCK(조건) 형태 로 추가하면 됩니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="p">(</span>
+    <span class="n">Id</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">LastName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">FirstName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">Age</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="k">CHECK</span> <span class="p">(</span><span class="n">Age</span><span class="o">&gt;=</span><span class="mi">18</span><span class="p">)</span>
+<span class="p">);</span>
+
+</code></pre></div></div>
+
+<p>CHECK 속성을 이용하여 나이를 입력하는 컬럼 필드의 값을 18 이상으로만 입력하도록 입력 제한을 합니다.</p>
+
+<p>칼럼 1개만 check 설정했을 때는 해당 컬럼 필드만 check 값이 적용됩니다. 아니면 CONSTRAINT 키워드를 통하여 여러 컬럼의 조건을 설정할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="p">(</span>
+    <span class="n">Id</span> <span class="nb">int</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">LastName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">FirstName</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">Age</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">Country</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="n">CHK_members</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">Age</span><span class="o">&gt;=</span><span class="mi">18</span> <span class="k">AND</span> <span class="n">Country</span><span class="o">=</span><span class="s1">'Korea'</span><span class="p">)</span>
+<span class="p">);</span>
+
+</code></pre></div></div>
+
+<p>또는 논리 키워드를 이용하여 여러 컬럼의 체크 조건을 설정합니다.</p>
+
+<p>ALTER 명령을 통하여 추가하거나 삭제할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">ADD</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">Age</span><span class="o">&gt;=</span><span class="mi">18</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>CONSTRAINT 키워드를 통하여 다수의 컬럼 필드를 변경할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">CHK_membersAge</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">Age</span><span class="o">&gt;=</span><span class="mi">18</span> <span class="k">AND</span> <span class="n">Country</span><span class="o">=</span><span class="s1">'Korea'</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>또한 삭제할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">DROP</span> <span class="k">CHECK</span> <span class="n">CHK_membersAge</span><span class="p">;</span> 
+</code></pre></div></div>
+:ET

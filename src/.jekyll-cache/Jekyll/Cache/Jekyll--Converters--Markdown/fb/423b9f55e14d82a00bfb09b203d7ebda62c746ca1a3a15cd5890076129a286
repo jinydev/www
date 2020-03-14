@@ -1,0 +1,10 @@
+I"�<p>프로시저 생성은 CREATE PROCEDURE 명령 키워드를 사용하여 생성합니다. 묶인 쿼 리는 BEGIN~END 사이에 정의하면 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="err">프로시저명</span><span class="p">()</span> 
+<span class="k">BEGIN</span> <span class="k">SQL</span> <span class="err">쿼리</span><span class="mi">1</span><span class="p">;</span> <span class="k">SQL</span> <span class="err">쿼리</span><span class="mi">1</span><span class="p">;</span> <span class="k">SQL</span> <span class="err">쿼리</span><span class="mi">3</span><span class="p">;</span> 
+<span class="k">END</span> 
+</code></pre></div></div>
+
+<p>프로시저를 한 번 생성하게 되면 데이터베이스 프로시저 목록에 저장됩니다. 만일 동일한 프로시저명을 생성하면 중복 이름 오류가 발생합니다.</p>
+:ET

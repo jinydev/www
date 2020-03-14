@@ -1,0 +1,314 @@
+I"]/<p>MySQL은 시간과 날짜는 ‘proleptic Gregorian calendar’ 그레고리력을 사용합니다. 또한 다양한 시간 관련 처리를 위한 내장 함수를 제공합니다.</p>
+
+<h2 id="2631-now--sysdate--current_timestamp">26.3.1 NOW( ), SYSDATE( ), CURRENT_TIMESTAMP()</h2>
+<p>현재의 날짜와 시간을 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select now(), sysdate(), current_timestamp();
++---------------------+---------------------+---------------------+
+| now()               | sysdate()           | current_timestamp() |
++---------------------+---------------------+---------------------+
+| 2017-06-11 18:11:37 | 2017-06-11 18:11:37 | 2017-06-11 18:11:37 |
++---------------------+---------------------+---------------------+
+1 row in set (0.01 sec)
+
+</code></pre></div></div>
+
+<h2 id="2632-curdate">26.3.2 CURDATE()</h2>
+<p>현재의 일자를 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select curdate(), CURRENT_DATE();
++------------+----------------+
+| curdate()  | CURRENT_DATE() |
++------------+----------------+
+| 2017-06-11 | 2017-06-11     |
++------------+----------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2633-curtime">26.3.3 CURTIME()</h2>
+<p>현재의 시간을 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select curtime(), CURRENT_TIME();
++-----------+----------------+
+| curtime() | CURRENT_TIME() |
++-----------+----------------+
+| 18:10:28  | 18:10:28       |
++-----------+----------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2634-date_add날짜-interval-기준-값">26.3.4 DATE_ADD(날짜, INTERVAL 기준 값)</h2>
+<p>날짜에서 기준 값만큼 더합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT DATE_ADD('2017-01-02', INTERVAL 42 DAY);
++-----------------------------------------+
+| DATE_ADD('2017-01-02', INTERVAL 42 DAY) |
++-----------------------------------------+
+| 2017-02-13                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT DATE_ADD('2017-06-09', INTERVAL 1 MONTH);
++------------------------------------------+
+| DATE_ADD('2017-06-09', INTERVAL 1 MONTH) |
++------------------------------------------+
+| 2017-07-09                               |
++------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT DATE_ADD('2017-06-09', INTERVAL 1 YEAR);
++-----------------------------------------+
+| DATE_ADD('2017-06-09', INTERVAL 1 YEAR) |
++-----------------------------------------+
+| 2018-06-09                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+<p>※ 기준 값: YEAR, MONTH, DAY, HOUR, MINUTE, SECOND</p>
+
+<h2 id="2635-date_sub날짜-interval-기준-값">26.3.5 DATE_SUB(날짜, INTERVAL 기준 값)</h2>
+<p>날짜에서 기준 값만큼 뺍니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT DATE_SUB('2017-01-02', INTERVAL 42 DAY);
++-----------------------------------------+
+| DATE_SUB('2017-01-02', INTERVAL 42 DAY) |
++-----------------------------------------+
+| 2016-11-21                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT DATE_SUB('2017-06-09', INTERVAL 1 MONTH);
++------------------------------------------+
+| DATE_SUB('2017-06-09', INTERVAL 1 MONTH) |
++------------------------------------------+
+| 2017-05-09                               |
++------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT DATE_SUB('2017-06-09', INTERVAL 1 YEAR);
++-----------------------------------------+
+| DATE_SUB('2017-06-09', INTERVAL 1 YEAR) |
++-----------------------------------------+
+| 2016-06-09                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+</code></pre></div></div>
+<p>※ 기준 값: YEAR, MONTH, DAY, HOUR, MINUTE, SECOND</p>
+
+<h2 id="2636-year날짜-month날짜-day-날짜">26.3.6 YEAR(날짜), MONTH(날짜), DAY (날짜)</h2>
+<p>입력된 날짜에서 각각 연도, 월, 일을 찾아서 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select year('2017-06-09'), month('2017-06-09'), day('2017-06-09');
++--------------------+---------------------+-------------------+
+| year('2017-06-09') | month('2017-06-09') | day('2017-06-09') |
++--------------------+---------------------+-------------------+
+|               2017 |                   6 |                 9 |
++--------------------+---------------------+-------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2637-hour--minute--second">26.3.7 HOUR( ), MINUTE( ), SECOND()</h2>
+<p>시간, 분, 초를 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select hour(now()), minute(now()), second(now());
++-------------+---------------+---------------+
+| hour(now()) | minute(now()) | second(now()) |
++-------------+---------------+---------------+
+|          17 |            15 |            46 |
++-------------+---------------+---------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2638-monthname날짜-dayname-날짜">26.3.8 MONTHNAME(날짜), DAYNAME (날짜)</h2>
+<p>날짜의 월과 요일일 영어로 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select MONTHNAME('2017-06-09'), DAYNAME('2017-06-09');
++-------------------------+-----------------------+
+| MONTHNAME('2017-06-09') | DAYNAME('2017-06-09') |
++-------------------------+-----------------------+
+| June                    | Friday                |
++-------------------------+-----------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2639-dayofmonth-날짜">26.3.9 DAYOFMONTH (날짜),</h2>
+<p>날짜의 월별 일자를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select DAYOFMONTH('2017-06-09');
++--------------------------+
+| DAYOFMONTH('2017-06-09') |
++--------------------------+
+|                        9 |
++--------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26310-dayofweek-날짜">26.3.10 DAYOFWEEK (날짜)</h2>
+<p>날짜의 주별 일자를 출력합니다(월요일(0), 화요일(1) … 일요일(6)).</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select DAYOFWEEK('2017-06-09');
++-------------------------+
+| DAYOFWEEK('2017-06-09') |
++-------------------------+
+|                       6 |
++-------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26311-weekday-날짜">26.3.11 WEEKDAY (날짜)</h2>
+<p>날짜의 주별 일자 출력합니다(월요일(0), 화요일(1) … 일요일(6)).</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select WEEKDAY('2017-06-09');
++-----------------------+
+| WEEKDAY('2017-06-09') |
++-----------------------+
+|                     4 |
++-----------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26312-quarter-날짜">26.3.12 QUARTER (날짜)</h2>
+<p>입력한 날짜의 분기를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select quarter('2017-07-09');
++-----------------------+
+| quarter('2017-07-09') |
++-----------------------+
+|                     3 |
++-----------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26313-dayofyear-날짜">26.3.13 DAYOFYEAR (날짜)</h2>
+<p>일년을 기준으로 한 날짜까지의 날 수를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select DAYOFYEAR('2017-06-09');
++-------------------------+
+| DAYOFYEAR('2017-06-09') |
++-------------------------+
+|                     160 |
++-------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26314-week날짜">26.3.14 WEEK(날짜)</h2>
+<p>일년 중 몇 번째 주인지를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select WEEK('2017-06-09');
++--------------------+
+| WEEK('2017-06-09') |
++--------------------+
+|                 23 |
++--------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26315-from_days-날-수">26.3.15 FROM_DAYS (날 수)</h2>
+<p>0000년 00월 00일부터 날 수만큼 경과한 날의 날짜를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select from_days(736854);
++-------------------+
+| from_days(736854) |
++-------------------+
+| 2017-06-09        |
++-------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26316-to_days-날짜">26.3.16 TO_DAYS (날짜)</h2>
+<p>0000 년 00월 00일부터 날짜까지의 일자 수를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select to_days('2017-06-09');
++-----------------------+
+| to_days('2017-06-09') |
++-----------------------+
+|                736854 |
++-----------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26317-date_format-날짜-형식">26.3.17 DATE_FORMAT (날짜, ‘형식’)</h2>
+<p>날짜를 형식에 맞게 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select date_format(now(),'%Y %M %D %W');
++----------------------------------+
+| date_format(now(),'%Y %M %D %W') |
++----------------------------------+
+| 2017 June 9th Friday             |
++----------------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26318-time_format-날짜-형식">26.3.18 TIME_FORMAT (날짜, ‘형식’)</h2>
+<p>시간과 형식을 문자열로 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select time_format(now(),'%p %k %i');
++-------------------------------+
+| time_format(now(),'%p %k %i') |
++-------------------------------+
+| PM 17 05                      |
++-------------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26319-time_to_sec시간">26.3.19 TIME_TO_SEC(시간)</h2>
+<p>입력한 시간의 0시부터 초를 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select time_to_sec(curtime());
++------------------------+
+| time_to_sec(curtime()) |
++------------------------+
+|                  61734 |
++------------------------+
+1 row in set (0.00 sec)
+</code></pre></div></div>
+
+<h2 id="26320-sec_to_timen">26.3.20 SEC_TO_TIME(N)</h2>
+<p>0시부터 N초만큼 지난 시간을 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select sec_to_time(1000);
++-------------------+
+| sec_to_time(1000) |
++-------------------+
+| 00:16:40          |
++-------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+:ET

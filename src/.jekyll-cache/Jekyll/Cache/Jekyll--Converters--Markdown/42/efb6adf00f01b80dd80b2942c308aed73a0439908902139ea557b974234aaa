@@ -1,0 +1,157 @@
+I"s.<p>지금까지의 JOIN 결합은 서로 다른 테이블을 결합하는 것입니다. SELF 조인은 자기 자 신의 동일한 테이블명끼리 결합하는 것을 말합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼</span> <span class="k">FROM</span> <span class="err">테이블</span> <span class="k">AS</span> <span class="err">별명</span><span class="mi">1</span> <span class="k">JOIN</span> <span class="err">테이블</span> <span class="k">AS</span> <span class="err">별명</span><span class="mi">2</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="2061-쿼리-실습">20.6.1 쿼리 실습</h2>
+<p>다음은 SELF 조인 형태의 쿼리 예제입니다. 예제를 작성하고 출력 결과를 확인해 보도록 하겠습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">FirstName</span><span class="p">,</span> <span class="n">LastName</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">AS</span> <span class="n">mem1</span> <span class="k">JOIN</span> <span class="n">members</span> <span class="k">AS</span> <span class="n">mem2</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT FirstName, LastName FROM members;
++-----------+----------+
+| FirstName | LastName |
++-----------+----------+
+| lee       | hojin    |
+| NULL      | jiny     |
+| kim       | james    |
+| jung      | eric     |
++-----------+----------+
+4 rows in set (0.00 sec)
+
+mysql&gt; SELECT mem1.FirstName, mem1.LastName FROM members AS mem1 JOIN members AS mem2;
++-----------+----------+
+| FirstName | LastName |
++-----------+----------+
+| lee       | hojin    |
+| NULL      | jiny     |
+| kim       | james    |
+| jung      | eric     |
+| lee       | hojin    |
+| NULL      | jiny     |
+| kim       | james    |
+| jung      | eric     |
+| lee       | hojin    |
+| NULL      | jiny     |
+| kim       | james    |
+| jung      | eric     |
+| lee       | hojin    |
+| NULL      | jiny     |
+| kim       | james    |
+| jung      | eric     |
++-----------+----------+
+16 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>셀프 조인을 하게 되면 자기의 모든 레코드에 대해서 다시 자신의 모든 레코드를 더하여 출력합니다. 셀프 조인은 자신의 데이터가 4개와 또 다시 4개가 처리되어 16개의 자료로 출력됩니다. 즉, 자신의 데이터의 ^2 형태의 자료가 생성됩니다.</p>
+
+<p>셀프 조인을 사용할 때는 방대하게 생성되는 데이터 결과에 주의해야 합니다. 그럼에도 불구하고 셀프 조인을 사용하는 목적은 자신의 테이블의 모든 조건의 결과를 확인하기 위 해서입니다.</p>
+
+<h2 id="2062-php-실습">20.6.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 SELF 조인을 실습해 보도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// SELF 조인을 처리합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">selfJoin</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$fields</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"SELECT "</span><span class="p">;</span>
+
+            <span class="c1">// 컬럼필드 선택여부를 지정</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$fields</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">.=</span> <span class="nv">$fields</span><span class="o">.</span><span class="s2">" "</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">"* "</span><span class="p">;</span> 
+            <span class="p">}</span>
+
+             <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">"from </span><span class="nv">$tbname</span><span class="s2"> as a JOIN </span><span class="nv">$tbname</span><span class="s2"> as b"</span><span class="p">;</span>  
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="nv">$rowss</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                <span class="nv">$row_cnt</span> <span class="o">=</span> <span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$row_cnt</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
+                <span class="k">return</span> <span class="nv">$rowss</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+            <span class="p">}</span> 
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | join-05.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">selfJoin</span><span class="p">(</span><span class="s2">"members"</span><span class="p">,</span><span class="s2">"a.FirstName, b.LastName"</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] SELECT a.FirstName, b.LastName from members as a JOIN members as b
+tables fields = 36
+0=stdClass Object ( [FirstName] =&gt; lee [LastName] =&gt; hojin )
+1=stdClass Object ( [FirstName] =&gt; hojin [LastName] =&gt; hojin )
+2=stdClass Object ( [FirstName] =&gt; kim [LastName] =&gt; hojin )
+3=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; hojin )
+4=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; hojin )
+5=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; hojin )
+6=stdClass Object ( [FirstName] =&gt; lee [LastName] =&gt; lee )
+7=stdClass Object ( [FirstName] =&gt; hojin [LastName] =&gt; lee )
+8=stdClass Object ( [FirstName] =&gt; kim [LastName] =&gt; lee )
+9=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; lee )
+10=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; lee )
+11=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; lee )
+12=stdClass Object ( [FirstName] =&gt; lee [LastName] =&gt; james )
+13=stdClass Object ( [FirstName] =&gt; hojin [LastName] =&gt; james )
+14=stdClass Object ( [FirstName] =&gt; kim [LastName] =&gt; james )
+15=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; james )
+16=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; james )
+17=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; james )
+18=stdClass Object ( [FirstName] =&gt; lee [LastName] =&gt; 1234 )
+19=stdClass Object ( [FirstName] =&gt; hojin [LastName] =&gt; 1234 )
+20=stdClass Object ( [FirstName] =&gt; kim [LastName] =&gt; 1234 )
+21=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 1234 )
+22=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 1234 )
+23=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 1234 )
+24=stdClass Object ( [FirstName] =&gt; lee [LastName] =&gt; 1234 )
+25=stdClass Object ( [FirstName] =&gt; hojin [LastName] =&gt; 1234 )
+26=stdClass Object ( [FirstName] =&gt; kim [LastName] =&gt; 1234 )
+27=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 1234 )
+28=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 1234 )
+29=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 1234 )
+30=stdClass Object ( [FirstName] =&gt; lee [LastName] =&gt; 123400 )
+31=stdClass Object ( [FirstName] =&gt; hojin [LastName] =&gt; 123400 )
+32=stdClass Object ( [FirstName] =&gt; kim [LastName] =&gt; 123400 )
+33=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 123400 )
+34=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 123400 )
+35=stdClass Object ( [FirstName] =&gt; jiny [LastName] =&gt; 123400 ) 
+
+</code></pre></div></div>
+:ET

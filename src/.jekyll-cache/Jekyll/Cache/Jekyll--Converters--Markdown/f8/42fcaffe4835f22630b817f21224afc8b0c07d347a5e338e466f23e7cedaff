@@ -1,0 +1,114 @@
+I"�<p>데이터베이스의 이름은 중복하여 사용할 수 없습니다. 또한 MySQL은 데이터베이스명이 라는 그룹을 통하여 여러 개의 데이터베이스를 관리할 수 있습니다.</p>
+
+<p>여러 개의 데이터베이스 명을 포함한 MySQL 시스템은 아주 흔합니다. 1개의 서버에 1개의 DB명만 가지고 있는 경우는 없을 것입니다. 호스팅과 같은 회사는 1개의 MySQL 시스템에 수백 개의 DB명을 가지고 있고, 이를 각각의 사용자에게 할당하여 호스팅을 제 공하고 있습니다.</p>
+
+<h2 id="0521-쿼리-실습">05.2.1 쿼리 실습</h2>
+<p>MySQL은 자신이 가지고 있는 데이터베이스의 이름 목록을 출력하는 SHOW DATA BASE 명령어를 지원합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SHOW</span> <span class="k">DATABASE</span><span class="p">;</span> 
+</code></pre></div></div>
+<p>SHOW DATABASE; 문법은 현재 생성되어 있는 데이터베이스의 이름 목록 전체를 출 력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| jiny               |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+5 rows in set (0.01 sec)
+</code></pre></div></div>
+
+<p>위처럼 방금 생성한 jiny 데이터베이스명도 함께 포함된 전체 목록을 확인할 수 있습니다.</p>
+
+<h2 id="0522-php-실습">05.2.2 PHP 실습</h2>
+<p>실제적으로 SQL 쿼리와 PHP 연동 소스를 통하여 MySQL에 데이터베이스 목록을 출력해 보도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다. 새로 추가한 메서드는 데이터베이스 목록을 출력하는 쿼리를 생성하여 결과를 반환합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 데이터베이스 목록을 읽어 옵니다</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">showDatabases</span><span class="p">()</span>
+<span class="p">{</span>
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"show databases"</span><span class="p">;</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="nv">$queryString</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$rowss</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                <span class="nv">$row_cnt</span> <span class="o">=</span> <span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$row_cnt</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
+                <span class="k">return</span> <span class="nv">$rowss</span><span class="p">;</span>
+            <span class="p">}</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>예제 파일 | sql-07.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">showDatabases</span><span class="p">())</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"db Count = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="k">echo</span> <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">Database</span><span class="p">;</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>    
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+show databases
+db Count = 6
+0=information_schema
+stdClass Object ( [Database] =&gt; information_schema ) 
+1=jiny
+stdClass Object ( [Database] =&gt; jiny ) 
+2=jiny123
+stdClass Object ( [Database] =&gt; jiny123 ) 
+3=mysql
+stdClass Object ( [Database] =&gt; mysql ) 
+4=performance_schema
+stdClass Object ( [Database] =&gt; performance_schema ) 
+5=test
+stdClass Object ( [Database] =&gt; test ) 
+
+</code></pre></div></div>
+
+<h2 id="0523-기본-데이터베이스">05.2.3 기본 데이터베이스</h2>
+<p>SHOW DATABASE;를 통하여 목록을 확인해 보면 직접 생성된 것 이외에도 기본적으 로 MySQL에서 미리 가지고 있는 데이터베이스명이 있습니다. MySQL은 자체적으로 권 한 및 모델 구조를 유지 관리하기 위해서 사용하는 데이터베이스 그룹이 있습니다.</p>
+
+<p>● performance_schema 
+● information_schema 
+● mysql 
+● test</p>
+
+<p>위의 목록 중에 test 데이터베이스는 삭제해도 됩니다. 기본적으로 MySQL에서 test 목적 을 위해서 생성해 놓은 임시 폴더입니다.</p>
+
+<p>mysql 데이터베이스명에는 MySQL의 사용자, 접속, DB 정보 등을 가지고 있는 중요 정 보 테이블이 들어 있습니다.</p>
+
+<p>● user 데이블 
+● db 테이블 
+● 그 외 여러 파일들.</p>
+:ET

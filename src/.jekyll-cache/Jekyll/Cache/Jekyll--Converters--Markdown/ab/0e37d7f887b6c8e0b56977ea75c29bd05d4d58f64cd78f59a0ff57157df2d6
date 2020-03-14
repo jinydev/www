@@ -1,0 +1,109 @@
+I"�*<p>쿼리 기반의 가상 테이블은 create view 명령을 통하여 생성할 수 있습니다. 가상 테이블 은 SELECT 결과 조회를 가상 테이블의 이름으로 별칭을 선언합니다. 다음은 VIEW 테이 블 생성의 쿼리 문법입니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">view_name</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="n">column1</span><span class="p">,</span> <span class="n">column2</span><span class="p">,</span> <span class="err">…</span> <span class="k">FROM</span> <span class="k">table_name</span> <span class="k">WHERE</span> <span class="n">condition</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>가상 테이블의 기반인 실제적인 테이블 데이터가 변경되면 VIEW의 데이터도 변경됩 니다. 또한 VIEW에서도 데이터를 변경하면 실제적인 테이블의 데이터도 변경됩니다. 
+조건이 설정되어 있는 VIEW도 실제적인 테이블의 데이터가 변경되었을 때 VIEW의 조 건도 자동으로 반영되어 출력됩니다.</p>
+
+<h2 id="2111-쿼리-실습">21.1.1 쿼리 실습</h2>
+<p>products 테이블에서 판매가 활성화된 상품만 조회하여 새로운 가상 테이블을 생성합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="p">[</span><span class="k">Current</span> <span class="n">Product</span> <span class="n">List</span><span class="p">]</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="n">ProductID</span><span class="p">,</span> <span class="n">ProductName</span> <span class="k">FROM</span> <span class="n">Products</span> <span class="k">WHERE</span> <span class="n">enable</span> <span class="o">=</span> <span class="err">‘</span><span class="k">on</span><span class="err">’</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>이렇게 생성된 가상 테이블도 기존 방식과 동일한 형태로 데이터를 조회할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">[</span><span class="k">Current</span> <span class="n">Product</span> <span class="n">List</span><span class="p">];</span> 
+</code></pre></div></div>
+
+<p>다음은 이 중 select를 이용하여 결과값을 조회한 후 이 결과를 가상의 테이블로 생성합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="p">[</span><span class="n">Products</span> <span class="n">Average</span> <span class="n">Price</span><span class="p">]</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="n">ProductName</span><span class="p">,</span> <span class="n">UnitPrice</span> <span class="k">FROM</span> <span class="n">Products</span> <span class="k">WHERE</span> <span class="n">UnitPrice</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">UnitPrice</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">Products</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>이렇게 생성된 가상 테이블을 select문을 통하여 조회가 가능합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">Products</span> <span class="n">Average</span> <span class="n">Price</span><span class="p">];</span> 
+</code></pre></div></div>
+
+<p>다음은 또 다른 예제입니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="p">[</span><span class="n">Category</span> <span class="n">Sales</span> <span class="k">For</span> <span class="mi">2017</span><span class="p">]</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">CategoryName</span><span class="p">,</span> <span class="k">Sum</span><span class="p">(</span><span class="n">ProductSales</span><span class="p">)</span> <span class="k">AS</span> <span class="n">CategorySales</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">Product</span> <span class="n">Sales</span> <span class="k">for</span> <span class="mi">2017</span><span class="p">]</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">CategoryName</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>이렇게 생성된 가상 테이블을 select문을 통하여 조회가 가능합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">Category</span> <span class="n">Sales</span> <span class="k">For</span> <span class="mi">2017</span><span class="p">];</span> 
+</code></pre></div></div>
+
+<p>또한 where 절을 추가하여 검색할 수도 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">Category</span> <span class="n">Sales</span> <span class="k">For</span> <span class="mi">2017</span><span class="p">]</span> <span class="k">WHERE</span> <span class="n">CategoryName</span> <span class="o">=</span> <span class="s1">'cpu'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="2112-php-실습">21.1.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 VIEW를 실습해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 입력된 select 쿼리를 기반으로 view를 셍성합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">createView</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$selectQuery</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$selectQuery</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"CREATE VIEW </span><span class="nv">$view</span><span class="s2"> AS </span><span class="nv">$selectQuery</span><span class="s2">"</span><span class="p">;</span>
+                    <span class="c1">// 쿼리를 전송합니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 뷰 생성!"</span><span class="p">);</span>
+
+                        <span class="c1">// 객체 반환, 매서드체인</span>
+                        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 조건 select 쿼리를 입력해 주세요.."</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 뷰 이름을 적어주세요."</span><span class="p">);</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | view-01.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 뷰를 생성합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">createView</span><span class="p">(</span><span class="s2">"viewtest"</span><span class="p">,</span> <span class="s2">"select * from members"</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] CREATE VIEW viewtest AS select * from members
+뷰 생성!
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,107 @@
+I"�4<p>FULL 조인은 2개의 테이블을 모든 합집합을 의미합니다. 2개의 테이블 좌우 모두의 데이 터를 출력합니다.</p>
+
+<p>FULL 조인은 2개의 테이블 모두를 출력하기 때문에 큰 데이터 결과가 조회될 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">3</span><span class="p">,</span> <span class="p">.</span> <span class="k">from</span> <span class="err">테이블</span><span class="mi">1</span> 
+<span class="k">LEFT</span> <span class="k">JOIN</span> 
+<span class="err">테이블</span><span class="mi">2</span> <span class="k">ON</span> <span class="err">테이블</span><span class="mi">1</span><span class="p">.</span><span class="err">컬럼</span> <span class="o">=</span><span class="err">테이블</span><span class="mi">2</span><span class="p">.</span><span class="err">컬럼</span> 
+<span class="k">UNION</span> <span class="k">ALL</span> 
+<span class="k">SELECT</span> <span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">3</span><span class="p">,</span> <span class="err">…</span><span class="p">.</span> <span class="k">from</span> <span class="err">테이블</span><span class="mi">1</span> 
+<span class="k">RIGHT</span> <span class="k">JOIN</span> 
+
+<span class="err">테이블</span><span class="mi">2</span> <span class="k">ON</span> <span class="err">테이블</span><span class="mi">1</span><span class="p">.</span><span class="err">컬럼</span> <span class="o">=</span><span class="err">테이블</span><span class="mi">2</span><span class="p">.</span><span class="err">컬럼</span> 
+</code></pre></div></div>
+
+<h2 id="2051-쿼리-실습">20.5.1 쿼리 실습</h2>
+<p>FULL RIGHT 조인 명령을 다음과 같은 형태로 쿼리문을 작성할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">orders</span> <span class="k">ON</span> <span class="n">members</span><span class="p">.</span><span class="n">email</span><span class="o">=</span><span class="n">orders</span><span class="p">.</span><span class="n">email</span> <span class="k">union</span> <span class="k">all</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">orders</span> <span class="k">ON</span> <span class="n">members</span><span class="p">.</span><span class="n">email</span><span class="o">=</span><span class="n">orders</span><span class="p">.</span><span class="n">email</span> 
+</code></pre></div></div>
+
+<h2 id="2052-php-실습">20.5.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 FULL 조인을 실습해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// FULL 조인을 처리합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">fullJoin</span><span class="p">(</span><span class="nv">$tbname1</span><span class="p">,</span> <span class="nv">$tbname2</span><span class="p">,</span> <span class="nv">$onWhere</span><span class="p">,</span> <span class="nv">$fields</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"SELECT "</span><span class="p">;</span>
+
+            <span class="c1">// 컬럼필드 선택여부를 지정</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$fields</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">.=</span> <span class="nv">$fields</span><span class="o">.</span><span class="s2">" "</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">"* "</span><span class="p">;</span> 
+            <span class="p">}</span>
+
+             <span class="nv">$queryString</span> <span class="o">=</span> <span class="nv">$queryString</span><span class="o">.</span><span class="s2">"from </span><span class="nv">$tbname1</span><span class="s2"> LEFT JOIN </span><span class="nv">$tbname2</span><span class="s2"> ON </span><span class="nv">$onWhere</span><span class="s2">"</span><span class="o">.</span><span class="s2">" union all "</span><span class="o">.</span><span class="nv">$queryString</span><span class="o">.</span><span class="s2">"from </span><span class="nv">$tbname1</span><span class="s2"> RIGHT JOIN </span><span class="nv">$tbname2</span><span class="s2"> ON </span><span class="nv">$onWhere</span><span class="s2">"</span><span class="p">;</span> 
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="nv">$rowss</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                <span class="nv">$row_cnt</span> <span class="o">=</span> <span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$row_cnt</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
+                <span class="k">return</span> <span class="nv">$rowss</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+            <span class="p">}</span> 
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | join-04.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">fullJoin</span><span class="p">(</span><span class="s2">"members"</span><span class="p">,</span><span class="s2">"orders"</span><span class="p">,</span><span class="s2">"members.email=orders.email"</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] SELECT * from members LEFT JOIN orders ON members.email=orders.email union all SELECT * from members RIGHT JOIN orders ON members.email=orders.email
+tables fields = 17
+0=stdClass Object ( [Id] =&gt; 1 [LastName] =&gt; hojin [FirstName] =&gt; lee [Address] =&gt; shinchon [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; infohojin [email] =&gt; hojin@jinyphp.com [code] =&gt; O_001 ) 
+1=stdClass Object ( [Id] =&gt; 2 [LastName] =&gt; hojin [FirstName] =&gt; lee [Address] =&gt; shinchon [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; infohojin [email] =&gt; hojin@jinyphp.com [code] =&gt; O_002 ) 
+2=stdClass Object ( [Id] =&gt; [LastName] =&gt; lee [FirstName] =&gt; hojin [Address] =&gt; [City] =&gt; [Country] =&gt; Korea [manager] =&gt; infohojin [email] =&gt; [code] =&gt; ) 
+3=stdClass Object ( [Id] =&gt; [LastName] =&gt; james [FirstName] =&gt; kim [Address] =&gt; youngdun-po [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; info [email] =&gt; [code] =&gt; ) 
+4=stdClass Object ( [Id] =&gt; [LastName] =&gt; 1234 [FirstName] =&gt; jiny [Address] =&gt; [City] =&gt; [Country] =&gt; Korea [manager] =&gt; [email] =&gt; [code] =&gt; ) 
+5=stdClass Object ( [Id] =&gt; [LastName] =&gt; 1234 [FirstName] =&gt; jiny [Address] =&gt; [City] =&gt; [Country] =&gt; Korea [manager] =&gt; [email] =&gt; [code] =&gt; ) 
+6=stdClass Object ( [Id] =&gt; [LastName] =&gt; 123400 [FirstName] =&gt; jiny [Address] =&gt; [City] =&gt; [Country] =&gt; Korea [manager] =&gt; [email] =&gt; [code] =&gt; ) 
+7=stdClass Object ( [Id] =&gt; 1 [LastName] =&gt; hojin [FirstName] =&gt; lee [Address] =&gt; shinchon [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; infohojin [email] =&gt; hojin@jinyphp.com [code] =&gt; O_001 ) 
+8=stdClass Object ( [Id] =&gt; 2 [LastName] =&gt; hojin [FirstName] =&gt; lee [Address] =&gt; shinchon [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; infohojin [email] =&gt; hojin@jinyphp.com [code] =&gt; O_002 ) 
+9=stdClass Object ( [Id] =&gt; 3 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; eric@jinyphp.com [code] =&gt; O_003 ) 
+10=stdClass Object ( [Id] =&gt; 4 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; [code] =&gt; O_004 ) 
+11=stdClass Object ( [Id] =&gt; 5 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; [code] =&gt; O_005 ) 
+12=stdClass Object ( [Id] =&gt; 6 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; [code] =&gt; O_006 ) 
+13=stdClass Object ( [Id] =&gt; 7 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; [code] =&gt; O_007 ) 
+14=stdClass Object ( [Id] =&gt; 8 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; [code] =&gt; O_008 ) 
+15=stdClass Object ( [Id] =&gt; 9 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; [code] =&gt; O_009 ) 
+16=stdClass Object ( [Id] =&gt; 10 [LastName] =&gt; [FirstName] =&gt; [Address] =&gt; [City] =&gt; [Country] =&gt; [manager] =&gt; [email] =&gt; [code] =&gt; O_010 ) 
+
+
+</code></pre></div></div>
+:ET

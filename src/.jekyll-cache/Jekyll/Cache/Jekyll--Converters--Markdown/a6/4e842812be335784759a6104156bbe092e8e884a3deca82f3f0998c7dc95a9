@@ -1,0 +1,108 @@
+I"�<p>이번에는 거꾸로 테이블의 구조는 복사하지 않고 데이터만 추출하여 복사합니다. 데이터 를 복사할 때는 상대쪽의 테이블의 구조는 서로 동일해야 합니다.</p>
+
+<p>데이터만 복사할 때는 INSERT INTO 명령을 기반으로 동작합니다. 또한 테이블의 데이 터를 조회하는 SELECT를 결합합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="err">기본테이블</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="err">복사</span><span class="n">_</span><span class="err">테이블</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>SELECT를 통하여 데이터를 조회하고, 조회한 데이터를 INSERT로 삽입 처리하게 됩니다.</p>
+
+<h2 id="1531-쿼리-실습">15.3.1 쿼리 실습</h2>
+<p>다음은 비어 있는 members2 테이블에 members 테이블의 데이터 내용을 추출하여 삽 입해 보도록 합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members2</span><span class="p">;</span>
+<span class="n">Empty</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<p>테이블 members2는 아무런 내용이 없는 비어 있는 테이블입니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">insert</span> <span class="k">into</span> <span class="n">members2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; insert into members2 select * from members;
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+</code></pre></div></div>
+
+<p>정상적으로 데이터가 복사되었습니다. 이때 members2와 members의 테이블 구조는 동일해야 합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members2;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+<p>기존 비어 있는 테이블 members2에 members의 데이터만 추출하여 삽입합니다.</p>
+
+<h2 id="1532-php-실습">15.3.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 데이터만 추출하여 복사를 진행해 보도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// select 데이터를 테이블로 복사합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">insertSelect</span><span class="p">(</span><span class="nv">$src</span><span class="p">,</span><span class="nv">$dst</span><span class="p">,</span><span class="nv">$fields</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$src</span><span class="p">){</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$fields</span><span class="p">){</span>
+                    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"insert into </span><span class="nv">$dst</span><span class="s2"> (</span><span class="nv">$fields</span><span class="s2">) select </span><span class="nv">$fields</span><span class="s2"> from </span><span class="nv">$src</span><span class="s2">"</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"insert into </span><span class="nv">$dst</span><span class="s2"> select * from </span><span class="nv">$src</span><span class="s2">"</span><span class="p">;</span>
+                <span class="p">}</span>
+                
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">){</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 데이터 복사!"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 원본 테이블명을 적어주세요."</span><span class="p">);</span>
+            <span class="p">}</span>  
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | copy-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 테이블을 복사합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">insertSelect</span><span class="p">(</span><span class="s2">"members"</span><span class="p">,</span> <span class="s2">"members_1"</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] insert into members_1 select * from members
+데이터 복사!
+
+</code></pre></div></div>
+:ET

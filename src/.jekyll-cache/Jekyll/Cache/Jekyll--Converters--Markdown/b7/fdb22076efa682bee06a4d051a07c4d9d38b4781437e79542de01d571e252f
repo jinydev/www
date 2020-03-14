@@ -1,0 +1,89 @@
+I"�<p>별칭은 기존의 컬럼명을 다른 이름으로 임시로 바꾸어 사용할 수 있습니다. 새로운 이름 의 별칭을 정의하는 데 AS 키워드를 사용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span> <span class="k">AS</span> <span class="err">별칭</span><span class="p">,</span> <span class="err">컬럼명</span> <span class="k">AS</span> <span class="err">별칭</span><span class="p">,</span> <span class="err">…</span> <span class="k">FROM</span> <span class="err">테이블명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>컬럼명 뒤에 AS 키워드와 별칭명을 넣어서 SQL 쿼리문을 작성하면 됩니다.</p>
+
+<h2 id="1611-쿼리-실습">16.1.1 쿼리 실습</h2>
+<p>별칭을 사용하면 좀 더 컬럼명을 읽기 쉽게 변경하거나, 짧은 이름으로 변경할 수도 있습니다. 기존의 회원 데이터를 조회하면 다음과 같습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>컬럼의 이름이 영문으로 출력됩니다. 영문 컬럼 이름을 한글 이름으로 별칭을 지정해 봅니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">LastName</span> <span class="k">as</span> <span class="err">이름</span><span class="p">,</span> <span class="n">FirstName</span> <span class="k">as</span> <span class="err">성</span> <span class="k">from</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select LastName as 이름, FirstName as 성 from members;
++--------+--------+
+| 이름   | 성   |
++--------+--------+
+| hojin  | lee    |
+| jiny   | NULL   |
+| james  | kim    |
+| eric   | jung   |
++--------+--------+
+4 rows in set (0.01 sec)
+</code></pre></div></div>
+
+<p>컬럼의 명칭이 한글로 변경되었습니다.</p>
+
+<h2 id="1612-php-실습">16.1.2 PHP 실습</h2>
+<p>PHP 코드에서도 별칭을 사용하여 쿼리를 전송하는 실습을 해봅니다.<br />
+예제 파일 | alias-01.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+ 
+	<span class="c1">// 컬럼 지정조회 </span>
+	<span class="k">echo</span> <span class="s2">"===== 컬럼조회 =====&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="s2">"FirstName as 이름, LastName as 성"</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+===== 컬럼조회 =====
+쿼리성공] SELECT FirstName as 이름, LastName as 성 FROM members;
+tables fields = 6
+0=stdClass Object ( [이름] =&gt; lee [성] =&gt; hojin )
+1=stdClass Object ( [이름] =&gt; hojin [성] =&gt; lee )
+2=stdClass Object ( [이름] =&gt; kim [성] =&gt; james )
+3=stdClass Object ( [이름] =&gt; jiny [성] =&gt; 1234 )
+4=stdClass Object ( [이름] =&gt; jiny [성] =&gt; 1234 )
+5=stdClass Object ( [이름] =&gt; jiny [성] =&gt; 123400 ) 
+
+</code></pre></div></div>
+:ET

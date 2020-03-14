@@ -1,0 +1,30 @@
+I"�<p>SQL 명령은 1개 단위 또는 여러 개의 단위를 묶어서 실행할 수 있습니다.</p>
+
+<h2 id="0341-세미콜론">03.4.1 세미콜론</h2>
+<p>PHP 에서는 각각의 명령을 구분하기 위해서 마지막에 구분 기호로 세미콜론 (;)을 삽입합 니다. SQL 명령 또한 1개의 쿼리 명령문을 구분하기 위해서 동일한 기호의 세미콜론을 사용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SQL</span> <span class="err">명령어</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members
+    -&gt; ;
+</code></pre></div></div>
+
+<p>명령을 작성할 때 세미콜론을 작성하지 않으면 오류를 발생하거나 추가로 입력 (-&gt;)을 요 구하기도 합니다. 만일 세미콜론이 없는 경우에는 오류가 발생할 수 있습니다.</p>
+
+<p>경우에 따라서는 종결 기호 세미콜론을 다른 기호로 변경할 수 있습니다.</p>
+
+<h2 id="0342-기호-변경">03.4.2 기호 변경</h2>
+<p>SQL에서 기본적인 종결 기호는 세미콜론입니다. 하지만 프로시저나 트리거 등의 향상된 SQL 쿼리 명령을 실행해야 할 경우 세미콜론 기호는 중복되어 쿼리 실행에 오류를 줄 수 있습니다.</p>
+
+<p>이런 경우 임시로 종결 기호를 다른 기호 형태로 변경하여 입력을 처리할 수 있습니다. DELIMITER 키워드는 종결 문자를 변경하는 SQL 명령문입니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELIMITER</span> <span class="err">기호</span> 
+</code></pre></div></div>
+<p><code class="highlighter-rouge">
+만일 </code>DELIMITER //<code class="highlighter-rouge">로 입력하면 종결 문자는 </code>//<code class="highlighter-rouge">로 변경됩니다. 다시 </code>DELIMITER ;`로 하면 종결 문자는 다시 세미콜론으로 복원됩니다.</p>
+
+:ET

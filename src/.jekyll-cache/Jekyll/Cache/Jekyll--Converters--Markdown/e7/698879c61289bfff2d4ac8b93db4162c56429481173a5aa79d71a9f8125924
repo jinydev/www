@@ -1,0 +1,126 @@
+I"#,<p>프로시저를 호출할 때 단순하게 프로시저의 이름만 지정하는 방법과 이름 뒤에 소괄호를 붙여서 실행하는 방법 두 가지를 배웠습니다.</p>
+
+<p>프로시저 이름 뒤에 소괄호를 붙여서 호출을 한다는 것은 소괄호 안에 매개변수 인자와 같은 값을 전달할 수 있다는 확장된 의미일 것입니다. 프로시저는 마치 함수와 유사하기 도 합니다. 차이점이라면 반환값이 없다는 것입니다.</p>
+
+<h2 id="2241-매개변수-선언">22.4.1 매개변수 선언</h2>
+<p>프로시저는 호출할 때 매개변수를 전달하여 실행할 수 있습니다. 매개변수는 프로시저 작성 시에 프로시저명 뒤에 있는 소괄호 안에 작성하면 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE PROCEDURE 프로시저명(변수명 데이터 타입) 
+</code></pre></div></div>
+
+<p>프로시저의 매개변수 선언은 변수명 + 데이터 타입 형태로 선언합니다. 프로시저의 데이터 타입은 변수명 뒤에 선언하는 것이 기존 PHP 함수와 약간의 차이점이 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">mem</span><span class="p">(</span><span class="n">a</span> <span class="nb">INT</span><span class="p">)</span> 
+<span class="k">BEGIN</span> 
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">Id</span><span class="o">=</span><span class="n">a</span><span class="p">;</span> 
+<span class="k">END</span> 
+</code></pre></div></div>
+
+<h2 id="2242-인자-전달">22.4.2 인자 전달</h2>
+<p>매개변수를 포함한 프로시저를 실행할 수 있습니다. 매개변수를 전달할 때는 프로시저에 서 지정한 데이터의 타입과 동일한 형태의 값을 사용해야 합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CALL 프로시저(값); 
+</code></pre></div></div>
+
+<p>매개변수를 포함하고 있는 프로시저는 인자값을 넣어서 호출합니다. 인자값은 프로시저 명()의 소괄호 안에 넣으면 됩니다.</p>
+
+<h2 id="2243-쿼리-실습">22.4.3 쿼리 실습</h2>
+<p>매개변수를 포함하는 프로시저를 생성해 보고 실행합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="err">프로시저를</span> <span class="err">호출합니다</span><span class="p">.</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">DELIMITER</span> <span class="o">//</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">mem</span><span class="p">(</span><span class="n">a</span> <span class="nb">INT</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="k">BEGIN</span>
+    <span class="o">-&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">members</span> <span class="k">WHERE</span> <span class="n">Id</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+    <span class="o">-&gt;</span> <span class="k">END</span>
+    <span class="o">-&gt;</span> <span class="o">//</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">DELIMITER</span> <span class="p">;</span> 
+
+</code></pre></div></div>
+<p>매개변수로는 회원의 Id 값을 전달받습니다. 회원 아이디를 이용하여 회원의 정보를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 프로시저를 호출합니다.
+mysql&gt; CALL mem(1);
++----+----------+-----------+----------+-------+---------+-----------+-------------------+
+| Id | LastName | FirstName | Address  | City  | Country | manager   | email             |
++----+----------+-----------+----------+-------+---------+-----------+-------------------+
+|  1 | hojin    | lee       | shinchon | seoul | korea   | infohojin | hojin@jinyphp.com |
++----+----------+-----------+----------+-------+---------+-----------+-------------------+
+1 row in set (0.00 sec)
+Query OK, 0 rows affected (0.01 sec)
+
+</code></pre></div></div>
+
+<p>매개변수를 통하여 회원 목록을 출력했습니다.</p>
+
+<h2 id="2244-php-실습">22.4.4 PHP 실습</h2>
+<p>PHP 코드를 통하여 프로시저 호출을 실습해 보도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">callProcedure</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span><span class="nv">$args</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"CALL </span><span class="nv">$name</span><span class="s2">(</span><span class="nv">$args</span><span class="s2">);"</span><span class="p">;</span>
+
+                <span class="k">if</span><span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$rowss</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                    <span class="nv">$row_cnt</span> <span class="o">=</span> <span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$row_cnt</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                    <span class="p">}</span>
+
+                    <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">free</span><span class="p">();</span>
+                    <span class="k">return</span> <span class="nv">$rowss</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 프로시저명을 적어주세요."</span><span class="p">);</span>
+            <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | pro-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"mem"</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">callProcedure</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span><span class="mi">1</span><span class="p">)){</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+        
+	<span class="p">}</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] CALL mem(1);
+tables fields = 1
+0=stdClass Object ( [Id] =&gt; 1 [LastName] =&gt; hojin [FirstName] =&gt; lee [Address] =&gt; shinchon [City] =&gt; seoul [Country] =&gt; Korea [manager] =&gt; infohojin [email] =&gt; hojin@jinyphp.com ) 
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,52 @@
+I"<p>VIEW로 생성된 가상 테이블도 기존 사용하던 테이블 목록 출력 쿼리에서도 확인할 수 있습니다. SHOW TABLES 는 가상 테이블과 물리적 테이블을 구분하지는 않습니다. 
+기존 테이블 목록을 확인하는 것과 같은 명령을 실행하면 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SHOW</span> <span class="n">TABLES</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>show tables 명령은 테이블의 이름만 출력되기 때문에 기존 물리적 테이블인지 가상 테 이블인지 확인할 수 없습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">show</span> <span class="k">create</span> <span class="k">table</span> <span class="err">테이블명</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>이런 경우에는 테이블의 상세 정보를 확인하면 알 수 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; show create table mem_view;
++----------+--------------------------------------+----------------------+----------------------+
+| View     | Create View                                                                                                                                                                                                                                                                                                                                                                   | character_set_client | collation_connection |
++----------+--------------------------------------+----------------------+----------------------+
+| mem_view | CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mem_view` AS select `members`.`Id` AS `Id`,`members`.`LastName` AS `LastName`,`members`.`FirstName` AS `FirstName`,`members`.`Address` AS `Address`,`members`.`City` AS `City`,`members`.`Country` AS `Country`,`members`.`manager` AS `manager`,`members`.`email` AS `email` from `members` | utf8                 | utf8_general_ci      |
++----------+--------------------------------------+----------------------+----------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>가상 테이블도 기존 물리적 테이블과 같이 상세 구조 정보를 확인할 수 있습니다. 심지어 명령어도 동일하게 같이 사용할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DESC</span> <span class="n">TABLES</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>다음은 가상 테이블의 상세 정보를 DESC로 확인합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc mem_view;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| Id        | int(11)      | NO   |     | 0       |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| Address   | varchar(255) | YES  |     | NULL    |       |
+| City      | varchar(255) | YES  |     | NULL    |       |
+| Country   | varchar(255) | YES  |     | NULL    |       |
+| manager   | varchar(100) | YES  |     | NULL    |       |
+| email     | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+</code></pre></div></div>
+:ET

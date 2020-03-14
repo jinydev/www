@@ -1,0 +1,121 @@
+I"�/<p>생성된 테이블에 새로운 컬럼을 추가할 수 있습니다. 컬럼을 추가할 때는 기존의 컬럼명 과 중복되지 않도록 이름을 잘 정의해야 합니다. 컬럼명이 중복이 되면 쿼리 명령은 실행 오류를 발생합니다.</p>
+
+<p>테이블에 컬럼을 추가할 때는 ADD 키워드를 추가합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">ADD</span> <span class="err">컬럼</span> <span class="err">이름</span> <span class="err">자료형</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="0811-쿼리-실습">08.1.1 쿼리 실습</h2>
+<p>새로운 컬럼을 하나 추가해 봅니다. 먼저 desc 쿼리 명령을 통하여 기존 members 테이블의 구조를 확인합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">desc</span> <span class="n">members</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-----------+--------------+------+-----+---------+----------------+</span>
+<span class="o">|</span> <span class="n">Field</span>     <span class="o">|</span> <span class="k">Type</span>         <span class="o">|</span> <span class="k">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> <span class="n">Extra</span>          <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+--------------+------+-----+---------+----------------+</span>
+<span class="o">|</span> <span class="n">Id</span>        <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>      <span class="o">|</span> <span class="k">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span> <span class="n">auto_increment</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">LastName</span>  <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">FirstName</span> <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">Address</span>   <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">City</span>      <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">Country</span>   <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+--------------+------+-----+---------+----------------+</span>
+<span class="mi">6</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">02</span> <span class="n">sec</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>기존 <code class="highlighter-rouge">members</code> 테이블에 나이를 저장할 새로운 컬럼 age를 추가해 보도록 하겠습니다. 데이터 타입은 가변 문자열 10자리 <code class="highlighter-rouge">varchar(10)</code>으로 설정합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">members</span> <span class="k">add</span> <span class="n">age</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; alter table members add age varchar(10);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+</code></pre></div></div>
+
+<p>컬럼을 추가하는 쿼리 명령이 정상적으로 잘 처리가 되었습니다. 다시 한번 desc 쿼리 명령을 통하여 새롭게 추가한 컬럼이 추가되었는지 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
+| age       | varchar(10)  | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>위의 결과를 보면 새로운 컬럼 age가 마지막에 추가된 것을 확인할 수 있습니다.</p>
+
+<h2 id="0812-php-실습">08.1.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 테이블에 새로운 컬럼을 추가해 보도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 컬럼 데이터 타입을 수정합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">tableFieldADD</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">,</span> <span class="nv">$pos</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> ADD </span><span class="nv">$field</span><span class="s2"> </span><span class="nv">$datatype</span><span class="s2">"</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$pos</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span><span class="p">(</span><span class="nv">$pos</span> <span class="o">==</span> <span class="s2">"first"</span><span class="p">)</span> <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">" first"</span><span class="p">;</span> 
+                    <span class="k">else</span> <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">" after </span><span class="nv">$pos</span><span class="s2">"</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 컬럼추가!"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>    
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>예제 파일 | alter-01.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$field</span> <span class="o">=</span> <span class="s2">"address2"</span><span class="p">;</span>
+	<span class="nv">$datatype</span> <span class="o">=</span> <span class="s2">"varchar(255)"</span><span class="p">;</span>
+    
+	<span class="c1">// 필드를 추가합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableFieldADD</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members ADD address2 varchar(255)
+컬럼추가!
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,135 @@
+I"�#<p>앞에서는 테이블의 구조와 데이터를 한 번에 복사하는 방법에 대해서 학습했습니다. 그런 데 데이터를 제외한 테이블의 구조만을 복사할 수도 있습니다. 게시글과 같이 다중 테이 블로 분산된 포럼 등을 개발할 때 테이블의 구조만 새롭게 복사하는 기능은 매우 유용합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="err">신규</span><span class="n">_</span><span class="err">테이블</span> <span class="k">LIKE</span> <span class="err">복사</span><span class="n">_</span><span class="err">테이블</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>테이블의 구조만 복사할 때는 LIKE 키워드를 이용합니다.</p>
+
+<h2 id="1521-쿼리-실행">15.2.1 쿼리 실행</h2>
+<p>이번에는 기존 members 테이블의 구조만 복사해 보도록 합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create table members2 like members; 
+</code></pre></div></div>
+
+<p>먼저 복사를 하기 전에 desc 명령과 select 명령을 통하여 구조와 데이터를 확인합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+6 rows in set (0.02 sec)
+
+mysql&gt; select * from members;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>테이블의 정보만 members2로 구조만 복사합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; create table members2 like members;
+Query OK, 0 rows affected (0.03 sec)
+
+</code></pre></div></div>
+
+<p>테이블 구조가 정상적으로 복사되었습니다. 복사된 테이블을 desc 명령을 통해서 확인해 봅니다. 또한 select를 통하여 데이터의 목록도 같이 출력해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members2;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+6 rows in set (0.03 sec)
+
+mysql&gt; select * from members2;
+Empty set (0.00 sec)
+
+</code></pre></div></div>
+<p>위의 결과를 보면 테이블은 정상적으로 복사가 잘 되었지만 데이터는 하나도 복사되지 않았습니다. select로 출력 시 데이터가 없는 것을 확인해 볼 수 있습니다.</p>
+
+<h2 id="1522-php-실행">15.2.2 PHP 실행</h2>
+<p>PHP 코드를 통하여 테이블의 구조를 복사해 봅니다. 새로운 테이블 복사 메서드를 추가 하여 소스에 삽입합니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테이블 구조를 복사합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">copyTable</span><span class="p">(</span><span class="nv">$src</span><span class="p">,</span><span class="nv">$dst</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$src</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$dst</span><span class="p">){</span>
+                    <span class="nv">$dstName</span> <span class="o">=</span> <span class="nv">$dst</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$dstName</span> <span class="o">=</span> <span class="nv">$src</span><span class="o">.</span><span class="s2">"_copy"</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"create table </span><span class="nv">$dstName</span><span class="s2"> like </span><span class="nv">$src</span><span class="s2">"</span><span class="p">;</span>
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 테이블 복사!"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 원본 테이블명을 적어주세요."</span><span class="p">);</span>
+            <span class="p">}</span>           
+            
+<span class="p">}</span>
+ 
+</code></pre></div></div>
+
+<p>예제 파일 | copy-02.php</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 테이블을 복사합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">copyTable</span><span class="p">(</span><span class="s2">"members"</span><span class="p">,</span> <span class="s2">"members_1"</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] create table members_1 like members
+테이블 복사!
+
+</code></pre></div></div>
+:ET

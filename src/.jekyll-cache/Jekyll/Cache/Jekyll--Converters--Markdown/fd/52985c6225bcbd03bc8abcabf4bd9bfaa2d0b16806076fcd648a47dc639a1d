@@ -1,0 +1,183 @@
+I"H3<p>별칭은 단순히 컬럼명의 변경뿐만 아니라 쿼리를 통하여 연산을 처리할 때의 결과값에도 많이 사용합니다. 결과값은 별도의 컬럼명이 없기 때문입니다.</p>
+
+<p>실습을 위해서 예제 테이블과 기초 데이터를 준비합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테이블 생성</span>
+<span class="nx">CREATE</span> <span class="nx">TABLE</span> <span class="sb">`products`</span> <span class="p">(</span>
+  <span class="sb">`Id`</span> <span class="nx">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="nx">NOT</span> <span class="k">NULL</span> <span class="nx">AUTO_INCREMENT</span><span class="p">,</span>
+  <span class="sb">`name`</span> <span class="nx">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="nx">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="sb">`price`</span> <span class="nx">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="nx">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="sb">`vat`</span> <span class="nx">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="nx">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="sb">`stock`</span> <span class="nx">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="nx">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nx">PRIMARY</span> <span class="nx">KEY</span> <span class="p">(</span><span class="sb">`Id`</span><span class="p">)</span>
+<span class="p">)</span> <span class="nx">ENGINE</span><span class="o">=</span><span class="nx">InnoDB</span> <span class="nx">DEFAULT</span> <span class="nx">CHARSET</span><span class="o">=</span><span class="nx">utf8</span><span class="p">;</span>
+
+<span class="c1">// 기초데이터</span>
+<span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="sb">`products`</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">'S-827'</span><span class="p">,</span><span class="mi">20000</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="s1">'S-532D'</span><span class="p">,</span><span class="mi">36000</span><span class="p">,</span><span class="mi">3600</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<h2 id="1621-연산-명칭">16.2.1 연산 명칭</h2>
+<p>정수형 타입의 컬럼 데이터는 +, -, /, * 등의 사칙연산을 할 수 있습니다. 또한 함수를 실 행할 때도 출력 필드의 명칭을 정할 수 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from products;
++----+--------+-------+------+-------+
+| Id | name   | price | vat  | stock |
++----+--------+-------+------+-------+
+|  1 | S-827  | 20000 | 2000 |     5 |
+|  2 | S-532D | 36000 | 3600 |     7 |
++----+--------+-------+------+-------+
+2 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>제품 목록 테이블에는 단가와 부가세 가격만 있습니다. 합계에 대한 컬럼 항목은 없습니다. 가격과 부가세 컬럼을 기준으로 합계를 출력해 봅니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">price</span><span class="o">+</span><span class="n">vat</span> <span class="k">as</span> <span class="n">total</span> <span class="k">from</span> <span class="n">products</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select price+vat as total from products;
++-------+
+| total |
++-------+
+| 22000 |
+| 39600 |
++-------+
+2 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>2개의 값이 합산된 결과가 출력됩니다. 또한 출력된 값의 컬럼 명칭으로 total로 설정했습 니다. total 컬럼 명칭은 기존 테이블에서 없는 컬럼입니다. 연산의 의해서 새롭게 별칭으 로 만들어진 임시 컬럼 이름입니다.</p>
+
+<p>AS 별칭 키워드를 이용하여 새로운 가상의 컬럼명을 하나 더 만들어 출력합니다.</p>
+
+<h2 id="1622-php-실습">16.2.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 별칭 실습해 봅니다.</p>
+
+<p>예제 파일 | alias-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"products"</span><span class="p">;</span>
+
+	<span class="c1">// 컬럼 지정조회 </span>
+	<span class="k">echo</span> <span class="s2">"===== 컬럼조회 =====&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="s2">"price+vat as total"</span><span class="p">)){</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+===== 컬럼조회 =====
+쿼리성공] SELECT price+vat as total FROM products;
+tables fields = 2
+0=stdClass Object ( [total] =&gt; 22000 )
+1=stdClass Object ( [total] =&gt; 39600 ) 
+
+</code></pre></div></div>
+
+<h2 id="1623-함수-명칭">16.2.3 함수 명칭</h2>
+<p>사칙연산 이외에도 SQL의 내장 함수를 사용할 때도 별칭은 매우 유용합니다. 내장 함수 를 사용할 때 출력 명칭은 불분명합니다. 함수를 사용하게 되면 컬럼명이 함수명으로 출 
+력됩니다.</p>
+
+<p>함수를 사용할 때도 AS 별칭을 사용하면 새로운 출력 명칭을 선언할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="k">avg</span><span class="p">(</span><span class="n">price</span><span class="p">)</span> <span class="k">as</span> <span class="k">avg</span> <span class="k">from</span> <span class="n">products</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 쿼리는 제품 테이블에서 가격 컬럼의 평균을 출력하는 예제입니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select avg(price) as avg from products;
++------------+
+| avg        |
++------------+
+| 28000.0000 |
++------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>별칭으로 선언한 이름으로 결과를 출력합니다. 만일 함수에 별칭을 설정하지 않고 함수만 실행했을 경우에는 함수명으로 출력됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select avg(price) from products;
++------------+
+| avg(price) |
++------------+
+| 28000.0000 |
++------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="1624-php-실습">16.2.4 PHP 실습</h2>
+<p>PHP 코드를 통하여 별칭 실습해 봅니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">FirstName</span><span class="p">,</span><span class="s1">'_ '</span><span class="p">,</span><span class="n">LastName</span><span class="p">)</span> <span class="k">AS</span> <span class="n">username</span> <span class="k">FROM</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>위의 예제는 성과 이름 필드를 합쳐서 username 별칭으로 선언합니다. AS 별칭을 사용 하여 새로운 컬럼을 추가할 수 있습니다.</p>
+
+<p>예제 파일 | alias-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+
+	<span class="c1">// 컬럼 지정조회 </span>
+	<span class="k">echo</span> <span class="s2">"===== 컬럼조회 =====&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="s2">"CONCAT(FirstName,'_ ',LastName) AS username"</span><span class="p">)){</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+ 			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+===== 컬럼조회 =====
+쿼리성공] SELECT CONCAT(FirstName,'_ ',LastName) AS username FROM members;
+tables fields = 6
+0=stdClass Object ( [username] =&gt; lee_ hojin )
+1=stdClass Object ( [username] =&gt; hojin_ lee )
+2=stdClass Object ( [username] =&gt; kim_ james )
+3=stdClass Object ( [username] =&gt; jiny_ 1234 )
+4=stdClass Object ( [username] =&gt; jiny_ 1234 )
+5=stdClass Object ( [username] =&gt; jiny_ 123400 ) 
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,66 @@
+I"�<p>쿼리 다음에 LIMIT 숫자만 작성하는 것은 상단 데이터의 일부를 선택하는 것입니다. 대시보드(dashboard)와 같이 데이터의 상위 몇 개만 출력할 때는 이와 같은 간단한 출력 제한은 편리합니다.</p>
+
+<p>하지만 제일 상단이 아닌 중간의 일부분만을 데이터로 읽어오고자 할 경우에는 LIMIT 인 자를 더 주어야 합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span><span class="p">,</span> <span class="err">컬럼명</span><span class="p">,</span> <span class="err">…</span> <span class="k">FROM</span> <span class="err">테이블명</span> <span class="k">LIMIT</span> <span class="err">시작</span><span class="p">,</span> <span class="err">표시할</span> <span class="err">수</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>LIMIT 다음에 콤마 (,)를 통하여 시작 값과 출력할 개수를 지정하면 데이터의 일부 영역의 내용만 제한하여 출력할 수 있습니다.</p>
+
+<h2 id="1321-콘솔-실습">13.2.1 콘솔 실습</h2>
+<p>시작 값은 데이터를 출력할 offset과 같은 성격을 가집니다. 데이터의 출력 위치를 이동후에 지정한 데이터의 수만큼 읽어서 화면에 출력합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">code</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>주문 목록에서 위치를 2로 이동한 다음에 연속된 3개의 데이터를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select code from orders limit 2, 3; +-------+ | code | +-------+ | O_003 | | O_004 | | O_005 | +-------+ 3 rows in set (0.00 sec) 
+</code></pre></div></div>
+
+<p>따라서 두 번째 데이터부터 연속된 3개의 데이터만 출력합니다.</p>
+
+<h2 id="1322-php-실습">13.2.2 PHP 실습</h2>
+<p>PHP 코드를 이용하여 데이터의 일정 부분의 영역을 출력합니다.</p>
+
+<p>예제 파일 | limit-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 기본 select 쿼리</span>
+	<span class="nv">$query</span> <span class="o">=</span> <span class="s2">"SELECT Id, FirstName, LastName FROM members"</span><span class="p">;</span>
+	<span class="c1">// 기본쿼리에 limit 제한을 설정합니다.</span>
+	<span class="nv">$queryString</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="nv">$query</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">selectRowss</span><span class="p">(</span><span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+  
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] SELECT Id, FirstName, LastName FROM members limit 2 ,3
+tables fields = 3
+0=stdClass Object ( [Id] =&gt; 3 [FirstName] =&gt; kim [LastName] =&gt; james )
+1=stdClass Object ( [Id] =&gt; 5 [FirstName] =&gt; jiny [LastName] =&gt; 1234 )
+2=stdClass Object ( [Id] =&gt; 6 [FirstName] =&gt; jiny [LastName] =&gt; 1234 ) 
+
+</code></pre></div></div>
+:ET

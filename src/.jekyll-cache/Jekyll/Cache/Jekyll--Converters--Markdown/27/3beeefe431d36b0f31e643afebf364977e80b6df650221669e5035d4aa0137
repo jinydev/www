@@ -1,0 +1,41 @@
+I"[<p>지금까지의 SELECT는 테이블의 컬럼 데이터 값을 읽어와서 출력했습니다. SELECT는 컬럼 데이터 이외에 직접 정의한 상수도 출력할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">상수값</span><span class="p">,</span> <span class="err">상수값</span> <span class="err">…</span><span class="p">.;</span> 
+</code></pre></div></div>
+
+<h2 id="1131-쿼리-실습">11.3.1 쿼리 실습</h2>
+<p>SELECT 쿼리 명령어 다음에 단일 따옴표를 통하여 상수값을 입력합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="s1">'aaa'</span><span class="p">,</span><span class="s1">'bbb'</span><span class="p">,</span><span class="s1">'ccc'</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>상수값이 여러 개일 경우 콤마로 구분합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select 'aaa','bbb','ccc';
++-----+-----+-----+
+| aaa | bbb | ccc |
++-----+-----+-----+
+| aaa | bbb | ccc |
++-----+-----+-----+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>위의 출력 결과를 보면 SELECT 다음에 입력한 상수값을 그냥 출력합니다. 또한 간단한 연산 식도 입력할 수 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select 1+1;
++-----+
+| 1+1 |
++-----+
+|   2 |
++-----+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>연산 식은 간단한 계산이나 함수 값을 출력할 때 사용하면 편리합니다.</p>
+:ET

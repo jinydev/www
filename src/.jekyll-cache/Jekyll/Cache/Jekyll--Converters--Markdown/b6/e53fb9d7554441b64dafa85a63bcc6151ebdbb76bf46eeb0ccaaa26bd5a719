@@ -1,0 +1,45 @@
+I"�<p>보통 sql 파일들은 데이터를 보관하고 있는 형태의 백업 파일이 대부분입니다. 하지만 sql 파일에 특정한 동작을 조작하는 실행 명령이 있을 경우 특수한 쿼리 문법으로 외부의 sql 파일을 실행할 수 있습니다.</p>
+
+<p>다음과 같이 SOURCE 명령은 외부에 저장된 SQL 명령문 파일을 읽어서 실행할 수 있습 니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SOURCE</span> <span class="err">파일명</span> 
+</code></pre></div></div>
+
+<p>만일 다음과 같은 예제 sql 파일이 있다고 합시다.</p>
+
+<p>예제 파일 | source.sql</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">jiny</span><span class="p">;</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">members</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>그리고 SOURCE 명령을 통하여 이 외부 sql 파일을 실행합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SOURCE</span> <span class="k">source</span><span class="p">.</span><span class="k">sql</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SOURCE</span> <span class="k">source</span><span class="p">.</span><span class="k">sql</span><span class="p">;</span>
+<span class="k">Database</span> <span class="n">changed</span>
+<span class="o">+</span><span class="c1">----+----------+-----------+-------------+-------+---------+-----------+-------------------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span> <span class="n">LastName</span> <span class="o">|</span> <span class="n">FirstName</span> <span class="o">|</span> <span class="n">Address</span>     <span class="o">|</span> <span class="n">City</span>  <span class="o">|</span> <span class="n">Country</span> <span class="o">|</span> <span class="n">manager</span>   <span class="o">|</span> <span class="n">email</span>             <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+-----------+-------------+-------+---------+-----------+-------------------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">hojin</span>    <span class="o">|</span> <span class="n">lee</span>       <span class="o">|</span> <span class="n">shinchon</span>    <span class="o">|</span> <span class="n">seoul</span> <span class="o">|</span> <span class="n">korea</span>   <span class="o">|</span> <span class="n">infohojin</span> <span class="o">|</span> <span class="n">hojin</span><span class="o">@</span><span class="n">jinyphp</span><span class="p">.</span><span class="n">com</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">jiny</span>     <span class="o">|</span> <span class="k">NULL</span>      <span class="o">|</span> <span class="k">NULL</span>        <span class="o">|</span> <span class="k">NULL</span>  <span class="o">|</span> <span class="n">korea</span>   <span class="o">|</span> <span class="n">infohojin</span> <span class="o">|</span> <span class="n">jiny</span><span class="o">@</span><span class="n">jinyphp</span><span class="p">.</span><span class="n">com</span>  <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">james</span>    <span class="o">|</span> <span class="n">kim</span>       <span class="o">|</span> <span class="n">youngdun</span><span class="o">-</span><span class="n">po</span> <span class="o">|</span> <span class="n">seoul</span> <span class="o">|</span> <span class="n">korea</span>   <span class="o">|</span> <span class="n">info</span>      <span class="o">|</span> <span class="n">james</span><span class="o">@</span><span class="n">jinyphp</span><span class="p">.</span><span class="n">com</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+-----------+-------------+-------+---------+-----------+-------------------+</span>
+<span class="mi">3</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위의 예처럼 외부에 저장된 sql 명령 파일을 읽어서 실행한 결과를 출력합니다.</p>
+
+<h2 id="0281-외부-실행">02.8.1 외부 실행</h2>
+<p><code class="highlighter-rouge">mysql&gt;</code> 명령 입력창에서 SOURCE 명령을 통하여 외부 파일을 실행할 수도 있지만, 윈 도우 커맨드 창/리눅스 터미널에서 mysql 명령을 통하여 외부 실행이 가능합니다.</p>
+
+<p>mysql 명령을 통하여 외부 실행을 할때는 옵션 <code class="highlighter-rouge">-e</code>를 같이 사용합니다.</p>
+
+<p>| 명령 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span><span class="err">계정명</span> <span class="o">-</span><span class="n">p</span><span class="err">패스워드</span> <span class="o">-</span><span class="n">e</span> <span class="err">“</span><span class="k">SOURCE</span> <span class="err">파일명”</span> 
+</code></pre></div></div>
+:ET

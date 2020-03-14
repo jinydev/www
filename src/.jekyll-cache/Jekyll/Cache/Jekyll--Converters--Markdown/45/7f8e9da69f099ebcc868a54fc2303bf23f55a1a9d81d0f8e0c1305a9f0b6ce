@@ -1,0 +1,33 @@
+I"�<p>PHP 언어는 타 언어와 달리 MySQL과 DB 연동을 하기 위한 다양한 접속 방법을 제공합 니다. 무려 세 가지의 접속 방법을 제공합니다. PHP 5.x 이상에서는 세 가지 방법으로 코 드상 MySQL에 접속할 수 있는데 바로 객체지향 방식과 절차적 방식, PDO 방식이 그것 입니다.</p>
+
+<ul>
+  <li>Mysql</li>
+  <li>MySQLi extension(‘i’는 향샹된 기능이라는 의미)</li>
+  <li>PDO(PHP Data Objects)</li>
+</ul>
+
+<p>하지만 위 세 가지 중 보안상의 이유로 PHP 7.x에서 기존에 사용하던 mysql_ *** 함수들 은 제거되었습니다. 따라서 최신 버전의 PHP에서는 두 가지 방법만 사용 가능하다고 보 면 됩니다.</p>
+
+<p>MySQL과 접속한 PHP는 코드상에서 SQL 쿼리 명령을 동적으로 생성하여 DB 시스템에 전송할 수 있습니다. 또한 전송된 데이터를 배열 또는 객체 형태로 읽어올 수 있습니다.</p>
+
+<h2 id="0421-mysqli">04.2.1 MySQLi</h2>
+<p>기존에 가장 많이 사용하는 DB 접속 함수로는 mysql_ ***이 있었습니다. Mysql_ 함수들 은 쿼리의 실행 결과 반환값을 배열 형태로 받습니다. 하지만 이 함수들은 시간이 지날수 록 보안 문제점들이 하나씩 발견되기 시작했습니다.</p>
+
+<p>기존 <code class="highlighter-rouge">mysql_ ***</code> 함수들의 보안 문제점과 보다 향상된 기능 처리를 위해서 고안된 방법이 객체지향형 <code class="highlighter-rouge">mysqli_ ***</code> 클래스입니다. <code class="highlighter-rouge">mysqli_ ***</code> 클래스는 MySql과 관련된 기능들을 클래스 객체화하여 접근, 사용할 수 있습니다. 또한 반환값도 객체 형태로 반환하여 처리 할 수 있습니다.</p>
+
+<ul>
+  <li>MySQLi 설치: 윈도우/리눅스 모두 PHP 5.x 이상에서는 대부분 MySQLi 확장 기능 은 자동적으로 설치됩니다. 보다 자세한 내용은 <code class="highlighter-rouge">http://php.net/manual/en/mysqli. installation.php</code>에서 확인 가능합니다.</li>
+</ul>
+
+<h2 id="0422-pdo">04.2.2 PDO</h2>
+<p>PHP의 확장 클래스 MySQLi만으로도 충분히 모든 데이터를 처리할 수 있습니다. 하지만 이 클래스는 MySql 데이터베이스 시스템 위주로 개발된 클래스입니다.</p>
+
+<p>PHP는 MySql 데이터베이스 시스템 이외에도 다양한 데이터베이스 시스템을 이용할 수 있습니다. PHP는 MySql을 통하여서 여러 데이터베이스를 접속하고 처리할 수 있는 PDO라는 방식을 하나 더 제공합니다.</p>
+
+<p>PDO 방식은 MySQL 이외에 12가지의 다양한 데이터베이스 접속 및 코딩을 작성할 수 있습니다. 반면에 MySQLi는 MySQL에 특화된 클래스입니다. 현재 개발하는 프로젝트 가 MySQL 이외에 다양한 데이터베이스를 지원해야 한다면 PDO 방식을 추천합니다. PDO 방식은 간단한 쿼리 변경으로 처리할 수 있습니다.</p>
+
+<ul>
+  <li>PDO 설치: PDO 설치에 관련한 자세한 사항은 <code class="highlighter-rouge">http://php.net/manual/en/pdo. installation.php</code>을 통해서 확인 가능합니다.</li>
+</ul>
+
+:ET

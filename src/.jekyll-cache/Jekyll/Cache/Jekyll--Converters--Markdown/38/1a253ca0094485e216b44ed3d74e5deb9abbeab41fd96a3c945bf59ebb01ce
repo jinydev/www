@@ -1,0 +1,86 @@
+I"<p>이전에는 테이블의 컬럼 전체에 대해서 데이터 복사를 진행했습니다. 만일 이전의 테이블 에 데이터가 하나도 없는 경우에는 문제가 없습니다. 하지만 테이블에는 프라이머리 키 등 중복을 허용하지 않는 컬럼도 존재합니다. 이런 경우에는 전체 복사보다는 컬럼을 선 택하여 복사하는 것이 중복으로 인한 오류를 방지할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="err">기본테이블</span> <span class="p">(</span><span class="err">컬럼명</span><span class="p">)</span> <span class="k">SELECT</span> <span class="err">컬럼명</span> <span class="k">FROM</span> <span class="err">복사</span><span class="n">_</span><span class="err">테이블</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>컬럼을 선택하여 복사할 때에는 기존 전체를 선택하는 * 자리에 컬럼명을 지정하면 됩니다.</p>
+
+<h2 id="1541-쿼리-실습">15.4.1 쿼리 실습</h2>
+<p>컬럼을 지정하여 데이터를 복사해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members2;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+4 rows in set (0.00 sec) 
+
+</code></pre></div></div>
+
+<p>복사하려고 하는 members2 테이블에는 이미 데이터가 들어 있습니다. 만일 동일한 데이터를 한 번 더 복사해서 넣는다면 Id 값의 중복으로 실행 쿼리는 오류가 발생합니다.</p>
+
+<p>이런 경우 Id 값을 제외한 컬럼 선택으로 데이터를 복사해 봅니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">insert</span> <span class="k">into</span> <span class="n">members2</span> <span class="p">(</span><span class="n">LastName</span><span class="p">)</span> <span class="k">select</span> <span class="p">(</span><span class="n">LastName</span><span class="p">)</span> <span class="k">from</span> <span class="n">members</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; insert into members2  (LastName) select (LastName) from members;
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+</code></pre></div></div>
+<p>복사 쿼리가 정상적으로 실행되었습니다. select를 통하여 테이블의 내용을 다시 한번 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members2;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
+|  5 | hojin    | NULL      | NULL        | NULL  | NULL    |
+|  6 | jiny     | NULL      | NULL        | NULL  | NULL    |
+|  7 | james    | NULL      | NULL        | NULL  | NULL    |
+|  8 | eric     | NULL      | NULL        | NULL  | NULL    |
++----+----------+-----------+-------------+-------+---------+
+8 rows in set (0.00 sec) 
+
+</code></pre></div></div>
+<p>동일한 데이터를 Id 값이 자동 증가된 형태로 추가되어 들어간 것을 확인할 수 있습니다.</p>
+
+<h2 id="1542-php-실습">15.4.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 컬럼 선택 데이터 복사를 실습해 봅니다.</p>
+
+<p>예제 파일 | copy-04.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+    <span class="c1">// ++ Mysqli DB 연결.</span>
+    <span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+    <span class="c1">// 테이블을 복사합니다.</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">insertSelect</span><span class="p">(</span><span class="s2">"members"</span><span class="p">,</span> <span class="s2">"members1"</span><span class="p">,</span><span class="s2">"FirstName"</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] insert into members1 (FirstName) select (FirstName) from members
+데이터 복사!
+
+</code></pre></div></div>
+:ET

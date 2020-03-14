@@ -1,0 +1,46 @@
+I"�<p>테이블에는 기본적으로 각각의 열을 구분하는 프라이머리 키 컬럼이 있습니다. 또한 이 키 값은 자동증가 제약사항 속성이 설정되어 있습니다. 자동 증가되는 프라이머리 키는 새로운 데이터를 삽입할 때마다 + 1씩 증가가 됩니다. 또한 새로운 데이터를 저장할 때 프 라이머리 키 값은 자동 증가되기 때문에 생략하고 저장합니다.</p>
+
+<p>이렇게 생략된 프라이머리 키 값을 새로운 데이터 저장 후에 확인할 수 있습니다. 최신 증 가된 프라이머리 키 값을 확인하는 이유는 데이터 삽입과 동시에 삽입한 데이터를 수정, 다른 테이블에 연결하는 등의 작업이 필요한 경우입니다.</p>
+
+<h2 id="1041-php-실습">10.4.1 PHP 실습</h2>
+<p>새롭게 추가된 데이터의 최신 프라이머리 Id는 PHP의 제공된 함수를 통하여 확인할 수 있습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 마지막 삽입된 Id 값 확인</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">insertId</span><span class="p">(){</span>
+            <span class="k">return</span> <span class="nx">mysqli_insert_id</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | insert-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 어레이 배열의 키/값을 통하여 데이터를 삽입합니다.</span>
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$arr</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'FirstName'</span> <span class="o">=&gt;</span> <span class="s2">"jiny"</span><span class="p">,</span> <span class="s1">'LastName'</span> <span class="o">=&gt;</span> <span class="s2">"123400"</span><span class="p">);</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">arrInsert</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span><span class="nv">$arr</span><span class="p">);</span>
+
+	<span class="k">echo</span> <span class="s2">"마지막 Id = "</span><span class="o">.</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">insertID</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+FirstName
+LastName
+쿼리성공] INSERT INTO members (`FirstName`,`LastName`) VALUES ('jiny','123400');
+데이터 삽입!
+마지막 Id = 7
+
+</code></pre></div></div>
+:ET

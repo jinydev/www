@@ -1,0 +1,42 @@
+I"<p>기본적으로 INSERT 명령은 하나의 데이터 세트를 저장합니다. 하지만 컬럼의 개수가 일정한 다수의 데이터는 다음과 같이 콤마로 구분하여 복수의 데이터를 입력할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="err">테이블명</span> <span class="k">VALUES</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="p">...),</span>
+<span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="p">...),</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="p">...);</span>
+
+</code></pre></div></div>
+
+<p>위처럼 기존 INSERT INTO 문구에서 데이터 블록을 콤마 (,)로 구분하여 여러 데이터를 한 번에 입력할 수 있는 문법을 만들 수 있습니다.</p>
+
+<h2 id="1031-쿼리-실습">10.3.1 쿼리 실습</h2>
+<p>2개의 데이터를 하나의 INSERT 쿼리를 생성하여 저장합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">insert</span> <span class="k">into</span> <span class="n">members</span> <span class="k">values</span> <span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="s1">'james'</span><span class="p">,</span><span class="s1">'kim'</span><span class="p">,</span><span class="s1">'youngdun-po'</span><span class="p">,</span><span class="s1">'seoul'</span><span class="p">,</span><span class="s1">'korea'</span><span class="p">),</span> <span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="s1">'eric'</span><span class="p">,</span><span class="s1">'jung'</span><span class="p">,</span><span class="s1">'seocho-gu'</span><span class="p">,</span><span class="s1">'seoul'</span><span class="p">,</span><span class="s1">'korea'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>2개의 데이터는 ‘괄호 + 콤마 + 괄호’ 형태로 구분됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">members</span> <span class="k">values</span> <span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="s1">'james'</span><span class="p">,</span><span class="s1">'kim'</span><span class="p">,</span><span class="s1">'youngdun-po'</span><span class="p">,</span><span class="s1">'seoul'</span><span class="p">,</span><span class="s1">'korea'</span><span class="p">),</span> <span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="s1">'eric'</span><span class="p">,</span><span class="s1">'jung'</span><span class="p">,</span><span class="s1">'seocho-gu'</span><span class="p">,</span><span class="s1">'seoul'</span><span class="p">,</span><span class="s1">'korea'</span><span class="p">);</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">2</span> <span class="k">rows</span> <span class="n">affected</span><span class="p">,</span> <span class="mi">2</span> <span class="n">warnings</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">Records</span><span class="p">:</span> <span class="mi">2</span>  <span class="n">Duplicates</span><span class="p">:</span> <span class="mi">0</span>  <span class="n">Warnings</span><span class="p">:</span> <span class="mi">2</span>
+
+</code></pre></div></div>
+
+<p>쿼리가 정상적으로 수행되었습니다. 또한 2개의 데이터가 저장되었다고 결과도 함께 출력합니다. SELECT 명령을 통하여 입력한 데이터를 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
++----+----------+-----------+-------------+-------+---------+
+4 rows in set (0.00 sec)
+
+</code></pre></div></div>
+:ET

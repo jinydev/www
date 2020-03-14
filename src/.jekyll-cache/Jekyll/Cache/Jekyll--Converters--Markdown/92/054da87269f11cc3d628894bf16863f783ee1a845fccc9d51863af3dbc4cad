@@ -1,0 +1,26 @@
+I"�<p>phpMyAdmin 은 PHP 언어로 개발된 웹 기반의 무료 소프트웨어입니다. phpMyAdmin 은 기존 MySQL과 MariaDB까지 광범위한 작업까지 함께 관리할 수 있습니다. 직접 SQL 쿼리를 실행하고 GUI 방식으로 데이터를 조작할 수 있는 인터페이스를 제공합니다.</p>
+
+<p><code class="highlighter-rouge">https://www.phpmyadmin.net/downloads/</code>에 접속하면 무료로 다운로드하여 사용 할 수 있습니다.</p>
+
+<p>주요 기능</p>
+
+<ul>
+  <li>직관적인 웹 인터페이스</li>
+  <li>
+    <p>다양한 MySQL 기능 지원</p>
+  </li>
+  <li>데이터베이스, 테이블, VIEW, 필드 등 확인하거나 삭제할 수 있습니다.</li>
+  <li>생성, 복사, 이름 변경, 필드 추가 등의 작업이 가능합니다.</li>
+  <li>서버 유지보수, 데이터베이스 및 테이블, 서버 환경 설정 
+-SQL 구문의 실행, 수정</li>
+  <li>사용자 계정 관리 및 privileges</li>
+  <li>
+    <p>트리거 및 프로시저 관리</p>
+  </li>
+  <li>CSV와 SQL을 통한 데이터 삽입</li>
+  <li>CSV, SQL, XML 등 다양한 포맷의 출력</li>
+  <li>다수의 서버를 관리</li>
+  <li>다양한 포맷의 그래픽 데이터베이스 관리</li>
+</ul>
+
+:ET

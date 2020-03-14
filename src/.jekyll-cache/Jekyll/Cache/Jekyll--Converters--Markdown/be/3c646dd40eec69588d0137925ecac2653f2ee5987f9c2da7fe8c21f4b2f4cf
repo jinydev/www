@@ -1,0 +1,122 @@
+I"�%<p>데이터베이스 시스템이 파일 시스템보다 효율적이고 향상된 점은 다수의 사용자가 동시 에 접속하여 데이터를 처리할 수 있다는 것입니다. 하지만 아무리 좋은 데이터베이스 관 리 시스템 이어도 순간적으로 여러 사람들이 동일한 데이터를 접근할 때는 문제가 발생할 수 있습니다.</p>
+
+<p>접근의 우선순위에 따라서 데이터가 순간적으로 변경되거나, 데이터의 값에 오류가 발생 할 수 있습니다. 특히 데이터를 변경할 때 동시 접속에 의한 문제가 발생할 수 있습니다.</p>
+
+<h2 id="0481-잠금">04.8.1 잠금</h2>
+<p>테이블의 데이터를 조작할 때 권한을 통하여 일부 동작들을 제한할 수 있습니다. 테이블 을 잠금을 설정합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">LOCK</span> <span class="n">TABLES</span> <span class="err">테이블명</span> <span class="err">옵션</span> 
+</code></pre></div></div>
+
+<p>옵션 종류</p>
+<ul>
+  <li>READ: SELECT 명령만 가능합니다. 다른 작업들의 명령은 할 수 없습니다.</li>
+  <li>READ_LOCAL: 로컬만 읽기 가능합니다.</li>
+  <li>WRITE: LOCK을 실행한 이외의 사용자는 제한합니다.</li>
+</ul>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">lock</span> <span class="n">tables</span> <span class="n">members</span> <span class="k">read</span><span class="p">;</span>
+<span class="n">Query</span> <span class="n">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="k">rows</span> <span class="n">affected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테이블 잠금</span>
+<span class="c1">// 매개인자: 데이블명, 옵션 = 옵션이 없을 경우 read로 설정합니다.</span>
+<span class="c1">// 반한값 : 객체 this를 반환 합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">tableLock</span><span class="p">(</span><span class="nv">$tableName</span><span class="p">,</span> <span class="nv">$option</span><span class="o">=</span><span class="s2">"read"</span><span class="p">)</span>
+<span class="p">{</span>
+            
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"LOCK TABLES "</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tableName</span><span class="p">)</span> <span class="p">{</span>
+                
+                <span class="nv">$queryString</span> <span class="o">.=</span> <span class="nv">$tableName</span><span class="p">;</span>
+ 
+                <span class="c1">// 옵션이 없는 경우에는 READ로 기본설정 합니다.</span>
+                <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">" "</span><span class="o">.</span><span class="nv">$option</span><span class="p">;</span>
+                
+                <span class="c1">// 쿼리를 전송합니다.                </span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="nv">$tableName</span><span class="o">.</span><span class="s2">" LOCK!"</span><span class="p">);</span>
+                
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>    
+ 
+                <span class="c1">// 객체 반환, 매서드체인</span>
+                <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+               
+            <span class="p">}</span>
+            
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="0482-해제">04.8.2 해제</h2>
+<p>향후 정상적인 데이터 처리를 위해서 반드시 잠금된 테이블은 사용 후에 해제해야 합 니다. 잠금 해제 쿼리는 잠금 설정과 달리 별도의 테이블을 선택하지 않습니다. 해제 쿼 리는 잠금 설정된 모든 테이블을 동시에 해제하게 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">UNLOCK</span> <span class="n">TABLES</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; unlock tables;
+Query OK, 0 rows affected (0.00 sec)
+ 
+</code></pre></div></div>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테이블 잠금해제        </span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">tableUnLock</span><span class="p">()</span>
+<span class="p">{</span>
+            
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"UNLOCK TABLES "</span><span class="p">;</span>
+          
+            <span class="c1">// 쿼리를 전송합니다.</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" TABLE UNLOCK!"</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+            <span class="p">}</span> 
+            
+            <span class="c1">// 객체 반환, 매서드체인</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>            
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>테이블 잠금 및 해제 관련 클래스를 추가하고 이를 이용한 예제를 만들어 실험해 보도록 하겠습니다.</p>
+
+<p>예제 파일 | sql-05.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 테이블을 잠금설정 합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableLock</span><span class="p">(</span><span class="s2">"members"</span><span class="p">);</span>
+
+	<span class="c1">// 잠금된 테이블을 해제 합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableUnLock</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+members LOCK!
+TABLE UNLOCK!
+
+</code></pre></div></div>
+
+<p>항상 데이터를 삽입하거나 변경할 때 테이블을 잠금 설정하는 것은 안전한 데이터 조작을 위해 유용합니다. 또한 모든 조작 처리 후에는 반드시 테이블을 다시 해제하도록 합니다.</p>
+:ET

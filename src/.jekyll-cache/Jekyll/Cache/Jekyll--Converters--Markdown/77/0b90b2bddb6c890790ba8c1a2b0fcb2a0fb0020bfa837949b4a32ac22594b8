@@ -1,0 +1,91 @@
+I"�<p>테이블의 컬럼을 변경 외에도 컬럼의 데이터 타입 자료형도 변경이 가능합니다. 하지만 컬럼의 데이터 타입을 변경할 때는 주의할 사항이 많습니다.</p>
+
+<p>데이터의 타입을 변경할 때는 변경하고자 하는 데이터의 타입이 자료를 유지할 수 있는 호 환적인 형태이어야 합니다. 만일 잘못된 자료형으로 변경하게 되면 기존 데이터에 문제가 발생합니다. 저장되어 있는 데이터가 삭제되거나 이상한 값으로 변경될 수도 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">MODIFY</span> <span class="err">컬럼명</span> <span class="err">자료형</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="0831-쿼리-실습">08.3.1 쿼리 실습</h2>
+<p>desc 쿼리 명령을 통하여 members 의 테이블의 구조를 확인합니다. members 테이블의 age 칼럼은 데이터 타입이 가변 문자열 10자리 varchar(10)으로 되어 있습니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
+| age       | varchar(10)  | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>기존 age 컬럼의 데이터 타입을 정수형 타입 int(8) 형태로 변경해 보도록 하겠습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">members</span> <span class="k">modify</span> <span class="n">age</span> <span class="nb">int</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; alter table members modify age int(8);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+</code></pre></div></div>
+
+<p>쿼리가 정상적으로 수행되었습니다. desc 쿼리 명령을 통하여 다시 한번 테이블의 구조 를 확인해 보도록 합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
+| age       | int(8)       | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>테이블의 구조를 확인해 보면 컬럼 age의 데이터 타입이 변경된 것을 확인할 수 있습니다.</p>
+
+<h2 id="0832-php-실습">08.3.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 컬럼의 데이터 타입을 변경해 보도록 하겠습니다.</p>
+
+<p>예제 파일 | alter-04.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$field</span> <span class="o">=</span> <span class="s2">"birth"</span><span class="p">;</span>
+	<span class="nv">$datatype</span> <span class="o">=</span> <span class="s2">"varchar(20)"</span><span class="p">;</span>
+    
+	<span class="c1">// 필드를 추가합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableFieldModify</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members MODIFY birth varchar(20)
+컬럼변경!
+</code></pre></div></div>
+:ET

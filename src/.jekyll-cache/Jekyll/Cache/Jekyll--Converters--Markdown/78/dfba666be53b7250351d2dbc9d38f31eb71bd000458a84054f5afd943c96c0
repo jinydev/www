@@ -1,0 +1,7 @@
+I"�<p>SQL의 주석 처리문 <code class="highlighter-rouge">--</code>를 이용하여 인젝션 공격을 하는 유형도 있습니다.</p>
+
+<p>회원 조회를 위해서 <code class="highlighter-rouge">SELECT * FROM members WHERE UserId = $ID;</code>로 작성을 했 습니다.</p>
+
+<p>만일, 사용자가 입력값을 <code class="highlighter-rouge">100 or 1=1 --</code>로 입력한다면 <code class="highlighter-rouge">--</code>뒤의 쿼리 문장은 주석으로 처 리될 것입니다.</p>
+
+:ET

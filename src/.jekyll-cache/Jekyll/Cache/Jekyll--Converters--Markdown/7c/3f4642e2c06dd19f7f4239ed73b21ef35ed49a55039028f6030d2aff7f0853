@@ -1,0 +1,84 @@
+I"�<p>트랜잭션 시작으로 커밋 모드를 수동 상태로 전환합니다. 수동 모드에서도 모든 쿼리 명령들을 실행할 수 있습니다 하지만 임시로 처리되기 때문에 실제적인 DB 시스템에 반영 은 되지 않습니다. 수동 상태는 임시 모드의 쿼리 작업입니다.</p>
+
+<p>수동 커밋 모드에서 처리된 쿼리들은 COMMIT 명령을 입력하게 되면 실제적인 데이터 베이스 시스템에 반영 처리를 하게 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">COMMIT</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>DB 시스템이 커밋 명령을 입력받으면 트랜잭션 동작을 종료합니다. 그리고 수동 커밋 모드에서 자동 커밋 모드 상태로 돌아갑니다.</p>
+
+<h2 id="2421-쿼리-실습">24.2.1 쿼리 실습</h2>
+<p>수동 커밋 모드 상태에서 작업한 쿼리를 DB 시스템에 반영합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2422-php-실습">24.2.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 커밋 명령을 처리하는 메서드를 생성해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">commit</span><span class="p">()</span>
+<span class="p">{</span>
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"COMMIT"</span><span class="p">;</span>
+                
+            <span class="c1">// 쿼리를 전송합니다.</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 작업내용 커밋!"</span><span class="p">);</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+            <span class="p">}</span>
+
+<span class="p">}</span>
+ 
+</code></pre></div></div>
+
+<p>예제 파일 | trans-01.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 트렌젝션시작</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">transaction</span><span class="p">()){</span>
+    	
+		<span class="c1">// 데이터 전체를 삭제합니다.</span>
+		<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members_all"</span><span class="p">;</span>
+		<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">deleteAll</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">);</span>
+
+		<span class="c1">// 작업내용 실제적용</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">()){</span>
+			<span class="k">echo</span> <span class="s2">"모든 데이터가 적용 커밋 하였습니다.&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"커밋을 실패하였습니다."</span><span class="p">;</span>
+		<span class="p">}</span>
+
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">echo</span> <span class="s2">"트렌젝션 모드로 전환할 수 없습니다."</span><span class="p">;</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] START TRANSACTION
+트렌젝션 시작!
+쿼리성공] DELETE FROM members_all
+데이터 전체 삭제!
+쿼리성공] COMMIT
+작업내용 커밋!
+모든 데이터가 적용 커밋 하였습니다.
+
+</code></pre></div></div>
+:ET

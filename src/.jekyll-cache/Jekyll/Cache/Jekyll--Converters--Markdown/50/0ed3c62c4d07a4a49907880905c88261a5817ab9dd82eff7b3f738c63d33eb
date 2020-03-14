@@ -1,0 +1,241 @@
+I"�E<p>테이블에 컬럼을 새롭게 추가하면 생성된 컬럼은 테이블의 맨 마지막 부분에 위치합니다. 추가적으로 등록한 컬럼 순서는 데이터를 해석하는 데 가독성이 불편할 수 있습니다. 이 런 경우 쿼리 마지막에 위치를 결정하는 키워드를 추가하여 순서를 변경할 수 있습니다. 또는 생성 시 자리를 지정할 수 있습니다.</p>
+
+<h2 id="0821-위치-변경">08.2.1 위치 변경</h2>
+<p>이미 생성된 컬럼의 위치를 변경할 때는 MODIFY 키워드를 이용합니다. 또한 ALTER 쿼 리의 마지막에 위치를 정의합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">MODIFY</span> <span class="err">컬럼명</span> <span class="err">자료형</span> <span class="k">after</span> <span class="err">컬럼</span> <span class="err">위치</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>그럼 컬럼의 위치 변경 실습을 하겠습니다. 다음과 같이 desc 명령을 통하여 members 테이블의 구조를 확인합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
+| age       | varchar(10)  | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>새롭게 추가한 컬럼 (age)이 제일 마지막에 위치해 있습니다. age 컬럼을 FirstName 컬럼명 다음으로 이동해 봅니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">MODIFY</span> <span class="k">COLUMN</span> <span class="n">age</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">after</span> <span class="n">FirstName</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; ALTER TABLE members MODIFY COLUMN age varchar(10) after FirstName;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+</code></pre></div></div>
+
+<p>쿼리 명령이 정상적으로 잘 수행되었습니다. 다시 한번 desc 쿼리 명령을 통하여 <code class="highlighter-rouge">members</code> 테이블의 구조를 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| age       | varchar(10)  | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>위의 콘솔 결과를 보면 컬럼 age의 위치가 컬럼 FirstName 뒤로 변경된 것을 확인할 수 있습니다. 컬럼의 위치를 변경할 때는 after 키워드 뒤에 위치할 다른 컬럼명을 지정하면 
+됩니다.</p>
+
+<p>만일 컬럼명을 제일 처음으로 변경할 때는 ‘after 컬럼명’ 대신에 FIRST 키워드로 사용하면 됩니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">members</span> <span class="k">MODIFY</span> <span class="k">COLUMN</span> <span class="n">age</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">first</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; ALTER TABLE members MODIFY COLUMN age varchar(10) first;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| age       | varchar(10)  | YES  |     | NULL    |                |
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>컬럼 age가 처음으로 이동되었습니다.</p>
+
+<h2 id="0822-php-실습">08.2.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 컬럼의 위치를 변경하는 메서드를 작성해서 처리하도록 하겠습니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 컬럼 데이터 타입을 수정합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">tableFieldModify</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">,</span> <span class="nv">$pos</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"ALTER TABLE </span><span class="nv">$tbname</span><span class="s2"> MODIFY </span><span class="nv">$field</span><span class="s2"> </span><span class="nv">$datatype</span><span class="s2">"</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$pos</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span><span class="p">(</span><span class="nv">$pos</span> <span class="o">==</span> <span class="s2">"first"</span><span class="p">)</span> <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">" first"</span><span class="p">;</span> 
+                    <span class="k">else</span> <span class="nv">$queryString</span> <span class="o">.=</span> <span class="s2">" after </span><span class="nv">$pos</span><span class="s2">"</span><span class="p">;</span>
+                <span class="p">}</span>
+                
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 컬럼변경!"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>    
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | alter-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$field</span> <span class="o">=</span> <span class="s2">"address2"</span><span class="p">;</span>
+	<span class="nv">$datatype</span> <span class="o">=</span> <span class="s2">"varchar(255)"</span><span class="p">;</span>
+    
+	<span class="c1">// 필드를 추가합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableFieldModify</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">,</span> <span class="s2">"address"</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+ 
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members MODIFY address2 varchar(255) after Address
+컬럼변경()!
+
+</code></pre></div></div>
+
+<h2 id="0823-생성-위치">08.2.3 생성 위치</h2>
+<p>기존 생성된 테이블의 컬럼을 수정해 보았습니다. 또는 새로운 컬럼을 추가할 때도 컬럼의 위치를 지정하여 등록할 수 있습니다. 컬럼의 위치를 결정하는 FIRST나 <code class="highlighter-rouge">alter 컬럼명</code> 은 컬럼을 추가하는 ADD 키워드와 함께 사용 가능합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">테이블명</span> <span class="k">ADD</span> <span class="err">컬럼명</span> <span class="err">자료형</span> <span class="k">after</span> <span class="err">컬럼</span> <span class="err">위치</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>새로운 컬럼을 추가해 보도록 합니다. 컬럼을 추가할 때 위치를 같이 지정하여 추가합니다. 컬럼의 위치를 결정하는 쿼리를 함께 넣으면 나중에 별도로 위치를 변경할 필요가 
+없습니다. desc 명령을 통하여 테이블의 구조를 확인합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| age       | varchar(10)  | YES  |     | NULL    |                |
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.02 sec)
+
+</code></pre></div></div>
+
+<p>새로운 컬럼 birth를 추가합니다. birth의 위치는 FirstName 다음에 위치합니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">alter</span> <span class="k">table</span> <span class="n">members</span> <span class="k">add</span> <span class="n">birth</span> <span class="nb">datetime</span> <span class="k">after</span> <span class="n">FirstName</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; alter table members add birth datetime after FirstName;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+</code></pre></div></div>
+
+<p>쿼리가 정상적으로 잘 수행되었습니다. 다시 한번 desc 쿼리 명령을 통하여 테이블의 구조를 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc members;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| age       | varchar(10)  | YES  |     | NULL    |                |
+| Id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| LastName  | varchar(255) | YES  |     | NULL    |                |
+| FirstName | varchar(255) | YES  |     | NULL    |                |
+| birth     | datetime     | YES  |     | NULL    |                |
+| Address   | varchar(255) | YES  |     | NULL    |                |
+| City      | varchar(255) | YES  |     | NULL    |                |
+| Country   | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+8 rows in set (0.02 sec)
+
+</code></pre></div></div>
+<p>정상적으로 새롭게 추가한 birth 컬럼이 FirstName 컬럼 다음에 위치하여 생성되었습니다.</p>
+
+<h2 id="0824-php-실습">08.2.4 PHP 실습</h2>
+<p>두 번째 위치 컬럼 추가 쿼리를 PHP를 통하여 실습해 봅니다.</p>
+
+<p>예제 파일 | alter-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+ 
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+ 
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members"</span><span class="p">;</span>
+	<span class="nv">$field</span> <span class="o">=</span> <span class="s2">"birth"</span><span class="p">;</span>
+	<span class="nv">$datatype</span> <span class="o">=</span> <span class="s2">"datetime"</span><span class="p">;</span>
+    
+	<span class="c1">// 필드를 추가합니다.</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">tableFieldADD</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="nv">$datatype</span><span class="p">,</span><span class="s2">"FirstName"</span><span class="p">);</span>
+ 
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] ALTER TABLE members ADD birth datetime after FirstName
+컬럼추가!
+</code></pre></div></div>
+:ET

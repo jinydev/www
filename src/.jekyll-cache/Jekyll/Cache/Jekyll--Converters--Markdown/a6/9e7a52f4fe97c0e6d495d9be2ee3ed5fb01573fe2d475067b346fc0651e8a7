@@ -1,0 +1,111 @@
+I"0<p>모든 SQL의 실행 명령어는 선택한 데이터베이스명 내에서만 작업이 이루어집니다. 만일 SQL 작업이 많아지거나 여러 개의 데이터베이스를 전환하다 보면 현재의 데이터베이스 명을 잊어버리는 경우도 있습니다.</p>
+
+<h2 id="0541-쿼리-실습">05.4.1 쿼리 실습</h2>
+<p>MySQL은 현재 선택되어 있는 데이터베이스명을 확인할 수 있는 SQL 함수를 제공합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">DATABASE</span><span class="p">();</span> 
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">SELECT DATABASE();</code>는 현재 USE 로 선택된 데이터베이스명을 출력합니다. DATA BASE 명령과 같은 글자 뒤에 소괄호가 더 있는 것을 볼 수 있습니다. 이처럼 데이터베이 스에서도 함수와 같은 형태의 명칭이 사용되기도 합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select database();
++------------+
+| database() |
++------------+
+| test       |
++------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+<p><code class="highlighter-rouge">use</code>로 선택한 현재의 데이터베이스명을 출력합니다.</p>
+
+<h2 id="0542-php-실습">05.4.2 PHP 실습</h2>
+<p>PHP 소스를 통하여 현재 MySQL에 있는 데이터베이스 목록을 출력하도록 하겠습니다.</p>
+
+<p>| PHP 예제 |<br />
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 현재 데이터베이스명을 리턴합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">currentDatabase</span><span class="p">()</span>
+<span class="p">{</span>
+            <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"SELECT DATABASE()"</span><span class="p">;</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="nv">$queryString</span><span class="p">);</span>
+
+            <span class="c1">// 쿼리를 전송합니다.</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$row</span> <span class="o">=</span> <span class="nx">mysqli_fetch_object</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+                <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+
+                <span class="nv">$key</span> <span class="o">=</span> <span class="s2">"DATABASE()"</span><span class="p">;</span>
+                <span class="k">return</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="nv">$key</span><span class="p">;</span>
+                                      
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="s2">"선택된 데이터베이스가 없습니다. &lt;br&gt;"</span><span class="p">;</span>
+            <span class="p">}</span>
+            
+<span class="p">}</span> 
+
+</code></pre></div></div>
+
+<p>예제 파일 | sql-09.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="c1">// 현재 데이터베이스 이름을 확인합니다.</span>
+	<span class="k">echo</span> <span class="s2">"현재 데이터베이스 = "</span><span class="o">.</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">currentDatabase</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+SELECT DATABASE()
+현재 데이터베이스 = jiny
+
+</code></pre></div></div>
+
+<h2 id="0543-사전-지정">05.4.3 사전 지정</h2>
+<p>매번 mysql 콘솔을 실행 후에 use 명령어로 데이터베이스명을 선언하는 것이 불편할 수 있습니다. 이런 경우 mysql 콘솔을 시작할 때 미리 데이터베이스명을 직접 지정하여 실 행할 수도 있습니다.</p>
+
+<p>| 명령 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql 데이터베이스명 -u계정명 -p 
+</code></pre></div></div>
+
+<p>데이터베이스명을 함께 입력하면 콘솔 접속과 데이터베이스 선택을 동시에 할 수 있습니다.</p>
+
+<h2 id="0544-데이터베이스-지정">05.4.4 데이터베이스 지정</h2>
+<p>USE를 통하여 작업 데이터베이스 그룹을 변경한 후에는 데이터베이스명을 생략한 쿼리 생성이 가능합니다.</p>
+
+<p>또는 현재 선택된 데이터베이스를 USE로 변경하지 않고 다른 데이터베이스를 간접적으 로 선택할 경우 테이블명 앞에 데이터베이스명을 지정하면 됩니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="err">데이터베이스</span><span class="p">.</span><span class="err">테이블</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>데이터베이스 이름과 테이블명 사이에 점(.)으로 연결하여 사용하면 됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; use test;
+Database changed
+mysql&gt; select * from jiny.members;
++----+----------+-----------+-------------+-------+---------+-----------+-------------------+
+| Id | LastName | FirstName | Address     | City  | Country | manager   | email             |
++----+----------+-----------+-------------+-------+---------+-----------+-------------------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   | infohojin | hojin@jinyphp.com |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   | infohojin | jiny@jinyphp.com  |
+|  3 | james    | kim       | youngdun-po | seoul | korea   | info      | james@jinyphp.com |
++----+----------+-----------+-------------+-------+---------+-----------+-------------------+
+3 rows in set (0.01 sec)
+
+</code></pre></div></div>
+
+<p>위의 예를 보면 데이터베이스 선택은 test로 되어 있으나 select문은 jiny 데이터베이스의 members 테이블을 선택합니다.</p>
+:ET

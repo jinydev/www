@@ -1,0 +1,250 @@
+I"C7<p>산술 함수는 컬럼의 데이터의 합계, 평균 등 값을 연산하는 유형의 기능을 하는 함수입니다. 
+데이터베이스의 값을 조회하여 PHP 프로그램에서 연산 처리를 할 수도 있습니다. 간단 한 유형의 산술 기능은 SQL 내장 함수를 통하여 데이터베이스 서버상에서 빠르게 처리할 수 있습니다.</p>
+
+<h2 id="2611-avg-">26.1.1 AVG ()</h2>
+<p>숫자형 컬럼 데이터의 경우 선택된 컬럼 필드의 평균값을 구할 수 있습니다. 평균값은 전 체의 값을 합산한 후에 총 개수로 나눈 값입니다.</p>
+
+<p>| 쿼리문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">AVG</span> <span class="p">(</span><span class="err">컬럼명</span><span class="p">)</span> <span class="k">FROM</span> <span class="err">테이블명</span> <span class="k">WHERE</span> <span class="err">조건</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>테이블의 컬럼 전체, 또는 조건을 정하여 추출된 데이터를 기반으로 평균을 계산할 수도 있습니다. 또한 as 키워드를 통하여 별칭을 선언하여 평균값을 접근할 수 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">Price</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">Products</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">테이블의</span> <span class="err">데이터를</span> <span class="err">미리</span> <span class="err">확인합니다</span><span class="p">.</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">products</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+--------+-------+------+-------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span> <span class="n">name</span>   <span class="o">|</span> <span class="n">price</span> <span class="o">|</span> <span class="n">vat</span>  <span class="o">|</span> <span class="n">stock</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+-------+------+-------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">S</span><span class="o">-</span><span class="mi">827</span>  <span class="o">|</span> <span class="mi">20000</span> <span class="o">|</span> <span class="mi">2000</span> <span class="o">|</span>     <span class="mi">5</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">S</span><span class="o">-</span><span class="mi">532</span><span class="n">D</span> <span class="o">|</span> <span class="mi">36000</span> <span class="o">|</span> <span class="mi">3600</span> <span class="o">|</span>     <span class="mi">7</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">R</span><span class="o">-</span><span class="mi">530</span>  <span class="o">|</span> <span class="mi">25000</span> <span class="o">|</span> <span class="mi">2500</span> <span class="o">|</span>    <span class="mi">10</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+-------+------+-------+</span>
+<span class="mi">3</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="err">제품</span> <span class="err">테이블의</span> <span class="err">가격의</span> <span class="err">평균값을</span> <span class="err">계산합니다</span><span class="p">.</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">avg</span><span class="p">(</span><span class="n">price</span><span class="p">)</span> <span class="k">from</span> <span class="n">products</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">------------+</span>
+<span class="o">|</span> <span class="k">avg</span><span class="p">(</span><span class="n">price</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------+</span>
+<span class="o">|</span> <span class="mi">27000</span><span class="p">.</span><span class="mi">0000</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------+</span>
+<span class="mi">1</span> <span class="k">row</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="2612-count">26.1.2 COUNT()</h2>
+<p>select 키워드를 통하여 데이터를 조회할 경우에 조회된 데이터의 개수를 확인할 수 있습니다.</p>
+
+<p>콘솔상에서 명령을 실행할 때 출력 데이터의 개수가 화면에 표시가 됩니다. 하지만 PHP 프로그램을 통하여 조회된 데이터의 개수를 파악을 하기 위해서는 데이터의 개수를 파악 할 수 있는 함수를 사용해야 합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT count(컬럼명) from 테이블명; 
+</code></pre></div></div>
+
+<p>| 예제 쿼리 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select count(*) from products; 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>테이블의 데이터를 미리 확인합니다.
+mysql&gt; select * from products;
++----+--------+-------+------+-------+
+| Id | name   | price | vat  | stock |
++----+--------+-------+------+-------+
+|  1 | S-827  | 20000 | 2000 |     5 |
+|  2 | S-532D | 36000 | 3600 |     7 |
++----+--------+-------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql&gt; select count(*) from products;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>count() 함수의 인자로는 컬럼명을 입력합니다. 하지만 전체 컬럼을 의미하는 와일드 기 호를 사용할 수도 있습니다. 아스테리크 기호 *는 전체 컬럼을 선택하는 기호입니다.</p>
+
+<h2 id="2613-max">26.1.3 MAX()</h2>
+<p>테이블 선택 조건에서 컬럼 필드의 최대값을 구합니다. 최대값은 조건상에서 존재하는 숫자형 데이터 값의 최대값을 출력합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT MAX (컬럼명) FROM 테이블명 WHERE 조건; 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from products;
++----+--------+-------+------+-------+
+| Id | name   | price | vat  | stock |
++----+--------+-------+------+-------+
+|  1 | S-827  | 20000 | 2000 |     5 |
+|  2 | S-532D | 36000 | 3600 |     7 |
+|  3 | R-530  | 25000 | 2500 |    10 |
++----+--------+-------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql&gt; select max(price) from products;
++------------+
+| max(price) |
++------------+
+|      36000 |
++------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2614-min">26.1.4 MIN()</h2>
+<p>테이블 선택 조건에서 컬럼 필드의 최소값을 구합니다. 최소값은 조건상에서 존재하는 숫 자형 데이터 값의 최소값을 출력합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT MIN (컬럼명) FROM 테이블명 WHERE 조건; 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select min(price) from products;
++------------+
+| min(price) |
++------------+
+|      20000 |
++------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2615-round">26.1.5 ROUND()</h2>
+<p>실수형 숫자값의 데이터의 경우 소수점 처리 반올림을 합니다. 반올림의 자릿수는 생략하 거나 소수점 이하 자릿수를 지정할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>round (숫자, 자릿수); 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT ROUND(-1.23), ROUND(-1.23,1);
++--------------+----------------+
+| ROUND(-1.23) | ROUND(-1.23,1) |
++--------------+----------------+
+|           -1 |           -1.2 |
++--------------+----------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2616-sum">26.1.6 SUM()</h2>
+<p>합계를 구합니다. 컬럼 필드가 숫자 타입일 때 전체 합계를 구합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(column_name) FROM table_name WHERE condition; 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select sum(price) from products;
++------------+
+| sum(price) |
++------------+
+|      81000 |
++------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2617-abs숫자">26.1.7 ABS(숫자)</h2>
+<p>입력값의 절대값을 출력합니다. 절대값은 부호에 상관없이 0으로부터의 위치의 크기 값을 의미합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select abs(2), abs(-2);
++--------+---------+
+| abs(2) | abs(-2) |
++--------+---------+
+|      2 |       2 |
++--------+---------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="2618-ceiling숫자">26.1.8 CEILING(숫자)</h2>
+<p>입력한 값보다 큰 정수 중에서 가장 작은 수를 출력합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT CEILING(1.23), CEIL(-1.23);
++---------------+-------------+
+| CEILING(1.23) | CEIL(-1.23) |
++---------------+-------------+
+|             2 |          -1 |
++---------------+-------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+<p>변환된 데이터는 BIGINT형으로 반환됩니다.</p>
+
+<h2 id="2619-floor숫자">26.1.9 FLOOR(숫자)</h2>
+<p>FLOOR()는 입력값보다 작은 정수 중 가장 큰 수를 반환합니다. 실수를 무조건 버립니다 (음수일 경우는 제외).</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT FLOOR(1.23), FLOOR(-1.23);
++-------------+--------------+
+| FLOOR(1.23) | FLOOR(-1.23) |
++-------------+--------------+
+|           1 |           -2 |
++-------------+--------------+
+1 row in set (0.00 sec)
+ 
+</code></pre></div></div>
+
+<h2 id="26110-truncate-숫자-자릿수">26.1.10 TRUNCATE (숫자, 자릿수)</h2>
+<p>숫자를 소수점 이하 자릿수에서 버리고, 숫자 X를 D 자릿수 뒤의 숫자를 없앤 후 반환합 니다. 만일 D가 0이면 반환되는 숫자는 소수점 또는 소수 부분이 없게 됩니다. D는 음수 로 표시할 수도 있는데 이렇게 표시하면 숫자 X의 D 자리로부터 왼쪽 부분이 0으로 표시 됩니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT TRUNCATE(1.223,1), TRUNCATE(1.999,1), TRUNCATE(1.999,0);
++-------------------+-------------------+-------------------+
+| TRUNCATE(1.223,1) | TRUNCATE(1.999,1) | TRUNCATE(1.999,0) |
++-------------------+-------------------+-------------------+
+|               1.2 |               1.9 |                 1 |
++-------------------+-------------------+-------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT TRUNCATE(-1.999,1), TRUNCATE(122,-2), TRUNCATE(10.28*100,0);
++--------------------+------------------+-----------------------+
+| TRUNCATE(-1.999,1) | TRUNCATE(122,-2) | TRUNCATE(10.28*100,0) |
++--------------------+------------------+-----------------------+
+|               -1.9 |              100 |                  1028 |
++--------------------+------------------+-----------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26111-greatest-숫자1-숫자2-숫자3-">26.1.11 GREATEST (숫자1, 숫자2, 숫자3 …)</h2>
+<p>입력된 여러 개의 수 중에서 제일 큰 수를 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select GREATEST(1,2,3,4,5,6,7);
++-------------------------+
+| GREATEST(1,2,3,4,5,6,7) |
++-------------------------+
+|                       7 |
++-------------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+
+<h2 id="26112-least숫자1-숫자2-숫자3-">26.1.12 LEAST(숫자1, 숫자2, 숫자3 …)</h2>
+<p>입력된 여러 개의 수 중에서 제일 작은 수를 반환합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select LEAST(1,2,3,4,5,6,7);
++----------------------+
+| LEAST(1,2,3,4,5,6,7) |
++----------------------+
+|                    1 |
++----------------------+
+1 row in set (0.00 sec)
+
+</code></pre></div></div>
+:ET

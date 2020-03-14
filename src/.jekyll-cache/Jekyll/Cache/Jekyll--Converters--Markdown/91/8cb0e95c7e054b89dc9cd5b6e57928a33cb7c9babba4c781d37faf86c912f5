@@ -1,0 +1,99 @@
+I"V<p>기본적으로 DELETE 쿼리 명령 뒤에 아무런 조건이 포함되지 않으면 테이블의 전체 데이 터를 삭제합니다. 테이블의 전체 데이터를 삭제할 때는 꼭 다시 한번 명령을 확인한 후에 실행해야 합니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="k">table_name</span><span class="p">;</span> <span class="err">또는</span> 
+<span class="k">DELETE</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">table_name</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<h2 id="1811-쿼리-실습">18.1.1 쿼리 실습</h2>
+<p>테이블의 데이터 모두를 삭제해 보도록 합니다. 임시로 작업한 members2 테이블의 내용을 확인해 봅니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from members2;
++----+----------+-----------+-------------+-------+---------+
+| Id | LastName | FirstName | Address     | City  | Country |
++----+----------+-----------+-------------+-------+---------+
+|  1 | hojin    | lee       | shinchon    | seoul | korea   |
+|  2 | jiny     | NULL      | NULL        | NULL  | korea   |
+|  3 | james    | kim       | youngdun-po | seoul | korea   |
+|  4 | eric     | jung      | seocho-gu   | seoul | korea   |
+|  5 | hojin    | NULL      | NULL        | NULL  | NULL    |
+|  6 | jiny     | NULL      | NULL        | NULL  | NULL    |
+|  7 | james    | NULL      | NULL        | NULL  | NULL    |
+|  8 | eric     | NULL      | NULL        | NULL  | NULL    |
++----+----------+-----------+-------------+-------+---------+
+8 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>여러 개의 데이터가 포함되어 있습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DELETE FROM members2; 
+</code></pre></div></div>
+
+<p>위의 쿼리 명령은 members2 테이블의 데이터 전체를 삭제합니다.</p>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; DELETE FROM members2;
+Query OK, 0 rows affected (0.01 sec)
+
+</code></pre></div></div>
+
+<p>명령이 정상적으로 수행되었습니다. 테이블의 모든 데이터가 삭제되었습니다. 삭제된 데 이터는 복구할 수 없습니다.</p>
+
+<p>또한 데이터를 삭제했다고 해서 프라이머리 키의 Auto_inceament 속성의 번호는 초기 화되지 않습니다. 추가로 데이터를 삽입하게 되면 이전에 프라이머리 Id 값 이후부터 자 동으로 증가되어 데이터가 삽입됩니다.</p>
+
+<h2 id="1812-php-실습">18.1.2 PHP 실습</h2>
+<p>PHP 코드를 이용하여 데이터를 삭제해 봅니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 데이터 전체를 삭제합니다.</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">deleteAll</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span>
+<span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$tbname</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$queryString</span> <span class="o">=</span> <span class="s2">"DELETE FROM </span><span class="nv">$tbname</span><span class="s2">"</span><span class="p">;</span>
+
+                <span class="c1">// 쿼리를 전송합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbcon</span><span class="p">,</span> <span class="nv">$queryString</span><span class="p">)</span><span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"쿼리성공] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">" 데이터 전체 삭제!"</span><span class="p">);</span>
+
+                    <span class="c1">// 객체 반환, 매서드체인</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span> 
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] "</span><span class="o">.</span><span class="nv">$queryString</span><span class="p">);</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">msgEcho</span><span class="p">(</span><span class="s2">"Error] 테이블 이름이 없습니다."</span><span class="p">);</span> 
+            <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | delete-01.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$tbname</span> <span class="o">=</span> <span class="s2">"members2"</span><span class="p">;</span>
+	<span class="nv">$db</span><span class="o">-&gt;</span><span class="na">deleteAll</span><span class="p">(</span><span class="nv">$tbname</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] DELETE FROM members2
+데이터 전체 삭제!
+
+</code></pre></div></div>
+:ET

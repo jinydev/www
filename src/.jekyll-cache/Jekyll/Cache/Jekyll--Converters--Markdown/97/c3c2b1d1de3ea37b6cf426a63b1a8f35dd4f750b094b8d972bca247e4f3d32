@@ -1,0 +1,79 @@
+I"{<p>HAVING은 그룹화 결과를 가지고 추가적인 조건을 설정할 수 있습니다.</p>
+
+<p>| 쿼리 문법 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼</span><span class="p">,</span> <span class="err">컬럼</span> <span class="k">FROM</span> <span class="err">테이블명</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">그룹컬럼</span>
+<span class="k">HAVING</span> <span class="err">조건</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+<h2 id="1431-쿼리-실습">14.3.1 쿼리 실습</h2>
+<p>아래 쿼리 예제는 주문 목록에서 이메일 회원별로 그룹화를 합니다. 그룹화된 목록에서 그룹으로 묶인 횟수가 1보다 큰 조건을 찾습니다.</p>
+
+<p>| 예제 쿼리 |</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">email</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="n">email</span><span class="p">)</span> <span class="k">as</span> <span class="n">order_count</span> <span class="k">FROM</span> <span class="n">orders1</span> <span class="k">group</span> <span class="k">by</span> <span class="n">email</span> <span class="k">HAVING</span> <span class="n">order_count</span> <span class="o">&gt;=</span><span class="mi">1</span><span class="p">;</span> 
+</code></pre></div></div>
+
+<p>| 콘솔 실습 화면 |</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SELECT email, count(email) as order_count FROM orders1 group by email HAVING order_count &gt;=1;
++-------------------+-------------+
+| email             | order_count |
++-------------------+-------------+
+| eric@jinyphp.com  |           1 |
+| hojin@jinyphp.com |           2 |
++-------------------+-------------+
+2 rows in set (0.00 sec)
+
+</code></pre></div></div>
+
+<p>각각의 그룹을 카운트하여 주문 횟수가 1인 이상의 회원만 추출하는 HAVING 검색 조건 을 넣습니다.</p>
+
+<p>WHERE 조건 우선 사용 =&gt; GROUP BY 사용 =&gt; ORDER BY 정렬 사용 =&gt; HAVING 사용 조건 순으로 결합할 수 있습니다.</p>
+
+<h2 id="1432-php-실습">14.3.2 PHP 실습</h2>
+<p>PHP 코드를 통하여 Having 처리 실습합니다.</p>
+
+<p>| PHP 예제 | 
+mysql.class.php 파일에 메서드 예제를 추가합니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">groupByHaving</span><span class="p">(</span><span class="nv">$query</span><span class="p">,</span><span class="nv">$by</span><span class="p">,</span><span class="nv">$where</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="nv">$query</span> <span class="o">.</span> <span class="s2">" GROUP BY "</span> <span class="o">.</span> <span class="nv">$by</span> <span class="o">.</span> <span class="s2">" HAVING </span><span class="nv">$where</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>예제 파일 | groupby-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+	<span class="k">include</span> <span class="s2">"dbinfo.php"</span><span class="p">;</span>
+	<span class="k">include</span> <span class="s2">"mysql.class.php"</span><span class="p">;</span>
+ 
+	<span class="c1">// ++ Mysqli DB 연결.</span>
+	<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyMysql</span><span class="p">();</span>
+
+	<span class="nv">$query</span> <span class="o">=</span> <span class="s2">"SELECT email, count(email) as order_count FROM orders"</span><span class="p">;</span>
+	<span class="nv">$queryString</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">groupByHaving</span><span class="p">(</span><span class="nv">$query</span><span class="p">,</span><span class="s2">"email"</span><span class="p">,</span><span class="s2">"order_count &gt;=1"</span><span class="p">);</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="nv">$rowss</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">selectRowss</span><span class="p">(</span><span class="nv">$queryString</span><span class="p">)){</span>
+		<span class="k">echo</span> <span class="s2">"tables fields = "</span><span class="o">.</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 
+		<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">count</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">echo</span> <span class="nv">$i</span><span class="o">.</span><span class="s2">"="</span><span class="p">;</span>            
+			<span class="nb">print_r</span><span class="p">(</span><span class="nv">$rowss</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+			<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+
+</code></pre></div></div>
+
+<p>화면 출력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql connected!
+쿼리성공] SELECT email, count(email) as order_count FROM orders GROUP BY email HAVING order_count &gt;=1
+tables fields = 2
+0=stdClass Object ( [email] =&gt; eric@jinyphp.com [order_count] =&gt; 1 )
+1=stdClass Object ( [email] =&gt; hojin@jinyphp.com [order_count] =&gt; 2 ) 
+
+</code></pre></div></div>
+:ET
