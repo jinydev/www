@@ -1,0 +1,75 @@
+I"q<h2 id="16-클로저">16. 클로저</h2>
+<p>클로저를 이야기할 때 항상 같이 설명하는 부분이 익명 함수입니다. 클로저는 익명 함수와 같이 PHP 5.3으로 업그레이드되면서 적용된 기능입니다.</p>
+
+<p>클로저는 PHP 5.4로 업그레이드되면서 객체화 및 몇 개의 메서드를 지원함으로써 세부적인 작업이 가능하게 되었습니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="161-클로저란">16.1 클로저란?</h3>
+<p>익명 함수와 클로저는 이론적으로 다르지만 PHP는 ‘익명 함수 = 클로저’로 두 개는 같은 의미로 보고 있습니다. Closure 클래스는 PHP의 익명 함수를 만들 때 사용되는 클래스입니다.</p>
+
+<p>클로저 클래스 구조</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Closure {
+	/* 메서드 */
+	private __construct ( void )
+	
+	public static Closure bind ( Closure $closure , object $newthis [, mixed $newscope = "static" ] )
+
+	public Closure bindTo ( object $newthis [, mixed $newscope = "static" ] )
+	
+	public mixed call ( object $newthis [, mixed $... ] )
+}
+</code></pre></div></div>
+
+<p>클로저가 일반적인 함수와 다른 점은 호출 실행 후 실행된 함수의 접근이 가능한지 여부입니다. 일반적으로 함수가 호출되면 실행 제어점이 전달됨과 동시에 함수의 매개변수, 처리 로직이 실행됩니다.</p>
+
+<p>또한 실행이 완료되면 실행 제어점이 호출한 곳으로 다시 반환되고 함수와 관련된 모든 로컬변수의 값들은 자동 소멸하게 됩니다. 이러한 함수의 휘발성은 프로그램 처리와 메모리의 관리를 효율적으로 하기 위한 처리 기술입니다.</p>
+
+<p>클로저는 익명 함수 생성 시 자신 자체를 객체로 캡슐화합니다. 함수의 호출이 종료된 후에도 함수의 상태 및 내부 변수들의 상태 값은 유지하게 합니다. static 상태 처리와 유사할 수 있습니다.</p>
+
+<p>클로저를 사용하는 이유는 이러한 호출 전후에 특정한 동작이나 값을 처리할 수 있기 때문입니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1672-클로저-실습">16.7.2 클로저 실습</h3>
+<p>PHP언어의 클로저 기능은 익명 함수와 비슷한 문법으로 사용합니다.</p>
+
+<p>예제파일: closure-01.php</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="c1">// 익명 함수를 통해 변수에 대입합니다. </span>
+<span class="nv">$closure</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="err">“</span><span class="nx">hello</span> <span class="err">”</span> <span class="o">.</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 변수명을 함수처럼 사용할 수 있습니다.</span>
+<span class="k">echo</span> <span class="nv">$closure</span><span class="p">(</span><span class="err">“</span><span class="nx">jiny</span><span class="err">”</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello jiny
+</code></pre></div></div>
+
+<p>위의 예제는 일반적인 익명 함수와 비슷합니다. 하지만 익명 함수를 변수($closure)에 대입할 때 클로저 클래스를 통해 인스턴스를 생성, 객체화하여 변수를 객체화합니다.</p>
+
+<p>실질적으로 클로저 클래스로 생성된 익명 함수 변수는 클래스의 인스턴스입니다. 따라서 클래스처럼 $this를 통해 클로저 내부에 접근하거나 매서드를 실행할 수 있습니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1673-클로저-호출">16.7.3 클로저 호출</h3>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1674-클로저-상태-등록">16.7.4 클로저 상태 등록</h3>
+
+<p><br /></p>
+<hr />
+
+<h3 id="162-클로저-메서드">16.2 클로저 메서드</h3>
+
+<p><br /><br /></p>
+:ET

@@ -1,0 +1,93 @@
+I"`<h2 id="11-전처리기">11. 전처리기</h2>
+
+<p>간단한 프로그램은 소스 파일 하나에 모든 기능을 구현하는 데 어려움이 없을 것입니다. 하지만 기능이 많아지고 소스가 길어진다면 어떻게 될까요? 소스 파일은 매우 복잡할 것이고 내용을 찾기 위해서는 수많은 스크롤을 해야 할 것입니다.</p>
+
+<p>이런 경우 소스의 파일을 기능별로 구분하고, 특별한 전처리기 명령을 통해 소스 파일을 결합할 수 있습니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="111-include--require">11.1 include &amp; require</h3>
+
+<p>C 언어와 같은 프로그램은 #include 와 같은 전처리기 기능을 갖고 있습니다. 소스의 필요한 함수나 내용들을 별도의 해더파일에 분리해 놓고 소스 파일들을 결합하여 사용합니다. 이러한 소스의 분할 및 처리는 큰 용량의 프로그램을 개발하는 데 매우 유용합니다.</p>
+
+<p>PHP에도 C 언어의 #include와 같은 전처리 기능을 제공합니다. 하지만 PHP는 이 기능을 두 가지 타입으로 구분하여 제공하고 있습니다. 바로 include와 require 명령입니다.</p>
+
+<p>전처리기 기능을 통해 PHP도 관련 있는 함수와 클래스, 라이브러리 등의 소스들을 별도의 파일로 분리하여 관리할 수 있습니다. 이렇게 분리된 파일들을 include와 require명령어로 다시 소스 파일 결합이 가능합니다.</p>
+
+<p>소스 파일들을 분리해 놓으면 여러 사람이 협업하여 개발하기도 편하고 유지보수도 쉽습니다. 또한 코드를 다른 프로젝트에 재사용하기도 편리합니다.</p>
+
+<p>오픈소스 형태의 PHP 라이브러리 또한 이와 같이 별도의 클래스, 함수들로 제작하여 파일 형태로 제공합니다.</p>
+
+<p>PHP는 다음과 같이 네 가지의 전처리 명령을 지원합니다.</p>
+
+<ul>
+  <li>include</li>
+  <li>include_once</li>
+  <li>require</li>
+  <li>require_once</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="112-파일-결합">11.2 파일 결합</h3>
+<p>include와 require와 같은 전처리기 명령은 PHP 소스 파일들을 읽어와서 서로 결합합니다.</p>
+
+<p>C 언어와 같은 스타일의 프로그램은 소스 실행 상단에 미리 정의를 합니다. C 언어의 해더 파일들은 대부분 함수나 클래스 등으로 구성하기 때문입니다. 하지만 PHP는 전처리기 명령의 위치를 자유롭게 지정하고 파일 결합 위치를 결정할 수 있습니다.</p>
+
+<p>PHP는 C 언어 해더 파일과 달리 함수와 소스 자체를 읽어와서 서로 결합할 수 있기 때문입니다. PHP는 소스 앞에서도 사용할 수 있고 소스 뒤에서도 사용할 수 있습니다. 심지어 소스 중간에서도 include를 통해 파일 삽입, 결합이 가능합니다.</p>
+
+<p>예제 파일 include-01.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="k">include</span> <span class="s2">"header.php"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+	<span class="nt">&lt;head&gt;</span>
+	<span class="nt">&lt;/head&gt;</span>
+	<span class="nt">&lt;body&gt;</span>
+	
+	<span class="cp">&lt;?php</span>
+		<span class="k">include</span> <span class="s2">"index.php"</span><span class="p">;</span>
+	<span class="cp">?&gt;</span>
+
+	<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+<span class="cp">&lt;?php</span>
+	<span class="k">include</span> <span class="s2">"footer.php"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>PHP에서 전처리 명령 include를 통해 소스파일을 삽입하면 전처리기 명령을 선언한 소스 그 자리 안에 지정한 파일의 소스가 삽입됩니다.</p>
+
+<p>어떤 특정한 기능의 파일들은 소스의 삽입 위치가 중요할 수 있습니다. PHP는 소스 자체를 읽어서 삽입을 하기 때문입니다. 하지만 클래스나 함수와 같은 라이브러리 타입의 소스들은 위치에 크게 영향을 받지 않습니다.</p>
+
+<p>대부분 소스파일 분리는 기능적인 부분을 엮어서 파일을 분리합니다(입출력, 파일, 데이터 등).</p>
+
+<p>하지만 워드프레스와 같은 CMS 프로그램은 include 기능을 구조적 레이아웃에 따라 소스를 분리하여 사용하기도 합니다.</p>
+
+<p>예<br />
+header.php <br />
+footer.php<br />
+index.php<br />
+layout.php</p>
+
+<p>이렇게 구조적으로 분리된 소스 파일들은 유지보수 등을 효율적으로 할 수 있도록 도와줍니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="113-파일-경로">11.3 파일 경로</h3>
+<p><br /></p>
+<hr />
+
+<h3 id="114-include">11.4 include</h3>
+
+<p><br /></p>
+<hr />
+
+<h3 id="115-require">11.5 require</h3>
+
+<p><br /><br /></p>
+:ET

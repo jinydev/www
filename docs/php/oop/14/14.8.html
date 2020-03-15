@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Jiny Mysql</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Jiny</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <img src="/img/num1.jpg">
+        </div>
+        <div class="col-lg-9">
+          <h1 class="display-3">PHP</h1>
+          <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
+     
+      </p>
+      <p>
+        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
+      </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h3 id="148-매직-메서드">14.8 매직 메서드</h3>
+<p>클래스는 매직 메서드라는 몇 개의 미리 사전에 정의한 특수한 메서드가 있습니다. 클래스를 생성할 때 초기값을 설정하거나 오류 동작 등 실행되는 특별한 메서드입니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1481-초기화">14.8.1 초기화</h3>
+<p>__construct() 메서드는 객체 생성 시 초기값 설정을 해주는 특수 메서드입니다. 또는 생성자 메서드라고도 부릅니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">members</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>다음과 같이 클래스 인스턴스를 생성할 때 __construct() 메서드는 한 번 실행하게 됩니다. 이 메서드명은 미리 정의된 이름입니다.</p>
+
+<p>__construct() 메서드를 사용하기 위해서는 클래스 내에 선언해야 합니다.</p>
+
+<p>|문법|</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">클래스명</span>
+<span class="p">{</span>
+	<span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="c1">// 부모의 초기값을 실행합니다.</span>
+		<span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+
+		<span class="c1">// 개별 초기값을 설정합니다.</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>클래스 상속의 경우 부모의 초기값 매직 메서드는 자동으로 실행되지 않습니다. 이런 경우 별도의 부모 초기값 매직 메서드를 추가해야 합니다.</p>
+
+<p>예제 파일 class-12.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">BaseClass</span>
+	<span class="p">{</span>
+		<span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"BaseClass 초기화&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="kd">class</span> <span class="nc">SubClass</span> <span class="k">extends</span> <span class="nx">BaseClass</span>
+	<span class="p">{</span>
+		<span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$a1</span><span class="p">,</span><span class="nv">$a2</span><span class="p">,</span><span class="nv">$a3</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="c1">// 부모의 초기화 메서드를 실행합니다.</span>
+			<span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+
+			<span class="c1">// 초기화 메서드를 실행합니다.</span>
+			<span class="k">echo</span> <span class="s2">"SubClass 초기화&lt;br&gt;"</span><span class="p">;</span>
+
+			<span class="c1">// 입력 매개변수를 확인합니다.</span>
+			<span class="k">echo</span> <span class="s2">"초기화 매개변수 a1 = "</span><span class="o">.</span><span class="nv">$a1</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+			<span class="k">echo</span> <span class="s2">"초기화 매개변수 a2 = "</span><span class="o">.</span><span class="nv">$a2</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+			<span class="k">echo</span> <span class="s2">"초기화 매개변수 a3 = "</span><span class="o">.</span><span class="nv">$a3</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">()</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"hello world! &lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 인스턴스 생성 시 초기화 매개변수를 같이 전달합니다.</span>
+	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SubClass</span><span class="p">(</span><span class="s2">"인자1"</span><span class="p">,</span><span class="s2">"인자2"</span><span class="p">,</span><span class="s2">"인자3"</span><span class="p">);</span>
+	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">show</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BaseClass 초기화
+SubClass 초기화
+초기화 매개변수 a1 = 인자1
+초기화 매개변수 a2 = 인자2
+초기화 매개변수 a3 = 인자3
+hello world! 
+</code></pre></div></div>
+
+<p>위의 예제는 상속받은 클래스의 인스턴스를 생성합니다. 인스턴스 생성 시 초기 매개변수 값과 초기화 매직 메서드를 실행합니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1482-소멸자">14.8.2 소멸자</h3>
+<p>__construct() 처럼 초기화 메서드가 있다고 한다면 반대로 소멸자 매직 메서드가 존재합니다.</p>
+
+<p>PHP 스크립트의 모든 소스가 실행 끝나고 나면 __destruct() 메서드 함수가 실행됩니다.</p>
+
+<p>|문법|</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">클래스명</span>
+<span class="p">{</span>
+	<span class="k">function</span> <span class="nf">__destruct</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="c1">// 소멸 작업들을 설정합니다.</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>예제 파일 class-13.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">BaseClass</span>
+	<span class="p">{</span>
+		<span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"BaseClass 초기화&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">()</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"hello world! &lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">function</span> <span class="nf">__destruct</span><span class="p">()</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"BaseClass 소멸&lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 인스턴스 생성</span>
+	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BaseClass</span><span class="p">();</span>
+	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">show</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BaseClass 초기화
+hello world!
+BaseClass 소멸
+</code></pre></div></div>
+
+<p>위의 예제는 클래스의 인스턴스를 생성과 스크립트 종료와 함께 __destruct() 매직 메서드가 호출됩니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1483-오류-호출">14.8.3 오류 호출</h3>
+<p>매서드를 사용하기 위해서는 반드시 클래스 내에 매서드 함수를 정의해야 합니다. 하지만 정의되지 않는 클래스를 사용하려고 하면 당연히 오류가 발생할 것입니다. 공동 작업이나 소스가 커질수록 이러한 오류가 발생할 확률도 커집니다.</p>
+
+<p>만일 클래스 내에서 존재하지 않는 메서드를 호출할 때 오류를 발생하지 않고 __call() 메서드를 호출합니다.</p>
+
+<p>예제 파일 class-### 14.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">BaseClass</span>
+	<span class="p">{</span>
+		<span class="k">function</span> <span class="nf">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span><span class="nv">$params</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"오류: 정의되지 않는 메서드 "</span><span class="o">.</span><span class="nv">$method</span><span class="o">.</span><span class="s2">"를 "</span><span class="o">.</span><span class="nb">implode</span><span class="p">(</span><span class="s1">', '</span><span class="p">,</span> <span class="nv">$params</span><span class="p">)</span><span class="o">.</span><span class="s2">"호출했습니다."</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 인스턴스 생성</span>
+	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BaseClass</span><span class="p">();</span>
+	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">show</span><span class="p">(</span><span class="s2">"a1"</span><span class="p">,</span><span class="s2">"a2"</span><span class="p">,</span><span class="s2">"a3"</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>오류: 정의되지 않는 메서드 show를 a1, a2, a3호출했습니다.
+</code></pre></div></div>
+
+<p>위의 예제 에서는 없는 메서드를 호출합니다. 없는 메서드를 호출하게 되면 대신에 __call() 매직 메서드를 호출합니다. __call() 함수는 두 개의 인자를 받습니다. 호출한 메서드명과 입력받은 파라미터 값을 배열로 전달합니다.</p>
+
+<p>매직 메서드를 잘 이용하면 공동 작업 시 잘못된 메서드의 호출로 인하여 발생할 수 있는 오류를 사전에 방지할 수 있습니다.</p>
+
+<h3 id="1484-객체의-문자열-변환">14.8.4 객체의 문자열 변환</h3>
+<p>__toString() 매직 매서드는 클래스가 문자열로 변환하여 처리될 때 동작합니다. 예로 클래스 객체를 echo $obj;처럼 출력할 때 __toString() 메서드가 동작합니다.</p>
+
+<p>예재 파일 class-15.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">TestClass</span>
+	<span class="p">{</span>
+    		<span class="k">public</span> <span class="nv">$foo</span><span class="p">;</span>
+
+    		<span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$foo</span><span class="p">)</span>
+    		<span class="p">{</span>
+        		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">foo</span> <span class="o">=</span> <span class="nv">$foo</span><span class="p">;</span>
+    		<span class="p">}</span>
+
+    		<span class="k">public</span> <span class="k">function</span> <span class="nf">__toString</span><span class="p">()</span>
+    		<span class="p">{</span>
+        			<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">;</span>
+    		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TestClass</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">);</span>
+	
+	<span class="c1">// 클래스가 문자열로 변환 </span>
+	<span class="k">echo</span> <span class="nv">$obj</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello
+</code></pre></div></div>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1485-객체-함수-호출">14.8.5 객체 함수 호출</h3>
+<p>__invoke() 매직 메서드는 객체를 함수처럼 호출할 경우에 호출되는 메서드 입니다. $obj() 형태로 호출될 때 실행됩니다.</p>
+
+<p>예제파일) class-16.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">dataInt</span>
+	<span class="p">{</span>
+    		<span class="k">public</span> <span class="k">function</span> <span class="nf">__invoke</span><span class="p">(</span><span class="nv">$x</span><span class="p">)</span>
+    		<span class="p">{</span>
+        			<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
+    		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dataInt</span><span class="p">;</span>
+
+	<span class="nv">$obj</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+	
+	<span class="nb">var_dump</span><span class="p">(</span><span class="nb">is_callable</span><span class="p">(</span><span class="nv">$obj</span><span class="p">));</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>화면출력)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int(5) bool(true)
+</code></pre></div></div>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1486-객체-복제-호출">14.8.6 객체 복제 호출</h3>
+<p>__clone() 매직 메소드는 객체가 복제 되었을 때 실행회는 메서드입니다.</p>
+
+<p>예제파일) class-17.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+    <span class="kd">class</span> <span class="nc">MyClass</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nv">$instance</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">__clone</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"clone object&lt;br&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+        
+    <span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">();</span>
+
+    <span class="nv">$obj2</span> <span class="o">=</span> <span class="k">clone</span> <span class="nv">$obj</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>화면출력)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clone object
+</code></pre></div></div>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1487-__set-__get-__isset-__unset">14.8.7 __set(), __get(), __isset(), __unset()</h3>
+<p>__set() 매직 메서드는 접근할 수 없는 프로퍼티에 값을 쓰고자 할 때 호출됩니다. __get() 매직 메서드는 접근할 수 없는 프로퍼티의 값을 읽을 경우에 호출됩니다. __isset() 매직 메서드는 접근할 수 없는 프로퍼티에 isset() 함수나 empty() 함수를 사용할 때 호출됩니다. __unset() 매직 매서드는 접근할 수 없는 프로퍼티를 unset() 함수를 사용할 때 호출됩니다.</p>
+
+<p>예제 파일 class-18.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">MyClass</span>
+	<span class="p">{</span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">__set</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"Setting '</span><span class="nv">$name</span><span class="s2">' to '</span><span class="nv">$value</span><span class="s2">' &lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">__isset</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"Is '</span><span class="nv">$name</span><span class="s2">' set? &lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">__unset</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"Unsetting '</span><span class="nv">$name</span><span class="s2">' &lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+
+	<span class="c1">// 접근불가 프로퍼티에 대해 isset() 나 empty() 가 호출되었을때 불려집니다. </span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">echo</span> <span class="s2">"Reading '</span><span class="nv">$name</span><span class="s2">' &lt;br&gt;"</span><span class="p">;</span>
+		<span class="p">}</span>
+
+
+	<span class="p">}</span>
+
+	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">();</span>
+
+	<span class="c1">// 접근 불가 프로퍼티에 값을 설정할때 매직 매소드 __set() 호출</span>
+	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">"jiny"</span><span class="p">;</span>
+
+	<span class="nb">isset</span><span class="p">(</span><span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">);</span>
+
+	<span class="k">empty</span><span class="p">(</span><span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">);</span>
+
+	<span class="nb">unset</span><span class="p">(</span><span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">);</span>
+
+
+	<span class="c1">// 접근 불가 프로퍼티에 값을 읽을때 매직 매소드 __get() 호출</span>
+	<span class="k">echo</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Setting 'name' to 'jiny' 
+Is 'name' set? 
+Is 'name' set? 
+Unsetting 'name' 
+Reading 'name'
+</code></pre></div></div>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1488-그-외-메서드">14.8.8 그 외 메서드</h3>
+<p>이외에도 다음과 같은 매직 메서드가 더 있습니다. 지면상 전부 다룰 수 없어서 보다 자세한 부분은 공식 사이트에서 확인 가능합니다.</p>
+
+<ul>
+  <li>__callStatic() : 정적 컨텍스트 내에서 접근 불가 메서드를 가져올 때 호출됩니다.</li>
+  <li>__sleep()</li>
+  <li>__wakeup()</li>
+  <li>__set_state() : var_export()에 의해 내보내진 클래스를 위해 호출됩니다.</li>
+  <li>__debugInfo() : var_dump()에 의해 덤프될 때 보여줄 속성을 가져올 때 호출됩니다.</li>
+</ul>
+
+<p><br /><br /></p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site Menu</li>
+    <li class="list-group-item"><a href="/php/php">소개</a></li>
+    <li class="list-group-item"><a href="/php/install">설치</a></li>
+    <li class="list-group-item"><a href="/php/basic">기본문법</a></li>
+
+    <li class="list-group-item"><a href="/php/function">함수</a></li>
+
+    <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
+</ul>
+<br>
+
+<select class="form-control">
+    <option>PHP 언어</option>
+    <option>Mysql 데이터베이스</option>
+    <option>Git교과서</option>
+</select>
+<br> 
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br></div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

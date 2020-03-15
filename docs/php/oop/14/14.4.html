@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Jiny Mysql</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Jiny</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <img src="/img/num1.jpg">
+        </div>
+        <div class="col-lg-9">
+          <h1 class="display-3">PHP</h1>
+          <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
+     
+      </p>
+      <p>
+        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
+      </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h3 id="144-인스턴스-생성">14.4 인스턴스 생성</h3>
+<p>인스턴스란 말은 앞에서 선언한 클래스를 통해 객체변수를 생성하는 것을 말합니다.</p>
+
+<p>함수는 정의 후에 바로 호출하여 사용할 수 있었습니다. 하지만 객체 클래스는 선언을 했다고 해서 바로 함수처럼 호출하여 사용할 수 있는 것은 아닙니다. 사용하기 전에 인스턴스화 작업을 통해 클래스 객체를 생성을 한 번 더 해줘야 합니다. 인스턴스화는 클래스 선언된 정보를 통해 객체변수를 생성 합니다.</p>
+
+<p>인스턴스화를 통하여 객체를 생성하면 클래스에 정의된 프로퍼티와 메서드를 함께 생성하여 새로운 객체를 생성 합니다. 정확히 말하면 객체를 생성하여 지정된 변수에 할당(대입)하는 것입니다. 객체변수를 통해 프로퍼티와 메서드에 접근하게 됩니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1441-new-키워드">14.4.1 new 키워드</h3>
+<p>정의한 클래스를 객체 인스턴스 형태로 생성하는 방법은 매우 간단합니다. 단지 정의한 클래스명 앞에 new 키워드를 통해 변수에 대입하면 됩니다.</p>
+
+<p>문법)</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$인스턴스</span> <span class="nx">변수</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">클래스명</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>new 키워드로 대입한 변수는 객체 데이터 타입으로 생성됩니다.</p>
+
+<p>예제 파일 class-02.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">JinyClass</span>
+	<span class="p">{</span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(</span><span class="nv">$msg</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">return</span> <span class="nv">$msg</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="nv">$JinyClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyClass</span><span class="p">();</span>
+	<span class="k">echo</span> <span class="s2">"JinyClass 인스턴스&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="nv">$JinyClass</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="s2">"JinyClass"</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+	<span class="nv">$obj1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyClass</span><span class="p">;</span>
+	<span class="nv">$obj2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyClass</span><span class="p">;</span>
+
+	<span class="k">echo</span> <span class="s2">"클래스 인스턴스1&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="nv">$obj1</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+	<span class="k">echo</span> <span class="s2">"클래스 인스턴스2&lt;br&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="nv">$obj2</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JinyClass 인스턴스
+JinyClass
+클래스 인스턴스1
+1
+클래스 인스턴스2
+2
+</code></pre></div></div>
+
+<p>위의 예제는 클래스 객체를 생성하는 예제입니다. 예제 소스를 살펴보면 아래와 같이 클래스를 인스턴스화하여 객체를 생성할 때 어떤 예는 변수명과 클래스명이 같은 경우를 종종 볼 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$JinyClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyClass</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>인스턴스 객체변수로 클래스명과 같은 이름을 사용할 수도 있습니다. 하지만 변수명과 클래스 이름은 서로 다른 의미 입니다. 객체변수는 변수이고, 클래스명은 클래스 이름이라는 것입니다. 서로 같지 않습니다. 이름만 같을 뿐 서로 영향을 주지 않습니다. 이름이 같다고 해도 왼쪽은 객체변수이고 오른쪽은 그냥 클래스명입니다.</p>
+
+<p>선언된 클래스는 new 키워드를 통해 객체를 생성하면 객체는 클래스의 선언된 타입과 같습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$obj1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyClass</span><span class="p">;</span>
+<span class="nv">$obj2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyClass</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위의 예처럼 한 개의 클래스를 통해 동일한 객체 내용을 가지고 있는 데이터 타입 변수 두 개를 생성할 수 있습니다. $obj1과 $obj2는 서로 다른 객체변수입니다. 하지만 동일한 클래스의 구조를 가지고 있습니다.</p>
+
+<p>함수 VS 클래스<br />
+함수는 선언과 호출 2단계 작업을 한 쌍으로 사용합니다. 반면에 클래스는 선언과 인스턴스 생성, 호출 3단계의 작업을 한 쌍으로 사용합니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="1442-객체-복사">14.4.2 객체 복사</h3>
+<p>new 키워드는 새로운 객체를 생성합니다. new 키워드는 초기화된 객체를 생성합니다. 만일 클래스 값의 초기화 같은 것이 필요하다면 그냥 new 키워드를 이용하여 객체를 생성하면 됩니다.</p>
+
+<p>하지만 지금 사용 중인 객체를 복제하여 사용하려고 하면 clone 키워드를 사용해야 합니다.</p>
+
+<p>|문법|</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$obj2</span> <span class="o">=</span> <span class="k">clone</span> <span class="nv">$obj</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>clone 키워드는 현재의 객체의 상태를 포함하여 객체를 복사합니다.</p>
+
+<p>예제 파일 class-03.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+	<span class="kd">class</span> <span class="nc">JinyClass</span>
+	<span class="p">{</span>
+		<span class="k">public</span> <span class="nv">$message</span><span class="p">;</span>
+
+		<span class="k">public</span> <span class="k">function</span> <span class="nf">showMessage</span><span class="p">(){</span>
+			<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">;</span>
+		<span class="p">}</span>
+
+	<span class="p">}</span>
+
+	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JinyClass</span><span class="p">;</span>
+	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="s2">"testing clone"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">showMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+	<span class="nv">$obj2</span> <span class="o">=</span> <span class="k">clone</span> <span class="nv">$obj</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="nv">$obj2</span><span class="o">-&gt;</span><span class="na">showMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>결과</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>testing clone
+testing clone
+</code></pre></div></div>
+
+<p>위의 예는 객체 복사에 대한 실험입니다. 첫 번째 객체 $obj는 처음에 생성된 객체변수입니다. 생성된 객체에 메시지 내용을 설정한 다음에 화면 출력합니다.</p>
+
+<p>$obj2는 $obj를 복사한 객체입니다. 현재 $obj객체의 설정값을 포함하여 새로운 객체변수에 복제가 됩니다. 복제된 $obj2를 통해 메시지를 출력하면 복제하기 전의 $obj 의 프로퍼티 값이 출력되는 것을 볼 수 있습니다.</p>
+
+<p>복제는 이전 객체에 어떠한 프로퍼티 값이 설정이 되어 있다면 이 설정값까지 모두 복제를 합니다.</p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site Menu</li>
+    <li class="list-group-item"><a href="/php/php">소개</a></li>
+    <li class="list-group-item"><a href="/php/install">설치</a></li>
+    <li class="list-group-item"><a href="/php/basic">기본문법</a></li>
+
+    <li class="list-group-item"><a href="/php/function">함수</a></li>
+
+    <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
+</ul>
+<br>
+
+<select class="form-control">
+    <option>PHP 언어</option>
+    <option>Mysql 데이터베이스</option>
+    <option>Git교과서</option>
+</select>
+<br> 
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br></div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

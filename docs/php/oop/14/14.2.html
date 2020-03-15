@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Jiny Mysql</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Jiny</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <img src="/img/num1.jpg">
+        </div>
+        <div class="col-lg-9">
+          <h1 class="display-3">PHP</h1>
+          <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
+     
+      </p>
+      <p>
+        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
+                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
+      </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h3 id="142-클래스--인스턴스">14.2 클래스 &amp; 인스턴스</h3>
+<p>클래스는 계층적으로 분류한 기능과 특성의 모음이라 생각하시면 됩니다. 클래스는 객체(object)와 실체화(instance)를 통하여 만들 수 있습니다.</p>
+
+<p>PHP 에서는 클래스 선언을 다음과 같이 할 수 있습니다.</p>
+
+<p>|문법|</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">jiny</span> <span class="p">{</span>
+	<span class="nx">클래스</span> <span class="nx">내용</span> <span class="o">...</span>
+
+	<span class="k">public</span> <span class="nv">$username</span><span class="p">;</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">setName</span><span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">username</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>class라는 키워드를 사용하고 다음에 클래스 이름을 사용자가 지정할 수 있습니다.</p>
+
+<p>클래스명은 영문 또는 언더바(_)로 시작합니다. 클래스의 내용은 중괄호 { } 안에 내용을 작성하면 됩니다.</p>
+
+<p><br /></p>
+<hr />
+
+<h3 id="142-접근-권한-속성">14.2 접근 권한 속성</h3>
+<p>클래스와 같이 객체지향 프로그램에서 속성이라는 추가적인 접근 권한 개념이 도입됩니다. 접근 권한 속성은 각각의 클래스의 독립성과 보호를 위해서 프로퍼티(변수)나 메서드(함수) 등에 권한을 설정하는 것입니다.</p>
+
+<p>PHP 클래스에서는 세 가지의 속성을 가지고 있습니다. public, protected, private를 제공합니다.
+속성은 클래스 외부에서의 접근을 제한하고자 할 때 사용할 수 있습니다.</p>
+
+<p>접근 속성의 종류<br />
+PHP 클래스에서는 프로퍼티 변수의 속성에 대해서 세 가지 타입을 지원합니다.</p>
+
+<ul>
+  <li>
+    <p>public:  public으로 설정된 프로퍼티 변수는 외부에서 접근이 가능합니다. 즉, 값을 읽거나 새로운 값으로 설정이 가능합니다.</p>
+  </li>
+  <li>
+    <p>protected: 정의한 클래스와 상속한 클래스에서만 사용이 가능합니다. 이 속성은 클래스 내의 메서드와 서브 클래스에서만 접근하여 사용할 수 있습니다. 외부에서 접근할 수는 없지만 상속을 받은 경우에는 접근이 가능합니다.</p>
+  </li>
+  <li>
+    <p>private: 정의한 클래스 내에서만 사용 가능합니다. 이 속성은 같은 클래스 내에서만 참조가 가능합니다. protectd와 달리 서브 클래스에서는 사용할 수 없습니다</p>
+  </li>
+</ul>
+
+<p><br /><br /></p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site Menu</li>
+    <li class="list-group-item"><a href="/php/php">소개</a></li>
+    <li class="list-group-item"><a href="/php/install">설치</a></li>
+    <li class="list-group-item"><a href="/php/basic">기본문법</a></li>
+
+    <li class="list-group-item"><a href="/php/function">함수</a></li>
+
+    <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
+</ul>
+<br>
+
+<select class="form-control">
+    <option>PHP 언어</option>
+    <option>Mysql 데이터베이스</option>
+    <option>Git교과서</option>
+</select>
+<br> 
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br></div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>
