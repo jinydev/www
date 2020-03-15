@@ -1,0 +1,77 @@
+I"@<h2 id="기본-구문">기본 구문</h2>
+
+<h3 id="php는-스크립트-언어입니다">PHP는 스크립트 언어입니다.</h3>
+<p>스크립트언어는 또 다른 말로 인터프리터 언어라고도 말할 수 있습니다. 즉 프로그램이 실행될 때마다 해당 언어 소스를 컴퓨터가 이해할 수 있는 기계어 코드로 변환하여 처리하는 언어입니다. 대표적으로는 베이직, 자바, PHP 등이 있습니다.</p>
+
+<ul>
+  <li>PHP는 <a href="./serverside">서버 사이드</a> 언어</li>
+  <li>프로그램 <a href="./coding">코딩</a> 및 오류</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="기본구조">기본구조</h3>
+<ul>
+  <li>PHP 프로그램 작성하기</li>
+  <li>PHP 확장자</li>
+  <li>HTML, CSS, Javascript</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="명령어-구분">명령어 구분</h3>
+<ul>
+  <li>컴파일러란?</li>
+  <li>인터프리터란?</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="주석문">주석문</h3>
+<ul>
+  <li>한 줄 주석 처리</li>
+  <li>여러 줄 주석 처리</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="화면-출력">화면 출력</h3>
+<ul>
+  <li>ECHO</li>
+  <li>print</li>
+  <li>echo VS print</li>
+  <li>here document</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="php-실행">PHP 실행</h3>
+<ul>
+  <li>도메인 접속</li>
+  <li>IP접속</li>
+  <li>localhost</li>
+  <li>콘솔 실행</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<h3 id="php-버전-확인">PHP 버전 확인</h3>
+
+<p><br /></p>
+<hr />
+
+<h3 id="기호">기호</h3>
+<ul>
+  <li>소괄호 ()</li>
+  <li>중괄호</li>
+  <li>대괄호</li>
+</ul>
+
+<p><br /><br /></p>
+:ET
