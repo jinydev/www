@@ -1,4 +1,4 @@
-I"]*<h2 id="77-논리-연산자">7.7 논리 연산자</h2>
+I"+<h2 id="77-논리-연산자">7.7 논리 연산자</h2>
 <p>컴퓨터의 디지털 논리 회로 and와 or의 처리 로직을 프로그램에도 적용할 수 있습니다.</p>
 
 <p>기존 모든 연산자는 단일 연산 후 결과를 참(true)과 거짓(false)로 판별할 수 있었습니다. 하지만 두 가지의 조건을 같이 판별을 하고자 할 때 논리 연산자를 이용하여 두 가지의 조건을 결합할 수 있습니다.</p>
@@ -11,12 +11,12 @@
 
 <p>AND는 논리 결과값을 곱셈하는 것과 같습니다.</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">*</span> <span class="kc">false</span> <span class="o">*</span> <span class="kc">true</span><span class="p">;</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">*</span> <span class="kc">false</span> <span class="o">*</span> <span class="kc">true</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>즉 1 * 0 * 0은 0 이기 때문에 거짓(false)이 됩니다.</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">*</span> <span class="kc">true</span> <span class="o">*</span> <span class="kc">true</span><span class="p">;</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">*</span> <span class="kc">true</span> <span class="o">*</span> <span class="kc">true</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>즉 1 * 1 * 1은 1이기 때문에 참(true)이 됩니다.</p>
@@ -24,7 +24,7 @@
 <p>프로그램 언어에서는 AND 연산을 &amp;&amp;로 표시합니다.</p>
 
 <p>예제 파일) logic-01.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$x</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 	<span class="nv">$y</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 	<span class="nv">$z</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
@@ -44,8 +44,8 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x &amp;&amp; y = true
-x &amp;&amp; y &amp;&amp; z = false 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>x <span class="err">&amp;&amp;</span> y = true
+x <span class="err">&amp;&amp;</span> y <span class="err">&amp;&amp;</span> z = false 
 </code></pre></div></div>
 
 <p><br /></p>
@@ -56,20 +56,20 @@ x &amp;&amp; y &amp;&amp; z = false
 
 <p>OR 는 논리 결과값을 덧셈하는 것과 같습니다.</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">+</span> <span class="kc">false</span> <span class="o">+</span> <span class="kc">true</span><span class="p">;</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">+</span> <span class="kc">false</span> <span class="o">+</span> <span class="kc">true</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>즉 <code class="highlighter-rouge">1 + 0 + 1</code>은 <code class="highlighter-rouge">0</code>보다 크기 때문에 <code class="highlighter-rouge">1</code>과 같은 참(true)이 됩니다.</p>
+<p>즉 <code class="language-html highlighter-rouge">1 + 0 + 1</code>은 <code class="language-html highlighter-rouge">0</code>보다 크기 때문에 <code class="language-html highlighter-rouge">1</code>과 같은 참(true)이 됩니다.</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">false</span> <span class="o">*</span> <span class="kc">false</span> <span class="o">*</span> <span class="kc">false</span><span class="p">;</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$result</span> <span class="o">=</span> <span class="kc">false</span> <span class="o">*</span> <span class="kc">false</span> <span class="o">*</span> <span class="kc">false</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>즉 <code class="highlighter-rouge">0 + 0 + 0</code>은 <code class="highlighter-rouge">0</code>이기 때문에 거짓(false)이 됩니다.</p>
+<p>즉 <code class="language-html highlighter-rouge">0 + 0 + 0</code>은 <code class="language-html highlighter-rouge">0</code>이기 때문에 거짓(false)이 됩니다.</p>
 
-<p>프로그램 언어에서는 <code class="highlighter-rouge">OR</code> 연산을 <code class="highlighter-rouge">||</code>로 표시합니다.</p>
+<p>프로그램 언어에서는 <code class="language-html highlighter-rouge">OR</code> 연산을 <code class="language-html highlighter-rouge">||</code>로 표시합니다.</p>
 
 <p>예제 파일 logic-02.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$x</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 	<span class="nv">$y</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 	<span class="nv">$z</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
@@ -89,7 +89,7 @@ x &amp;&amp; y &amp;&amp; z = false
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x || y = false
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>x || y = false
 x || y || z = true 
 </code></pre></div></div>
 
@@ -102,7 +102,7 @@ x || y || z = true
 <p>xor는 두 개의 조건이 같으면 거짓(false)을 출력하고, 두 개의 값이 서로 다르면 참(true)을 출력합니다.</p>
 
 <p>예제 파일 logic-03.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$x</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 	<span class="nv">$y</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 	<span class="nv">$z</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
@@ -122,7 +122,7 @@ x || y || z = true
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x xor y = false 두 개의 논리가 같습니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>x xor y = false 두 개의 논리가 같습니다.
 x xor z = true 두 개의 논리가 틀립니다.
 </code></pre></div></div>
 
@@ -135,7 +135,7 @@ x xor z = true 두 개의 논리가 틀립니다.
 <p>NOT은 변수명 앞에 느낌표 !로 사용합니다.</p>
 
 <p>예제 파일 logic-04.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$x</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
 	<span class="k">if</span> <span class="p">(</span><span class="nv">$x</span><span class="p">)</span> <span class="p">{</span>
@@ -156,7 +156,7 @@ x xor z = true 두 개의 논리가 틀립니다.
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x는 참입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>x는 참입니다.
 x는 거짓입니다.
 </code></pre></div></div>
 

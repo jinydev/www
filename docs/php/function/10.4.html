@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -67,7 +63,7 @@
 <p>인자값은 함수에 임의의 값을 전달합니다. 인자 선언 방법은 함수 이름 다음에 오는 소괄호() 안에 필요한 기초 데이터 값을 나열하여 전달할 수 있습니다. 인자값은 직접 값을 넣을 수도 있지만 변수를 통하여 전달을 할 수도 있습니다.</p>
 
 <p>함수 선언 문법</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function 함수명 (인자1, 인자2, 인자3 ...) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>function 함수명 (인자1, 인자2, 인자3 ...) {
 함수 정의 몸체 ... 
 소스 코드 내용 
 }
@@ -87,13 +83,13 @@
 
 <p>함수의 매개변수 선언는 소괄호 ( ) 안에 인자값으로 받는 변수명을 넣으면 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function hellowWorld ($name, $age) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>function hellowWorld ($name, $age) {
 함수 정의 몸체 ... 
 소스 코드 내용 
 
-echo $name . “&lt;br&gt;”;
+echo $name . “<span class="nt">&lt;br&gt;</span>”;
 
-echo $age . “&lt;br&gt;”;
+echo $age . “<span class="nt">&lt;br&gt;</span>”;
 }
 </code></pre></div></div>
 
@@ -121,19 +117,19 @@ echo $age . “&lt;br&gt;”;
 실행 인자: 함수를 호출할 때 전달하는 값</p>
 
 <p>예제 파일 func-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-	<span class="nv">$name</span> <span class="o">=</span> <span class="err">“</span><span class="nx">jiny</span><span class="err">”</span><span class="p">;</span>
+	$name = “jiny”;
 
-	<span class="k">function</span> <span class="nf">hellowWorld</span> <span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$age</span><span class="o">.</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="nv">$name</span> <span class="o">.</span><span class="err">”</span><span class="nx">는</span> <span class="nv">$age</span> <span class="nx">입니다</span><span class="o">.</span> <span class="err">“</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span><span class="err">”</span><span class="p">;</span>
-	<span class="p">}</span>
+	function hellowWorld ($name, $age.) {
+		echo $name .”는 $age 입니다. “&lt;br&gt;”;
+	}
 
-	<span class="k">function</span> <span class="nf">setUserName</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-  		<span class="k">echo</span> <span class="nv">$name</span> <span class="o">.</span> <span class="err">“</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span><span class="err">”</span><span class="p">;</span>
-	<span class="p">}</span>
+	function setUserName ($name) {
+  		echo $name . “&lt;br&gt;”;
+	}
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>위의 예를 보면 함수 외부에 선언되어 있는 $name 변수와 두 개의 함수의 매개변수로 선언된 $name 변수는 모두 각각의 다른 변수입니다.</p>
@@ -153,20 +149,20 @@ echo $age . “&lt;br&gt;”;
 <p>실행 인자를 변수 형태가 아니라 상수값 형태로 전달하는 방식은 함수의 값을 테스트하거나, 직관적으로 데이터 값을 전달할 때 편리합니다. 또한 고정된 기능을 처리하는 함수를 만들 때 편리합니다.</p>
 
 <p>예제 파일 func-06.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-	<span class="k">function</span> <span class="nf">hellowWorld</span> <span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$age</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="nv">$name</span> <span class="o">.</span><span class="s2">"는 </span><span class="nv">$age입니다</span><span class="s2">. &lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+	function hellowWorld ($name, $age) {
+		echo $name ."는 $age입니다. &lt;br&gt;";
+	}
 
-	<span class="c1">// 문자열 상수 실행 인자와, 정수형 상수 실행 인자를 전달합니다.</span>
-	<span class="nx">hellowWorld</span><span class="p">(</span><span class="s2">"jiny"</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+	// 문자열 상수 실행 인자와, 정수형 상수 실행 인자를 전달합니다.
+	hellowWorld("jiny", 20);
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jiny는 20입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>jiny는 20입니다.
 </code></pre></div></div>
 
 <p>위의 예제를 보면 hellowWorld 함수를 호출할 때 입력받는 함수의 매개변수 $name과 $age 값을 직접 문자열 및 정수로 데이터를 전달 합니다.</p>
@@ -178,30 +174,30 @@ echo $age . “&lt;br&gt;”;
 <p>상수값을 실행 인자로 전달하는 경우는 테스트 등의 작업 이외에는 별로 없습니다. 대부분 소스들은 데이터를 처리하고 값을 가공합니다. 또한 수많은 변수들을 통해 처리된 값들을 저장하고 실행 인자값으로 사용합니다. 변수로 실행 인자값을 전달한다는 표현은 함수 실행 시 호출하면서 상수값 형태로 전달하는 것과 달리 대부분은 변수에 데이터 값을 넣어서 값을 전달합니다.</p>
 
 <p>예제 파일 func-07.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">addSum</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nv">$sum</span> <span class="o">=</span> <span class="nv">$s</span> <span class="o">+</span> <span class="nv">$y</span><span class="p">;</span>
-    	<span class="k">echo</span> <span class="nv">$sum</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function addSum($x, $y) {
+		$sum = $s + $y;
+    	echo $sum."&lt;br&gt;";
+	}
 
-	<span class="c1">// 변수에 값을 설정합니다.</span>
-	<span class="nv">$x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-	<span class="nv">$y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+	// 변수에 값을 설정합니다.
+	$x = 10;
+	$y = 5;
 
-	<span class="c1">// 함수를 호출합니다.</span>
-	<span class="nx">addSum</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">);</span> 
+	// 함수를 호출합니다.
+	addSum($x, $y); 
 
-	<span class="nv">$value1</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
-	<span class="nv">$value2</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+	$value1 = 50;
+	$value2 = 25;
 
-	<span class="c1">// 함수를 호출합니다.</span>
-	<span class="nx">addSum</span><span class="p">(</span><span class="nv">$value1</span><span class="p">,</span> <span class="nv">$value2</span><span class="p">);</span> 
+	// 함수를 호출합니다.
+	addSum($value1, $value2); 
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>5
 25
 </code></pre></div></div>
 
@@ -226,7 +222,7 @@ echo $age . “&lt;br&gt;”;
 <p>만일 이러한 매개변수 초기값을 설정하는 기능이 없다면 함수 초기에 매개변수의 유효성을 체크하는 기능을 매번 만들어야 될 것입니다. 초기값 설정 기능을 통해 함수의 오동작을 줄여주고 함수의 매개변수 초기화 기능을 생략함으로써 소스의 코드를 줄일 수 있는 기능이 됩니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function 함수명 (인자1=”초기값”) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>function 함수명 (인자1=”초기값”) {
 함수 정의 몸체 ... 
 소스 코드 내용 
 }
@@ -235,23 +231,23 @@ echo $age . “&lt;br&gt;”;
 <p>PHP의 매개변수의 초기값은 매우 직관적입니다. 매개변수를 선언할 때 변수명 = “기본값” 형태로 지정하면 됩니다.</p>
 
 <p>예제 파일 func-08.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">setHeight</span><span class="p">(</span><span class="nv">$minheight</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"The height is : </span><span class="nv">$minheight</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function setHeight($minheight = 50) {
+    		echo "The height is : $minheight &lt;br&gt;";
+	}
 
-	<span class="c1">// 함수 호출 시 매개변수 값 250을 입력합니다.</span>
-	<span class="nx">setHeight</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+	// 함수 호출 시 매개변수 값 250을 입력합니다.
+	setHeight(250);
 
-	<span class="c1">// 매개변수 값이 없습니다.</span>
-	<span class="c1">// 기본값 50이 적용됩니다.</span>
-	<span class="nx">setHeight</span><span class="p">();</span>
+	// 매개변수 값이 없습니다.
+	// 기본값 50이 적용됩니다.
+	setHeight();
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The height is : 250
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>The height is : 250
 The height is : 50 
 </code></pre></div></div>
 
@@ -276,24 +272,24 @@ The height is : 50
 </ul>
 
 <p>예제 파일 func-09.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">test</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">){</span>
-		<span class="k">echo</span> <span class="nv">$x</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function test(int $x){
+		echo $x."&lt;br&gt;";
+	}
 
-	<span class="k">echo</span> <span class="nx">test</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	echo test(1);
 
-	<span class="k">function</span> <span class="nf">test2</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$x</span><span class="p">){</span>
-		<span class="k">echo</span> <span class="nv">$x</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+	function test2(string $x){
+		echo $x."&lt;br&gt;";
+	}
 
-	<span class="k">echo</span> <span class="nx">test2</span><span class="p">(</span><span class="s2">"문자열"</span><span class="p">);</span>
+	echo test2("문자열");
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>1
 문자열
 </code></pre></div></div>
 
@@ -301,7 +297,7 @@ The height is : 50
 
 <p>하지만 만일 타입이 틀린 형태 test(“a”);로 함수를 호출하는 경우에는 실행 인자가 문자열이고 입력 받는 매개변수의 타입이 정수이기 때문에 데이터 타입이 일치하지 않습니다. 이런 경우에는 PHP에서는 오류 메시지를 출력하게 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\php-7.1.4-Win32-VC14-x86\jinyphp\func-22.php:2
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>C:\php-7.1.4-Win32-VC14-x86\jinyphp\func-22.php:2
 Stack trace:
 #0 C:\php-7.1.4-Win32-VC14-x86\jinyphp\func-22.php(8): test('a')
 #1 {main}
@@ -317,22 +313,22 @@ thrown in C:\php-7.1.4-Win32-VC14-x86\jinyphp\func-22.php on line 2
 <p>참조 매개변수는 변수명 앞에 &amp; 기호를 붙여줍니다.</p>
 
 <p>예제 파일 func-### 10.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">drink</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$name</span><span class="p">){</span>
-		<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"사이다"</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function drink(&amp;$name){
+		$name = "사이다";
+	}
 
-	<span class="nv">$drinkName</span> <span class="o">=</span> <span class="s2">"콜라"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"음료수 이름 = </span><span class="nv">$drinkName</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+	$drinkName = "콜라";
+	echo "음료수 이름 = $drinkName &lt;br&gt;";
 
-	<span class="nx">drink</span><span class="p">(</span><span class="nv">$drinkName</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"음료수 이름 = </span><span class="nv">$drinkName</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+	drink($drinkName);
+	echo "음료수 이름 = $drinkName &lt;br&gt;";
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>음료수 이름 = 콜라
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>음료수 이름 = 콜라
 음료수 이름 = 사이다 
 </code></pre></div></div>
 
@@ -353,29 +349,29 @@ thrown in C:\php-7.1.4-Win32-VC14-x86\jinyphp\func-22.php on line 2
 <p>심지어 매개변수를 하나도 지정하지 않아도 함수에 매개변수를 전달할 수 있습니다. 이런 경우 함수를 실행할 때 매개변수의 개수를 확인할 수 있는 func_num_args() 내부 함수와 매개변수의 데이터를 배열로 가지고 올 수 있는 func_get_args() 내부 함수 두 개를 사용하여 처리할 수 있습니다.</p>
 
 <p>예제 파일 func-11.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">setting</span><span class="p">(){</span>
-		<span class="nv">$num</span> <span class="o">=</span> <span class="nb">func_num_args</span><span class="p">();</span>
-		<span class="k">echo</span> <span class="s2">"실행 인자 개수 = </span><span class="nv">$num</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function setting(){
+		$num = func_num_args();
+		echo "실행 인자 개수 = $num &lt;br&gt;";
 
-		<span class="nv">$args</span> <span class="o">=</span> <span class="nb">func_get_args</span><span class="p">();</span>
-		<span class="k">foreach</span><span class="p">(</span><span class="nv">$args</span> <span class="k">as</span> <span class="nv">$arg</span><span class="p">)</span> <span class="k">echo</span> <span class="nv">$arg</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+		$args = func_get_args();
+		foreach($args as $arg) echo $arg."&lt;br&gt;";
 		
-	<span class="p">}</span>
+	}
 
-	<span class="nx">setting</span><span class="p">(</span><span class="s2">"aaa"</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"====&lt;br&gt;"</span><span class="p">;</span>
+	setting("aaa");
+	echo "====&lt;br&gt;";
 
-	<span class="nx">setting</span><span class="p">(</span><span class="s2">"aaa"</span><span class="p">,</span><span class="s2">"bbb"</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"====&lt;br&gt;"</span><span class="p">;</span>
+	setting("aaa","bbb");
+	echo "====&lt;br&gt;";
 	
-	<span class="nx">setting</span><span class="p">(</span><span class="s2">"aaa"</span><span class="p">,</span><span class="s2">"bbb"</span><span class="p">,</span><span class="s2">"ccc"</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"====&lt;br&gt;"</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+	setting("aaa","bbb","ccc");
+	echo "====&lt;br&gt;";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>실행 인자 개수 = 1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>실행 인자 개수 = 1
 aaa
 ====
 실행 인자 개수 = 2
@@ -390,22 +386,22 @@ ccc
 </code></pre></div></div>
 
 <p>예제 파일 :func-12.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">sum</span><span class="p">()</span> <span class="p">{</span>
-		<span class="nv">$a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-		<span class="c1">// func_get_args 함수를 통해 매개변수를 읽어옵니다.</span>
-		<span class="k">foreach</span> <span class="p">(</span><span class="nb">func_get_args</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$n</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nv">$a</span> <span class="o">+=</span> <span class="nv">$n</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">return</span> <span class="nv">$a</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function sum() {
+		$a = 0;
+		// func_get_args 함수를 통해 매개변수를 읽어옵니다.
+		foreach (func_get_args() as $n) {
+			$a += $n;
+		}
+		return $a;
+	}
 
-	<span class="k">echo</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	echo sum(1, 2, 3, 4, 5);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>15
 </code></pre></div></div>
 
 <p><br /></p>
@@ -419,22 +415,22 @@ ccc
 <p>… 키워드 가변인자는 함수의 인자값의 개수를 예측하기 어려울 때 매우 유용합니다.</p>
 
 <p>예제 파일 scalar-13.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 가변 인자로 받습니다.</span>
-	<span class="k">function</span> <span class="nf">sum</span><span class="p">(</span><span class="o">...</span><span class="nv">$numbers</span><span class="p">)</span> <span class="p">{</span>
-    		<span class="nv">$acc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    		<span class="k">foreach</span> <span class="p">(</span><span class="nv">$numbers</span> <span class="k">as</span> <span class="nv">$n</span><span class="p">)</span> <span class="p">{</span>
-        			<span class="nv">$acc</span> <span class="o">+=</span> <span class="nv">$n</span><span class="p">;</span>
-    		<span class="p">}</span>
-    		<span class="k">return</span> <span class="nv">$acc</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 가변 인자로 받습니다.
+	function sum(...$numbers) {
+    		$acc = 0;
+    		foreach ($numbers as $n) {
+        			$acc += $n;
+    		}
+    		return $acc;
+	}
 
-	<span class="k">echo</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	echo sum(1, 2, 3, 4, 5);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>15
 </code></pre></div></div>
 
 <p>위의 예에서 sum()함수는 가변 인자값으로 매개변수를 전달받습니다. 하지만 개수는 정의되지 않는다는 것입니다.</p>
@@ -442,20 +438,20 @@ ccc
 <p>sum(1, 2, 3, 4, 5);처럼 여러 개의 값을 콤마(,)로 구분하여 다수의 인자값을 전달할 수 있습니다. 또한 전달된 인자값들은 가변변수 $numbers 로 받아 배열로 구분하여 각각의 값을 처리합니다.</p>
 
 <p>예제 파일 scalar-14.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
-    	<span class="k">return</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function add($a, $b) {
+    	return $a + $b;
+	}
 
-	<span class="k">echo</span> <span class="nx">add</span><span class="p">(</span><span class="o">...</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	echo add(...[1, 2])."&lt;br&gt;";
 
-	<span class="nv">$a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
-	<span class="k">echo</span> <span class="nx">add</span><span class="p">(</span><span class="o">...</span><span class="nv">$a</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	$a = [4, 5];
+	echo add(...$a);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>3
 9
 </code></pre></div></div>
 
@@ -477,16 +473,7 @@ ccc
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

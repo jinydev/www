@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -89,8 +85,8 @@ string gmdate ( string $format [, int $timestamp = time() ] )</p>
 <p>예제파일) gmdate.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo date("Y-m-d H:i:s");
-echo "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo date("Y-m-d H:i:s");
+echo "<span class="nt">&lt;br&gt;</span>";
 
 echo "GMT(greenwich Mean Time) 기준 = ".gmdate("Y-m-d H:i:s");
 </code></pre></div></div>
@@ -147,16 +143,16 @@ array getdate ([ int $timestamp = time() ] )</p>
 &lt;?php
 	$date = getdate();</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "초 = ". $date['seconds'] . "&lt;br&gt;";
-echo "분 = ". $date['minutes'] . "&lt;br&gt;";
-echo "시 = ". $date['hours'] . "&lt;br&gt;";
-echo "달날짜 = ". $date['mday'] . "&lt;br&gt;";
-echo "요일(숫자) = ". $date['wday'] . "&lt;br&gt;";
-echo "달(숫자) = ". $date['mon'] . "&lt;br&gt;";
-echo "연도 = ". $date['year'] . "&lt;br&gt;";
-echo "일년날짜수 = ". $date['yday'] . "&lt;br&gt;";
-echo "요일 = ". $date['weekday'] . "&lt;br&gt;";
-echo "달 = ". $date['month'] . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "초 = ". $date['seconds'] . "<span class="nt">&lt;br&gt;</span>";
+echo "분 = ". $date['minutes'] . "<span class="nt">&lt;br&gt;</span>";
+echo "시 = ". $date['hours'] . "<span class="nt">&lt;br&gt;</span>";
+echo "달날짜 = ". $date['mday'] . "<span class="nt">&lt;br&gt;</span>";
+echo "요일(숫자) = ". $date['wday'] . "<span class="nt">&lt;br&gt;</span>";
+echo "달(숫자) = ". $date['mon'] . "<span class="nt">&lt;br&gt;</span>";
+echo "연도 = ". $date['year'] . "<span class="nt">&lt;br&gt;</span>";
+echo "일년날짜수 = ". $date['yday'] . "<span class="nt">&lt;br&gt;</span>";
+echo "요일 = ". $date['weekday'] . "<span class="nt">&lt;br&gt;</span>";
+echo "달 = ". $date['month'] . "<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -182,10 +178,10 @@ mixed gettimeofday ([ bool $return_float = false ] )</p>
 &lt;?php
 	$time = gettimeofday();</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "현재 초 = " . $time['sec'] . "&lt;br&gt;";
-echo "마이크로 초 = " . $time['usec'] . "&lt;br&gt;";
-echo "서부 Greenwich 표준 = " . $time['minuteswest'] . "&lt;br&gt;";
-echo "섬머타임 보정 = " . $time['dsttime'] . "&lt;br&gt;"; ?&gt;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "현재 초 = " . $time['sec'] . "<span class="nt">&lt;br&gt;</span>";
+echo "마이크로 초 = " . $time['usec'] . "<span class="nt">&lt;br&gt;</span>";
+echo "서부 Greenwich 표준 = " . $time['minuteswest'] . "<span class="nt">&lt;br&gt;</span>";
+echo "섬머타임 보정 = " . $time['dsttime'] . "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -218,7 +214,7 @@ int idate ( string $format [, int $timestamp = time() ] )</p>
 &lt;?php
 	$timestamp = strtotime(‘1st January 2017’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// this prints the year in a two digit format
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// this prints the year in a two digit format
 // however, as this would start with a "0", it
 // only prints "4"
 echo idate('y', $timestamp); ?&gt;
@@ -295,7 +291,7 @@ int mktime ([ int $hour = date(“H”) [, int $minute = date(“i”) [, int $s
 	$day = date(“d”);
 	$year = date(“Y”);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$timeStamp = mktime($hour, $minute, $second, $month, $day, $year);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$timeStamp = mktime($hour, $minute, $second, $month, $day, $year);
 
 // 두번째 인자로 주어진 시간을 포맷에 맞게 출력합니다.
 echo date("Y-m-d H:i:s",$timeStamp); ?&gt;
@@ -355,7 +351,7 @@ mixed date_sunrise ( int $timestamp [, int $format = SUNFUNCS_RET_STRING [, floa
 <p>예제파일) date_sunrise.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* calculate the sunrise time for Lisbon, Portugal
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>/* calculate the sunrise time for Lisbon, Portugal
 Latitude: 38.4 North
 Longitude: 9 West
 Zenith ~= 90
@@ -428,7 +424,7 @@ string date ( string $format [, int $timestamp = time() ] )</p>
 	echo date(“Y-m-d H:i:s”);
 	echo “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 두번째 인자로 주어진 시간을 포맷에 맞게 출력합니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 두번째 인자로 주어진 시간을 포맷에 맞게 출력합니다.
 echo date("Y-m-d H:i:s",mktime(0,0,0,1,1,2017)); ?&gt;
 </code></pre></div></div>
 
@@ -515,56 +511,56 @@ string strftime ( string $format [, int $timestamp = time() ] )</p>
 <p>예제파일) strftime.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "축약된 요일이름 = ". strftime("%a") ."&lt;br&gt;";
-echo "요일이름 = ". strftime("%A") ."&lt;br&gt;";
-echo "날짜(10진수) = ". strftime("%d") ."&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "축약된 요일이름 = ". strftime("%a") ."<span class="nt">&lt;br&gt;</span>";
+echo "요일이름 = ". strftime("%A") ."<span class="nt">&lt;br&gt;</span>";
+echo "날짜(10진수) = ". strftime("%d") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Day of the month, with a space preceding single digits. Not implemented as described on Windows. See below for more information. = ". strftime("%e") ."&lt;br&gt;";
+echo "Day of the month, with a space preceding single digits. Not implemented as described on Windows. See below for more information. = ". strftime("%e") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Day of the year, 3 digits with leading zeros = ". strftime("%j") ."&lt;br&gt;";
-echo "ISO-8601 numeric representation of the day of the week = ". strftime("%u") ."&lt;br&gt;";
-echo "Numeric representation of the day of the week = ". strftime("%w") ."&lt;br&gt;";
+echo "Day of the year, 3 digits with leading zeros = ". strftime("%j") ."<span class="nt">&lt;br&gt;</span>";
+echo "ISO-8601 numeric representation of the day of the week = ". strftime("%u") ."<span class="nt">&lt;br&gt;</span>";
+echo "Numeric representation of the day of the week = ". strftime("%w") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Week number of the given year, starting with the first Sunday as the first week = ". strftime("%U") ."&lt;br&gt;";
-echo "ISO-8601:1988 week number of the given year, starting with the first week of the year with at least 4 weekdays, with Monday being the start of the week	01 through 53 = ". strftime("%V") ."&lt;br&gt;";
+echo "Week number of the given year, starting with the first Sunday as the first week = ". strftime("%U") ."<span class="nt">&lt;br&gt;</span>";
+echo "ISO-8601:1988 week number of the given year, starting with the first week of the year with at least 4 weekdays, with Monday being the start of the week	01 through 53 = ". strftime("%V") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "A numeric representation of the week of the year, starting with the first Monday as the first week	46 (for the 46th week of the year beginning with a Monday) = ". strftime("%W") ."&lt;br&gt;";
+echo "A numeric representation of the week of the year, starting with the first Monday as the first week	46 (for the 46th week of the year beginning with a Monday) = ". strftime("%W") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Abbreviated month name, based on the locale = ". strftime("%b") ."&lt;br&gt;";
-echo "Full month name, based on the locale = ". strftime("%B") ."&lt;br&gt;";
-echo "Abbreviated month name, based on the locale (an alias of %b) = ". strftime("%h") ."&lt;br&gt;";
-echo "Two digit representation of the month = ". strftime("%m") ."&lt;br&gt;";
-echo "Two digit representation of the century (year divided by 100, truncated to an integer) = ". strftime("%C") ."&lt;br&gt;";
-echo "Two digit representation of the year going by ISO-8601:1988 standards (see %V) = ". strftime("%g") ."&lt;br&gt;";
-echo "The full four-digit version of %g = ". strftime("%G") ."&lt;br&gt;";
+echo "Abbreviated month name, based on the locale = ". strftime("%b") ."<span class="nt">&lt;br&gt;</span>";
+echo "Full month name, based on the locale = ". strftime("%B") ."<span class="nt">&lt;br&gt;</span>";
+echo "Abbreviated month name, based on the locale (an alias of %b) = ". strftime("%h") ."<span class="nt">&lt;br&gt;</span>";
+echo "Two digit representation of the month = ". strftime("%m") ."<span class="nt">&lt;br&gt;</span>";
+echo "Two digit representation of the century (year divided by 100, truncated to an integer) = ". strftime("%C") ."<span class="nt">&lt;br&gt;</span>";
+echo "Two digit representation of the year going by ISO-8601:1988 standards (see %V) = ". strftime("%g") ."<span class="nt">&lt;br&gt;</span>";
+echo "The full four-digit version of %g = ". strftime("%G") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Two digit representation of the year = ". strftime("%y") ."&lt;br&gt;";
-echo "Four digit representation for the year = ". strftime("%Y") ."&lt;br&gt;";
-echo "Two digit representation of the hour in 24-hour format = ". strftime("%H") ."&lt;br&gt;";
-echo "Hour in 24-hour format, with a space preceding single digits = ". strftime("%k") ."&lt;br&gt;";
-echo "Two digit representation of the hour in 12-hour format = ". strftime("%I") ."&lt;br&gt;";
-echo "Hour in 12-hour format, with a space preceding single digits = ". strftime("%l") ."&lt;br&gt;";
-echo "Two digit representation of the minute = ". strftime("%M") ."&lt;br&gt;";
-echo "UPPER-CASE 'AM' or 'PM' based on the given time = ". strftime("%P") ."&lt;br&gt;";
-echo "lower-case 'am' or 'pm' based on the given time = ". strftime("%p") ."&lt;br&gt;";
+echo "Two digit representation of the year = ". strftime("%y") ."<span class="nt">&lt;br&gt;</span>";
+echo "Four digit representation for the year = ". strftime("%Y") ."<span class="nt">&lt;br&gt;</span>";
+echo "Two digit representation of the hour in 24-hour format = ". strftime("%H") ."<span class="nt">&lt;br&gt;</span>";
+echo "Hour in 24-hour format, with a space preceding single digits = ". strftime("%k") ."<span class="nt">&lt;br&gt;</span>";
+echo "Two digit representation of the hour in 12-hour format = ". strftime("%I") ."<span class="nt">&lt;br&gt;</span>";
+echo "Hour in 12-hour format, with a space preceding single digits = ". strftime("%l") ."<span class="nt">&lt;br&gt;</span>";
+echo "Two digit representation of the minute = ". strftime("%M") ."<span class="nt">&lt;br&gt;</span>";
+echo "UPPER-CASE 'AM' or 'PM' based on the given time = ". strftime("%P") ."<span class="nt">&lt;br&gt;</span>";
+echo "lower-case 'am' or 'pm' based on the given time = ". strftime("%p") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Same as %I:%M:%S %p = ". strftime("%r") ."&lt;br&gt;";
-echo "Same as %H:%M = ". strftime("%R") ."&lt;br&gt;";
-echo "Two digit representation of the second = ". strftime("%S") ."&lt;br&gt;";
-echo "Same as %H:%M:%S = ". strftime("%T") ."&lt;br&gt;";
-echo "Preferred time representation based on locale, without the date = ". strftime("%X") ."&lt;br&gt;";
-echo "The time zone offset. Not implemented as described on Windows. See below for more information. = ". strftime("%z") ."&lt;br&gt;";
-echo "The time zone abbreviation. Not implemented as described on Windows. See below for more information. = ". strftime("%Z") ."&lt;br&gt;";
+echo "Same as %I:%M:%S %p = ". strftime("%r") ."<span class="nt">&lt;br&gt;</span>";
+echo "Same as %H:%M = ". strftime("%R") ."<span class="nt">&lt;br&gt;</span>";
+echo "Two digit representation of the second = ". strftime("%S") ."<span class="nt">&lt;br&gt;</span>";
+echo "Same as %H:%M:%S = ". strftime("%T") ."<span class="nt">&lt;br&gt;</span>";
+echo "Preferred time representation based on locale, without the date = ". strftime("%X") ."<span class="nt">&lt;br&gt;</span>";
+echo "The time zone offset. Not implemented as described on Windows. See below for more information. = ". strftime("%z") ."<span class="nt">&lt;br&gt;</span>";
+echo "The time zone abbreviation. Not implemented as described on Windows. See below for more information. = ". strftime("%Z") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Preferred date and time stamp based on locale = ". strftime("%c") ."&lt;br&gt;";
-echo "Same as %m/%d/%y = ". strftime("%D") ."&lt;br&gt;";
-echo "Same as %Y-%m-%d (commonly used in database datestamps) = ". strftime("%F") ."&lt;br&gt;";
-echo "Unix Epoch Time timestamp (same as the time() function) = ". strftime("%s") ."&lt;br&gt;";
+echo "Preferred date and time stamp based on locale = ". strftime("%c") ."<span class="nt">&lt;br&gt;</span>";
+echo "Same as %m/%d/%y = ". strftime("%D") ."<span class="nt">&lt;br&gt;</span>";
+echo "Same as %Y-%m-%d (commonly used in database datestamps) = ". strftime("%F") ."<span class="nt">&lt;br&gt;</span>";
+echo "Unix Epoch Time timestamp (same as the time() function) = ". strftime("%s") ."<span class="nt">&lt;br&gt;</span>";
 
-echo "Preferred date representation based on locale, without the time = ". strftime("%x") ."&lt;br&gt;";
-echo "A newline character = ". strftime("%n") ."&lt;br&gt;";
-echo "A Tab character = ". strftime("%t") ."&lt;br&gt;";
-echo "A literal percentage character = ". strftime("%%") ."&lt;br&gt;";
+echo "Preferred date representation based on locale, without the time = ". strftime("%x") ."<span class="nt">&lt;br&gt;</span>";
+echo "A newline character = ". strftime("%n") ."<span class="nt">&lt;br&gt;</span>";
+echo "A Tab character = ". strftime("%t") ."<span class="nt">&lt;br&gt;</span>";
+echo "A literal percentage character = ". strftime("%%") ."<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -622,7 +618,7 @@ array strptime ( string $date , string $format )</p>
 	$format = ‘%d/%m/%Y %H:%M:%S’;
 	$strf = strftime($format);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "$strf\n";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "$strf\n";
 
 print_r(strptime($strf, $format)); ?&gt;
 </code></pre></div></div>
@@ -643,16 +639,16 @@ bool checkdate ( int $month , int $day , int $year )</p>
 <p>예제파일) checkdate.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$year = "2017";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$year = "2017";
 $month = "06";
 $day = "33";
 
 if (checkdate($day,$month,$year)){
 	echo "$year - $month - $day ";
-	echo "유효한 날짜 입니다.&lt;br&gt;";
+	echo "유효한 날짜 입니다.<span class="nt">&lt;br&gt;</span>";
 } else {
 	echo "$year - $month - $day ";
-	echo "정확하지 않은 날짜입니다.&lt;br&gt;";
+	echo "정확하지 않은 날짜입니다.<span class="nt">&lt;br&gt;</span>";
 } ?&gt;
 </code></pre></div></div>
 
@@ -681,7 +677,7 @@ if (checkdate($day,$month,$year)){
 	const string RSS = “D, d M Y H:i:s O” ;
 	const string W3C = “Y-m-d\TH:i:sP” ;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* Methods */
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>/* Methods */
 public __construct ([ string $time = "now" [, DateTimeZone $timezone = NULL ]] )
 public DateTime add ( DateInterval $interval )
 public static DateTime createFromFormat ( string $format , string $time [, DateTimeZone $timezone ] )
@@ -717,7 +713,7 @@ public DateInterval DateTime::diff ( DateTimeInterface $datetime2 [, bool $absol
 	$interval = $datetime1-&gt;diff($datetime2);
 	echo $interval-&gt;format(‘%R%a days’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "<span class="nt">&lt;br&gt;</span>";
 // Procedural style
 $datetime1 = date_create('2017-08-11');
 $datetime2 = date_create('2017-08-13');
@@ -741,7 +737,7 @@ public DateTime DateTime::sub ( DateInterval $interval )</p>
 	$date-&gt;sub(new DateInterval(‘P10D’));
 	echo $date-&gt;format(‘Y-m-d’) . “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Procedural style
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// Procedural style
 $date = date_create('2017-08-20');
 date_sub($date, date_interval_create_from_date_string('15 days'));
 echo date_format($date, 'Y-m-d'); ?&gt;
@@ -762,7 +758,7 @@ public string DateTime::format ( string $format )</p>
 	$date = new DateTime(‘2018-07-01’);
 	echo $date-&gt;format(‘Y-m-d H:i:s’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create('2018-08-01');
@@ -783,20 +779,20 @@ public DateTime DateTime::setISODate ( int $year , int $week [, int $day = 1 ] )
 	// Object oriented style
 	$date = new DateTime();</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$date-&gt;setISODate(2017, 2);
-echo $date-&gt;format('Y-m-d') . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$date-&gt;setISODate(2017, 2);
+echo $date-&gt;format('Y-m-d') . "<span class="nt">&lt;br&gt;</span>";
 
 $date-&gt;setISODate(2017, 2, 7);
-echo $date-&gt;format('Y-m-d') . "&lt;br&gt;";
+echo $date-&gt;format('Y-m-d') . "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create();
 
 date_isodate_set($date, 2018, 2);
-echo date_format($date, 'Y-m-d') . "&lt;br&gt;";
+echo date_format($date, 'Y-m-d') . "<span class="nt">&lt;br&gt;</span>";
 
 date_isodate_set($date, 2018, 2, 7);
-echo date_format($date, 'Y-m-d') . "&lt;br&gt;"; ?&gt;
+echo date_format($date, 'Y-m-d') . "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -815,20 +811,20 @@ public DateTime DateTime::setTime ( int $hour , int $minute [, int $second = 0 ]
 	// Object oriented style
 	$date = new DateTime(‘2017-08-08’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$date-&gt;setTime(14, 55);
-echo $date-&gt;format('Y-m-d H:i:s') . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$date-&gt;setTime(14, 55);
+echo $date-&gt;format('Y-m-d H:i:s') . "<span class="nt">&lt;br&gt;</span>";
 
 $date-&gt;setTime(14, 55, 24);
-echo $date-&gt;format('Y-m-d H:i:s') . "&lt;br&gt;";
+echo $date-&gt;format('Y-m-d H:i:s') . "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create('2017-08-09');
 
 date_time_set($date, 14, 55);
-echo date_format($date, 'Y-m-d H:i:s') . "&lt;br&gt;";
+echo date_format($date, 'Y-m-d H:i:s') . "<span class="nt">&lt;br&gt;</span>";
 
 date_time_set($date, 14, 55, 24);
-echo date_format($date, 'Y-m-d H:i:s') . "&lt;br&gt;"; ?&gt;
+echo date_format($date, 'Y-m-d H:i:s') . "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -849,7 +845,7 @@ public DateTime DateTime::modify ( string $modify )</p>
 	$date-&gt;modify(‘+1 day’);
 	echo $date-&gt;format(‘Y-m-d’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create('2018-12-24');
@@ -872,7 +868,7 @@ public int DateTime::getTimestamp ( void )</p>
 	$date = new DateTime();
 	echo $date-&gt;getTimestamp();</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create();
@@ -894,15 +890,15 @@ public DateTime DateTime::setTimestamp ( int $unixtimestamp )</p>
 	$date = new DateTime();
 	echo $date-&gt;format(‘U = Y-m-d H:i:s’) . “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$date-&gt;setTimestamp(1502176161);
-echo $date-&gt;format('U = Y-m-d H:i:s') . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$date-&gt;setTimestamp(1502176161);
+echo $date-&gt;format('U = Y-m-d H:i:s') . "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create();
-echo date_format($date, 'U = Y-m-d H:i:s') . "&lt;br&gt;";
+echo date_format($date, 'U = Y-m-d H:i:s') . "<span class="nt">&lt;br&gt;</span>";
 
 date_timestamp_set($date, 1502176161);
-echo date_format($date, 'U = Y-m-d H:i:s') . "&lt;br&gt;"; ?&gt;
+echo date_format($date, 'U = Y-m-d H:i:s') . "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -922,15 +918,15 @@ public DateTime DateTime::setTimezone ( DateTimeZone $timezone )</p>
 	$date = new DateTime(‘2017-08-01’, new DateTimeZone(‘Asia/Seoul’));
 	echo $date-&gt;format(‘Y-m-d H:i:sP’) . “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$date-&gt;setTimezone(new DateTimeZone('Europe/London'));
-echo $date-&gt;format('Y-m-d H:i:sP') . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$date-&gt;setTimezone(new DateTimeZone('Europe/London'));
+echo $date-&gt;format('Y-m-d H:i:sP') . "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create('2017-08-08', timezone_open('Asia/Tokyo'));
-echo date_format($date, 'Y-m-d H:i:sP') . "&lt;br&gt;";
+echo date_format($date, 'Y-m-d H:i:sP') . "<span class="nt">&lt;br&gt;</span>";
 
 date_timezone_set($date, timezone_open('America/New_York'));
-echo date_format($date, 'Y-m-d H:i:sP') . "&lt;br&gt;"; ?&gt;
+echo date_format($date, 'Y-m-d H:i:sP') . "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -951,7 +947,7 @@ public DateTimeZone DateTime::getTimezone ( void )</p>
 	$tz = $date-&gt;getTimezone();
 	echo $tz-&gt;getName();</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $date = date_create(null, timezone_open('America/New_York'));
@@ -974,15 +970,15 @@ public int DateTime::getOffset ( void )</p>
 	$winter = new DateTime(‘2018-12-21’, new DateTimeZone(‘America/New_York’));
 	$summer = new DateTime(‘2017-08-8’, new DateTimeZone(‘America/New_York’));</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo $winter-&gt;getOffset() . "&lt;br&gt;";
-echo $summer-&gt;getOffset() . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo $winter-&gt;getOffset() . "<span class="nt">&lt;br&gt;</span>";
+echo $summer-&gt;getOffset() . "<span class="nt">&lt;br&gt;</span>";
 
 // Procedural style
 $winter = date_create('2018-12-21', timezone_open('America/New_York'));
 $summer = date_create('2017-08-9', timezone_open('America/New_York'));
 
-echo date_offset_get($winter) . "&lt;br&gt;";
-echo date_offset_get($summer) . "&lt;br&gt;"; ?&gt;
+echo date_offset_get($winter) . "<span class="nt">&lt;br&gt;</span>";
+echo date_offset_get($summer) . "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -1005,7 +1001,7 @@ public static array DateTime::getLastErrors ( void )</p>
     	// 데모 용..
     	print_r(DateTime::getLastErrors());</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// 실제 객체 지향적 인 방법
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>	// 실제 객체 지향적 인 방법
 	// echo $e-&gt;getMessage();
 }
 
@@ -1116,14 +1112,14 @@ mixed jddayofweek ( int $julianday [, int $mode = CAL_DOW_DAYNO ] )</p>
 &lt;?php
 	$julianday = gregoriantojd( 8 , 6 , 2017 );</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Return the day number as an int (0=Sunday, 1=Monday, etc)
-echo jddayofweek($julianday) ."&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// Return the day number as an int (0=Sunday, 1=Monday, etc)
+echo jddayofweek($julianday) ."<span class="nt">&lt;br&gt;</span>";
 
 // 1	Returns string containing the day of week (English-Gregorian)
-echo jddayofweek($julianday,1) ."&lt;br&gt;";
+echo jddayofweek($julianday,1) ."<span class="nt">&lt;br&gt;</span>";
 
 // 2	Return a string containing the abbreviated day of week (English-Gregorian)
-echo jddayofweek($julianday,2) ."&lt;br&gt;"; ?&gt;
+echo jddayofweek($julianday,2) ."<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -1140,29 +1136,29 @@ string jdmonthname ( int $julianday , int $mode )</p>
 &lt;?php
 	$julianday = gregoriantojd( 8 , 6 , 2017 );</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 0
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 0
 // Gregorian - abbreviated	Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
-echo jdmonthname ( $julianday , 0 ) ."&lt;br&gt;";
+echo jdmonthname ( $julianday , 0 ) ."<span class="nt">&lt;br&gt;</span>";
 
 // 1
 // Gregorian	January, February, March, April, May, June, July, August, September, October, November, December
-echo jdmonthname ( $julianday , 1 ) ."&lt;br&gt;";
+echo jdmonthname ( $julianday , 1 ) ."<span class="nt">&lt;br&gt;</span>";
 
 // 2
 // Julian - abbreviated	Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
-echo jdmonthname ( $julianday , 2 ) ."&lt;br&gt;";
+echo jdmonthname ( $julianday , 2 ) ."<span class="nt">&lt;br&gt;</span>";
 
 // 3
 // Julian	January, February, March, April, May, June, July, August, September, October, November, December
-echo jdmonthname ( $julianday , 3 ) ."&lt;br&gt;";
+echo jdmonthname ( $julianday , 3 ) ."<span class="nt">&lt;br&gt;</span>";
 
 // 4
 // Jewish	Tishri, Heshvan, Kislev, Tevet, Shevat, AdarI, AdarII, Nisan, Iyyar, Sivan, Tammuz, Av, Elul
-echo jdmonthname ( $julianday , 4 ) ."&lt;br&gt;";
+echo jdmonthname ( $julianday , 4 ) ."<span class="nt">&lt;br&gt;</span>";
 
 // 5
 // French Republican	Vendemiaire, Brumaire, Frimaire, Nivose, Pluviose, Ventose, Germinal, Floreal, Prairial, Messidor, Thermidor, Fructidor, Extra
-echo jdmonthname ( $julianday , 5 ) ."&lt;br&gt;";
+echo jdmonthname ( $julianday , 5 ) ."<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -1266,11 +1262,11 @@ int easter_date ([ int $year = date(“Y”) ] )</p>
 	echo “2000 부활절 자정 = “. date(“M-d-Y”, easter_date(2000));
 	echo “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "2010 부활절 자정 = ". date("M-d-Y", easter_date(2010));
-echo "&lt;br&gt;"; 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "2010 부활절 자정 = ". date("M-d-Y", easter_date(2010));
+echo "<span class="nt">&lt;br&gt;</span>"; 
 
 echo "2017 부활절 자정 = ". date("M-d-Y", easter_date(2017)); 
-echo "&lt;br&gt;";  ?&gt;
+echo "<span class="nt">&lt;br&gt;</span>";  ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -1288,10 +1284,10 @@ int easter_days ([ int $year = date(“Y”) [, int $method = CAL_EASTER_DEFAULT
 	echo easter_days(1999) .”<br />”;  <br />
 	// 14, i.e. April 4</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo easter_days(1492) ."&lt;br&gt;";        
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo easter_days(1492) ."<span class="nt">&lt;br&gt;</span>";        
 // 32, i.e. April 22
 
-echo easter_days(1913) ."&lt;br&gt;";        
+echo easter_days(1913) ."<span class="nt">&lt;br&gt;</span>";        
 //  2, i.e. March 23 ?&gt;
 </code></pre></div></div>
 
@@ -1325,7 +1321,7 @@ echo easter_days(1913) ."&lt;br&gt;";
 	const integer ALL_WITH_BC = 4095 ;
 	const integer PER_COUNTRY = 4096 ;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* Methods */
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>/* Methods */
 public __construct ( string $timezone )
 public array getLocation ( void )
 public string getName ( void )
@@ -1422,7 +1418,7 @@ public int DateTimeZone::getOffset ( DateTime $datetime )</p>
 <p>예제파일) timezone_offset_get.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$dateTimeZoneAmsterdam= new DateTimeZone("Europe/Amsterdam");
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$dateTimeZoneAmsterdam= new DateTimeZone("Europe/Amsterdam");
 $dateTimeZoneSeoul = new DateTimeZone("Asia/Seoul");
 
 $dateTimeAmsterdam = new DateTime("now", $dateTimeZoneAmsterdam);
@@ -1478,8 +1474,8 @@ string date_default_timezone_get ( void )</p>
 &lt;?php
 	date_default_timezone_set(‘Asia/Seoul’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (date_default_timezone_get()) {
-	echo 'date_default_timezone_set: ' . date_default_timezone_get() . '&lt;br /&gt;';
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (date_default_timezone_get()) {
+	echo 'date_default_timezone_set: ' . date_default_timezone_get() . '<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>';
 }
 
 if (ini_get('date.timezone')) {
@@ -1663,16 +1659,7 @@ Pacific/Wallis Pacific/Yap</p>
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

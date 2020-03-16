@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -101,15 +97,15 @@
 <p>예제파일) json-01.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$string = "
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$string = "
 	[10, {\"a\":20}, [30,\"서른\"] ]
 ";
 
-echo "=== JSON 문자열 ===&lt;br&gt;";
+echo "=== JSON 문자열 ===<span class="nt">&lt;br&gt;</span>";
 echo $string;
-echo "&lt;br&gt;";
+echo "<span class="nt">&lt;br&gt;</span>";
 
-echo "=== 배열처리 ===&lt;br&gt;";
+echo "=== 배열처리 ===<span class="nt">&lt;br&gt;</span>";
 $arr = json_decode($string);
 print_r($arr);
 </code></pre></div></div>
@@ -137,15 +133,15 @@ Array ( [0] =&gt; 10 [1] =&gt; stdClass Object ( [a] =&gt; 20 ) [2] =&gt; Array 
 <p>예제파일) json-02.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$string = "
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$string = "
 	{\"name1\":10,\"name2\":\"안녕하세요\",\"name3\":true}
 ";
 
-echo "=== JSON 문자열 ===&lt;br&gt;";
+echo "=== JSON 문자열 ===<span class="nt">&lt;br&gt;</span>";
 echo $string;
-echo "&lt;br&gt;";
+echo "<span class="nt">&lt;br&gt;</span>";
 
-echo "=== 배열처리 ===&lt;br&gt;";
+echo "=== 배열처리 ===<span class="nt">&lt;br&gt;</span>";
 $arr = json_decode($string);
 print_r($arr);
 </code></pre></div></div>
@@ -216,7 +212,7 @@ string json_encode ( mixed $value [, int $options = 0 [, int $depth = 512 ]] )</
 <p>예제파일) json-03.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$arr['FirstName'] = "lee";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$arr['FirstName'] = "lee";
 $arr['LastName'] = "hojin";
 
 $json = json_encode($arr);
@@ -233,7 +229,7 @@ echo $json;
 <p>예제파일) json-04.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$arr['FirstName'] = "lee";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$arr['FirstName'] = "lee";
 $arr['LastName'] = "hojin";
 $user['1'] = $arr;
 
@@ -277,7 +273,7 @@ mixed json_decode ( string $json [, bool $assoc = false [, int $depth = 512 [, i
 <p>예제파일) json-05.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 쌍따옴표를 사용하기 위해서 백슬래쉬를 추가
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 쌍따옴표를 사용하기 위해서 백슬래쉬를 추가
 $string = "
 { 
 	\"Id\":\"01\", 
@@ -287,15 +283,15 @@ $string = "
 }
 ";
 
-echo "=== JSON 문자열 ===&lt;br&gt;";
+echo "=== JSON 문자열 ===<span class="nt">&lt;br&gt;</span>";
 echo $string;
-echo "&lt;br&gt;";
+echo "<span class="nt">&lt;br&gt;</span>";
 
-echo "=== 배열처리 ===&lt;br&gt;";
+echo "=== 배열처리 ===<span class="nt">&lt;br&gt;</span>";
 $arr = json_decode($string);
 
 while(list($key,$val) = each($arr)){
-	echo $key. "==&gt;" .$val. "&lt;br&gt;";
+	echo $key. "==&gt;" .$val. "<span class="nt">&lt;br&gt;</span>";
 }
 </code></pre></div></div>
 
@@ -337,7 +333,7 @@ Country==&gt;Korea</p>
 <p>예제파일) json-06.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 쌍따옴표를 사용하기 위해서 백슬래쉬를 추가
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 쌍따옴표를 사용하기 위해서 백슬래쉬를 추가
 $string = "
 
 	[
@@ -357,18 +353,18 @@ $string = "
 
 ";
 
-echo "=== JSON 문자열 ===&lt;br&gt;";
+echo "=== JSON 문자열 ===<span class="nt">&lt;br&gt;</span>";
 echo $string;
-echo "&lt;br&gt;";
+echo "<span class="nt">&lt;br&gt;</span>";
 
-echo "=== 배열처리 ===&lt;br&gt;";
+echo "=== 배열처리 ===<span class="nt">&lt;br&gt;</span>";
 $arr = json_decode($string);
 
-for ($i=0;$i&lt;count($arr);$i++){
-	echo "첫번재 배열 $i &lt;br&gt;";
+for ($i=0;$i<span class="nt">&lt;count</span><span class="err">($</span><span class="na">arr</span><span class="err">);$</span><span class="na">i</span><span class="err">++){</span>
+	<span class="na">echo</span> <span class="err">"첫번재</span> <span class="err">배열</span> <span class="err">$</span><span class="na">i</span> <span class="err">&lt;</span><span class="na">br</span><span class="nt">&gt;</span>";
 
 	while(list($key,$val) = each($arr[$i])){
-		echo $key. "==&gt;" .$val. "&lt;br&gt;";
+		echo $key. "==&gt;" .$val. "<span class="nt">&lt;br&gt;</span>";
 	}
 }	
 </code></pre></div></div>
@@ -411,7 +407,7 @@ string serialize ( mixed $value )</p>
 <p>class A {
       public $one = 1;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  public function show_one() {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>  public function show_one() {
       echo $this-&gt;one;
   }   }
 </code></pre></div></div>
@@ -437,7 +433,7 @@ mixed unserialize ( string $str [, array $options ] )</p>
 <p>예제) unserialize.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class A {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>class A {
 	public $one = 1;
 
 	public function show_one() {
@@ -474,16 +470,7 @@ $a-&gt;show_one();
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

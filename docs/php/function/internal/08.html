@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -89,19 +85,19 @@ int preg_match ( string $pattern , string $subject [, array &amp;$matches [, int
 <p>예제) preg-01.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$string = "2017-06-33"; 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$string = "2017-06-33"; 
 $pattern = "/([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})/";
 
 if ( preg_match($pattern, $string,$matches) ) { 
-	echo"날짜 형식이 맞습니다.&lt;br&gt;";
+	echo"날짜 형식이 맞습니다.<span class="nt">&lt;br&gt;</span>";
 
 	if (checkdate($match[2],$match[3],$match[1])) {
-		echo "유효한 날짜입니다.&lt;br&gt;";
+		echo "유효한 날짜입니다.<span class="nt">&lt;br&gt;</span>";
 	} else {
-		echo "날짜 형식은 맞지만, 유효한 날짜는 아닙니다.&lt;br&gt;";
+		echo "날짜 형식은 맞지만, 유효한 날짜는 아닙니다.<span class="nt">&lt;br&gt;</span>";
 	}
 } else { 
-	echo"날짜 형식이 다릅니다.&lt;br&gt;"; 
+	echo"날짜 형식이 다릅니다.<span class="nt">&lt;br&gt;</span>"; 
 }
 </code></pre></div></div>
 
@@ -126,7 +122,7 @@ mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int
 	echo preg_replace($pattern, $replacement, $string);
 	echo “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$string = 'hello world! my name is jiny.';
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$string = 'hello world! my name is jiny.';
 
 $patterns[0] = '/hello world/';
 $patterns[1] = '/my name is/';
@@ -160,11 +156,11 @@ rray preg_split ( string $pattern , string $subject [, int $limit [, int $flags 
 	print_r($keywords);
 	echo “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$str = 'string';
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$str = 'string';
 echo "문자 단위로 분리합니다. ";
 $chars = preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY);
 print_r($chars);
-echo "&lt;br&gt;"; ?&gt;
+echo "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -186,10 +182,10 @@ string preg_quote ( string $str [, string $delimiter ] )</p>
 	echo $keywords;
 	echo “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// preg_quote($word)는 정규 표현식에서 애스터라이크(*) 처리
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// preg_quote($word)는 정규 표현식에서 애스터라이크(*) 처리
 $body = "안녕하세요 본 책은 매우 *쉽게* 작성을 하였습니다.";
 $word = "*매우*";
-$body = preg_replace("/".preg_quote($word)."/", "&lt;i&gt;" . $word . "&lt;/i&gt;", $body);
+$body = preg_replace("/".preg_quote($word)."/", "<span class="nt">&lt;i&gt;</span>" . $word . "<span class="nt">&lt;/i&gt;</span>", $body);
 echo $body; ?&gt;
 </code></pre></div></div>
 
@@ -212,16 +208,7 @@ $123 for a hojin\/jiny
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

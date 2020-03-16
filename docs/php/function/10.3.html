@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -75,7 +71,7 @@
 <p>사용자 정의 함수는 function이라는 함수를 정의하는 키워드와 사용자가 임의로 정의한 함수의 이름을 정의하여 생성할 수 있습니다.</p>
 
 <p>함수 선언 문법</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function 함수명 (인자1, 인자2, 인자3 ...) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>function 함수명 (인자1, 인자2, 인자3 ...) {
 함수 정의 몸체 ... 
 소스 코드 내용 
 }
@@ -94,11 +90,11 @@
 <p>함수명은 영문자로 작명을 합니다. 함수명은 숫자로 시작할 수 없습니다. 하지만 특수기호 밑줄(_)로 시작하거나 중간에 넣을 수 있습니다.</p>
 
 <p>예제 파일 func-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">helloMsg</span><span class="p">()</span> <span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"Hello world! &lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function helloMsg() {
+    		echo "Hello world! &lt;br&gt;";
+	}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>위의 예제는 function 키워드로 helloMsg 함수를 정의합니다. 사용자 정의된 helloMsg 함수는 “Hello world!”라는 메시지를 출력하는 단순한 기능을 가지고 있습니다.</p>
@@ -114,7 +110,7 @@
 <p>PHP에서 함수를 실행 호출하는 방법은 매우 간단합니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>함수명();
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>함수명();
 </code></pre></div></div>
 
 <p>형태로 소스상에 적으면 됩니다. 즉, 선언한 함수를 호출(사용)을 해야만 함수를 PHP 코드에서 실행을 합니다.</p>
@@ -122,19 +118,19 @@
 <p>프로그램에서 함수를 실행한다는 것은 프로그램의 제어권이 변경되는 것입니다. 프로그램이 순차적으로 동작을 하다가 함수를 만나면 제어권이 함수로 넘어가 일정한 일을 수행한 다음 호출한 함수의 위치로 되돌아갑니다.</p>
 
 <p>예제 파일 func-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">helloMsg</span><span class="p">()</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"Hello world! &lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function helloMsg() {
+    	echo "Hello world! &lt;br&gt;";
+	}
 
-	<span class="nx">helloMsg</span><span class="p">();</span> <span class="c1">// 함수를 호출합니다.</span>
+	helloMsg(); // 함수를 호출합니다.
 
-	<span class="nx">helloMsg</span><span class="p">();</span> <span class="c1">// 재사용 함수 재호출합니다.</span>
-<span class="cp">?&gt;</span>
+	helloMsg(); // 재사용 함수 재호출합니다.
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello world!
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Hello world!
 Hello world! 
 </code></pre></div></div>
 
@@ -147,15 +143,15 @@ Hello world!
 <p>함수가 호출되면 그 자리에서 함수명과 동일한 함수를 실행하고 실행 전에 임시로 저장한 프로그램 제어권 자리로 다시 돌아옵니다. 이러한 제어권의 임시 저장과 함수 호출, 되돌아오는 과정을 통해 함수형 코딩으로 프로그램을 작성했다고 해서 프로그램의 처리 루틴이 꼬이거나 잘못된 경우가 발생되지 않는 것입니다.</p>
 
 <p>예제 파일 func-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">helloMsg</span><span class="p">()</span> <span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"Hello world! &lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function helloMsg() {
+    		echo "Hello world! &lt;br&gt;";
+	}
 
-	<span class="nx">helloMsg</span><span class="p">();</span> <span class="c1">// 함수를 호출합니다.</span>
+	helloMsg(); // 함수를 호출합니다.
 
-	<span class="nx">helloMsg</span><span class="p">();</span> <span class="c1">// 재사용 함수 재호출합니다.</span>
-<span class="cp">?&gt;</span>
+	helloMsg(); // 재사용 함수 재호출합니다.
+?&gt;</span>
 </code></pre></div></div>
 
 <p>위의 예제를 보면 화면에 “Hello world!”라는 글자가 한 줄 출력됩니다. 함수는 재사용이 가능합니다. 바로 밑에 동일한 함수 호출 helloMsg();을 만나게 됩니다.</p>
@@ -180,16 +176,7 @@ Hello world!
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

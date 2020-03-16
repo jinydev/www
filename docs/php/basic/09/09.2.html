@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -78,7 +74,7 @@
 <p>예를 들어 “헬스장에서 코치가 윗몸 일으키기 50번 하세요”라고 한다면 윗몸 일으키기라는 코드를 50번 수행하게 되는 것입니다.</p>
 
 <p>예제 파일 for-03.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 		<span class="k">echo</span> <span class="s2">"윗몸 일으키기&lt;br&gt;"</span><span class="p">;</span>
 	<span class="p">}</span>
@@ -86,7 +82,7 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>윗몸 일으키기
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>윗몸 일으키기
 윗몸 일으키기
 윗몸 일으키기
 ...
@@ -103,17 +99,17 @@
 <p>이차원 반복문이란 반복문이 또 다른 반복문을 하나 더 가지고 있는 경우를 말합니다. 아래 작성 문법처럼 for반복문 안에 또 다른 for 반복문이 포함되어 있습니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="c1">// 1차 반복문</span>
-<span class="k">for</span> <span class="p">(</span><span class="nx">초기값</span> <span class="nx">설정</span><span class="p">;</span> <span class="nx">조건</span><span class="p">;</span> <span class="nx">증가</span> <span class="nx">연산자</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+// 1차 반복문
+for (초기값 설정; 조건; 증가 연산자) {
   
-  <span class="c1">// 2차 반복문</span>
-  <span class="k">for</span> <span class="p">(</span><span class="nx">초기값</span> <span class="nx">설정</span><span class="p">;</span> <span class="nx">조건</span><span class="p">;</span> <span class="nx">증가</span> <span class="nx">연산자</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">}</span>
+  // 2차 반복문
+  for (초기값 설정; 조건; 증가 연산자) {
+  }
 
-<span class="p">}</span>
+}
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>“헬스장에서 코치가 윗몸 일으키기 10번씩하고 1분 쉬고 다시 10번씩 하는 동작을 5번 하세요”라고 했을 때 총 수행하는 동작은 10번*5세트=50번 하는 것과 동일하지만, 중간에 휴식이 있기 때문에 하나의 반복문으로는 처리할 수 없습니다.</p>
@@ -121,7 +117,7 @@
 <p>이런 경우 이중 반복문을 이용하여 10번의 윗몸 일으키기 반복문을 또 다시 5번을 수행을 하면 됩니다.</p>
 
 <p>예제 파일 for-04.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="c1">// 반복 루프1</span>
 	<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 		<span class="k">echo</span> <span class="s2">"세트</span><span class="nv">$i</span><span class="s2"> 시작 &lt;br&gt;"</span><span class="p">;</span>
@@ -138,7 +134,7 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>세트0 시작
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>세트0 시작
 윗몸 일으키기
 ...
 윗몸 일으키기
@@ -172,7 +168,7 @@
 <p>이중 반복문은 다차원 배열 등의 값을 처리하는 데 매우 유용합니다. 다차원 배열은 하나의 배열 각각의 값에 또 다른 배열을 포함하고 있기 때문에 $arr[][] 2개 이상의 인자값이 필요합니다.</p>
 
 <p>예제 파일) for-05.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
 		<span class="k">array</span><span class="p">(</span><span class="s2">"Volvo"</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span>
 		<span class="k">array</span><span class="p">(</span><span class="s2">"BMW"</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">250</span><span class="p">),</span>
@@ -194,7 +190,7 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Volvo 10 300
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Volvo 10 300
 BMW 11 250
 Saab 12 350
 kia 13 200 
@@ -203,18 +199,18 @@ kia 13 200
 <p>다음은 이중 반복문을 이용하여 삼각형 별을 만드는 전형적인 예제입니다.</p>
 
 <p>예제 파일 for-06.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">for</span> <span class="p">(</span><span class="nv">$j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$j</span><span class="o">&lt;</span><span class="nv">$i</span><span class="p">;</span><span class="nv">$j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"*"</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	for ($i=0;$i&lt;5;$i++) {
+		for ($j=0;$j&lt;$i;$j++) {
+			echo "*";
+		}
+		echo "&lt;br&gt;";
+	}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>*
 **
 ***
 ****
@@ -223,7 +219,7 @@ kia 13 200
 <p>다음 예제는 이중 반복문을 통해 정삼각형 별을 만드는 전형적인 예제입니다.</p>
 
 <p>예제 파일 for-07.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 		<span class="k">for</span> <span class="p">(</span><span class="nv">$j</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span> <span class="nv">$j</span><span class="o">&gt;</span><span class="nv">$i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="nv">$j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
 			<span class="k">echo</span> <span class="s2">"_"</span><span class="p">;</span>
@@ -243,7 +239,7 @@ kia 13 200
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_____
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>_____
 ____*
 ___***
 __*****
@@ -272,16 +268,7 @@ _*******
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

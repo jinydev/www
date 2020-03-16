@@ -1,9 +1,9 @@
-I"[<h3 id="윈도우-우분투-설치">윈도우 우분투 설치</h3>
+I"w<h3 id="윈도우-우분투-설치">윈도우 우분투 설치</h3>
 <hr />
 
-<p>윈도우 우분투 WSL은 <code class="highlighter-rouge">윈도우 스토어</code>에서 무료로 쉽게 설치를 할 수 있습니다.</p>
+<p>윈도우 우분투 WSL은 <code class="language-html highlighter-rouge">윈도우 스토어</code>에서 무료로 쉽게 설치를 할 수 있습니다.</p>
 
-<p>윈도우 스토어로 이동후 검색란에 <code class="highlighter-rouge">ubnntu</code>를 입력해 봅니다. ubuntu를 찾아 설치 버튼을 선택합니다.</p>
+<p>윈도우 스토어로 이동후 검색란에 <code class="language-html highlighter-rouge">ubnntu</code>를 입력해 봅니다. ubuntu를 찾아 설치 버튼을 선택합니다.</p>
 
 <p><img src="./img/setup_01.png" alt="ubuntu_wsl_setup_01" /></p>
 

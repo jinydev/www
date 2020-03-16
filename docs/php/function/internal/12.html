@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -131,7 +127,7 @@ resource curl_init ([ string $url = NULL ] )</p>
 <p>예제) curl_basic.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch = curl_init("http://www.example.com/");
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch = curl_init("http://www.example.com/");
 $fp = fopen("example.txt", "w");
 
 curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -223,7 +219,7 @@ void curl_share_close ( resource $sh )</p>
 	$sh = curl_share_init();
 	curl_share_setopt($sh, CURLSHOPT_SHARE, CURL_LOCK_DATA_COOKIE);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch1 = curl_init("http://example.com/");
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch1 = curl_init("http://example.com/");
 // 공유 핸들의 옵션을 통하여 ch1의 curl 핸들 옵션을 설정합니다.
 curl_setopt($ch1, CURLOPT_SHARE, $sh);
 curl_exec($ch1);
@@ -279,7 +275,7 @@ void curl_multi_close ( resource $mh )</p>
 <p>예제) curl_multi.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// cURL 단일 핸들을 초기화 합니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// cURL 단일 핸들을 초기화 합니다.
 $ch1 = curl_init();
 // 각각의 핸들에 옵션값을 설정합니다.
 $url1 = "http://www.example.com/";
@@ -308,7 +304,7 @@ do {
 		$mrc = curl_multi_exec($mh, $active);
 } while ($mrc == CURLM_CALL_MULTI_PERFORM);
 
-while ($active &amp;&amp; $mrc == CURLM_OK) {
+while ($active <span class="err">&amp;&amp;</span> $mrc == CURLM_OK) {
 
 	// curl_multi 연결에 대한 작업을 대기합니다.
 	// 실패시 -1을 반환
@@ -346,7 +342,7 @@ string curl_multi_getcontent ( resource $ch )</p>
 <p>예제) curl_multi_getcontent.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch = curl_init('http://www.example.com/');
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch = curl_init('http://www.example.com/');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // curl_exec()로 실행 된 핸들에 curl_multi_getcontent()를 사용할 수 있습니다.
@@ -378,7 +374,7 @@ array curl_multi_info_read ( resource $mh [, int &amp;$msgs_in_queue = NULL ] )<
 <p>예제) curl_multi_info_read.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$urls = array(
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$urls = array(
 	"http://www.exsample.com/",
     "http://www.php.net/"
 );
@@ -396,7 +392,7 @@ do {
 	$info = curl_multi_info_read($mh);
 	if (false !== $info) {
     	var_dump($info);
-    	echo "&lt;br&gt;";
+    	echo "<span class="nt">&lt;br&gt;</span>";
 	}
 } while ($status === CURLM_CALL_MULTI_PERFORM || $active);
 
@@ -423,7 +419,7 @@ string curl_multi_strerror ( int $errornum )</p>
 <p>예제) curl_multi_strerror.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch1 = curl_init("http://example.com");
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch1 = curl_init("http://example.com");
 $ch2 = curl_init("http://www.php.net/");
 
 $mh = curl_multi_init();
@@ -469,10 +465,10 @@ string curl_strerror ( int $errornum )</p>
 	$ch = curl_init(‘http://404.php.net/’);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (curl_exec($ch) === false)
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (curl_exec($ch) === false)
 {
 	// 오류 발생시 : 오류 메시지를 읽어옵니다.
-	echo "Curl error Message : ". curl_error($ch) ."&lt;br&gt;";
+	echo "Curl error Message : ". curl_error($ch) ."<span class="nt">&lt;br&gt;</span>";
 	
 	// 오류 넘버를 출력합니다.
 	$errNo = curl_errno ($ch);
@@ -518,7 +514,7 @@ string curl_escape ( resource $ch , string $str )</p>
 <p>예제) curl_escape.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch = curl_init();
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch = curl_init();
 
 // GET 파라미터로 사용되는 문자열 값을 RFC3986 인코딩 합니다.
 $location = curl_escape($ch, 'aaa / bbb');
@@ -540,13 +536,13 @@ string curl_unescape ( resource $ch , string $str )</p>
 <p>예제) curl_unescape.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch = curl_init();
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch = curl_init();
 
 // GET 파라미터로 사용되는 문자열 값을 RFC3986 인코딩 합니다.
 $location = curl_escape($ch, 'aaa / bbb');
 
 $url = "http://example.com/test.php?location={$location}";
-echo $url . "&lt;br&gt;";
+echo $url . "<span class="nt">&lt;br&gt;</span>";
 
 echo curl_unescape($ch , $location);
 </code></pre></div></div>
@@ -609,18 +605,18 @@ mixed curl_getinfo ( resource $ch [, int $opt ] )</p>
 <p>예제) curl_getinfo.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch = curl_init('http://www.example.com/');
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch = curl_init('http://www.example.com/');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 if ($response = curl_exec($ch))	{
 	
 	$info = curl_getinfo($ch);
 	print_r($info);
-	echo "&lt;br&gt;";
+	echo "<span class="nt">&lt;br&gt;</span>";
 
 	switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
    			case 200:
-   				echo 'success &lt;br&gt;';
+   				echo 'success <span class="nt">&lt;br&gt;</span>';
   			break;
 		default:
   			echo 'Unexpected HTTP code: ', $http_code, "\n";
@@ -628,7 +624,7 @@ if ($response = curl_exec($ch))	{
 
 } else {
 	// 오류 발생시 : 오류 메시지를 읽어옵니다.
-	echo "Curl error Message : ". curl_error($ch) ."&lt;br&gt;";
+	echo "Curl error Message : ". curl_error($ch) ."<span class="nt">&lt;br&gt;</span>";
 	
 	// 오류 넘버를 출력합니다.
 	echo "cURL Error No : ". curl_errno ($ch);
@@ -651,7 +647,7 @@ resource curl_copy_handle ( resource $ch )</p>
 <p>예제) curl_copy_handle.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ch = curl_init();
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, 'http://www.example.com/');
 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -671,7 +667,7 @@ curl_close($ch); ?&gt;
 <p>public function _curl_post($url, $postfild){
 	$ch = curl_init();</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl_setopt($ch, CURLOPT_URL,$url);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>curl_setopt($ch, CURLOPT_URL,$url);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS,$postfild);
 
@@ -690,7 +686,7 @@ return $server_output; }
 
 <p>function curl_upload($mode, $target_url, $path, $file){</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$file_name_with_full_path = realpath($file);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$file_name_with_full_path = realpath($file);
 
 $post = array('mode'=&gt;$mode, 'path'=&gt;$path, 'file_contents'=&gt;'@'.$file_name_with_full_path);
  
@@ -721,16 +717,7 @@ return $result; }
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

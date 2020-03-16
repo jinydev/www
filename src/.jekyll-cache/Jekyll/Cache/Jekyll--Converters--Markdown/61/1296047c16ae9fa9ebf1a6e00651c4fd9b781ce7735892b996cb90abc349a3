@@ -1,4 +1,4 @@
-I"<h2 id="20-환경-설정">20 환경 설정</h2>
+I"<h2 id="20-환경-설정">20 환경 설정</h2>
 <p>PHP의 동작에 관련한 환경 설정은 php.ini에 의존합니다. php.ini 설정을 통해 PHP의 패키지 설치 및 환경 설정으로 php 실행의 제한을 설정할 수 있습니다.</p>
 
 <p><br /></p>
@@ -8,9 +8,9 @@
 <p>현재 PHP의 환경 설정 정보를 웹에서 간단하게 확인할 수 있습니다. phpinfo(); 함수는 현재 php의 설정 사항을 웹 화면으로 출력합니다.</p>
 
 <p>예제 파일 phpinfo.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="nb">phpinfo</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	phpinfo();
+?&gt;</span>
 </code></pre></div></div>
 
 <p><br /></p>
@@ -30,7 +30,7 @@
 <p>또한 설정값은 다음과 같은 형태로 설정합니다.</p>
 
 <p>|설정|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>설정 항목 = 값
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>설정 항목 = 값
 </code></pre></div></div>
 
 <p>php.ini 파일은 매우 방대합니다. 보다 자세한 설명은 이 책의 운영 페이지 www.jinyphp.com에서 추가로 설명하겠습니다.</p>
@@ -41,7 +41,7 @@
 <h3 id="2021-오류-화면-출력">20.2.1 오류 화면 출력</h3>
 <p>다음 php.ini 내용은 오류 화면 출력을 관리하는 설정입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;   Default Value: On
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>;   Default Value: On
 ;   Development Value: On
 ;   Production Value: Off
 </code></pre></div></div>
@@ -54,17 +54,17 @@
 <h3 id="2022-파일-업로드-허용">20.2.2 파일 업로드 허용</h3>
 <p>다음 php.ini 내용은 HTML FORM 요소를 통해 파일 업로드가 가능하도록 설정합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>file_uploads = On
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>file_uploads = On
 </code></pre></div></div>
 
 <p>PHP form 태그를 사용하여 서버로 바이너리 파일을 전송 가능하게 하는 설정입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upload_max_filesize = 40M
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>upload_max_filesize = 40M
 </code></pre></div></div>
 
 <p>업로드 가능한 최대 파일의 크기를 설정합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>max_file_uploads = 20
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>max_file_uploads = 20
 </code></pre></div></div>
 
 <p>파일 업로드 전송 시 최대 선택할 수 있는 개수를 설정합니다.</p>

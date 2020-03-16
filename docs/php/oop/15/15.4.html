@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -66,7 +62,7 @@
 
 <p>이 두 개를 서로 같이 사용할 수 없는 이유는 상속과 인터페이스는 문법이 서로 매우 비슷합니다. 클래스명과 키워드 그리고 상속, 인터페이스명입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class 클래스명 extends 상속 클래스
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>class 클래스명 extends 상속 클래스
 {
 }
 
@@ -86,7 +82,7 @@ class 클래스명 implements 인터페이스
 <p>클래스에 추상화 사용법 또한 매우 간단합니다. 추상화 설정은  클래스명 또는 메서드 앞에 새로운 추상화 키워드 abstract를 같이 선언만 해주면 됩니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>abstract class 추상화 클래스
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>abstract class 추상화 클래스
 {
     // 추상화: 인터페이스
     abstract public function 메서드();
@@ -115,47 +111,47 @@ class 클래스명 extends 추상화 클래스
 <h3 id="1542-추상화-예제">15.4.2 추상화 예제</h3>
 
 <p>예제 파일 abstract-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-    <span class="c1">// 추상화 클래스를 선언합니다.</span>
-    <span class="k">abstract</span> <span class="kd">class</span> <span class="nc">a</span>
-    <span class="p">{</span>
-        <span class="c1">// 확장 시 구현부가 필요한 메서드 정의</span>
-        <span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">isAdult</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+    // 추상화 클래스를 선언합니다.
+    abstract class a
+    {
+        // 확장 시 구현부가 필요한 메서드 정의
+        abstract public function isAdult($age);
         
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">copyright</span> <span class="p">()</span>
-        <span class="p">{</span>
-            <span class="c1">// 본 메서드 함수는 대체되지 않습니다.</span>
-            <span class="k">echo</span> <span class="s2">"copyright all Right JinyPHP"</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        public function copyright ()
+        {
+            // 본 메서드 함수는 대체되지 않습니다.
+            echo "copyright all Right JinyPHP";
+        }
+    }
 
-    <span class="c1">// 추상화 적용</span>
-    <span class="kd">class</span> <span class="nc">b</span> <span class="k">extends</span> <span class="nx">a</span>
-    <span class="p">{</span>
-        <span class="c1">// 추상화 인터페이스를 구현</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">isAdult</span><span class="p">(</span><span class="nv">$age</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$age</span><span class="o">&gt;=</span><span class="mi">18</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> <span class="k">else</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+    // 추상화 적용
+    class b extends a
+    {
+        // 추상화 인터페이스를 구현
+        public function isAdult($age)
+        {
+            if ($age&gt;=18) return true; else return false;
+        }
+    }
 
-    <span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">b</span><span class="p">();</span>
+    $obj = new b();
 
-    <span class="c1">// 추상화에 선언된 일반 메서드를 상속, 호출 가능합니다.</span>
-    <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">copyright</span><span class="p">();</span>
+    // 추상화에 선언된 일반 메서드를 상속, 호출 가능합니다.
+    $obj-&gt;copyright();
 
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">isAdult</span><span class="p">(</span><span class="mi">18</span><span class="p">)){</span>
-        <span class="k">echo</span> <span class="s2">"성인입니다."</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s2">"미성년입니다."</span><span class="p">;</span>
-    <span class="p">}</span>
+    if ($obj-&gt;isAdult(18)){
+        echo "성인입니다.";
+    } else {
+        echo "미성년입니다.";
+    }
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>copyright all Right JinyPHP 성인입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>copyright all Right JinyPHP 성인입니다.
 </code></pre></div></div>
 
 <p>위의 예제를 보면 추상화 클래스는 일반 클래스처럼 프로퍼티와 메서드 등을 구현할 수 있습니다. 또한 자식 클래스에서 다시 구현 처리해야 하는 인터페이스는 abstract 키워드를 추가하여 함께 선언합니다.</p>
@@ -180,16 +176,7 @@ class 클래스명 extends 추상화 클래스
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

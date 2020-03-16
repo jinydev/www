@@ -1,31 +1,31 @@
-I"<h3 id="1674-클로저-상태-등록">16.7.4 클로저 상태 등록</h3>
+I"<h3 id="1674-클로저-상태-등록">16.7.4 클로저 상태 등록</h3>
 <p>클로저를 사용하는 목적은 호출하는 익명 함수의 상태를 감지하기 위해서입니다. 
 클로저로 상태를 감지하기 위해서는 use 키워드를 이용하여 수동으로 감지하고자 하는 상태를 등록해야 합니다.</p>
 
 <p>예제파일 : closure-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="c1">// 함수를 선언합니다.</span>
-<span class="c1">// memCustomer() 함수는 클로저(익명 함수)를 반환합니다. </span>
-<span class="k">function</span> <span class="nf">memCustomer</span><span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+// 함수를 선언합니다.
+// memCustomer() 함수는 클로저(익명 함수)를 반환합니다. 
+function memCustomer($name){
 
-	<span class="c1">// $name 변수를 둘러싼 클로저를 반환합니다.</span>
-	<span class="k">return</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$doCommand</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
-	<span class="k">return</span> <span class="k">echo</span> <span class="err">“</span><span class="nx">name</span><span class="o">=</span><span class="err">”</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="err">“</span><span class="p">,</span> <span class="nx">Command</span><span class="o">=</span><span class="err">”</span> <span class="o">.</span> <span class="nv">$doCommand</span><span class="p">;</span>
-<span class="p">}</span>
+	// $name 변수를 둘러싼 클로저를 반환합니다.
+	return function ($doCommand) use ($name){
+	return echo “name=” . $name . “, Command=” . $doCommand;
+}
 
-<span class="p">}</span>
+}
 
-<span class="c1">// 함수의 인자 값으로 “hojin”을 전달합니다.</span>
-<span class="c1">// 리턴으로 클로저 인스턴스를 반환받습니다.</span>
-<span class="nv">$clousreTest</span> <span class="o">=</span> <span class="nx">memCustomer</span><span class="p">(</span><span class="err">“</span><span class="nx">hojin</span><span class="err">”</span><span class="p">);</span>
+// 함수의 인자 값으로 “hojin”을 전달합니다.
+// 리턴으로 클로저 인스턴스를 반환받습니다.
+$clousreTest = memCustomer(“hojin”);
 
-<span class="c1">// 클로저 익명 함수를 호출합니다.</span>
-<span class="k">echo</span> <span class="nv">$clousreTest</span><span class="p">(</span><span class="err">“</span><span class="nx">jiny</span><span class="err">”</span><span class="p">);</span> 
-<span class="cp">?&gt;</span>
+// 클로저 익명 함수를 호출합니다.
+echo $clousreTest(“jiny”); 
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name = hojin , command = jiny
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>name = hojin , command = jiny
 </code></pre></div></div>
 
 <p>위의 예제를 보면 클로저를 리턴하는 함수를 하나 선언합니다. 함수를 호출함으로써 $clousreTest 변수에는 클로저 인스턴스를 받게 됩니다. 이때, 함수는 종료하지만 use 키워드로 입력받은 $name 매개변수를 계속 가지고 있습니다.</p>

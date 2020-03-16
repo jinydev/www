@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -89,18 +85,18 @@
 </ul>
 
 <p>예제 파일 var-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// PHP는 변수의 대소문자를 구분합니다.</span>
-	<span class="nv">$age</span> <span class="o">=</span> <span class="s2">"18"</span><span class="p">;</span>
-	<span class="nv">$AGE</span> <span class="o">=</span> <span class="s2">"20"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// PHP는 변수의 대소문자를 구분합니다.
+	$age = "18";
+	$AGE = "20";
 
-	<span class="k">echo</span> <span class="s2">"소문자 = "</span><span class="o">.</span><span class="nv">$age</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"대문자 = "</span><span class="o">.</span><span class="nv">$AGE</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+	echo "소문자 = ".$age."&lt;br&gt;";
+	echo "대문자 = ".$AGE."&lt;br&gt;";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>소문자 = 18
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>소문자 = 18
 대문자 = 20
 </code></pre></div></div>
 
@@ -130,12 +126,12 @@
 
 <p>변수 사용 예)
 예제파일 : var-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// PHP변수는 다양한 값을 구분 없이 저장할 수 있습니다. </span>
-  <span class="nv">$txt</span> <span class="o">=</span> <span class="s2">"Hello world!"</span><span class="p">;</span>
-  <span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-  <span class="nv">$y</span> <span class="o">=</span> <span class="mf">10.5</span><span class="p">;</span>
-<span class="cp">?&gt;</span> 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  // PHP변수는 다양한 값을 구분 없이 저장할 수 있습니다. 
+  $txt = "Hello world!";
+  $x = 5;
+  $y = 10.5;
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>위의 예제를 보면 $txt 는 “Hello world!”라는 문자열을 담고 있는 변수입니다. $x는 정수 5의 숫자 값을 담고 있는 변수입니다. $y 는 10.5 라는 실수 값을 갖고 있는 변수입니다.</p>
@@ -229,42 +225,42 @@
 <p>PHP에서 문자열을 생성, 저장하는 것은 매우 쉽습니다. 그냥 $ 변수명에 큰따옴표(“) 또는 작은따옴표(‘)로 묶어서 대입해주면 됩니다. PHP 언어는 문자와 문자열을 구분하지 않기 때문에 두 가지 모두 사용이 가능합니다.</p>
 
 <p>|문자열|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$name1 = "Hello world!";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$name1 = "Hello world!";
 $name2 = ‘php world!’;
 </code></pre></div></div>
 
 <p>PHP 언어가 C 언어와 달리 문자와 문자열을 구분하지 않고, 문자 배열을 사전에 정의하지 않아도 된다는 것은 프로그램 동작 시 발생하는 데이터 타입 불일치 오류를 줄여줄 수 있는 강점입니다.</p>
 
 <p>예제 파일 string-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// 문자열 변수를 생성합니다.</span>
-  <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"Hello world!"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  // 문자열 변수를 생성합니다.
+  $name = "Hello world!";
 
-  <span class="c1">// 저장된 문자열을 화면에 출력합니다.</span>
-  <span class="k">echo</span> <span class="nv">$name</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+  // 저장된 문자열을 화면에 출력합니다.
+  echo $name;
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello world!
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Hello world!
 </code></pre></div></div>
 
 <p>PHP는 문자열을 표시하는 데 있어서 큰따옴표(“)와 작은따옴표(‘)를 모두 사용할 수 있습니다.
 작은따옴표(‘)는 큰따옴표(“) 안에 문자로 표시할 수 있습니다.</p>
 
 <p>예제 파일 string-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 문자열 변수를 생성합니다.</span>
-	<span class="c1">// 작은따옴표는 큰따옴표 안에 들어갈 수 있습니다.</span>
-	<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"Hello 'PHP' world!"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 문자열 변수를 생성합니다.
+	// 작은따옴표는 큰따옴표 안에 들어갈 수 있습니다.
+	$name = "Hello 'PHP' world!";
 
-	<span class="c1">// 저장된 문자열을 화면에 출력합니다.</span>
-	<span class="k">echo</span> <span class="nv">$name</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+	// 저장된 문자열을 화면에 출력합니다.
+	echo $name;
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello 'PHP' world!
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Hello 'PHP' world!
 </code></pre></div></div>
 
 <p>위의 예제는 $name 변수에 문자열을 저장 후에 값을 출력합니다.</p>
@@ -278,21 +274,21 @@ $name2 = ‘php world!’;
 <p>다음 예제는 문자열을 배열 형태로 접근하고 처리하는 예입니다.</p>
 
 <p>예제 파일 string-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="c1">// 문자열 변수를 생성합니다.</span>
-  <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"Hello world!"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  // 문자열 변수를 생성합니다.
+  $name = "Hello world!";
 
-  <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
-  	<span class="c1">// 한 글자씩 출력합니다.</span>
-  	<span class="k">echo</span> <span class="s2">"i = </span><span class="nv">$i</span><span class="s2"> , "</span> <span class="o">.</span> <span class="nv">$name</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-  <span class="p">}</span>
+  for($i=0;$i&lt;strlen($name);$i++){
+  	// 한 글자씩 출력합니다.
+  	echo "i = $i , " . $name[$i] . "&lt;br&gt;";
+  }
 
   
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i = 0 , H
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>i = 0 , H
 i = 1 , e
 i = 2 , l
 i = 3 , l
@@ -314,24 +310,24 @@ i = 11 , !
 <p>생성한 변수의 타입이 문자열인지를 확인할 수 있습니다. is_string() 내부 함수는 입력되는 변수의 타입이 문자열인지를 판별하여 논리값으로 반환합니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool is_string ( mixed $var )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool is_string ( mixed $var )
 </code></pre></div></div>
 
 <p>예제 파일 string-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">'abc'</span><span class="p">,</span> <span class="s1">'23'</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s1">'23.5'</span><span class="p">,</span> <span class="mf">23.5</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">' '</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$values</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">"is_string("</span><span class="p">;</span>
-    <span class="nb">var_export</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
-    <span class="k">echo</span> <span class="s2">") = "</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$value</span><span class="p">));</span>
-    <span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span> 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+$values = array(false, true, null, 'abc', '23', 23, '23.5', 23.5, '', ' ', '0', 0);
+foreach ($values as $value) {
+    echo "is_string(";
+    var_export($value);
+    echo ") = ";
+    echo var_dump(is_string($value));
+    echo "&lt;br&gt;";
+}
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>is_string(false) = bool(false)
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>is_string(false) = bool(false)
 is_string(true) = bool(false)
 is_string(NULL) = bool(false)
 is_string('abc') = bool(true)
@@ -350,21 +346,21 @@ is_string(0) = bool(false)
 <h3 id="625-특수문자">6.2.5 특수문자</h3>
 <p>문자 중에는 특수문자라는 것이 있습니다. 브라우저 이외에 콘솔 등 text 형태로 자료를 출력할 때 특수문자를 같이 이용할 때 좀 더 보기 좋은 문서를 만들 수 있습니다.</p>
 
-<p><code class="highlighter-rouge">\n</code>	:개행문자</p>
+<p><code class="language-html highlighter-rouge">\n</code>	:개행문자</p>
 
-<p><code class="highlighter-rouge">\r</code>	:캐리지 리턴</p>
+<p><code class="language-html highlighter-rouge">\r</code>	:캐리지 리턴</p>
 
-<p><code class="highlighter-rouge">\t</code>	:탭</p>
+<p><code class="language-html highlighter-rouge">\t</code>	:탭</p>
 
-<p><code class="highlighter-rouge">\f</code>	:폼피드</p>
+<p><code class="language-html highlighter-rouge">\f</code>	:폼피드</p>
 
-<p><code class="highlighter-rouge">\b</code>	:백스페이스</p>
+<p><code class="language-html highlighter-rouge">\b</code>	:백스페이스</p>
 
-<p><code class="highlighter-rouge">\a</code>	:경고음</p>
+<p><code class="language-html highlighter-rouge">\a</code>	:경고음</p>
 
-<p><code class="highlighter-rouge">\e</code>	:esc문자</p>
+<p><code class="language-html highlighter-rouge">\e</code>	:esc문자</p>
 
-<p><code class="highlighter-rouge">\\</code>	:역슬래시</p>
+<p><code class="language-html highlighter-rouge">\\</code>	:역슬래시</p>
 
 <p><br /></p>
 <hr />
@@ -373,25 +369,25 @@ is_string(0) = bool(false)
 <p>문자열 변수를 출력 문자열 안에 넣으면 출력 함수는 문자열의 내용과 문자열 변수의 내용을 같이 출력합니다. 하지만 변수를 작은따옴표로 감싸서 출력하면 변수명을 직접 출력할 수 있습니다.</p>
 
 <p>예제 파일 string-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="nv">$a</span> <span class="o">=</span> <span class="s2">"hello world!"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	$a = "hello world!";
 
-	<span class="c1">// 문자열 변수 출력</span>
-	<span class="k">print</span> <span class="nv">$a</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	// 문자열 변수 출력
+	print $a;
+	echo "&lt;br&gt;";
 
-	<span class="c1">// 큰따옴표 안에 넣은 경우에도 변수 내용이 출력됩니다.</span>
-	<span class="k">print</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	// 큰따옴표 안에 넣은 경우에도 변수 내용이 출력됩니다.
+	print "$a";
+	echo "&lt;br&gt;";
 
-	<span class="c1">// 변수명을 출력하는 방법, 작은따옴표를 사용합니다.</span>
-	<span class="k">print</span> <span class="s1">'$a'</span><span class="p">;</span>
+	// 변수명을 출력하는 방법, 작은따옴표를 사용합니다.
+	print '$a';
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello world!
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>hello world!
 hello world!
 $a
 </code></pre></div></div>
@@ -419,7 +415,7 @@ $a
 
 <p>10진법 표현은 기본적으로 우리가 사용하는 숫자를 입력하면 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$a = 5;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$a = 5;
 $b =123;
 $c = 777;
 </code></pre></div></div>
@@ -441,14 +437,14 @@ $c = 777;
 <p>정수변수는 $변수명 뒤에 정수를 대입하면 됩니다.</p>
 
 <p>예제 파일 int-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="nv">$x</span> <span class="o">=</span> <span class="mi">5985</span><span class="p">;</span>
-  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  $x = 5985;
+  var_dump($x);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int(5985) 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>int(5985) 
 </code></pre></div></div>
 
 <p><br /></p>
@@ -458,13 +454,13 @@ $c = 777;
 <p>PHP는 생성한 변수가 정수변수를 확인할 수 있는 is_int()이라는 내부 함수를 제공합니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool is_object ( mixed $var )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool is_object ( mixed $var )
 </code></pre></div></div>
 
 <p>매개변수 값으로 변수를 전달하면 변수의 오브젝트 타입 여부를 논리값 형태로 반환합니다.</p>
 
 <p>예제 파일 int-02.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 <span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="s2">"23"</span><span class="p">,</span> <span class="mf">23.5</span><span class="p">,</span> <span class="s2">"23.5"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$values</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"is_int("</span><span class="p">;</span>
@@ -478,7 +474,7 @@ $c = 777;
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>is_int(23) = bool(true)
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>is_int(23) = bool(true)
 is_int('23') = bool(false)
 is_int(23.5) = bool(false)
 is_int('23.5') = bool(false)
@@ -490,7 +486,7 @@ is_int(false) = bool(false)
 <p>위의 예제는 나열된 값들이 정수형 자료인지를 판별합니다.</p>
 
 <p>예제 파일 int-03.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
   <span class="nv">$num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
   <span class="k">if</span><span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$num</span><span class="p">)){</span>
     <span class="k">echo</span> <span class="s2">"정수입니다."</span><span class="p">;</span>
@@ -501,7 +497,7 @@ is_int(false) = bool(false)
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>정수입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>정수입니다.
 </code></pre></div></div>
 
 <p><br /></p>
@@ -513,31 +509,31 @@ is_int(false) = bool(false)
 <p>2진법은 0b 로 시작하며, 0과 1로 표현을 합니다. PHP에서는 2진법으로 변수에 저장을 하기 위해서는 숫자앞에 0b를 같이 적어 줍니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$a = 0b00000001;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$a = 0b00000001;
 $b = 0b11111111;
 </code></pre></div></div>
 
 <p>예제 파일 int-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 2진법으로 변수에 값을 저장합니다.</span>
-	<span class="c1">// 2진법은 0b로 시작합니다.</span>
-	<span class="nv">$a</span> <span class="o">=</span> <span class="mi">0</span><span class="nx">b00000001</span><span class="p">;</span>
-	<span class="nv">$b</span> <span class="o">=</span> <span class="mi">0</span><span class="nx">b11111111</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 2진법으로 변수에 값을 저장합니다.
+	// 2진법은 0b로 시작합니다.
+	$a = 0b00000001;
+	$b = 0b11111111;
 
-	<span class="c1">// 2진수를 8bit 형태로 출력합니다.</span>
-	<span class="nb">printf</span><span class="p">(</span><span class="s2">"2진법 : a = %08b, b= %08b &lt;br&gt;"</span><span class="p">,</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">);</span>
-	<span class="nb">printf</span><span class="p">(</span><span class="s2">"10진법 : a = %d, b= %d &lt;br&gt;"</span><span class="p">,</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">);</span>
+	// 2진수를 8bit 형태로 출력합니다.
+	printf("2진법 : a = %08b, b= %08b &lt;br&gt;",$a, $b);
+	printf("10진법 : a = %d, b= %d &lt;br&gt;",$a, $b);
 
-	<span class="c1">// 2진수 =&gt; 10진수 변환</span>
-	<span class="k">echo</span> <span class="s2">"2진수(0b11111111) =&gt; 10진수("</span><span class="o">.</span><span class="nb">bindec</span><span class="p">(</span><span class="s2">"0b11111111"</span><span class="p">)</span><span class="o">.</span><span class="s2">")&lt;br&gt;"</span><span class="p">;</span>
+	// 2진수 =&gt; 10진수 변환
+	echo "2진수(0b11111111) =&gt; 10진수(".bindec("0b11111111").")&lt;br&gt;";
 
-	<span class="c1">// 10진수 =&gt; 2진수 변환</span>
-	<span class="k">echo</span> <span class="s2">"10진수(8) =&gt; 2진수("</span><span class="o">.</span><span class="nb">decbin</span><span class="p">(</span><span class="s2">"8"</span><span class="p">)</span><span class="o">.</span><span class="s2">")&lt;br&gt;"</span><span class="p">;</span> 
-<span class="cp">?&gt;</span>
+	// 10진수 =&gt; 2진수 변환
+	echo "10진수(8) =&gt; 2진수(".decbin("8").")&lt;br&gt;"; 
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2진법 : a = 00000001, b= 11111111
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>2진법 : a = 00000001, b= 11111111
 10진법 : a = 1, b= 255
 2진수(0b11111111) =&gt; 10진수(255)
 10진수(8) =&gt; 2진수(1000)
@@ -545,13 +541,13 @@ $b = 0b11111111;
 
 <p>관련함수) 2진수를 10진수로 변환합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>number bindec ( string $binary_string )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>number bindec ( string $binary_string )
 </code></pre></div></div>
 
 <p>bindec() 함수는2진수 문자열을 입력하면 10진수 숫자값을 반환합니다.</p>
 
 <p>관련함수) 10진수를 2진수로 변환합니다.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>string decbin ( int $number )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>string decbin ( int $number )
 </code></pre></div></div>
 
 <p>decbin() 함수는 입력값으로 10진수 숫자값을 입력시 16진수 문자열을 반환합니다.</p>
@@ -565,32 +561,32 @@ $b = 0b11111111;
 <p>8진법은 0~7까지의 숫자로 표현한 값을 말합니다. PHP에서는 8진법으로 변수에 저장을 하기 위해서는 숫자앞에 0을 하나더 적어 줍니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$a = 0123; 	//10진수로 83
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$a = 0123; 	//10진수로 83
 $b = 010;	// 10진수로 8
 </code></pre></div></div>
 
 <p>예제 파일 int-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 8진법으로 변수에 값을 저장합니다.</span>
-	<span class="c1">// 8진법은 0로 시작합니다.</span>
-	<span class="nv">$a</span> <span class="o">=</span> <span class="mo">0123</span><span class="p">;</span> 	<span class="c1">//10진수로 83</span>
-	<span class="nv">$b</span> <span class="o">=</span> <span class="mo">010</span><span class="p">;</span>	<span class="c1">// 10진수로 8</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 8진법으로 변수에 값을 저장합니다.
+	// 8진법은 0로 시작합니다.
+	$a = 0123; 	//10진수로 83
+	$b = 010;	// 10진수로 8
 
-	<span class="c1">// 2진수를 8bit 형태로 출력합니다.</span>
-	<span class="nb">printf</span><span class="p">(</span><span class="s2">"8진법 : a = %o, b= %o &lt;br&gt;"</span><span class="p">,</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">);</span>
-	<span class="nb">printf</span><span class="p">(</span><span class="s2">"10진법 : a = %d, b= %d &lt;br&gt;"</span><span class="p">,</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">);</span>
+	// 2진수를 8bit 형태로 출력합니다.
+	printf("8진법 : a = %o, b= %o &lt;br&gt;",$a, $b);
+	printf("10진법 : a = %d, b= %d &lt;br&gt;",$a, $b);
 
-	<span class="c1">// 8진수 =&gt; 10진수 변환</span>
-	<span class="k">echo</span> <span class="s2">"8진수(123) =&gt; 10진수("</span><span class="o">.</span><span class="nb">octdec</span><span class="p">(</span><span class="s2">"123"</span><span class="p">)</span><span class="o">.</span><span class="s2">")&lt;br&gt;"</span><span class="p">;</span>
+	// 8진수 =&gt; 10진수 변환
+	echo "8진수(123) =&gt; 10진수(".octdec("123").")&lt;br&gt;";
 
-	<span class="c1">//10진수 =&gt; 8진수 변환</span>
-	<span class="k">echo</span> <span class="s2">"10진수(8) =&gt; 8진수("</span><span class="o">.</span><span class="nb">decoct</span><span class="p">(</span><span class="s2">"8"</span><span class="p">)</span><span class="o">.</span><span class="s2">")&lt;br&gt;"</span><span class="p">;</span> 
+	//10진수 =&gt; 8진수 변환
+	echo "10진수(8) =&gt; 8진수(".decoct("8").")&lt;br&gt;"; 
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8진법 : a = 123, b= 10
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>8진법 : a = 123, b= 10
 10진법 : a = 83, b= 8
 8진수(123) =&gt; 10진수(83)
 10진수(8) =&gt; 8진수(10)
@@ -598,13 +594,13 @@ $b = 010;	// 10진수로 8
 
 <p>관련함수) 10진수를 8진수로 변환합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>string decoct ( int $number )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>string decoct ( int $number )
 </code></pre></div></div>
 
 <p>decoct() 함수는 입력값으로 10진수 숫자값을 입력시 8진수 문자열을 반환합니다.</p>
 
 <p>관련함수) 8진수를 10진수로 변환합니다.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>number octdec ( string $octal_string )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>number octdec ( string $octal_string )
 </code></pre></div></div>
 
 <p>octdec() 함수는 8진수 문자열을 입력하면 10진수 숫자값을 반환합니다.</p>
@@ -618,34 +614,34 @@ $b = 010;	// 10진수로 8
 <p>16진법은  0~9, A~F 의 값을 가집니다. PHP에서는 16진법으로 변수에 저장을 하기 위해서는 숫자 앞에 0x를 같이 적어 줍니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$a = 0x01;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$a = 0x01;
 $b = 0xa8;
 $b = 0xff;
 </code></pre></div></div>
 
 <p>예제 파일 int-06.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 16진법으로 변수에 값을 저장합니다.</span>
-	<span class="c1">// 16진법은 0x로 시작합니다.</span>
-	<span class="nv">$a</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>
-	<span class="nv">$b</span> <span class="o">=</span> <span class="mh">0xa8</span><span class="p">;</span>
-	<span class="nv">$b</span> <span class="o">=</span> <span class="mh">0xff</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 16진법으로 변수에 값을 저장합니다.
+	// 16진법은 0x로 시작합니다.
+	$a = 0x01;
+	$b = 0xa8;
+	$b = 0xff;
 
-	<span class="c1">// 2진수를 8bit 형태로 출력합니다.</span>
-	<span class="nb">printf</span><span class="p">(</span><span class="s2">"16진법 : a = %x, b= %x, c= %x &lt;br&gt;"</span><span class="p">,</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">);</span>
-	<span class="nb">printf</span><span class="p">(</span><span class="s2">"10진법 : a = %d, b= %d, c= %d &lt;br&gt;"</span><span class="p">,</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">);</span>
+	// 2진수를 8bit 형태로 출력합니다.
+	printf("16진법 : a = %x, b= %x, c= %x &lt;br&gt;",$a, $b, $c);
+	printf("10진법 : a = %d, b= %d, c= %d &lt;br&gt;",$a, $b, $c);
 
-	<span class="c1">// 16진수 =&gt; 10진수 변환</span>
-	<span class="k">echo</span> <span class="s2">"16진수(a8) =&gt; 10진수("</span><span class="o">.</span><span class="nb">hexdec</span><span class="p">(</span><span class="s2">"a8"</span><span class="p">)</span><span class="o">.</span><span class="s2">")&lt;br&gt;"</span><span class="p">;</span>
+	// 16진수 =&gt; 10진수 변환
+	echo "16진수(a8) =&gt; 10진수(".hexdec("a8").")&lt;br&gt;";
 
-	<span class="c1">//10진수 =&gt; 16진수 변환</span>
-	<span class="k">echo</span> <span class="s2">"10진수(255) =&gt; 16진수("</span><span class="o">.</span><span class="nb">dechex</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="s2">")&lt;br&gt;"</span><span class="p">;</span> 
+	//10진수 =&gt; 16진수 변환
+	echo "10진수(255) =&gt; 16진수(".dechex(255).")&lt;br&gt;"; 
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16진법 : a = 1, b= ff, c= 0
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>16진법 : a = 1, b= ff, c= 0
 10진법 : a = 1, b= 255, c= 0
 16진수(a8) =&gt; 10진수(168)
 10진수(255) =&gt; 16진수(ff)
@@ -653,14 +649,14 @@ $b = 0xff;
 
 <p>|관련함수| 
 16진수를 10진수로 변환합니다.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>number hexdec ( string $hex_string )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>number hexdec ( string $hex_string )
 </code></pre></div></div>
 
 <p>hexdec() 함수는 16진수 문자열을 입력하면 10진수 숫자값을 반환합니다.</p>
 
 <p>|관련함수| 
 10진수를 16진수로 변환합니다.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>string dechex ( int $number )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>string dechex ( int $number )
 </code></pre></div></div>
 <p>dechex() 함수는 입력값으로 10진수 숫자값을 입력시 16진수 문자열을 반환합니다.</p>
 
@@ -690,7 +686,7 @@ $b = 0xff;
 <p>실수 변수는 $변수에 실수 값을 대입하는 것으로 쉽게 저장을 할 수 있습니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$a = 1.234; 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$a = 1.234; 
 $b = 1.2e3; 
 $c = 7E-10;
 </code></pre></div></div>
@@ -698,30 +694,30 @@ $c = 7E-10;
 <p>다음 예제는 실수변수를 화면에 출력하는 예제 입니다.</p>
 
 <p>예제 파일 float-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="nv">$x</span> <span class="o">=</span> <span class="mf">10.365</span><span class="p">;</span>
-	<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-<span class="cp">?&gt;</span> 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	$x = 10.365;
+	var_dump($x);
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>결과화면</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float(10.365) 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>float(10.365) 
 </code></pre></div></div>
 
 <p>다은 예제는 각도의 라디안 값 계산하는 실수형 예제 입니다.</p>
 
 <p>예제 파일 float-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">const</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	const PI = 3.14;
 
-	<span class="nv">$deg</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
-	<span class="nv">$rad</span> <span class="o">=</span> <span class="nv">$deg</span> <span class="o">*</span> <span class="nx">PI</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">;</span>
-	<span class="nb">printf</span><span class="p">(</span><span class="s2">"DEG = %d, RAD = %f"</span><span class="p">,</span> <span class="nv">$deg</span><span class="p">,</span> <span class="nv">$rad</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	$deg = 30;
+	$rad = $deg * PI / 180.0;
+	printf("DEG = %d, RAD = %f", $deg, $rad);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과화면</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEG = 30, RAD = 0.523333
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>DEG = 30, RAD = 0.523333
 </code></pre></div></div>
 
 <p><br /></p>
@@ -731,24 +727,24 @@ $c = 7E-10;
 <p>PHP는 생성한 변수가 실수변수를 확인할 수 있는 is_float()이라는 내부함수를 제공합니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool is_float ( mixed $var )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool is_float ( mixed $var )
 </code></pre></div></div>
 
 <p>매개변수값으로 변수를 전달하면 변수의 오브젝트 타입 여부를 논리값 형태로 반환합니다.</p>
 
 <p>예제 파일 float-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nb">var_dump</span><span class="p">(</span> <span class="nb">is_float</span><span class="p">(</span><span class="mf">27.25</span><span class="p">)</span> <span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span> <span class="nb">is_float</span><span class="p">(</span><span class="s1">'abc'</span><span class="p">)</span> <span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span> <span class="nb">is_float</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span> <span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span> <span class="nb">is_float</span><span class="p">(</span><span class="mf">23.5</span><span class="p">)</span> <span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span> <span class="nb">is_float</span><span class="p">(</span><span class="mf">1e7</span><span class="p">)</span> <span class="p">);</span>  <span class="c1">//Scientific Notation</span>
-<span class="nb">var_dump</span><span class="p">(</span> <span class="nb">is_float</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">);</span>
-<span class="cp">?&gt;</span> 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+var_dump( is_float(27.25) );
+var_dump( is_float('abc') );
+var_dump( is_float(23) );
+var_dump( is_float(23.5) );
+var_dump( is_float(1e7) );  //Scientific Notation
+var_dump( is_float(true) );
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool(true)
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool(true)
 bool(false)
 bool(false)
 bool(true)
@@ -767,31 +763,31 @@ bool(false)
 <p>형변환이라는 것은 변수에 값을 입력할 때 값 앞에 변수의 형태를 미리 지정하여 저장하는 방법입니다.</p>
 
 <p>예제 파일 float-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 실수값을 입력하면 변수는 실수 입니다.</span>
-	<span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
-	<span class="nb">var_dump</span><span class="p">(</span> <span class="nv">$pi</span> <span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"pi = </span><span class="nv">$pi</span><span class="s2">&lt;br&gt;"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 실수값을 입력하면 변수는 실수 입니다.
+	$pi = 3.14;
+	var_dump( $pi );
+	echo "pi = $pi&lt;br&gt;";
 
-	<span class="c1">// 정수로 형변환 합니다.</span>
-	<span class="nv">$a</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="mf">5.14</span><span class="p">;</span>
-	<span class="nb">var_dump</span><span class="p">(</span> <span class="nv">$a</span> <span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"a = </span><span class="nv">$a</span><span class="s2">&lt;br&gt;"</span><span class="p">;</span>
+	// 정수로 형변환 합니다.
+	$a = (int)5.14;
+	var_dump( $a );
+	echo "a = $a&lt;br&gt;";
 
-	<span class="c1">// 더블형으로 형변환 합니다.</span>
-	<span class="nv">$b</span> <span class="o">=</span> <span class="p">(</span><span class="nx">double</span><span class="p">)</span><span class="mf">3.14</span><span class="p">;</span>
-	<span class="nb">var_dump</span><span class="p">(</span> <span class="nv">$b</span> <span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"b = </span><span class="nv">$b</span><span class="s2">&lt;br&gt;"</span><span class="p">;</span>
+	// 더블형으로 형변환 합니다.
+	$b = (double)3.14;
+	var_dump( $b );
+	echo "b = $b&lt;br&gt;";
 
-	<span class="c1">// 문자열로 형현환 합니다.</span>
-	<span class="nv">$b</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="mf">3.14</span><span class="p">;</span>
-	<span class="nb">var_dump</span><span class="p">(</span> <span class="nv">$b</span> <span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"b = </span><span class="nv">$b</span><span class="s2">&lt;br&gt;"</span><span class="p">;</span>
-<span class="cp">?&gt;</span> 
+	// 문자열로 형현환 합니다.
+	$b = (string)3.14;
+	var_dump( $b );
+	echo "b = $b&lt;br&gt;";
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float(3.14) pi = 3.14
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>float(3.14) pi = 3.14
 int(5) a = 5
 float(3.14) b = 3.14
 string(4) "3.14" b = 3.14
@@ -807,56 +803,56 @@ string(4) "3.14" b = 3.14
 
 <p>|관련함수|
 소수점 이하 올림</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float ceil ( 실수값 )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>float ceil ( 실수값 )
 </code></pre></div></div>
 
 <p>ceil() 함수는 입력된 실수값의 소수점 이하를 올림 처리한 값을 반환합니다.</p>
 
 <p>|관련함수|
 소수점 이하 버림</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mixed floor ( 실수값 )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>mixed floor ( 실수값 )
 </code></pre></div></div>
 
 <p>floor() 함수는 입력된 실수값의 소수점 이하를 버림 처리한 값을 반환합니다.</p>
 
 <p>|관련함수|
 소수점 이하 반올림</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float round (실수값, 자릿수)
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>float round (실수값, 자릿수)
 </code></pre></div></div>
 
 <p>round() 함수는 입력된 실수값의 이하 반올림 처리한 값을 반환합니다.</p>
 
 <p>예제 파일 float-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 올림</span>
-	<span class="k">echo</span> <span class="nb">ceil</span><span class="p">(</span><span class="mf">4.3</span><span class="p">);</span>    <span class="c1">// 5</span>
-	<span class="k">echo</span> <span class="nb">ceil</span><span class="p">(</span><span class="mf">9.999</span><span class="p">);</span>  <span class="c1">// 10</span>
-	<span class="k">echo</span> <span class="nb">ceil</span><span class="p">(</span><span class="o">-</span><span class="mf">3.14</span><span class="p">);</span>  <span class="c1">// -3</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 올림
+	echo ceil(4.3);    // 5
+	echo ceil(9.999);  // 10
+	echo ceil(-3.14);  // -3
 
-	<span class="c1">// 버림</span>
-	<span class="k">echo</span> <span class="nb">floor</span><span class="p">(</span><span class="mf">4.3</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>   <span class="c1">// 4</span>
-	<span class="k">echo</span> <span class="nb">floor</span><span class="p">(</span><span class="mf">9.999</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span> <span class="c1">// 9</span>
-	<span class="k">echo</span> <span class="nb">floor</span><span class="p">(</span><span class="o">-</span><span class="mf">3.14</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span> <span class="c1">// -4</span>
+	// 버림
+	echo floor(4.3)."&lt;br&gt;";   // 4
+	echo floor(9.999)."&lt;br&gt;"; // 9
+	echo floor(-3.14)."&lt;br&gt;"; // -4
 
-	<span class="c1">// 반올림 처리</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.4</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>         <span class="c1">// 3</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>         <span class="c1">// 4</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.6</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>         <span class="c1">// 4</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>      <span class="c1">// 4</span>
+	// 반올림 처리
+	echo round(3.4)."&lt;br&gt;";         // 3
+	echo round(3.5)."&lt;br&gt;";         // 4
+	echo round(3.6)."&lt;br&gt;";         // 4
+	echo round(3.6, 0)."&lt;br&gt;";      // 4
 
-	<span class="c1">// 소수점 자리 반올림</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mf">1.95583</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>  <span class="c1">// 1.96</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mf">5.045</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>    <span class="c1">// 5.05</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mf">5.055</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>    <span class="c1">// 5.06</span>
+	// 소수점 자리 반올림
+	echo round(1.95583, 2)."&lt;br&gt;";  // 1.96
+	echo round(5.045, 2)."&lt;br&gt;";    // 5.05
+	echo round(5.055, 2)."&lt;br&gt;";    // 5.06
 
-	<span class="c1">// 소수점 위3자리에서 반올림</span>
-	<span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="mi">1241757</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span> <span class="c1">// 1242000</span>
+	// 소수점 위3자리에서 반올림
+	echo round(1241757, -3)."&lt;br&gt;"; // 1242000
 	
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>510-34
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>510-34
 9
 -4
 3
@@ -898,7 +894,7 @@ string(4) "3.14" b = 3.14
 <p>0과 1의 표현은 사람이 직관적으로 쉽게 알아보기는 어렵습니다. 그래서,</p>
 
 <p>|표현|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 = false (거짓)
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>0 = false (거짓)
 1 = true (참)
 </code></pre></div></div>
 
@@ -911,54 +907,54 @@ string(4) "3.14" b = 3.14
 <p>논리변수를 만드는 것은 간단합니다. $변수명 뒤에 논리 상수명을 적어주면 됩니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$x = true;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$x = true;
 $y = false;
 </code></pre></div></div>
 
 <p>논리값은 소문자/대문자를 구분하지 않습니다.</p>
 
 <p>예제 파일 bool-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="nv">$a</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-	<span class="nx">If</span> <span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"a = true(참) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"a = false(거짓) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	$a = true;
+	If ($a) {
+		echo "a = true(참) 입니다.";
+	} else {
+		echo "a = false(거짓) 입니다.";
+	}
 
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	echo "&lt;br&gt;";
 
-	<span class="nv">$b</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
-	<span class="nx">If</span> <span class="p">(</span><span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"b = true(참) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"b = false(거짓) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span>
+	$b = TRUE;
+	If ($b) {
+		echo "b = true(참) 입니다.";
+	} else {
+		echo "b = false(거짓) 입니다.";
+	}
 
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	echo "&lt;br&gt;";
 
-	<span class="nv">$c</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="nx">If</span> <span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"c = true(참) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"c = false(거짓) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span>
+	$c = false;
+	If ($c) {
+		echo "c = true(참) 입니다.";
+	} else {
+		echo "c = false(거짓) 입니다.";
+	}
 
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	echo "&lt;br&gt;";
 
-	<span class="nv">$d</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
-	<span class="nx">If</span> <span class="p">(</span><span class="nv">$d</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"d = true(참) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"d = false(거짓) 입니다."</span><span class="p">;</span>
-	<span class="p">}</span>
+	$d = FALSE;
+	If ($d) {
+		echo "d = true(참) 입니다.";
+	} else {
+		echo "d = false(거짓) 입니다.";
+	}
 
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+	echo "&lt;br&gt;";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = true(참) 입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>a = true(참) 입니다.
 b = true(참) 입니다.
 c = false(거짓) 입니다.
 d = false(거짓) 입니다.
@@ -971,34 +967,34 @@ d = false(거짓) 입니다.
 <p>PHP는 생성한 변수가 논리변수를 확인할 수 있는 is_bool()이라는 내부함수를 제공합니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool is_bool ( mixed $var )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool is_bool ( mixed $var )
 </code></pre></div></div>
 
 <p>매개변수 값으로 변수를 전달하면 변수의 논리 타입 여부를 논리값 형태로 반환합니다.</p>
 
 <p>사용예 bool-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="nv">$a</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="nv">$b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  $a = false;
+  $b = 0;
 
-  <span class="c1">// 논리값으로 쓰여진 변수인지를 확인합니다.</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">is_bool</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">"a는 논리 변수 입니다."</span><span class="p">;</span>
-  <span class="p">}</span>
+  // 논리값으로 쓰여진 변수인지를 확인합니다.
+  if (is_bool($a) === true) {
+    echo "a는 논리 변수 입니다.";
+  }
 
-  <span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+  echo "&lt;br&gt;";
 
-  <span class="c1">// $b는 정수 0 입니다. 논리 변수가 아니라서 false 를 반환합니다.</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">is_bool</span><span class="p">(</span><span class="nv">$b</span><span class="p">)</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">"b는 논리 변수가 아닙니다.&lt;br&gt;"</span><span class="p">;</span>
-    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$b</span><span class="p">);</span>
-  <span class="p">}</span>
+  // $b는 정수 0 입니다. 논리 변수가 아니라서 false 를 반환합니다.
+  if (is_bool($b) === false) {
+    echo "b는 논리 변수가 아닙니다.&lt;br&gt;";
+    var_dump($b);
+  }
 
-<span class="cp">?&gt;</span> 
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a는 논리 변수 입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>a는 논리 변수 입니다.
 b는 논리 변수가 아닙니다.
 int(0)
 </code></pre></div></div>
@@ -1040,7 +1036,7 @@ int(0)
 <h3 id="662-배열-생성">6.6.2 배열 생성</h3>
 <p>배열 변수는 array() 함수를 이용하여 변수 선언과 동시에 초기값을 설정할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$변수명 = array(데이터1, 데이터2, 데이터3);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$변수명 = array(데이터1, 데이터2, 데이터3);
 </code></pre></div></div>
 
 <p>array() 변수는 다양한 값을 콤마(,)로 구분하여 배열변수의 초기값을 설정할 수 있습니다.</p>
@@ -1050,19 +1046,19 @@ int(0)
 <p>항상 indexed array의 index값은 0부터 시작합니다.</p>
 
 <p>예제 파일 array-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"Volvo"</span><span class="p">,</span> <span class="s2">"BMW"</span><span class="p">,</span> <span class="s2">"Toyota"</span><span class="p">);</span>
-  <span class="k">echo</span> <span class="s2">"I like "</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">", "</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" and "</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"."</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  $cars = array("Volvo", "BMW", "Toyota");
+  echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I like Volvo, BMW and Toyota.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>I like Volvo, BMW and Toyota.
 </code></pre></div></div>
 
 <p>위의 예는 $cars 변수에 array() 함수를 통하여 3개의 값으로 초기화 하였습니다. $cars 는 indexed array 속성을 가지고 있습니다. 각각의 배열의 데이터는 $cars 변수명 뒤에 배열기호 [ ]를 통하여 번호로 접근할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$cars[0] =&gt; "Volvo"
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$cars[0] =&gt; "Volvo"
 $cars[1] =&gt; "BMW"
 $cars[2] =&gt; "Toyota"
 </code></pre></div></div>
@@ -1076,16 +1072,16 @@ $cars[2] =&gt; "Toyota"
 <p>배열 생성 시 array() 내부함수를 이용하여 일괄적으로 초기할 할 수도 있지만 index 값을 통하여 개별로 하나씩 설정을 할 수도 있습니다.</p>
 
 <p>예제 파일 array-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Kia"</span><span class="p">;</span>
-  <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"BMW"</span><span class="p">;</span>
-  <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Toyota"</span><span class="p">;</span>
-  <span class="k">echo</span> <span class="s2">"I like "</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">", "</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" and "</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"."</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  $cars[0] = "Kia";
+  $cars[1] = "BMW";
+  $cars[2] = "Toyota";
+  echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I like Kia, BMW and Toyota.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>I like Kia, BMW and Toyota.
 </code></pre></div></div>
 
 <p>즉 처음에 배열을 선언하지 않고 변수명 뒤에 [ ]를 통해 배열화로 만들어 저장할 수 있습니다.</p>
@@ -1093,20 +1089,20 @@ $cars[2] =&gt; "Toyota"
 <p>indexed 형태의 배열은 반복문을 통하여 처리하기에 매우 편리합니다. index 값이 일정한 숫자 형태로 처리되기 때문입니다.</p>
 
 <p>예제 파일 array-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 배열값을 저장</span>
-	<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nv">$cars</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"array"</span><span class="o">.</span><span class="nv">$i</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="c1">// 배열값을 출력</span>
-	<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 배열값을 저장
+	for ($i=0;$i&lt;5;$i++) {
+		$cars[$i] = "array".$i;
+	}
+	// 배열값을 출력
+	for ($i=0;$i&lt;5;$i++) {
+	echo $cars[$i]."&lt;br&gt;";
+	}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array0
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>array0
 array1
 array2
 array3
@@ -1123,42 +1119,42 @@ array4
 
 <p>연상 배열 또한 배열을 생성 및 초기화 하는 방식으로 array()함수를 사용할 수 있습니다. 이전 indexed array와의 차이점이라면 배열 값을 입력 시 “이름”=&gt; 형태가 추가 되는 것입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$변수명 = array(“이름”=&gt;”데이터1”,“이름”=&gt;”데이터2”, “이름”=&gt;”데이터3”);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$변수명 = array(“이름”=&gt;”데이터1”,“이름”=&gt;”데이터2”, “이름”=&gt;”데이터3”);
 </code></pre></div></div>
 
 <p>또는</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$age['Peter'] = "35";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$age['Peter'] = "35";
 $age['Ben'] = "37";
 $age['Joe'] = "43";
 </code></pre></div></div>
 <p>형태로 직접 이름 키를 생성하면서 배열을 만들 수 있습니다.</p>
 
 <p>예제 파일 array-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"Jiny"</span><span class="o">=&gt;</span><span class="s2">"44"</span><span class="p">,</span> <span class="s2">"Ben"</span><span class="o">=&gt;</span><span class="s2">"37"</span><span class="p">,</span> <span class="s2">"Joe"</span><span class="o">=&gt;</span><span class="s2">"43"</span><span class="p">);</span>
-  <span class="k">echo</span> <span class="s2">"Jiny  is "</span> <span class="o">.</span> <span class="nv">$age</span><span class="p">[</span><span class="s1">'Jiny'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" years old."</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  $age = array("Jiny"=&gt;"44", "Ben"=&gt;"37", "Joe"=&gt;"43");
+  echo "Jiny  is " . $age['Jiny'] . " years old.";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Jiny is 44 years old.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Jiny is 44 years old.
 </code></pre></div></div>
 
 <p>다음은 연상 배열을 이름 키 값을 통해 foreach 반복문을 이용하여 이름과 값을 출력하는 예입니다.</p>
 
 <p>예제 파일 array-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"Peter"</span><span class="o">=&gt;</span><span class="s2">"40"</span><span class="p">,</span> <span class="s2">"joy"</span><span class="o">=&gt;</span><span class="s2">"35"</span><span class="p">,</span> <span class="s2">"jiny"</span><span class="o">=&gt;</span><span class="s2">"43"</span><span class="p">);</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  $age = array("Peter"=&gt;"40", "joy"=&gt;"35", "jiny"=&gt;"43");
 
-  <span class="nx">Foreach</span> <span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">"Key="</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">", Value="</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
-      <span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="cp">?&gt;</span> 
+  Foreach ($age as $x =&gt; $x_value) {
+    echo "Key=" . $x . ", Value=" . $x_value;
+      echo "&lt;br&gt;";
+  }
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Key=Peter, Value=40
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Key=Peter, Value=40
 Key=joy, Value=35
 Key=jiny, Value=43
 </code></pre></div></div>
@@ -1181,16 +1177,16 @@ Key=jiny, Value=43
 
 <p>이처럼 변수명 뒤에 배열 기호 [ ]를 중복하여 다차원 배열을 접근할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-  <span class="k">echo</span> <span class="nv">$age1</span><span class="p">[</span> <span class="err">‘</span><span class="nx">a</span><span class="err">’</span> <span class="p">];</span>
-  <span class="k">echo</span> <span class="nv">$age2</span><span class="p">[</span> <span class="err">‘</span><span class="nx">a</span><span class="err">’</span> <span class="p">][</span><span class="mi">0</span><span class="p">];</span>
-  <span class="k">echo</span> <span class="nv">$age2</span><span class="p">[</span> <span class="err">‘</span><span class="mi">3</span><span class="err">’</span> <span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+  echo $age1[ ‘a’ ];
+  echo $age2[ ‘a’ ][0];
+  echo $age2[ ‘3’ ][0][1];
+?&gt;</span>
 </code></pre></div></div>
 
 <p>다음과 같은 표를 이차원 배열로 생성해 볼 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>브랜드	재고수량	판매수량
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>브랜드	재고수량	판매수량
 Volvo	10	300
 BMW	11	250
 Saab	12	350
@@ -1199,24 +1195,24 @@ kia	13	200
 <p>표는 가로 * 세로 형태의 이차원적인 배열 타입을 가지고 있습니다.</p>
 
 <p>예제 파일 array-06.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span>
-  <span class="p">(</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"Volvo"</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"BMW"</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">250</span><span class="p">),</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"Saab"</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">350</span><span class="p">),</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"kia"</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
-  <span class="p">);</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+$cars = array
+  (
+  array("Volvo",10,300),
+  array("BMW",11,250),
+  array("Saab",12,350),
+  array("kia",13,200)
+  );
 
-<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">": In stock: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">", sold: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">".&lt;br&gt;"</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">": In stock: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">", sold: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">".&lt;br&gt;"</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">": In stock: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">", sold: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">".&lt;br&gt;"</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">": In stock: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">", sold: "</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">".&lt;br&gt;"</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+echo $cars[0][0].": In stock: ".$cars[0][1].", sold: ".$cars[0][2].".&lt;br&gt;";
+echo $cars[1][0].": In stock: ".$cars[1][1].", sold: ".$cars[1][2].".&lt;br&gt;";
+echo $cars[2][0].": In stock: ".$cars[2][1].", sold: ".$cars[2][2].".&lt;br&gt;";
+echo $cars[3][0].": In stock: ".$cars[3][1].", sold: ".$cars[3][2].".&lt;br&gt;";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Volvo: In stock: 10, sold: 300.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Volvo: In stock: 10, sold: 300.
 BMW: In stock: 11, sold: 250.
 Saab: In stock: 12, sold: 350.
 kia: In stock: 13, sold: 200.
@@ -1225,28 +1221,28 @@ kia: In stock: 13, sold: 200.
 <p>이중 반복문을 통하여 다차원 배열을 처리할 수 있습니다.</p>
 
 <p>예제 파일 array-07.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span>
-  <span class="p">(</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"Volvo"</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"BMW"</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">250</span><span class="p">),</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"Saab"</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">350</span><span class="p">),</span>
-  <span class="k">array</span><span class="p">(</span><span class="s2">"kia"</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
-  <span class="p">);</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+$cars = array
+  (
+  array("Volvo",10,300),
+  array("BMW",11,250),
+  array("Saab",12,350),
+  array("kia",13,200)
+  );
   
-<span class="k">for</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$row</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nv">$row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;b&gt;Row number </span><span class="nv">$row</span><span class="s2">&lt;/b&gt;&lt;/p&gt;"</span><span class="p">;</span>
-  <span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
-  <span class="k">for</span> <span class="p">(</span><span class="nv">$col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nv">$col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">"&lt;li&gt;"</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="nv">$row</span><span class="p">][</span><span class="nv">$col</span><span class="p">]</span><span class="o">.</span><span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
+for ($row = 0; $row &lt; 4; $row++) {
+  echo "&lt;p&gt;&lt;b&gt;Row number $row&lt;/b&gt;&lt;/p&gt;";
+  echo "&lt;ul&gt;";
+  for ($col = 0; $col &lt; 3; $col++) {
+    echo "&lt;li&gt;".$cars[$row][$col]."&lt;/li&gt;";
+  }
+  echo "&lt;/ul&gt;";
+}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Row number 0
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Row number 0
 ●	Volvo
 ●	10
 ●	300
@@ -1271,26 +1267,26 @@ Row number 3
 <p>PHP는 생성한 변수가 배열변수를 확인할 수 있는 is_array()이라는 내부함수를 제공합니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool is_array ( mixed $var )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool is_array ( mixed $var )
 </code></pre></div></div>
 
 <p>매개변수 인자값으로 변수를 전달하면, 변수의 배열 타입 여부를 논리값 형태로 반환합니다.</p>
 
 <p>예제 파일 array-08.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$yes</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'this'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'an array'</span><span class="p">);</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+$yes = array('this', 'is', 'an array');
 
-<span class="k">echo</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$yes</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Array'</span> <span class="o">:</span> <span class="s1">'not an Array'</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+echo is_array($yes) ? 'Array' : 'not an Array';
+echo "\n";
 
-<span class="nv">$no</span> <span class="o">=</span> <span class="s1">'this is a string'</span><span class="p">;</span>
+$no = 'this is a string';
 
-<span class="k">echo</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$no</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Array'</span> <span class="o">:</span> <span class="s1">'not an Array'</span><span class="p">;</span>
-<span class="cp">?&gt;</span> 
+echo is_array($no) ? 'Array' : 'not an Array';
+?&gt;</span> 
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Array not an Array 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Array not an Array 
 </code></pre></div></div>
 
 <p><br /></p>
@@ -1307,25 +1303,25 @@ Row number 3
 <p>변수를 객체로 설정하는 방법은 객체생성 키워드 또는 객체 변수를 대입을 하면 됩니다. 다음은 클래스 객체의 인스턴스를 생성하여 새로운 객체 변수를 생성합니다.</p>
 
 <p>예제 파일 obj-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
-        <span class="k">function</span> <span class="nf">Car</span><span class="p">()</span> 
-<span class="p">{</span>
-          <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">model</span> <span class="o">=</span> <span class="s2">"Grandure"</span><span class="p">;</span>
-        <span class="p">}</span>
-<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+class Car {
+        function Car() 
+{
+          $this-&gt;model = "Grandure";
+        }
+}
 
-<span class="c1">// 객체 인스턴스를 생성하는 변수</span>
-<span class="nv">$hyndai</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
+// 객체 인스턴스를 생성하는 변수
+$hyndai = new Car();
 
-<span class="c1">// 객체의 프로퍼티를 출력합니다.</span>
-<span class="k">echo</span> <span class="nv">$hyndai</span><span class="o">-&gt;</span><span class="na">model</span><span class="p">;</span>
+// 객체의 프로퍼티를 출력합니다.
+echo $hyndai-&gt;model;
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Grandure
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Grandure
 </code></pre></div></div>
 
 <p>오브젝트 변수타입은 향후 객체지향 코딩을 할때 가장 많이 사용하는 변수 타입입니다.</p>
@@ -1337,24 +1333,24 @@ Row number 3
 <p>PHP는 생성한 변수가 객체변수를 확인할 수 있는 is_object()이라는 내부함수를 제공합니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool is_object ( mixed $var )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool is_object ( mixed $var )
 </code></pre></div></div>
 
 <p>매개변수 인자값으로 변수를 전달하면 변수의 오브젝트 타입 여부를 논리값 형태로 반환합니다.</p>
 
 <p>예제 파일 obj-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">is_object</span><span class="p">(</span><span class="nv">$obj</span><span class="p">))</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">"객체입니다."</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">"객체가 아닙니다."</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+$obj = new stdClass();
+if (is_object($obj)) {
+  echo "객체입니다.";
+} else {
+  echo "객체가 아닙니다.";
+}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>객체입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>객체입니다.
 </code></pre></div></div>
 
 <p><br /></p>
@@ -1371,32 +1367,32 @@ Row number 3
 변수를 NULL로 설정하고 싶다면 특수 키워드 null을 대입하면 됩니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$변수명 = null;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$변수명 = null;
 </code></pre></div></div>
 
 <p>예제 파일 null-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// $x변수에는 Hello world! 문자열이 저장되어 있습니다.</span>
-	<span class="nv">$x</span> <span class="o">=</span> <span class="s2">"Hello world!"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="nv">$x</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// $x변수에는 Hello world! 문자열이 저장되어 있습니다.
+	$x = "Hello world!";
+	echo $x;
 
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"====="</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	echo "&lt;br&gt;";
+	echo "=====";
+	echo "&lt;br&gt;";
 
-	<span class="c1">// $x 변수에 null값을 선언합니다.</span>
-	<span class="nv">$x</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-	<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	// $x 변수에 null값을 선언합니다.
+	$x = null;
+	var_dump($x);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>PHP에서는 변수를 생성하고 데이터 값을 할당하지 않은 경우에는 기본적으로 NULL 로 설정됩니다.</p>
 
 <p>예제 파일 null-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-    <span class="nv">$x</span><span class="p">;</span>
-    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+    $x;
+    var_dump($x);
+?&gt;</span>
 </code></pre></div></div>
 
 <p><br /></p>
@@ -1406,28 +1402,28 @@ Row number 3
 <p>PHP는 생성한 변수가 NULL인지를 확인할 수 있는 is_null()이라는 내부 함수를 제공합니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool is_null ( mixed $var )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool is_null ( mixed $var )
 </code></pre></div></div>
 
 <p>is_null() 함수는 변수의 NULL 여부를 확인하여 논리값으로 결과를 반환합니다.</p>
 
 <p>예제 파일 null-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-    <span class="nv">$x</span><span class="p">;</span>
-    <span class="nx">If</span> <span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$x</span><span class="p">))</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"x = NULL입니다."</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"x = NULL이 아닙니다."</span><span class="p">;</span>
-    <span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+    $x;
+    If (is_null($x)) {
+    	echo "x = NULL입니다.";
+    } else {
+    	echo "x = NULL이 아닙니다.";
+    }
 
-    <span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+    echo "&lt;br&gt;";
 
-    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+    var_dump($x);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = NULL입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>x = NULL입니다.
 NULL 
 </code></pre></div></div>
 
@@ -1442,32 +1438,32 @@ NULL
 <p>PHP 7.x부터 새로운 NULL 연산자가 도입되었습니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$username = $_POST['user'] ?? 'nobody';
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$username = $_POST['user'] ?? 'nobody';
 </code></pre></div></div>
 
 <p>위의 새로운 연산자 ??는 만일 변수의 값이 있으면 변수의 값을 대입하고, NULL인 경우에는 ‘nobody’를 대입하는 예입니다.</p>
 
 <p>예제 파일 null-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-<span class="nv">$x</span><span class="p">;</span>
+$x;
 
-<span class="k">if</span> <span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$x</span><span class="p">))</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"x = NULL입니다."</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"x = NULL이 아닙니다."</span><span class="p">;</span>
-<span class="p">}</span>
+if (is_null($x)) {
+    	echo "x = NULL입니다.";
+} else {
+    	echo "x = NULL이 아닙니다.";
+}
 
-<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+echo "&lt;br&gt;";
 
-<span class="nv">$username</span> <span class="o">=</span> <span class="nv">$x</span> <span class="o">??</span> <span class="s1">'nobody'</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">"username = </span><span class="nv">$username</span><span class="s2">"</span><span class="p">;</span>
+$username = $x ?? 'nobody';
+echo "username = $username";
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = NULL입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>x = NULL입니다.
 username = nobody
 </code></pre></div></div>
 
@@ -1479,50 +1475,50 @@ username = nobody
 <p>PHP 7.x 이전의 버전을 사용하고 있다면 ?? 연산자를 다음과 같이 함수 형태로 만들어서 사용할 수 도 있습니다.</p>
 
 <p>예제 파일 null-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">_coalescing</span><span class="p">(</span><span class="nv">$var</span><span class="p">,</span> <span class="nv">$default</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$var</span><span class="p">))</span> <span class="p">{</span>
-			<span class="k">if</span> <span class="p">(</span><span class="nv">$var</span> <span class="o">==</span> <span class="k">NULL</span><span class="p">)</span> <span class="p">{</span>
-				<span class="k">return</span> <span class="nv">$var</span><span class="p">;</span>
-			<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-				<span class="k">return</span> <span class="nv">$default</span><span class="p">;</span>
-			<span class="p">}</span>
-		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-			<span class="k">return</span> <span class="nv">$default</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function _coalescing($var, $default){
+		if (isset($var)) {
+			if ($var == NULL) {
+				return $var;
+			} else {
+				return $default;
+			}
+		} else {
+			return $default;
+		}
+	}
 
-	<span class="nv">$x</span><span class="p">;</span>
-	<span class="k">if</span> <span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$x</span><span class="p">))</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"x = NULL입니다."</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"x = NULL이 아닙니다."</span><span class="p">;</span>
-    <span class="p">}</span>
+	$x;
+	if (is_null($x)) {
+    	echo "x = NULL입니다.";
+    } else {
+    	echo "x = NULL이 아닙니다.";
+    }
 
-    <span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+    echo "&lt;br&gt;";
 
-	<span class="nv">$username</span> <span class="o">=</span> <span class="nx">_coalescing</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span><span class="s2">"nobody"</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"username = </span><span class="nv">$username</span><span class="s2">"</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+	$username = _coalescing($x,"nobody");
+	echo "username = $username";
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = NULL입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>x = NULL입니다.
 username = nobody
 </code></pre></div></div>
 <p>출력 결과를 동일하게 확인할 수 있습니다.</p>
 
 <p>?? 연산자는 삼항연산자(?)를 통해 응용할 수도 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$username = isset($_GET['user']) ? $_GET['user'] : 'nobody';
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$username = isset($_GET['user']) ? $_GET['user'] : 'nobody';
 </code></pre></div></div>
 
 <p>또한 ?? 연산자도 삼항연산자의 중복하여 연결하는 것처럼 ?? 연산자도 연결하여 사용할 수도 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-    <span class="c1">// ?? 연산자는 연결을 하여 사용을 할 수 도 있습니다.</span>
-    <span class="nv">$username</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'user'</span><span class="p">]</span> <span class="o">??</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'user'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'nobody'</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+    // ?? 연산자는 연결을 하여 사용을 할 수 도 있습니다.
+    $username = $_GET['user'] ?? $_POST['user'] ?? 'nobody';
+?&gt;</span>
 </code></pre></div></div>
 
 <p><br /></p>
@@ -1540,23 +1536,23 @@ username = nobody
 <p>get_resource_type() 내부 함수를 이용하면 리소스 타입을 확인할 수 있습니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>string get_resource_type ( resource $handle )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>string get_resource_type ( resource $handle )
 </code></pre></div></div>
 
 <p>예제 파일 resource-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="c1">// prints: mysql link</span>
-<span class="nv">$c</span> <span class="o">=</span> <span class="nb">mysql_connect</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nb">get_resource_type</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+// prints: mysql link
+$c = mysql_connect();
+echo get_resource_type($c) . "\n";
 
-<span class="c1">// prints: stream</span>
-<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nb">get_resource_type</span><span class="p">(</span><span class="nv">$fp</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+// prints: stream
+$fp = fopen("foo", "w");
+echo get_resource_type($fp) . "\n";
 
-<span class="c1">// prints: domxml document</span>
-<span class="nv">$doc</span> <span class="o">=</span> <span class="nx">new_xmldoc</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nb">get_resource_type</span><span class="p">(</span><span class="nv">$doc</span><span class="o">-&gt;</span><span class="na">doc</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="cp">?&gt;</span> 
+// prints: domxml document
+$doc = new_xmldoc("1.0");
+echo get_resource_type($doc-&gt;doc) . "\n";
+?&gt;</span> 
 </code></pre></div></div>
 
 <p><br /></p>
@@ -1579,7 +1575,7 @@ username = nobody
 <p>다음은 파라미터를 강제적인 방법으로 지정하는 예제입니다.</p>
 
 <p>예제 파일 scalar-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="c1">// Coercive 방법</span>
 	<span class="k">echo</span> <span class="s2">"정수 합계.&lt;br&gt;"</span><span class="p">;</span>
 	<span class="k">function</span> <span class="nf">sumOfInts</span><span class="p">(</span><span class="nx">int</span> <span class="o">...</span><span class="nv">$ints</span><span class="p">){</span>
@@ -1608,7 +1604,7 @@ username = nobody
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>정수 합계.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>정수 합계.
 Array ( [0] =&gt; 2 [1] =&gt; 3 [2] =&gt; 4 )
 int(9)
 실수 합계.
@@ -1617,7 +1613,7 @@ float(9.1)
 </code></pre></div></div>
 
 <p>예제 파일 scalar-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="c1">// Coercive 방법</span>
 	<span class="k">function</span> <span class="nf">sumOfstr</span><span class="p">(</span><span class="nx">string</span> <span class="o">...</span><span class="nv">$strs</span><span class="p">){</span>
 		<span class="nb">print_r</span><span class="p">(</span><span class="nv">$strs</span><span class="p">);</span>
@@ -1631,7 +1627,7 @@ float(9.1)
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Array ( [0] =&gt; 호랑이 [1] =&gt; 토끼 [2] =&gt; 4 )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Array ( [0] =&gt; 호랑이 [1] =&gt; 토끼 [2] =&gt; 4 )
 NULL 
 </code></pre></div></div>
 
@@ -1642,7 +1638,7 @@ NULL
 <p>변수를 사용하기 위해서는 변수명을 같이 정의해야 했습니다. 가변변수란 변수의 이름을 다른 변수의 이름을 통해 변수의 이름을 가변적으로 사용할 수 있는 PHP의 기능입니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${ 변수 }
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="err">$</span><span class="p">{</span> <span class="nx">변수</span> <span class="p">}</span>
 </code></pre></div></div>
 <p>변수명 앞에 ${ 와 뒤에 } 를 적어서 사용을 하면, 변수명의 값을 가지는 변수와 동일합니다.</p>
 
@@ -1651,18 +1647,18 @@ NULL
 
 <h3 id="6111-개념">6.11.1 개념</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$aaa = “홍길동”;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$aaa = “홍길동”;
 </code></pre></div></div>
 <p>$aaa 변수는 “홍길동”이라는 값을 가지고 있습니다. $aaa 변수를 ${“aaa”}로 가리킬 수도 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo ${“aaa”}; 는 echo $aaa; 와 같습니다.
-$bbb = “aaa”;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo ${"aaa"}; 는 echo $aaa; 와 같습니다.
+$bbb = "aaa";
 </code></pre></div></div>
 
 <p>$bbb변수에 “aaa” 값을 넣어서 ${ $bbb } 형태로 다시 $aaa 변수를 가리킬 수도 있습니다.</p>
 
 <p>예제 파일 var-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$abc</span> <span class="o">=</span> <span class="s2">"123"</span><span class="p">;</span>
 	<span class="nv">$bbb</span> <span class="o">=</span> <span class="s2">"abc"</span><span class="p">;</span>
 
@@ -1676,7 +1672,7 @@ $bbb = “aaa”;
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>abc
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>abc
 123
 123
 123
@@ -1691,7 +1687,7 @@ $bbb = “aaa”;
 <p>다차원 배열을 이용하여 가변변수를 사용할 수 있습니다. 기존 가변변수의 확장입니다. 다차원 배열의 가변변수는 PHP 7.x에서 새롭게 도입된 기능입니다.</p>
 
 <p>예제 파일 var-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	
 	<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"jiny"</span><span class="p">;</span>
 	<span class="nb">printf</span><span class="p">(</span><span class="s2">"name 변수값 = %s &lt;br&gt;"</span><span class="p">,</span> <span class="nv">$name</span><span class="p">);</span>
@@ -1707,7 +1703,7 @@ $bbb = “aaa”;
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name 변수값 = jiny
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>name 변수값 = jiny
 배열값 = name
 가변변수(name)값 = jiny
 </code></pre></div></div>
@@ -1721,17 +1717,17 @@ $bbb = “aaa”;
 <p>캐스팅 방식으로 생성한 변수를 삭제할 수 있습니다.</p>
 
 <p>예제 파일 casting-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;?php 
- 	echo "casting &lt;br&gt;";
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code> <span class="cp">&lt;?php</span> 
+ 	<span class="k">echo</span> <span class="s2">"casting &lt;br&gt;"</span><span class="p">;</span>
 
- 	$a = "변수를 삭제합니다."; 
- 	echo $a."&lt;br&gt;";
- 	echo "변수 삭제 = ".(unset)$a; // 결과:  
- ?&gt;
+ 	<span class="nv">$a</span> <span class="o">=</span> <span class="s2">"변수를 삭제합니다."</span><span class="p">;</span> 
+ 	<span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 	<span class="k">echo</span> <span class="s2">"변수 삭제 = "</span><span class="o">.</span><span class="p">(</span><span class="nb">unset</span><span class="p">)</span><span class="nv">$a</span><span class="p">;</span> <span class="c1">// 결과:  </span>
+ <span class="cp">?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>casting
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>casting
 변수를 삭제합니다.
 변수 삭제 = 
 </code></pre></div></div>
@@ -1745,17 +1741,17 @@ $bbb = “aaa”;
 <p>자동 전역변수는 phpinfo() 함수를 통해 확인할 수 있습니다.</p>
 
 <p>예제 파일 info-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;?php 
- 	echo "casting &lt;br&gt;";
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code> <span class="cp">&lt;?php</span> 
+ 	<span class="k">echo</span> <span class="s2">"casting &lt;br&gt;"</span><span class="p">;</span>
 
- 	$a = "변수를 삭제합니다."; 
- 	echo $a."&lt;br&gt;";
- 	echo "변수 삭제 = ".(unset)$a; // 결과:  
- ?&gt;
+ 	<span class="nv">$a</span> <span class="o">=</span> <span class="s2">"변수를 삭제합니다."</span><span class="p">;</span> 
+ 	<span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+ 	<span class="k">echo</span> <span class="s2">"변수 삭제 = "</span><span class="o">.</span><span class="p">(</span><span class="nb">unset</span><span class="p">)</span><span class="nv">$a</span><span class="p">;</span> <span class="c1">// 결과:  </span>
+ <span class="cp">?&gt;</span>
 </code></pre></div></div>
 
 <p>화면 출력</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code></code></pre></div></div>
 
 <p>자동 전역변수는 PHP에서 미리 설정되어 있는 변수입니다. 하지만 전역변수들은 서버의 정보를 포함한 보완적인 민감한 내용도 같이 출력됩니다.</p>
 
@@ -1777,16 +1773,7 @@ $bbb = “aaa”;
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -203,19 +199,19 @@ mixed parse_url ( string $url [, int $component = -1 ] )</p>
 	$url = ‘http://username:password@hostname:9090/path?arg=value#anchor’;</p>
 
  	// url을 분석하여 배열로 반환합니다.
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print_r(parse_url($url));
-echo "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>print_r(parse_url($url));
+echo "<span class="nt">&lt;br&gt;</span>";
 
 // 키값을 통해서 하나씩 추출이 가능합니다.
-echo "PHP_URL_SCHEME = ". parse_url($url, PHP_URL_SCHEME)."&lt;br&gt;";
+echo "PHP_URL_SCHEME = ". parse_url($url, PHP_URL_SCHEME)."<span class="nt">&lt;br&gt;</span>";
 
-echo "PHP_URL_USER =". parse_url($url, PHP_URL_USER) ."&lt;br&gt;";
-echo "PHP_URL_PASS =". parse_url($url, PHP_URL_PASS) ."&lt;br&gt;";
-echo "PHP_URL_HOST =". parse_url($url, PHP_URL_HOST) ."&lt;br&gt;";
-echo "PHP_URL_PORT =". parse_url($url, PHP_URL_PORT) ."&lt;br&gt;";
-echo "PHP_URL_PATH =". parse_url($url, PHP_URL_PATH) ."&lt;br&gt;";
-echo "PHP_URL_QUERY =". parse_url($url, PHP_URL_QUERY) ."&lt;br&gt;";
-echo "PHP_URL_FRAGMENT =". parse_url($url, PHP_URL_FRAGMENT) ."&lt;br&gt;";
+echo "PHP_URL_USER =". parse_url($url, PHP_URL_USER) ."<span class="nt">&lt;br&gt;</span>";
+echo "PHP_URL_PASS =". parse_url($url, PHP_URL_PASS) ."<span class="nt">&lt;br&gt;</span>";
+echo "PHP_URL_HOST =". parse_url($url, PHP_URL_HOST) ."<span class="nt">&lt;br&gt;</span>";
+echo "PHP_URL_PORT =". parse_url($url, PHP_URL_PORT) ."<span class="nt">&lt;br&gt;</span>";
+echo "PHP_URL_PATH =". parse_url($url, PHP_URL_PATH) ."<span class="nt">&lt;br&gt;</span>";
+echo "PHP_URL_QUERY =". parse_url($url, PHP_URL_QUERY) ."<span class="nt">&lt;br&gt;</span>";
+echo "PHP_URL_FRAGMENT =". parse_url($url, PHP_URL_FRAGMENT) ."<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -245,8 +241,8 @@ string http_build_query ( mixed $query_data [, string $numeric_prefix [, string 
     	‘php’ =&gt; ‘hypertext processor’
 	);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo http_build_query($data) . "&lt;br&gt;";
-echo http_build_query($data, '', '&amp;amp;');
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo http_build_query($data) . "<span class="nt">&lt;br&gt;</span>";
+echo http_build_query($data, '', '<span class="ni">&amp;amp;</span>');
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -280,9 +276,9 @@ string urldecode ( string $str )</p>
 	echo “인코딩 = “. $encode.”<br />”;
 	echo “디코드 = “. urldecode($encode).”<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$encode2 = urlencode("?aaa=1&amp;bbb=2");
-echo "인코딩 = ". $url.$encode2."&lt;br&gt;";
-echo "디코드 = ". $url.urldecode($encode2)."&lt;br&gt;"; ?&gt;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$encode2 = urlencode("?aaa=1<span class="ni">&amp;bbb=2");</span>
+echo "인코딩 = ". $url.$encode2."<span class="nt">&lt;br&gt;</span>";
+echo "디코드 = ". $url.urldecode($encode2)."<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -311,8 +307,8 @@ string base64_decode ( string $data [, bool $strict = false ] )</p>
 	$encode = base64_encode($str);
 	echo “엔코딩 = “. $encode .”<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$decode = base64_decode($encode);
-echo "디코딩 = ". $decode ."&lt;br&gt;"; ?&gt;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$decode = base64_decode($encode);
+echo "디코딩 = ". $decode ."<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -338,11 +334,11 @@ string rawurldecode ( string $str )</p>
 	$url=”http://www.jinyphp.com/?name=jiny&amp;country=korea”;
 	echo “URL = “ . $url . “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$urlEncode = rawurlencode($url);
-echo "엔코딩 : ". $urlEncode . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$urlEncode = rawurlencode($url);
+echo "엔코딩 : ". $urlEncode . "<span class="nt">&lt;br&gt;</span>";
 
 $urlDecode = rawurldecode($urlEncode);
-echo "디코딩 : ". $urlDecode . "&lt;br&gt;";
+echo "디코딩 : ". $urlDecode . "<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -425,9 +421,9 @@ int getservbyname ( string $service , string $protocol )</p>
     $services = array(‘http’, ‘ftp’, ‘ssh’, ‘telnet’, ‘imap’,
         ‘smtp’, ‘nicname’, ‘gopher’, ‘finger’, ‘pop3’, ‘www’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>foreach ($services as $service) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>foreach ($services as $service) {
     $port = getservbyname($service, 'tcp');
-    echo $service . ": " . $port . "&lt;br /&gt;\n";
+    echo $service . ": " . $port . "<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>\n";
 } ?&gt;
 </code></pre></div></div>
 
@@ -458,7 +454,7 @@ bool checkdnsrr ( string $host [, string $type = “MX” ] )</p>
     $email = “infohojin@naver.com”;
     $exp = “^[a-z'0-9]+([.<em>-][a-z'0-9]+)*@([a-z0-9]+([.</em>-][a-z0-9]+))+$”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if(eregi($exp,$email)) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if(eregi($exp,$email)) {
     $emailAddr = explode("@",$email);
     if(checkdnsrr($emailAddr[1],"MX")) {
         echo "DNS 레코드 확인";
@@ -511,16 +507,7 @@ bool getmxrr ( string $hostname , array &amp;$mxhosts [, array &amp;$weight ] )<
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

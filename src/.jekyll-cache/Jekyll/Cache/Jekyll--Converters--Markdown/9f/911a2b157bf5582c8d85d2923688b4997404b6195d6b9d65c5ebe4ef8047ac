@@ -1,4 +1,4 @@
-I"�<h3 id="109-제너레이터">10.9 제너레이터</h3>
+I"�<h3 id="109-제너레이터">10.9 제너레이터</h3>
 <p>모든 함수의 실행은 한 번의 호출과 한 번의 함수 처리를 하게 됩니다. 하지만 특이하게도 제너레이터는 yield 키워드를 사용한 PHP 함수로 분할하여 실행할 수 있습니다. 특수한 형태의 함수입니다.</p>
 
 <p>또한 제너레이터는 특성상 반환값을 갖지 안습니다. 제너레이터는 PHP 5.5 업그레이드되면서 적용된 기능입니다.</p>
@@ -18,34 +18,34 @@
 <p>이런 형태로 멈춤 기능을 통해 함수를 분할하여 실행을 할 수 있습니다. 제너레이터는 함수의 마지막 끝까지 또는 return;문이 나올 때까지 반복합니다.</p>
 
 <p>예제 파일 generator-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-	<span class="c1">// yield 키워드는 값을 반환한다는 측면에서 return 키워드와 비슷하면서도 다르다. </span>
+	// yield 키워드는 값을 반환한다는 측면에서 return 키워드와 비슷하면서도 다르다. 
 
-	<span class="k">function</span> <span class="nf">myGen</span><span class="p">(){</span>
-		<span class="c1">// 호출 시 첫 번째 yield 키워드까지 실행한다.</span>
-		<span class="k">echo</span> <span class="s2">"첫 번째 호출="</span><span class="p">;</span>
-		<span class="k">yield</span> <span class="s2">"test1"</span><span class="p">;</span>
+	function myGen(){
+		// 호출 시 첫 번째 yield 키워드까지 실행한다.
+		echo "첫 번째 호출=";
+		yield "test1";
 
-		<span class="c1">// 호출 시 두 번째 yield 키워드까지 실행한다.</span>
-		<span class="k">echo</span> <span class="s2">"두 번째호출="</span><span class="p">;</span>
-		<span class="k">yield</span> <span class="s2">"test2"</span><span class="p">;</span>
+		// 호출 시 두 번째 yield 키워드까지 실행한다.
+		echo "두 번째호출=";
+		yield "test2";
 
-		<span class="c1">// 호출 시 세 번째 yield 키워드까지 실행한다.</span>
-		<span class="k">echo</span> <span class="s2">"세 번째 호출="</span><span class="p">;</span>
-		<span class="k">yield</span> <span class="s2">"test3"</span><span class="p">;</span>
+		// 호출 시 세 번째 yield 키워드까지 실행한다.
+		echo "세 번째 호출=";
+		yield "test3";
 		
-	<span class="p">}</span>
+	}
 
-	<span class="k">foreach</span> <span class="p">(</span><span class="nx">myGen</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="nv">$value</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
+	foreach (myGen() as $value) {
+		echo $value."&lt;br&gt;";
+	}
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>첫 번째 호출=test1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>첫 번째 호출=test1
 두 번째 호출=test2
 세 번째 호출=test3
 </code></pre></div></div>
@@ -59,28 +59,28 @@
 <p>제너레이터 함수 실행 시 from 키워드를 추가하여 또 다른 제너레이터 함수로 연결 실행할 수 있습니다. 즉, 제너레이터 함수 안에 또 다른 제너레이터 함수를 추가하여 실행할 수 있습니다.</p>
 
 <p>예제 파일 generator-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">gen</span><span class="p">(){</span>
-    		<span class="k">yield</span> <span class="s2">"gen() 1 실행"</span><span class="p">;</span>
-    		<span class="k">yield</span> <span class="s2">"gen() 2 실행"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function gen(){
+    		yield "gen() 1 실행";
+    		yield "gen() 2 실행";
 
-    		<span class="c1">// 3번째 yield는 gen2() 제너레이터로 연결</span>
-    		<span class="k">yield</span> <span class="nx">from</span> <span class="nx">gen2</span><span class="p">();</span>
-	<span class="p">}</span>
+    		// 3번째 yield는 gen2() 제너레이터로 연결
+    		yield from gen2();
+	}
 
-	<span class="k">function</span> <span class="nf">gen2</span><span class="p">(){</span>
-    		<span class="k">yield</span> <span class="s2">"gen2() 3 실행"</span><span class="p">;</span>
-    		<span class="k">yield</span> <span class="s2">"gen2() 4 실행"</span><span class="p">;</span>
-	<span class="p">}</span>
+	function gen2(){
+    		yield "gen2() 3 실행";
+    		yield "gen2() 4 실행";
+	}
 
-	<span class="k">foreach</span> <span class="p">(</span><span class="nx">gen</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$val</span><span class="p">){</span>
-    		<span class="k">echo</span> <span class="nv">$val</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="cp">?&gt;</span>
+	foreach (gen() as $val){
+    		echo $val."&lt;br&gt;";
+	}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gen() 1 실행
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>gen() 1 실행
 gen() 2 실행
 gen2() 3 실행
 gen2() 4 실행
@@ -96,22 +96,22 @@ gen2() 4 실행
 <h3 id="1092-제너레이터-예">10.9.2 제너레이터 예</h3>
 
 <p>예제 파일 generator-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">function</span> <span class="nf">rowsCount</span><span class="p">(</span><span class="nv">$count</span><span class="p">){</span>
-		<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$count</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
-			<span class="c1">// 반복문 안에도 yield를 넣어서 반복할 수 있습니다.</span>
-			<span class="k">yield</span> <span class="nv">$i</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	function rowsCount($count){
+		for ($i=0;$i&lt;$count;$i++){
+			// 반복문 안에도 yield를 넣어서 반복할 수 있습니다.
+			yield $i;
+		}
+	}
 
-	<span class="k">foreach</span> <span class="p">(</span><span class="nx">rowsCount</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">){</span>
-		<span class="k">echo</span> <span class="s2">" 실행 ="</span><span class="o">.</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="cp">?&gt;</span>
+	foreach (rowsCount(10) as $i){
+		echo " 실행 =". $i . "&lt;br&gt;";
+	}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>실행 =0
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>실행 =0
 실행 =1
 실행 =2
 실행 =3

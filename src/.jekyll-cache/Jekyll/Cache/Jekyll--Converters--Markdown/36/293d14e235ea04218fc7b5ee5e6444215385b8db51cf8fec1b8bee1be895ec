@@ -1,4 +1,4 @@
-I"M<h3 id="106-가변-함수">10.6 가변 함수</h3>
+I"<h3 id="106-가변-함수">10.6 가변 함수</h3>
 <p>가변 함수란 PHP에서 함수를 호출할 때 동적으로 함수를 호출할 수 있는 기능입니다.</p>
 
 <p><br /></p>
@@ -21,7 +21,7 @@ $변수명();</p>
 <h3 id="1062-가변-함수-호출">10.6.2 가변 함수 호출</h3>
 <p>가변 함수 호출은 동적으로 함수를 처리하여 호출할 때 매우 유용합니다. 가변 함수를 이용하면 프로그램 로직 또는 입력값을 분석하여 동적으로 함수를 실행할 수 있는 장점 등이 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if($func=="aaa"){
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if($func=="aaa"){
 	aaa();
 } else if($func=="bbb"){
 	bbb();
@@ -33,32 +33,32 @@ $변수명();</p>
 <p>위와 같이 조건에 따라서 각각 다르게 함수 호출을 처리해야 하는 경우에는 가변 함수 호출을 통해 쉽게 작성할 수 있습니다.</p>
 
 <p>기존 함수 호출 방식</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-<span class="k">function</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">"hello() 함수입니다.&lt;br /&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
+function hello() {
+    echo "hello() 함수입니다.&lt;br /&gt;\n";
+}
 
-<span class="nx">hello</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
+hello();
+?&gt;</span>
 </code></pre></div></div>
 
 <p>가변 함수 호출 방식<br />
 예제 파일 func-18.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-	<span class="k">function</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
-    	<span class="k">echo</span> <span class="s2">"hello() 함수입니다.&lt;br /&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-	<span class="p">}</span>
+	function hello() {
+    	echo "hello() 함수입니다.&lt;br /&gt;\n";
+	}
 	
-	<span class="nv">$func</span> <span class="o">=</span> <span class="s2">"hello"</span><span class="p">;</span>
-	<span class="nv">$func</span><span class="p">();</span>
+	$func = "hello";
+	$func();
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello() 함수입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>hello() 함수입니다.
 </code></pre></div></div>
 
 <p>위의 예제를 보면 $func 변수에는 함수명을 저장합니다. 저장된 변수의 함수명을 이용하여 함수를 호출합니다. 이처럼 변수를 이용하여 가변적으로 함수를 호출할 수 있는 방법이 가변 함수입니다.</p>
@@ -71,30 +71,30 @@ $변수명();</p>
 
 <p>클래스 &amp; 가변 함수<br />
 예제 파일 func-19.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kd">class</span> <span class="nc">jiny</span>
-	<span class="p">{</span>
-    		<span class="k">function</span> <span class="nf">Variable</span><span class="p">()</span>
-    		<span class="p">{</span>
-        			<span class="nv">$name</span> <span class="o">=</span> <span class="s1">'Bar'</span><span class="p">;</span>
-        			<span class="nv">$this</span><span class="o">-&gt;</span><span class="nv">$name</span><span class="p">();</span> <span class="c1">// Bar() 메서드를 호출합니다.</span>
-    		<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	class jiny
+	{
+    		function Variable()
+    		{
+        			$name = 'Bar';
+        			$this-&gt;$name(); // Bar() 메서드를 호출합니다.
+    		}
     
-    		<span class="k">function</span> <span class="nf">Bar</span><span class="p">()</span>
-    		<span class="p">{</span>
-        			<span class="k">echo</span> <span class="s2">"This is Bar"</span><span class="p">;</span>
-    		<span class="p">}</span>
-	<span class="p">}</span>
+    		function Bar()
+    		{
+        			echo "This is Bar";
+    		}
+	}
 
-	<span class="nv">$jiny</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jiny</span><span class="p">();</span>
-	<span class="nv">$funcname</span> <span class="o">=</span> <span class="s2">"Variable"</span><span class="p">;</span>
-	<span class="nv">$jiny</span><span class="o">-&gt;</span><span class="nv">$funcname</span><span class="p">();</span>  <span class="c1">// $jiny-&gt;Variable()를 호출합니다.</span>
+	$jiny = new jiny();
+	$funcname = "Variable";
+	$jiny-&gt;$funcname();  // $jiny-&gt;Variable()를 호출합니다.
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is Bar
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>This is Bar
 </code></pre></div></div>
 
 <p>위의 예제처럼 클래스를 선언하고, 인스턴스를 생성한 후에 클래스에서 호출하는 메서드도 변수를 통해 가변 메서드 형태로 호출할 수도 있습니다.</p>

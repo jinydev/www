@@ -1,4 +1,4 @@
-I"0<h2 id="클로저-메서드">클로저 메서드</h2>
+I"O-<h2 id="클로저-메서드">클로저 메서드</h2>
 <p>클로저는 몇 개의 특수 메서드를 지원합니다. 클로저는  __invoke() 외 bindTo() 등 특수 메서드가 있습니다. 특수 메서드를 통해 클로저를 좀 더 세부적으로 설정 및 접근이 가능합니다.</p>
 
 <p>PHP 클로저는 다음과 같은 클래스 인터페이스를 지원합니다.</p>
@@ -23,7 +23,7 @@
 <p>bindTo() 메서드는 클로저 객체의 내부 상태를 다른 객체에 연결합니다. 연결되는 객체는 protected와 private 멤버 변수에 접근할 수 있습니다.</p>
 
 <p>예제파일 : closure-03.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 
 <span class="kd">class</span> <span class="nc">A</span> <span class="p">{</span>
 
@@ -53,7 +53,7 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>1
 2
 </code></pre></div></div>
 
@@ -76,34 +76,34 @@
 <p>Closure::call() 메서드는 php 7.x에서 업그레이드로 추가되었습니다. Closure::call()는 더 효율적입니다.</p>
 
 <p>예제파일 : closure-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="kd">class</span> <span class="nc">A</span> <span class="p">{</span>
-	<span class="k">private</span> <span class="nv">$x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+class A {
+	private $x = 1;
+}
 
-<span class="c1">// Pre PHP 7 code</span>
-<span class="nv">$getXCB</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">x</span><span class="p">;</span>
-<span class="p">};</span>
+// Pre PHP 7 code
+$getXCB = function() {
+	return $this-&gt;x;
+};
 
-<span class="c1">// intermediate closure</span>
-<span class="nv">$getX</span> <span class="o">=</span> <span class="nv">$getXCB</span><span class="o">-&gt;</span><span class="na">bindTo</span><span class="p">(</span><span class="k">new</span> <span class="nx">A</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">);</span> 
-<span class="k">echo</span> <span class="nv">$getX</span><span class="p">();</span>
+// intermediate closure
+$getX = $getXCB-&gt;bindTo(new A, 'A'); 
+echo $getX();
 
 
-<span class="c1">// PHP 7+ code</span>
-<span class="nv">$getX</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">x</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="k">echo</span> <span class="nv">$getX</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">(</span><span class="k">new</span> <span class="nx">A</span><span class="p">);</span>
-<span class="c1">// 기존 bindTo를 사용하던 것을 call로 처리할 수 있다.</span>
+// PHP 7+ code
+$getX = function() {
+	return $this-&gt;x;
+};
+echo $getX-&gt;call(new A);
+// 기존 bindTo를 사용하던 것을 call로 처리할 수 있다.
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>위의 예제를 실행을 하면 다음과 같이 출력됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>1
 1
 </code></pre></div></div>
 
@@ -116,76 +116,76 @@
 
 <p>클로저 선언은 다음과 같습니다. 괄호, 쉼표, 공백 및 중괄호의 배치에 유의해야 합니다. 다음은 PSR 공식 사이트의 예제입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$closureWithArgs</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$arg1</span><span class="p">,</span> <span class="nv">$arg2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// body</span>
-<span class="p">};</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nt">&lt;</span><span class="err">?</span><span class="na">php</span>
+<span class="err">$</span><span class="na">closureWithArgs = </span><span class="s">function</span> <span class="err">($</span><span class="na">arg1</span><span class="err">,</span> <span class="err">$</span><span class="na">arg2</span><span class="err">)</span> <span class="err">{</span>
+    <span class="err">//</span> <span class="na">body</span>
+<span class="err">};</span>
 
-<span class="nv">$closureWithArgsAndVars</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$arg1</span><span class="p">,</span> <span class="nv">$arg2</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$var1</span><span class="p">,</span> <span class="nv">$var2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// body</span>
-<span class="p">};</span>
+<span class="err">$</span><span class="na">closureWithArgsAndVars = </span><span class="s">function</span> <span class="err">($</span><span class="na">arg1</span><span class="err">,</span> <span class="err">$</span><span class="na">arg2</span><span class="err">)</span> <span class="na">use</span> <span class="err">($</span><span class="na">var1</span><span class="err">,</span> <span class="err">$</span><span class="na">var2</span><span class="err">)</span> <span class="err">{</span>
+    <span class="err">//</span> <span class="na">body</span>
+<span class="err">};</span>
 </code></pre></div></div>
 
 <p>매개변수는 여러 줄로 나눠서 작성할 수 있습니다. 하지만 각각 한 줄에 한 개로 작성을 하며 들여쓰기를 합니다. 여러 줄로 매개변수를 나열할 때는 소괄호 시작 기호 ‘(’ 다음 줄에서 시작하며 끝낼 때의 종료 기호 ‘)’도 다음 줄에 작성합니다.</p>
 
 <p>다음 예제 표현은 다수의 줄로 매개변수를 표시하는 방법입니다. 다음은 PSR 공식 사이트의 예제입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$longArgs_noVars</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span>
-    <span class="nv">$longArgument</span><span class="p">,</span>
-    <span class="nv">$longerArgument</span><span class="p">,</span>
-    <span class="nv">$muchLongerArgument</span>
-<span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// body</span>
-<span class="p">};</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nt">&lt;</span><span class="err">?</span><span class="na">php</span>
+<span class="err">$</span><span class="na">longArgs_noVars = </span><span class="s">function</span> <span class="err">(</span>
+    <span class="err">$</span><span class="na">longArgument</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">longerArgument</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">muchLongerArgument</span>
+<span class="err">)</span> <span class="err">{</span>
+    <span class="err">//</span> <span class="na">body</span>
+<span class="err">};</span>
 
-<span class="nv">$noArgs_longVars</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span>
-    <span class="nv">$longVar1</span><span class="p">,</span>
-    <span class="nv">$longerVar2</span><span class="p">,</span>
-    <span class="nv">$muchLongerVar3</span>
-<span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// body</span>
-<span class="p">};</span>
+<span class="err">$</span><span class="na">noArgs_longVars = </span><span class="s">function</span> <span class="err">()</span> <span class="na">use</span> <span class="err">(</span>
+    <span class="err">$</span><span class="na">longVar1</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">longerVar2</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">muchLongerVar3</span>
+<span class="err">)</span> <span class="err">{</span>
+    <span class="err">//</span> <span class="na">body</span>
+<span class="err">};</span>
 
-<span class="nv">$longArgs_longVars</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span>
-    <span class="nv">$longArgument</span><span class="p">,</span>
-    <span class="nv">$longerArgument</span><span class="p">,</span>
-    <span class="nv">$muchLongerArgument</span>
-<span class="p">)</span> <span class="k">use</span> <span class="p">(</span>
-    <span class="nv">$longVar1</span><span class="p">,</span>
-    <span class="nv">$longerVar2</span><span class="p">,</span>
-    <span class="nv">$muchLongerVar3</span>
-<span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// body</span>
-<span class="p">};</span>
+<span class="err">$</span><span class="na">longArgs_longVars = </span><span class="s">function</span> <span class="err">(</span>
+    <span class="err">$</span><span class="na">longArgument</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">longerArgument</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">muchLongerArgument</span>
+<span class="err">)</span> <span class="na">use</span> <span class="err">(</span>
+    <span class="err">$</span><span class="na">longVar1</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">longerVar2</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">muchLongerVar3</span>
+<span class="err">)</span> <span class="err">{</span>
+    <span class="err">//</span> <span class="na">body</span>
+<span class="err">};</span>
 
-<span class="nv">$longArgs_shortVars</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span>
-    <span class="nv">$longArgument</span><span class="p">,</span>
-    <span class="nv">$longerArgument</span><span class="p">,</span>
-    <span class="nv">$muchLongerArgument</span>
-<span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$var1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// body</span>
-<span class="p">};</span>
+<span class="err">$</span><span class="na">longArgs_shortVars = </span><span class="s">function</span> <span class="err">(</span>
+    <span class="err">$</span><span class="na">longArgument</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">longerArgument</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">muchLongerArgument</span>
+<span class="err">)</span> <span class="na">use</span> <span class="err">($</span><span class="na">var1</span><span class="err">)</span> <span class="err">{</span>
+    <span class="err">//</span> <span class="na">body</span>
+<span class="err">};</span>
 
-<span class="nv">$shortArgs_longVars</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$arg</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span>
-    <span class="nv">$longVar1</span><span class="p">,</span>
-    <span class="nv">$longerVar2</span><span class="p">,</span>
-    <span class="nv">$muchLongerVar3</span>
-<span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// body</span>
-<span class="p">};</span>
+<span class="err">$</span><span class="na">shortArgs_longVars = </span><span class="s">function</span> <span class="err">($</span><span class="na">arg</span><span class="err">)</span> <span class="na">use</span> <span class="err">(</span>
+    <span class="err">$</span><span class="na">longVar1</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">longerVar2</span><span class="err">,</span>
+    <span class="err">$</span><span class="na">muchLongerVar3</span>
+<span class="err">)</span> <span class="err">{</span>
+    <span class="err">//</span> <span class="na">body</span>
+<span class="err">};</span>
 </code></pre></div></div>
 
 <p>PSR 형식 지정 및 규칙은 함수 또는 메서드 호출에서 클로저가 인수로 직접 사용될 때도 같이 적용됩니다. 다음은 PSR 공식 사이트의 예제입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">(</span>
-    <span class="nv">$arg1</span><span class="p">,</span>
-    <span class="k">function</span> <span class="p">(</span><span class="nv">$arg2</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$var1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// body</span>
-    <span class="p">},</span>
-    <span class="nv">$arg3</span>
-<span class="p">);</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nt">&lt;</span><span class="err">?</span><span class="na">php</span>
+<span class="err">$</span><span class="na">foo-</span><span class="nt">&gt;</span>bar(
+    $arg1,
+    function ($arg2) use ($var1) {
+        // body
+    },
+    $arg3
+);
 </code></pre></div></div>
 
 <p><br /><br /></p>

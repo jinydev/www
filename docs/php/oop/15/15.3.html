@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -87,7 +83,7 @@
 <p>인터페이스는 class 키워드 대신에 interface 키워드를 사용하면 됩니다. 그 외의 사용법은 클래스를 선언하는 것과 매우 비슷합니다.</p>
 
 <p>인터페이스 문법</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>interface pages 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>interface pages 
 {
 
   public function index();
@@ -106,30 +102,30 @@
 <p>이렇게 미리 설계된 인터페이스 규약은 클래스 상속과 유사한 문법으로 사용할 수 있습니다. 단지 클래스 생성 시 상속 키워드 extends 대신에 인터페이스 키워드 implements 를 사용하면 됩니다.</p>
 
 <p>예제 파일 interface-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kd">interface</span> <span class="nc">pages</span>
-	<span class="p">{</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	interface pages
+	{
 
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">();</span>
+		public function index();
 
-	<span class="p">}</span>
+	}
 
-	<span class="kd">class</span> <span class="nc">intro</span> <span class="k">implements</span> <span class="nx">pages</span>
-	<span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
-		<span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"인터페이스 소개 &lt;br&gt;"</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+	class intro implements pages
+	{
+		public function index()
+		{
+			echo "인터페이스 소개 &lt;br&gt;";
+		}
+	}
 
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">intro</span><span class="p">();</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">index</span><span class="p">();</span>
+	$obj = new intro();
+	$obj-&gt;index();
 	
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>인터페이스 소개 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>인터페이스 소개 
 </code></pre></div></div>
 
 <p>위의 예제는 클래스의 인터페이스에 대한 예입니다. 먼저 pages 라는 이름의 인터페이스 규약을 정의합니다. intro라는 클래스를 생성할 때 이전에 정의한 pages라는 인터페이스 규약을 따릅니다.</p>
@@ -137,26 +133,26 @@
 <p>pages 인터페이스를 따르는 클래스를 생성할 때 index()라는 메서드를 꼭 만들어 쓰라는 의미입니다.</p>
 
 <p>예제 파일 interface-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kd">interface</span> <span class="nc">pages</span>
-	<span class="p">{</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	interface pages
+	{
 
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">();</span>
+		public function index();
 
-	<span class="p">}</span>
+	}
 
-	<span class="kd">class</span> <span class="nc">intro</span> <span class="k">implements</span> <span class="nx">pages</span>
-	<span class="p">{</span>
+	class intro implements pages
+	{
 
-	<span class="p">}</span>
+	}
 
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">intro</span><span class="p">();</span>
+	$obj = new intro();
 	
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Fri May 12 15:43:33 2017] ::1:51820 [500]: /jinyphp/interface-02.php - Class intro contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (pages::index) in C:\php-7.1.4-Win32-VC14-x86\jinyphp\interface-02.php on line 9
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>[Fri May 12 15:43:33 2017] ::1:51820 [500]: /jinyphp/interface-02.php - Class intro contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (pages::index) in C:\php-7.1.4-Win32-VC14-x86\jinyphp\interface-02.php on line 9
 </code></pre></div></div>
 
 <p>두 번째 예제는 선언된 인터페이스를 구현하지 않은 경우입니다. 인터페이스를 적용하면서 인터페이스에서 규약한 방식대로 사용하지 않을 때 PHP는 에러를 출력하고 실행을 중단합니다.</p>
@@ -168,46 +164,46 @@
 <p>인터페이스도 extends 키워드를 통해 상속 확장이 가능합니다. 다음 예는 인터페이스의 확장입니다.</p>
 
 <p>예제 파일 interface-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kd">interface</span> <span class="nc">a</span>
-	<span class="p">{</span>
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">();</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	interface a
+	{
+    	public function foo();
+	}
 
-	<span class="c1">// a 인터페이스를 상속 받습니다.</span>
-	<span class="kd">interface</span> <span class="nc">b</span> <span class="k">extends</span> <span class="nx">a</span>
-	<span class="p">{</span>
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">();</span>
-	<span class="p">}</span>
+	// a 인터페이스를 상속 받습니다.
+	interface b extends a
+	{
+    	public function bar();
+	}
 
-	<span class="c1">// 상속받은 b 인터페이스로 구현합니다.</span>
-	<span class="kd">class</span> <span class="nc">c</span> <span class="k">implements</span> <span class="nx">b</span>
-	<span class="p">{</span>
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
-    	<span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"method is foo &lt;br&gt;"</span><span class="p">;</span>
-    	<span class="p">}</span>
+	// 상속받은 b 인터페이스로 구현합니다.
+	class c implements b
+	{
+    	public function foo()
+    	{
+    		echo "method is foo &lt;br&gt;";
+    	}
 
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">()</span>
-    	<span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"method is bar &lt;br&gt;"</span><span class="p">;</span>
-    	<span class="p">}</span>
+    	public function bar()
+    	{
+    		echo "method is bar &lt;br&gt;";
+    	}
     	
-	<span class="p">}</span>
+	}
 
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">c</span><span class="p">;</span>
+	$obj = new c;
 
-	<span class="c1">// 인터페이스 a의 메서드입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span>
+	// 인터페이스 a의 메서드입니다.
+	$obj-&gt;foo();
 
-	<span class="c1">// 인터페이스 b의 메서드입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">();</span>
+	// 인터페이스 b의 메서드입니다.
+	$obj-&gt;bar();
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>method is foo 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>method is foo 
 method is bar
 </code></pre></div></div>
 
@@ -220,56 +216,56 @@ method is bar
 <p>다수의 인터페이스를 콤마(,)로 구분하여 한 번에 인터페이스를 상속받을 수 있습니다.</p>
 
 <p>예제 파일 interface-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-    <span class="kd">interface</span> <span class="nc">a</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">();</span>
-    <span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+    interface a
+    {
+        public function foo();
+    }
 
-    <span class="kd">interface</span> <span class="nc">b</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">();</span>
-    <span class="p">}</span>
+    interface b
+    {
+        public function bar();
+    }
 
-    <span class="kd">interface</span> <span class="nc">c</span> <span class="k">extends</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">baz</span><span class="p">();</span>
-    <span class="p">}</span>
+    interface c extends a, b
+    {
+        public function baz();
+    }
 
-    <span class="kd">class</span> <span class="nc">d</span> <span class="k">implements</span> <span class="nx">c</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">echo</span> <span class="s2">"method is foo &lt;br&gt;"</span><span class="p">;</span>
-        <span class="p">}</span>
+    class d implements c
+    {
+        public function foo()
+        {
+            echo "method is foo &lt;br&gt;";
+        }
 
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">echo</span> <span class="s2">"method is bar &lt;br&gt;"</span><span class="p">;</span>
-        <span class="p">}</span>
+        public function bar()
+        {
+            echo "method is bar &lt;br&gt;";
+        }
 
-        <span class="k">public</span> <span class="k">function</span> <span class="nf">baz</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">echo</span> <span class="s2">"method is baz &lt;br&gt;"</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        public function baz()
+        {
+            echo "method is baz &lt;br&gt;";
+        }
+    }
 
-    <span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">d</span><span class="p">;</span>
+    $obj = new d;
 
-    <span class="c1">// 인터페이스 a의 메서드입니다.</span>
-    <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span>
+    // 인터페이스 a의 메서드입니다.
+    $obj-&gt;foo();
 
-    <span class="c1">// 인터페이스 b의 메서드입니다.</span>
-    <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">();</span>
+    // 인터페이스 b의 메서드입니다.
+    $obj-&gt;bar();
 
-    <span class="c1">// 인터페이스 c의 메서드입니다.</span>
-    <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">baz</span><span class="p">();</span>
+    // 인터페이스 c의 메서드입니다.
+    $obj-&gt;baz();
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>method is foo 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>method is foo 
 method is bar 
 method is baz
 </code></pre></div></div>
@@ -283,56 +279,56 @@ method is baz
 <p>기존 클래스의 상속과 인터페이스를 동시에 적용하여 새로운 클래스를 생성할 수 있습니다. 먼저 상속을 받고자 하는 클래스를 extends 키워드를 사용하여 상속을 합니다. 계속 같은 줄에서 이어서 implements 키워드를 통하여 적용하고자 하는 인터페이스를 지정할 수 있습니다.</p>
 
 <p>예제 파일 interface-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kd">interface</span> <span class="nc">a</span>
-	<span class="p">{</span>
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">();</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	interface a
+	{
+    	public function foo();
+	}
 
-	<span class="c1">// a 인터페이스를 상속 받습니다.</span>
-	<span class="kd">interface</span> <span class="nc">b</span> <span class="k">extends</span> <span class="nx">a</span>
-	<span class="p">{</span>
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">();</span>
-	<span class="p">}</span>
+	// a 인터페이스를 상속 받습니다.
+	interface b extends a
+	{
+    	public function bar();
+	}
 
-	<span class="kd">class</span> <span class="nc">Bird</span> <span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">info</span><span class="p">()</span> <span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"I am a </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="si">}</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
-			<span class="k">echo</span> <span class="s2">"I am an bird &lt;br&gt;"</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+	class Bird {
+		public function info() {
+			echo "I am a {$this-&gt;name} &lt;br&gt;";
+			echo "I am an bird &lt;br&gt;";
+		}
+	}
 
-	<span class="kd">class</span> <span class="nc">Penguin</span> <span class="k">extends</span> <span class="nx">Bird</span> <span class="k">implements</span> <span class="nx">b</span> <span class="p">{</span>
-		<span class="k">var</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"Penguin"</span><span class="p">;</span>
+	class Penguin extends Bird implements b {
+		var $name = "Penguin";
 		
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
-    	<span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"method is foo &lt;br&gt;"</span><span class="p">;</span>
-    	<span class="p">}</span>
+		public function foo()
+    	{
+    		echo "method is foo &lt;br&gt;";
+    	}
 
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">()</span>
-    	<span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"method is bar &lt;br&gt;"</span><span class="p">;</span>
-    	<span class="p">}</span>
+    	public function bar()
+    	{
+    		echo "method is bar &lt;br&gt;";
+    	}
 
-	<span class="p">}</span>
+	}
 
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Penguin</span><span class="p">;</span>
+	$obj = new Penguin;
 
-	<span class="c1">// 상속 메서드입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">();</span>
+	// 상속 메서드입니다.
+	$obj-&gt;info();
 
-	<span class="c1">// 인터페이스 a의 메서드입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span>
+	// 인터페이스 a의 메서드입니다.
+	$obj-&gt;foo();
 
-	<span class="c1">// 인터페이스 b의 메서드입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">();</span>
+	// 인터페이스 b의 메서드입니다.
+	$obj-&gt;bar();
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I am a Penguin 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>I am a Penguin 
 I am an bird 
 method is foo 
 method is bar
@@ -341,55 +337,55 @@ method is bar
 <p>위의 예는 인터페이스 상속에 대한 실험입니다. 인터페이스 적용과 클래스를 동시에 상속을 받아 클래스를 생성을 합니다.</p>
 
 <p>예제 파일 interface-06.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kd">interface</span> <span class="nc">a</span>
-	<span class="p">{</span>
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">();</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	interface a
+	{
+    	public function foo();
+	}
 
-	<span class="kd">interface</span> <span class="nc">b</span> 
-	<span class="p">{</span>
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">();</span>
-	<span class="p">}</span>
+	interface b 
+	{
+    	public function bar();
+	}
 
-	<span class="kd">class</span> <span class="nc">Bird</span> <span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">info</span><span class="p">()</span> <span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"I am a </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="si">}</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
-			<span class="k">echo</span> <span class="s2">"I am an bird &lt;br&gt;"</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+	class Bird {
+		public function info() {
+			echo "I am a {$this-&gt;name} &lt;br&gt;";
+			echo "I am an bird &lt;br&gt;";
+		}
+	}
 
-	<span class="kd">class</span> <span class="nc">Penguin</span> <span class="k">extends</span> <span class="nx">Bird</span> <span class="k">implements</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">{</span>
-		<span class="k">var</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"Penguin"</span><span class="p">;</span>
+	class Penguin extends Bird implements a, b {
+		var $name = "Penguin";
 		
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
-    	<span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"method is foo &lt;br&gt;"</span><span class="p">;</span>
-    	<span class="p">}</span>
+		public function foo()
+    	{
+    		echo "method is foo &lt;br&gt;";
+    	}
 
-    	<span class="k">public</span> <span class="k">function</span> <span class="nf">bar</span><span class="p">()</span>
-    	<span class="p">{</span>
-    		<span class="k">echo</span> <span class="s2">"method is bar &lt;br&gt;"</span><span class="p">;</span>
-    	<span class="p">}</span>
+    	public function bar()
+    	{
+    		echo "method is bar &lt;br&gt;";
+    	}
 
-	<span class="p">}</span>
+	}
 
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Penguin</span><span class="p">;</span>
+	$obj = new Penguin;
 
-	<span class="c1">// 상속 메서드 입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">();</span>
+	// 상속 메서드 입니다.
+	$obj-&gt;info();
 
-	<span class="c1">// 인터페이스 a의 메서드 입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span>
+	// 인터페이스 a의 메서드 입니다.
+	$obj-&gt;foo();
 
-	<span class="c1">// 인터페이스 b의 메서드 입니다.</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">();</span>
+	// 인터페이스 b의 메서드 입니다.
+	$obj-&gt;bar();
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I am a Penguin 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>I am a Penguin 
 I am an bird 
 method is foo 
 method is bar
@@ -404,33 +400,33 @@ method is bar
 <p>인터페이스 에서도 상수를 선언하여 사용할 수 있습니다.</p>
 
 <p>예제 파일 interface-07.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
 
-	<span class="kd">interface</span> <span class="nc">a</span><span class="p">{</span>
+	interface a{
 
-    	<span class="k">const</span> <span class="no">name</span> <span class="o">=</span> <span class="s2">"interface a const"</span><span class="p">;</span>
-	<span class="p">}</span>
+    	const name = "interface a const";
+	}
 
-	<span class="k">echo</span> <span class="nx">a</span><span class="o">::</span><span class="na">name</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	echo a::name;
+	echo "&lt;br&gt;";
 
-	<span class="kd">class</span> <span class="nc">b</span> <span class="k">implements</span> <span class="nx">a</span>
-	<span class="p">{</span>
+	class b implements a
+	{
 
-	<span class="p">}</span>
+	}
 
-	<span class="kd">class</span> <span class="nc">c</span> <span class="k">extends</span> <span class="nx">b</span>
-	<span class="p">{</span>
-    	<span class="k">const</span> <span class="no">age</span> <span class="o">=</span> <span class="s1">'Class c constant'</span><span class="p">;</span>
-	<span class="p">}</span>
+	class c extends b
+	{
+    	const age = 'Class c constant';
+	}
 
-	<span class="k">echo</span> <span class="nx">c</span><span class="o">::</span><span class="na">age</span><span class="p">;</span>
+	echo c::age;
 
-<span class="cp">?&gt;</span>
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>interface a const
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>interface a const
 Class c constant
 </code></pre></div></div>
 
@@ -450,16 +446,7 @@ Class c constant
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

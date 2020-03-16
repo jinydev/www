@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -62,12 +58,12 @@
         <!-- Post Content Column -->
         <div class="col-lg-9">
             <h2 id="712-오류-제어-연산자">7.12 오류 제어 연산자</h2>
-<p>PHP는 오류제어 연산자 <code class="highlighter-rouge">@</code>를 지원합니다.</p>
+<p>PHP는 오류제어 연산자 <code class="language-html highlighter-rouge">@</code>를 지원합니다.</p>
 
 <p>오류 제어 연산자를 코드 앞에 붙여서 사용하면 발생된 오류 메시지를 무시하게 됩니다. 오류 메시지를 숨기는 이유는 접속자에게 오류 코드를 감추어 보안의 유효성을 높이는 효과가 있습니다.</p>
 
 <p>예제 파일 opr-01.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="c1">// php.ini의 수정 없이 화면에 에러 발생 시 출력할 수 있습니다.</span>
 	<span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ALL</span><span class="p">);</span>
 	<span class="nb">ini_set</span><span class="p">(</span><span class="s2">"display_errors"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -78,7 +74,7 @@
 </code></pre></div></div>
 
 <p>화면 출력</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code></code></pre></div></div>
 
 <p>위의 예제는 실제 존재하지 않는 파일을 include하는 예제입니다. 실행 시 파일에 대한 오류 메시지를 출력합니다.</p>
 
@@ -89,7 +85,7 @@
 <p>@로 인하여 오류가 발생한 경우는 별도로 오류 메시지를 $php_errormsg 변수에 저장해 놓습니다.</p>
 
 <p>예제 파일 opr-02.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="c1">// php.ini의 수정 없이 화면에 에러 발생 시 출력할 수 있습니다.</span>
 	<span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ALL</span><span class="p">);</span>
 	<span class="nb">ini_set</span><span class="p">(</span><span class="s2">"display_errors"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -99,7 +95,7 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Notice: Undefined variable: php_errormsg in C:\php-7.1.4-Win32-VC14-x86\jinyphp\opr-02.php on line 6
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Notice: Undefined variable: php_errormsg in C:\php-7.1.4-Win32-VC14-x86\jinyphp\opr-02.php on line 6
 = 오류를 출력합니다.
 </code></pre></div></div>
 
@@ -107,7 +103,7 @@
 
 <p>$php_errormsgs를 사용하기 위해서는 PHP의 환경 설정 php.ini 에서</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>track_error = on
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>track_error = on
 </code></pre></div></div>
 
 <p>상태일 때만 가능합니다.</p>
@@ -132,16 +128,7 @@
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

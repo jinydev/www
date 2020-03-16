@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -76,7 +72,7 @@
 <h3 id="781-or-연산">7.8.1 or 연산</h3>
 
 <p>예제 파일 logic-05.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$a</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">;</span>
 	<span class="k">echo</span> <span class="s2">"a값 = "</span><span class="o">.</span><span class="nv">$a</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
 
@@ -86,7 +82,7 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a값 = 2
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>a값 = 2
 a값 = 3
 </code></pre></div></div>
 
@@ -111,7 +107,7 @@ or( | ) 연산을 비트별로 하게 되면<br />
 <p>다음은 AND 비트 연산의 예입니다.</p>
 
 <p>예제 파일 logic-06.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="nv">$a</span> <span class="o">=</span> <span class="mh">0x03</span><span class="p">;</span>
 	<span class="k">echo</span> <span class="s2">"a값 = "</span><span class="o">.</span><span class="nv">$a</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
 
@@ -121,7 +117,7 @@ or( | ) 연산을 비트별로 하게 되면<br />
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a값 = 3
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>a값 = 3
 a값 = 2
 </code></pre></div></div>
 
@@ -142,7 +138,7 @@ a값 = 2
 <p>배타적 연산 xor는 같은 비트는 false, 다른 비트는 true를 반환합니다.</p>
 
 <p>예제 파일 logic-07.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="c1">// 2진법으로 값을 설정합니다.</span>
 	<span class="nv">$a</span> <span class="o">=</span> <span class="mi">0</span><span class="nx">b00000011</span><span class="p">;</span>
 	<span class="nv">$b</span> <span class="o">=</span> <span class="mi">0</span><span class="nx">b00001111</span><span class="p">;</span>
@@ -155,13 +151,13 @@ a값 = 2
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 03
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>a = 03
 b = 0f
 a^b = 0c 
 </code></pre></div></div>
 
 <p>위 예제는</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A는 = 0 0 0 0  0 0 1 1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>A는 = 0 0 0 0  0 0 1 1
 B는 = 0 0 0 0  1 1 1 1 
 ----------------------------
 XOR  0 0 0 0  1 1 0 0
@@ -196,7 +192,7 @@ XOR  0 0 0 0  1 1 0 0
 <p>우측 시프트는 좌측 시프트와 반대로 우측으로 비트를 하나씩 이동합니다. 즉, 값을 2로 나눈 값으로 출력됩니다.</p>
 
 <p>예제 파일 logic-08.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="c1">// 시프트 연산 예제</span>
 	
 	<span class="nv">$a</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>
@@ -222,7 +218,7 @@ XOR  0 0 0 0  1 1 0 0
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>a = 1
 a = 2
 a = 8
 a = 4
@@ -249,16 +245,7 @@ a = 1
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

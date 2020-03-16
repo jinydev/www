@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -75,7 +71,7 @@
 <p>함수는 항상 선언과 호출을 같이 쌍으로 이뤄진 형태의 문법입니다. 하지만 익명 함수는 기존 함수의 정의 후 호출하는 것과 달리 필요할 때마다 즉시 생성한 후에 호출하여 사용할 수 있습니다.</p>
 
 <p>문법</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function (인자1, 인자2, 인자3 ...) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>function (인자1, 인자2, 인자3 ...) {
 함수 정의 몸체 ... 
 소스 코드 내용 
 }
@@ -92,31 +88,31 @@
 <p>익명 함수는 변수에 바인딩(결합)하여 사용할 수 있습니다. 약간 가변 함수와 유사하다고 생각할 수도 있습니다. 가변 함수는 변수에 선언한 함수를 바인딩하는 것이었고, 익명함수 변수 바인딩은 함수 자체를 바인딩하는 것입니다.</p>
 
 <p>변수 바인딩</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$변수명 = function (인자){
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$변수명 = function (인자){
 }
 </code></pre></div></div>
 
 <p>위와 같은 형태의 문법은 익명 함수를 변수에 결합하게 됩니다. 변수에 결합된 익명 함수를 가변 함수로 호출하는 것처럼 함수를 호출하여 사용할 수 있습니다.</p>
 
 <p>익명 함수 호출</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$변수명(인자);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$변수명(인자);
 </code></pre></div></div>
 
 <p>익명 함수를 변수에 바인딩 결합하여 호출하는 문법 표현은 가변 함수 호출하는 방식과 매우 유사합니다. 가변 함수는 선언한 함수명을 변수에 대입하여 호출하는 것이고, 익명 변수는 함수 선언으로 바인딩 결합합니다.</p>
 
 <p>예제 파일 func-20.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="nv">$meeting</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
-	<span class="p">{</span>
-    		<span class="nb">printf</span><span class="p">(</span><span class="s2">"Hello %s</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span> <span class="nv">$name</span><span class="p">);</span>
-	<span class="p">};</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	$meeting = function($name)
+	{
+    		printf("Hello %s\r\n", $name);
+	};
 
-	<span class="nv">$meeting</span><span class="p">(</span><span class="s1">'jiny'</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	$meeting('jiny');
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello jiny 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Hello jiny 
 </code></pre></div></div>
 
 <p>위의 예제는 익명 함수를 통하여 문자열의 수를 출력합니다. $meeting 변수에 문자열을 출력하는 익명 함수를 바인딩 결합합니다. 또한 매개변수 인자로는 하나의 이름을 받습니다. 결합된 변수를 통하여 함수를 호출합니다.</p>
@@ -132,7 +128,7 @@
 <p>익명 함수는 콜백 함수로 많이 이용하는 기술입니다.</p>
 
 <p>예제 파일 README.txt</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕하세요. jinyPHP입니다. 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>안녕하세요. jinyPHP입니다. 
 </code></pre></div></div>
 
 <p>아래 예제는 위의 예제 txt 파일을 읽어서 화면에 출력하는 예제입니다.  옛날 고전적인 create_function() 함수를 사용하는 방법과 최신 익명 함수를 사용하는 두 가지 예제입니다. 콜백 호출</p>
@@ -172,7 +168,7 @@
 </ul>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕하세요. jinyPHP입니다. 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>안녕하세요. jinyPHP입니다. 
 </code></pre></div></div>
 
 <ul>
@@ -180,29 +176,29 @@
 </ul>
 
 <p>예제 파일 func-22.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-    <span class="cm">/* 유닉스 형식 명령줄 필터로
-     * 문단의 첫 대문자를 소문자로 바꿉니다. */</span>
-    <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"README.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">"can't read stdin"</span><span class="p">);</span>
-    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
-        <span class="nv">$line</span> <span class="o">=</span> <span class="nb">preg_replace_callback</span><span class="p">(</span>
-            <span class="s1">'|&lt;p&gt;\s*\w|'</span><span class="p">,</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+    /* 유닉스 형식 명령줄 필터로
+     * 문단의 첫 대문자를 소문자로 바꿉니다. */
+    $fp = fopen("README.txt", "r") or die("can't read stdin");
+    while (!feof($fp)) {
+        $line = fgets($fp);
+        $line = preg_replace_callback(
+            '|&lt;p&gt;\s*\w|',
             
-            <span class="k">function</span> <span class="p">(</span><span class="nv">$matches</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-            <span class="p">},</span>
+            function ($matches) {
+                return strtolower($matches[0]);
+            },
 
-            <span class="nv">$line</span>
-        <span class="p">);</span>
-        <span class="k">echo</span> <span class="nv">$line</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+            $line
+        );
+        echo $line;
+    }
+    fclose($fp);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕하세요. jinyPHP입니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>안녕하세요. jinyPHP입니다.
 </code></pre></div></div>
 
 <p>위의 예제는 콜백을 이용한 정규표현식 검색과 치환을 수행하는 함수의 콜백 처리로 익명 함수를 사용한 예제입니다.</p>
@@ -223,16 +219,7 @@
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

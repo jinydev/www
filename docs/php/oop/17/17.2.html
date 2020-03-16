@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -77,25 +73,25 @@
 <p>예외 처리 클래스 Exception도 new 키워드를 통해 인스턴스를 생성하여 사용할 수 있습니다. Exception 클래스는 오류 코드와 메시지를 전달하고 값을 처리할 수 있는 추가 메서드를 지원합니다.</p>
 
 <p>예제 파일 exception-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="nv">$msg</span> <span class="o">=</span> <span class="s2">"예외 클래스 오류 발생"</span><span class="p">;</span>
-	<span class="nv">$code</span> <span class="o">=</span> <span class="mi">444</span><span class="p">;</span>
-	<span class="nv">$e</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="nv">$msg</span><span class="p">,</span><span class="nv">$code</span><span class="p">);</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	$msg = "예외 클래스 오류 발생";
+	$code = 444;
+	$e = new Exception($msg,$code);
 
-	<span class="k">echo</span> <span class="s2">"예외 코드 = "</span><span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">();</span>
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"예외 메시지 = "</span><span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
+	echo "예외 코드 = ".$e-&gt;getCode();
+	echo "&lt;br&gt;";
+	echo "예외 메시지 = ".$e-&gt;getMessage();
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예외 코드 = 444
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>예외 코드 = 444
 예외 메시지 = 예외 클래스 오류 발생
 </code></pre></div></div>
 
 <p>예외 Exception 클래스 구조와 인터페이스는 다음과 같습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exception {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Exception {
 /* Properties */
 protected string $message ;
 protected int $code ;
@@ -120,7 +116,7 @@ final private void __clone ( void )
 
 <p>PHP 7.x에서는 Exception 클래스는 throwable 인터페이스를 따릅니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Throwable {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Throwable {
 /* Methods */
 abstract public string getMessage ( void )
 abstract public int getCode ( void )
@@ -147,13 +143,13 @@ abstract public string __toString ( void )
 </ul>
 
 <p>예제 파일 exception-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"강제적 예외 발생"</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	throw new Exception("강제적 예외 발생");
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Sun May 14 16:21:35 2017] ::1:55806 [500]: /jinyphp/exception-02.php - Uncaught Exception: 강제적 예외 발생 in C:\php-7.1.4-Win32-VC14-x86\jinyphp\exception-02.php:2
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>[Sun May 14 16:21:35 2017] ::1:55806 [500]: /jinyphp/exception-02.php - Uncaught Exception: 강제적 예외 발생 in C:\php-7.1.4-Win32-VC14-x86\jinyphp\exception-02.php:2
 Stack trace:
 #0 {main}
 thrown in C:\php-7.1.4-Win32-VC14-x86\jinyphp\exception-02.php on line 2
@@ -168,33 +164,33 @@ thrown in C:\php-7.1.4-Win32-VC14-x86\jinyphp\exception-02.php on line 2
 <p>예외 처리 Exception 클래스를 상속받아 새로운 에외 처리 클래스를 직접 만들어서 사용할 수도 있습니다. 새로운 예외 처리는 클래스는 기존의 exception 함수를 상속받아서 생성을 합니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class divException extends exception {}
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>class divException extends exception {}
 </code></pre></div></div>
 
 <p>예제 파일 exception-03.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kd">class</span> <span class="nc">aaaEx</span> <span class="k">extends</span> <span class="nx">exception</span>
-	<span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">showErr</span><span class="p">(</span><span class="nv">$msg</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">echo</span> <span class="nv">$msg</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	class aaaEx extends exception
+	{
+		public function showErr($msg)
+		{
+			echo $msg;
+		}
+	}
 
-	<span class="nv">$msg</span> <span class="o">=</span> <span class="s2">"예외 클래스 오류 발생"</span><span class="p">;</span>
-	<span class="nv">$code</span> <span class="o">=</span> <span class="mi">444</span><span class="p">;</span>
-	<span class="nv">$e</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">aaaEx</span><span class="p">(</span><span class="nv">$msg</span><span class="p">,</span><span class="nv">$code</span><span class="p">);</span>
+	$msg = "예외 클래스 오류 발생";
+	$code = 444;
+	$e = new aaaEx($msg,$code);
 
-	<span class="nv">$e</span><span class="o">-&gt;</span><span class="na">showErr</span><span class="p">(</span><span class="s2">"Exception을 상속합니다."</span><span class="p">);</span>
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"예외코드 = "</span><span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">();</span>
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-	<span class="k">echo</span> <span class="s2">"예외메시지 = "</span><span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
+	$e-&gt;showErr("Exception을 상속합니다.");
+	echo "&lt;br&gt;";
+	echo "예외코드 = ".$e-&gt;getCode();
+	echo "&lt;br&gt;";
+	echo "예외메시지 = ".$e-&gt;getMessage();
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exception을 상속합니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Exception을 상속합니다.
 예외 코드 = 444
 예외 메시지 = 예외 클래스 오류 발생
 </code></pre></div></div>
@@ -214,7 +210,7 @@ thrown in C:\php-7.1.4-Win32-VC14-x86\jinyphp\exception-02.php on line 2
 <p>try~catch는 2개의 영역으로 나누어져 있습니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>try {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>try {
 	예외가 발생할 가능성이 있는 내용들을 코딩합니다.
 } catch (클래스명 $변수명) {
 	예외가 발생될 경우 처리할 내용들
@@ -232,7 +228,7 @@ catch (클래스명 $변수명) { }은 try{} 본문에 예외가 포착되었을
 <p>예외가 발생할 때 Excetion 클래스를 통해 예외 상태나 메시지를 받아올 수 있습니다. Exception 클래스는 예외를 처리할 수 있는 다양한 프로퍼티와 메서드를 가지고 있습니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>catch(Exception $err){
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>catch(Exception $err){
 	echo $err-&gt;getMessage();
 } 
 </code></pre></div></div>
@@ -240,20 +236,20 @@ catch (클래스명 $변수명) { }은 try{} 본문에 예외가 포착되었을
 <p>예외 발생 시 Exception 클래스로 생성된 인스턴스를 받습니다. 생성된 인스턴스로 Exception 메서드를 실행할 수 있습니다.</p>
 
 <p>예제 파일 exception-04.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">try</span> <span class="p">{</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	try {
 	
-		<span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"강제적 예외 발생"</span><span class="p">);</span>
+		throw new Exception("강제적 예외 발생");
 
-	<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$err</span><span class="p">){</span>
-		<span class="c1">// Try {} 부분에 연산 오류로 인하여 예외 처리가 발생됨</span>
-		<span class="k">echo</span> <span class="s2">"예외 처리 발생 :"</span><span class="o">.</span><span class="nv">$err</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
-	<span class="p">}</span> 
-<span class="cp">?&gt;</span>
+	} catch(Exception $err){
+		// Try {} 부분에 연산 오류로 인하여 예외 처리가 발생됨
+		echo "예외 처리 발생 :".$err-&gt;getMessage();
+	} 
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예외 처리 발생: 강제적 예외 발생
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>예외 처리 발생: 강제적 예외 발생
 </code></pre></div></div>
 
 <p>위의 예제는 try~catch 동작에 대한 예입니다. try {} 본문 안에서 강제적으로 throw 명령을 통해 개발자가 직접 예외를 발생합니다. 예외가 발생되면catch{} 안의 내용이 실행됩니다. catch 실행 시 예외 처리 클래스 exception 객체를 동시에 생성하여 catch 내부로 전달합니다.</p>
@@ -267,7 +263,7 @@ catch (클래스명 $변수명) { }은 try{} 본문에 예외가 포착되었을
 <p>만일 예외 처리의 유형이 다양한 경우 catch를 연결하여 사용 가능합니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>try {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>try {
 	예외가 발생할 가능성이 있는 내용들을 코딩합니다.
 } catch (클래스명 $변수명) {
 	예외가 발생될 경우 처리할 내용들
@@ -279,26 +275,26 @@ catch (클래스명 $변수명) { }은 try{} 본문에 예외가 포착되었을
 <p>catch는 위의 표현처럼 계속 체인 형태로 연결하여 사용할 수 있습니다.</p>
 
 <p>예제 파일 exception-05.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">try</span> <span class="p">{</span>
-		<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">"localhost"</span><span class="p">;</span>
-		<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">"testDB"</span><span class="p">;</span>
-		<span class="nv">$username</span> <span class="o">=</span> <span class="s2">"jiny"</span><span class="p">;</span>
-		<span class="nv">$pasword</span> <span class="o">=</span> <span class="s2">"abcd1234"</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	try {
+		$servername = "localhost";
+		$dbname = "testDB";
+		$username = "jiny";
+		$pasword = "abcd1234";
 
-		<span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s2">"mysql:host=</span><span class="nv">$servername</span><span class="s2">;dbname=</span><span class="nv">$dbname</span><span class="s2">"</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
+		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	
-	<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"PDO 오류"</span><span class="p">;</span>
+	} catch (PDOException $e) {
+		echo "PDO 오류";
 
-	<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">echo</span> <span class="s2">"일반예외"</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="cp">?&gt;</span>
+	} catch (Exception $e) {
+		echo "일반예외";
+	}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PDO 오류
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>PDO 오류
 </code></pre></div></div>
 
 <p>위의 예제는 다수의 catch 처리를 위한 실험입니다. 예외가 발생되면 예외 상태에 따라서 상항별로 catch 로 분기하여 처리됩니다.</p>
@@ -310,7 +306,7 @@ catch (클래스명 $변수명) { }은 try{} 본문에 예외가 포착되었을
 <p>finally { } 부분은 PHP 5.5에서 도입된 기능으로 try 부분이나 catch부분 처리가 끝나고 처리할 내용을 추가로 정의할 수 있습니다. finally {}는 독립적으로 사용을 할 수 없고 반드시 try ~ catch문 뒤에 소속되어 사용 가능합니다. 즉, 종속된 기능 명령어 입니다.</p>
 
 <p>사용 문법</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>try {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>try {
 	예외가 발생할 가능성이 있는 내용들을 코딩합니다.
 } catch (클래스명 $변수명) {
 	예외가 발생될 경우 처리할 내용들
@@ -320,24 +316,24 @@ catch (클래스명 $변수명) { }은 try{} 본문에 예외가 포착되었을
 </code></pre></div></div>
 
 <p>예제 파일 exception-06.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="k">try</span> <span class="p">{</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	try {
 	
-		<span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"강제적 예외 발생"</span><span class="p">);</span>
+		throw new Exception("강제적 예외 발생");
 
-	<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$err</span><span class="p">){</span>
-		<span class="c1">// Try {} 부분에 연산오류로 인하여 예외 처리가 발생됨</span>
-		<span class="k">echo</span> <span class="s2">"예외 처리 발생 :"</span><span class="o">.</span><span class="nv">$err</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
-	<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
-		<span class="c1">// try {} 또는 catch(){} 부분의 처리 후에 처리가 됩니다.</span>
-		<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
-		<span class="k">echo</span> <span class="s2">"finally 연산 종료"</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="cp">?&gt;</span>
+	} catch(Exception $err){
+		// Try {} 부분에 연산오류로 인하여 예외 처리가 발생됨
+		echo "예외 처리 발생 :".$err-&gt;getMessage();
+	} finally {
+		// try {} 또는 catch(){} 부분의 처리 후에 처리가 됩니다.
+		echo "&lt;br&gt;";
+		echo "finally 연산 종료";
+	}
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예외 처리 발생: 강제적 예외 발생
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>예외 처리 발생: 강제적 예외 발생
 finally 연산 종료
 </code></pre></div></div>
 
@@ -350,34 +346,34 @@ finally 연산 종료
 <p>try~catch로 처리하지 못한 예외가 있을 수도 있습니다. 이런 경우 전역 예외 처리를 통해 예상치 못한 예외도 포착할 수 있습니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>callable set_exception_handler ( callable $exception_handler )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>callable set_exception_handler ( callable $exception_handler )
 </code></pre></div></div>
 
 <p>set_exception_handler(); 내장 함수를 통하여 전역 예외 처리를 등록할 수 있습니다.</p>
 
 <p>|관련함수|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool restore_exception_handler ( void )
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>bool restore_exception_handler ( void )
 </code></pre></div></div>
 
 <p>restore_exception_handler(); 내장 함수는 설정한 전역 처리기를 복원합니다.</p>
 
 <p>예제 파일 exception-07.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="c1">// 전역 예외 처리기를 등록합니다.</span>
-	<span class="nb">set_exception_handler</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">){</span>
-		<span class="k">echo</span> <span class="s2">"전역 예외 처리 포착&lt;br&gt;"</span><span class="p">;</span>
-		<span class="k">echo</span> <span class="s2">"예외 메시지 = "</span><span class="o">.</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
-	<span class="p">});</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	// 전역 예외 처리기를 등록합니다.
+	set_exception_handler(function(Exception $e){
+		echo "전역 예외 처리 포착&lt;br&gt;";
+		echo "예외 메시지 = ".$e-&gt;getMessage();
+	});
 
-	<span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"강제적 예외 발생"</span><span class="p">);</span>
+	throw new Exception("강제적 예외 발생");
 
-	<span class="c1">// 설정한 전역 처리기를 복원합니다.</span>
-	<span class="nb">restore_exception_handler</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
+	// 설정한 전역 처리기를 복원합니다.
+	restore_exception_handler();
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과)</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>전역 예외 처리 포착
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>전역 예외 처리 포착
 예외 메시지 = 강제적 예외 발생
 </code></pre></div></div>
 
@@ -399,16 +395,7 @@ finally 연산 종료
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

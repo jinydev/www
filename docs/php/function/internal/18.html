@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -79,7 +75,7 @@ void exit ([ string $status ] )</p>
 <p>예제) exit.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//일반적인 프로그램 종료
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>//일반적인 프로그램 종료
 exit;
 exit();
 exit(0);
@@ -116,7 +112,7 @@ void register_shutdown_function ( callable $callback [, mixed $parameter [, mixe
     	echo ‘Script executed with success’, PHP_EOL;
 	}</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>register_shutdown_function('shutdown'); ?&gt;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>register_shutdown_function('shutdown'); ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -134,10 +130,10 @@ mixed eval ( string $code )</p>
 	$string = ‘cup’;
 	$name = ‘coffee’;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 작은 따옴표는 일반 텍스트로 문자를 인식합니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 작은 따옴표는 일반 텍스트로 문자를 인식합니다.
 // $string, $name 는 변수명 자체를 화면에 출력합니다.
 $str = 'This is a $string with my $name in it.';
-echo $str. "&lt;br&gt;";
+echo $str. "<span class="nt">&lt;br&gt;</span>";
 
 // PHP 코드 처리됩니다.
 $code = "\$aaa = \"$str\";";
@@ -199,7 +195,7 @@ int ignore_user_abort ([ bool $value ] )</p>
 &lt;?php
 	echo ‘PHP connection’;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ignore_user_abort(true);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>ignore_user_abort(true);
 set_time_limit(0);
 
 while(1) {
@@ -241,14 +237,14 @@ int sleep ( int $seconds )</p>
 <p>예제) sleep.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 현재 시간
-echo date('h:i:s') . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 현재 시간
+echo date('h:i:s') . "<span class="nt">&lt;br&gt;</span>";
 
 // 10 초간 지연 
 sleep(10);
 
 // 시간 다시 표시
-echo date('h:i:s') . "&lt;br&gt;";
+echo date('h:i:s') . "<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -265,14 +261,14 @@ void usleep ( int $micro_seconds )</p>
 <p>예제) usleep.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 현재 시간
-echo date('h:i:s') . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 현재 시간
+echo date('h:i:s') . "<span class="nt">&lt;br&gt;</span>";
 
 // 2 초간 대기합니다.
 usleep(2000000);
 
 // 시간 다시 표시
-echo date('h:i:s') . "&lt;br&gt;";
+echo date('h:i:s') . "<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -294,11 +290,11 @@ void set_time_limit ( int $seconds )</p>
 	set_time_limit(100);
 	echo “스크립트시간 100초<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while ($i&lt;=50){
-    echo "sleep=$i , ";
-    sleep(1);
-    $i++;
-} ?&gt;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>while ($i<span class="nt">&lt;</span><span class="err">=</span><span class="na">50</span><span class="err">){</span>
+    <span class="na">echo</span> <span class="err">"</span><span class="na">sleep=</span><span class="s">$i</span> <span class="err">,</span> <span class="err">";</span>
+    <span class="na">sleep</span><span class="err">(</span><span class="na">1</span><span class="err">);</span>
+    <span class="err">$</span><span class="na">i</span><span class="err">++;</span>
+<span class="err">}</span> <span class="err">?</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
 <p>화면출력)
@@ -312,13 +308,13 @@ sleep= , sleep=1 , sleep=2 , sleep=3 , sleep=4 , sleep=5 , sleep=6 , sleep=7 , s
 <p>예제) set_time_limit2.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set_time_limit(20);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>set_time_limit(20);
 
-while ($i&lt;=10){
-    echo "i=$i ";
-    sleep(100);
-    $i++;
-}
+while ($i<span class="nt">&lt;</span><span class="err">=</span><span class="na">10</span><span class="err">){</span>
+    <span class="na">echo</span> <span class="err">"</span><span class="na">i=</span><span class="s">$i</span> <span class="err">";</span>
+    <span class="na">sleep</span><span class="err">(</span><span class="na">100</span><span class="err">);</span>
+    <span class="err">$</span><span class="na">i</span><span class="err">++;</span>
+<span class="err">}</span>
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -351,13 +347,13 @@ int getlastmod ( void )</p>
 <p>예제) getlastmod.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$scriptDate = date ("F d Y H:i:s.", getlastmod());
-echo "죄종수정일: " . $scriptDate . "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$scriptDate = date ("F d Y H:i:s.", getlastmod());
+echo "죄종수정일: " . $scriptDate . "<span class="nt">&lt;br&gt;</span>";
 
-if (date ("Y-m-d", getlastmod()) &lt;= "2017-10-03"){
-	echo "스크립트가 최신버젼이 아닙니다. 업그레이드를 해주세요&lt;br&gt;";
+if (date ("Y-m-d", getlastmod()) <span class="nt">&lt;</span><span class="err">=</span> <span class="err">"</span><span class="na">2017-10-03</span><span class="err">"){</span>
+	<span class="na">echo</span> <span class="err">"스크립트가</span> <span class="err">최신버젼이</span> <span class="err">아닙니다.</span> <span class="err">업그레이드를</span> <span class="err">해주세요&lt;</span><span class="na">br</span><span class="nt">&gt;</span>";
 } else {
-	echo "최신&lt;br&gt;";
+	echo "최신<span class="nt">&lt;br&gt;</span>";
 }
 </code></pre></div></div>
 
@@ -388,16 +384,7 @@ int getmygid ( void )</p>
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

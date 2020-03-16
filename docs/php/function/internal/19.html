@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -165,7 +161,7 @@ bool phpinfo ([ int $what = INFO_ALL ] )</p>
 <p>예제) phpinfo.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 전체 정보를 출력합니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 전체 정보를 출력합니다.
 phpinfo();
 
 // 지정한 모듈 정보만 출력합니다.
@@ -202,9 +198,9 @@ string getenv ( string $varname )</p>
 	$ip = getenv(‘REMOTE_ADDR’);
 	echo “접속주소 : $ip <br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 글로벌 환경 변수 값을 통하여도 읽어 올 수 있습니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 글로벌 환경 변수 값을 통하여도 읽어 올 수 있습니다.
 $ipAddr = $_SERVER['REMOTE_ADDR'];
-echo "접속주소 : $ipAddr &lt;br&gt;"; ?&gt;
+echo "접속주소 : $ipAddr <span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>|내부함수|
@@ -216,8 +212,8 @@ bool putenv ( string $setting )</p>
 &lt;?php
 	print “env is: “.$_ENV[“USER”].”<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>putenv("USER=jiny");
-print "getenv is: ".getenv("USER")."&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>putenv("USER=jiny");
+print "getenv is: ".getenv("USER")."<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -271,7 +267,7 @@ string ini_set ( string $varname , string $newvalue )</p>
 &lt;?php
 	echo ini_get(‘display_errors’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (!ini_get('display_errors')) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (!ini_get('display_errors')) {
 	ini_set('display_errors', '1');
 }
 
@@ -290,13 +286,13 @@ void ini_restore ( string $varname )</p>
 &lt;?php
 	$setting = ‘y2k_compliance’;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo 'Current value for \'' . $setting . '\': ' . ini_get($setting), "&lt;br&gt;";
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo 'Current value for \'' . $setting . '\': ' . ini_get($setting), "<span class="nt">&lt;br&gt;</span>";
 
 ini_set($setting, ini_get($setting) ? 0 : 1);
-echo 'New value for \'' . $setting . '\': ' . ini_get($setting), "&lt;br&gt;";
+echo 'New value for \'' . $setting . '\': ' . ini_get($setting), "<span class="nt">&lt;br&gt;</span>";
 
 ini_restore($setting);
-echo 'Original value for \'' . $setting . '\': ' . ini_get($setting), "&lt;br&gt;"; ?&gt;
+echo 'Original value for \'' . $setting . '\': ' . ini_get($setting), "<span class="nt">&lt;br&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -313,7 +309,7 @@ string php_ini_loaded_file ( void )</p>
 &lt;?php
 	$inipath = php_ini_loaded_file();</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if ($inipath) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if ($inipath) {
 	echo 'Loaded php.ini: ' . $inipath;
 } else {
 	echo 'A php.ini file is not loaded';
@@ -353,7 +349,7 @@ bool cli_set_process_title ( string $title )</p>
 &lt;?php
 	$title = “jiny PHP Script”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cli_set_process_title($title);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>cli_set_process_title($title);
 echo "Process title: " . cli_get_process_title() . "\n"; ?&gt;
 </code></pre></div></div>
 
@@ -403,12 +399,12 @@ string uniqid ([ string $prefix = “” [, bool $more_entropy = false ]] )</p>
 	// 고유 ID값을 생성합니다.
 	printf(“uniqid(): %s <br />”, uniqid());</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 접두사를 붙여서 고유 ID값을 생성하빈다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 접두사를 붙여서 고유 ID값을 생성하빈다.
 $prefix = "php_";
-printf("uniqid('$prefix'): %s &lt;br&gt;", uniqid($prefix));
+printf("uniqid('$prefix'): %s <span class="nt">&lt;br&gt;</span>", uniqid($prefix));
 
 // more_entropy
-printf("uniqid('', true): %s &lt;br&gt;", uniqid('', true)); ?&gt;
+printf("uniqid('', true): %s <span class="nt">&lt;br&gt;</span>", uniqid('', true)); ?&gt;
 </code></pre></div></div>
 
 <p>화면출력)
@@ -458,13 +454,13 @@ int memory_get_usage ([ bool $real_usage = false ] )</p>
 	// 시작전 메모리
 	echo memory_get_usage() . “<br />”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 메모리 할당 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 메모리 할당 
 $a = str_repeat("Hello", 4242);
-echo memory_get_usage() . "&lt;br&gt;";
+echo memory_get_usage() . "<span class="nt">&lt;br&gt;</span>";
 
 // 메모리 해제
 unset($a);
-echo memory_get_usage() . "&lt;br&gt;";
+echo memory_get_usage() . "<span class="nt">&lt;br&gt;</span>";
 </code></pre></div></div>
 
 <p>?&gt;</p>
@@ -489,7 +485,7 @@ array get_included_files ( void )</p>
 <p>예제) get_included_files.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>include 'test1.php';
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>include 'test1.php';
 include_once 'test2.php';
 require 'test3.php';
 require_once 'test4.php';
@@ -512,7 +508,7 @@ string set_include_path ( string $new_include_path )</p>
 &lt;?php
 	set_include_path(‘/usr/lib/pear’);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 또는 ini_set()를 사용할 수도 있습니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 또는 ini_set()를 사용할 수도 있습니다.
 ini_set('include_path', '/usr/lib/pear'); ?&gt;
 </code></pre></div></div>
 
@@ -524,7 +520,7 @@ void restore_include_path ( void )</p>
 <p>예제) restore_include_path.php
 &lt;?php</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo get_include_path();  
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo get_include_path();  
 set_include_path('/inc');
 
 echo get_include_path(); 
@@ -675,16 +671,7 @@ bool phpcredits ([ int $flag = CREDITS_ALL ] )</p>
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

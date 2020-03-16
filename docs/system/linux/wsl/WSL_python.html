@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -61,18 +63,18 @@
 
 <h2 id="버전확인">버전확인</h2>
 
-<p>우분투 터미널 창에서 <code class="highlighter-rouge">python3 -V</code> 를 입력해 봅니다. 아래와 같이 파이썬 3.5.2 가 설치가 된것을 확인해 보실 수 있습니다.</p>
+<p>우분투 터미널 창에서 <code class="language-html highlighter-rouge">python3 -V</code> 를 입력해 봅니다. 아래와 같이 파이썬 3.5.2 가 설치가 된것을 확인해 보실 수 있습니다.</p>
 
 <p><img src="D:\onedrive\▣책쓰기(집필)\우분투(WSL)\img_wsl_python\version.png" alt="version" /></p>
 
-<p>우분투는 기본적으로 파이썬3와 여러 페키지들이 같이 설치가 되어 있습니다. 우분투 페키지 목록에서 <code class="highlighter-rouge">python</code>만 확인을 해보도록 합니다.</p>
+<p>우분투는 기본적으로 파이썬3와 여러 페키지들이 같이 설치가 되어 있습니다. 우분투 페키지 목록에서 <code class="language-html highlighter-rouge">python</code>만 확인을 해보도록 합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg -l | grep "python"
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>dpkg -l | grep "python"
 </code></pre></div></div>
 
 <p>그럼 다음과 같이 기본 설치된 파이썬 페키지 목록을 출력합니다.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">hojin@DESKTOP-8QECJCI:~$</span><span class="w"> </span>dpkg <span class="nt">-l</span> | <span class="nb">grep</span> <span class="s2">"python"</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="gp">hojin@DESKTOP-8QECJCI:~$</span><span class="w"> </span>dpkg <span class="nt">-l</span> | <span class="nb">grep</span> <span class="s2">"python"</span>
 <span class="go">
 ii  dh-python                        2.20151103ubuntu1.1                        all          Debian helper tools for packaging Python libraries and applications
 
@@ -168,14 +170,14 @@ ii  python3.5-minimal                3.5.2-2ubuntu0~16.04.2                     
 
 <h2 id="파이썬-페키지">파이썬 페키지</h2>
 
-<p>기본적으로 처음 우분투를 설치했을때 pip3는  제외되어 있습니다. 우분투 페키지 관리 툴 <code class="highlighter-rouge">apt</code>를 통하여 pip3를 추가로 설치해 줍니다. 터미널에서 다음과 같이 입력을 하시면 됩니다.</p>
+<p>기본적으로 처음 우분투를 설치했을때 pip3는  제외되어 있습니다. 우분투 페키지 관리 툴 <code class="language-html highlighter-rouge">apt</code>를 통하여 pip3를 추가로 설치해 줍니다. 터미널에서 다음과 같이 입력을 하시면 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install python3-pip
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>sudo apt install python3-pip
 </code></pre></div></div>
 
-<p>만일 위와 같이 입력을 했는데,  <code class="highlighter-rouge">Unable to locate package python3-pip</code>과 같이 pip3 설치가 실패한 경우가 발생될 수 있습니다.</p>
+<p>만일 위와 같이 입력을 했는데,  <code class="language-html highlighter-rouge">Unable to locate package python3-pip</code>과 같이 pip3 설치가 실패한 경우가 발생될 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hojin@DESKTOP-8QECJCI:~$ sudo apt install python3-pip
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>hojin@DESKTOP-8QECJCI:~$ sudo apt install python3-pip
 [sudo] password for hojin:
 Reading package lists... Done
 Building dependency tree
@@ -183,20 +185,20 @@ Reading state information... Done
 E: Unable to locate package python3-pip
 </code></pre></div></div>
 
-<p>이런경우 <code class="highlighter-rouge">apt</code>를 목록이 업데이트 되지 않았기 때문입니다. 업데이투 후에 다시 실행하시면 됩니다. 업데이트 방법은 다음과 같습니다.</p>
+<p>이런경우 <code class="language-html highlighter-rouge">apt</code>를 목록이 업데이트 되지 않았기 때문입니다. 업데이투 후에 다시 실행하시면 됩니다. 업데이트 방법은 다음과 같습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt update
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>sudo apt update
 </code></pre></div></div>
 
 <p>정상적으로 pip3가 설치가 되었으면 확인을 해보도록 합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hojin@DESKTOP-8QECJCI:~$ pip3 -V
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>hojin@DESKTOP-8QECJCI:~$ pip3 -V
 pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
 </code></pre></div></div>
 
 <p>apt 페키지 목록 초기화 및 다시 업데이트 받기</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo rm -rf /var/lib/apt/lists/*
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>sudo rm -rf /var/lib/apt/lists/*
 sudo apt clean
 sudo apt update
 </code></pre></div></div>
@@ -205,15 +207,15 @@ sudo apt update
 
 <p>pip3를 통하여 몇개의 페키지를 설치해 보도록 합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo pip3 install beautifulsoup4
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>sudo pip3 install beautifulsoup4
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo pip3 install numpy
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>sudo pip3 install numpy
 </code></pre></div></div>
 
 <h3 id="파이썬-mysql">파이썬 mysql</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo pip3 install pymysql
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>sudo pip3 install pymysql
 </code></pre></div></div>
 
 
@@ -231,16 +233,7 @@ sudo apt update
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br><br>
+<br>
 
             <!--에드센스-->
             <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

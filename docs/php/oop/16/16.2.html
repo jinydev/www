@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -65,19 +61,19 @@
 <p>PHP언어의 클로저 기능은 익명 함수와 비슷한 문법으로 사용합니다.</p>
 
 <p>예제파일: closure-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="c1">// 익명 함수를 통해 변수에 대입합니다. </span>
-<span class="nv">$closure</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="err">“</span><span class="nx">hello</span> <span class="err">”</span> <span class="o">.</span> <span class="nv">$name</span><span class="p">;</span>
-<span class="p">};</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+// 익명 함수를 통해 변수에 대입합니다. 
+$closure = function ($name) {
+  echo “hello ” . $name;
+};
 
-<span class="c1">// 변수명을 함수처럼 사용할 수 있습니다.</span>
-<span class="k">echo</span> <span class="nv">$closure</span><span class="p">(</span><span class="err">“</span><span class="nx">jiny</span><span class="err">”</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+// 변수명을 함수처럼 사용할 수 있습니다.
+echo $closure(“jiny”);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello jiny
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>hello jiny
 </code></pre></div></div>
 
 <p>위의 예제는 일반적인 익명 함수와 비슷합니다. 하지만 익명 함수를 변수($closure)에 대입할 때 클로저 클래스를 통해 인스턴스를 생성, 객체화하여 변수를 객체화합니다.</p>
@@ -100,16 +96,7 @@
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

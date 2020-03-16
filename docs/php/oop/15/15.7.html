@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -79,56 +75,56 @@
 <p>첫째는 현재 적용되고 있는 네임스페이스의 경로를 변경합니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use 네임스페이스경로;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>use 네임스페이스경로;
 </code></pre></div></div>
 
 <p>use 명령은 클래스의 인스턴스 생성하기 전에 use 키워드를 통해 별칭을 선언 할 수 있습니다.</p>
 
-<p><code class="highlighter-rouge">use 네임스페이스경로;</code> 를 적용하면 클래스 인스턴스 선언 시 기존 네임스페이스의 모든 경로를 다 넣지 않아도 클래스의 인스턴스를 간단하게 생성할 수 있습니다.</p>
+<p><code class="language-html highlighter-rouge">use 네임스페이스경로;</code> 를 적용하면 클래스 인스턴스 선언 시 기존 네임스페이스의 모든 경로를 다 넣지 않아도 클래스의 인스턴스를 간단하게 생성할 수 있습니다.</p>
 
 <p>예제 파일 use-01.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kn">namespace</span> <span class="nn">jiny\aaa</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	namespace jiny\aaa;
 
-	<span class="kd">class</span> <span class="nc">Members1</span>
-	<span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">setUsers</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"aaa 회원ID = </span><span class="nv">$id</span><span class="s2">"</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-
-
-	<span class="kn">namespace</span> <span class="nn">jiny2\bbb</span><span class="p">;</span>
-
-	<span class="kd">class</span> <span class="nc">Members</span>
-	<span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">setUsers</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"bbb 회원ID = </span><span class="nv">$id</span><span class="s2">"</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+	class Members1
+	{
+		public function setUsers($id)
+		{
+			echo "aaa 회원ID = $id";
+		}
+	}
 
 
-	<span class="c1">// 네임스페이스를 aaa로 변경</span>
-	<span class="k">echo</span> <span class="s2">"네임스페이스를 aaa 변경&lt;br&gt;"</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="nn">jiny\aaa\Members1</span><span class="p">;</span>
+	namespace jiny2\bbb;
 
-	<span class="c1">// 네임스페이스 이름을 같이 적용 </span>
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Members1</span><span class="p">;</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">setUsers</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	class Members
+	{
+		public function setUsers($id)
+		{
+			echo "bbb 회원ID = $id";
+		}
+	}
+
+
+	// 네임스페이스를 aaa로 변경
+	echo "네임스페이스를 aaa 변경&lt;br&gt;";
+	use jiny\aaa\Members1;
+
+	// 네임스페이스 이름을 같이 적용 
+	$obj = new Members1;
+	$obj-&gt;setUsers(1);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>네임스페이스를 aaa 변경
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>네임스페이스를 aaa 변경
 aaa 회원ID = 1
 </code></pre></div></div>
 
 <p>두 번째는 길어진 네임스페이스에 별명 명칭을 적어 사용하는 것입니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use 네임스페이스경로 as 별칭;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>use 네임스페이스경로 as 별칭;
 </code></pre></div></div>
 
 <p>as 별칭으로 짧은 이름을 새롭게 부여할 수 있습니다.</p>
@@ -136,45 +132,45 @@ aaa 회원ID = 1
 <p>as 키워드를 이용하면 개발자의 편의에 따라서 별칭을 사용자가 지정할 수 있다는 것이 매우 유용합니다.</p>
 
 <p>예제 파일 use-02.php</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-	<span class="kn">namespace</span> <span class="nn">jiny\aaa</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+	namespace jiny\aaa;
 
-	<span class="kd">class</span> <span class="nc">members</span>
-	<span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">setUsers</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"aaa 회원ID = </span><span class="nv">$id</span><span class="s2">"</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+	class members
+	{
+		public function setUsers($id)
+		{
+			echo "aaa 회원ID = $id";
+		}
+	}
 
 
-	<span class="kn">namespace</span> <span class="nn">jiny\bbb</span><span class="p">;</span>
+	namespace jiny\bbb;
 
-	<span class="kd">class</span> <span class="nc">members</span>
-	<span class="p">{</span>
-		<span class="k">public</span> <span class="k">function</span> <span class="nf">setUsers</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-		<span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">"bbb 회원ID = </span><span class="nv">$id</span><span class="s2">"</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+	class members
+	{
+		public function setUsers($id)
+		{
+			echo "bbb 회원ID = $id";
+		}
+	}
 
-	<span class="kn">use</span> <span class="nn">jiny\aaa</span> <span class="k">as</span> <span class="n">aaa</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="nn">jiny\bbb</span> <span class="k">as</span> <span class="n">bbb</span><span class="p">;</span>
+	use jiny\aaa as aaa;
+	use jiny\bbb as bbb;
 
-	<span class="c1">// 네임스페이스 이름을 같이 적용 </span>
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">aaa\members</span><span class="p">();</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">setUsers</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	// 네임스페이스 이름을 같이 적용 
+	$obj = new aaa\members();
+	$obj-&gt;setUsers(1);
 
-	<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+	echo "&lt;br&gt;";
 
-	<span class="c1">// 네임스페이스 이름을 같이 적용 </span>
-	<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bbb\members</span><span class="p">();</span>
-	<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">setUsers</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
+	// 네임스페이스 이름을 같이 적용 
+	$obj = new bbb\members();
+	$obj-&gt;setUsers(2);
+?&gt;</span>
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aaa 회원ID = 1
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>aaa 회원ID = 1
 bbb 회원ID = 2
 </code></pre></div></div>
 
@@ -187,7 +183,7 @@ bbb 회원ID = 2
 <p>여러 개의 네임스페이스를 한 번에 처리할 수 있습니다. 기본적으로 use 명령은 콤마(,)를 통해 다수의 네임스페이스를 하나의 use 명령을 처리할 수 있습니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use 네임스페이스1,
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>use 네임스페이스1,
  네임스페이스2,
  네임스페이스3;
 </code></pre></div></div>
@@ -197,7 +193,7 @@ bbb 회원ID = 2
 <p>이를 방지하기 위해 use 명령 하나당 네임스페이스 한 개를 적어주는 스타일을 추천합니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use 네임스페이스1;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>use 네임스페이스1;
 use 네임스페이스2;
 use 네임스페이스3;
 </code></pre></div></div>
@@ -208,48 +204,48 @@ use 네임스페이스3;
 <h3 id="1573-use-그룹화">15.7.3 use 그룹화</h3>
 <p>위와 같이 한 줄 단위로 use 별칭을 작성하는 것은 불편한 점이 있습니다. 네임스페이스의 클래스를 각각의 use 명령으로 재정의하는 것은 코드 작성에 있어 복잡한 부분이 있었습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="c1">// 이전 코드에서는 비슷한 use 명령을 여러 줄을 통해 작성했습니다.</span>
-	<span class="kn">use</span> <span class="nn">some\namespace\ClassA</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="nn">some\namespace\ClassB</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="nn">some\namespace\ClassC</span> <span class="k">as</span> <span class="n">C</span><span class="p">;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+// 이전 코드에서는 비슷한 use 명령을 여러 줄을 통해 작성했습니다.
+	use some\namespace\ClassA;
+	use some\namespace\ClassB;
+	use some\namespace\ClassC as C;
 
-	<span class="kn">use</span> <span class="kn">function</span> <span class="nn">some\namespace\fn_a</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="kn">function</span> <span class="nn">some\namespace\fn_b</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="kn">function</span> <span class="nn">some\namespace\fn_c</span><span class="p">;</span>
+	use function some\namespace\fn_a;
+	use function some\namespace\fn_b;
+	use function some\namespace\fn_c;
 
-	<span class="kn">use</span> <span class="kn">const</span> <span class="nn">some\namespace\ConstA</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="kn">const</span> <span class="nn">some\namespace\ConstB</span><span class="p">;</span>
-	<span class="kn">use</span> <span class="kn">const</span> <span class="nn">some\namespace\ConstC</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+	use const some\namespace\ConstA;
+	use const some\namespace\ConstB;
+	use const some\namespace\ConstC;
+?&gt;</span>
 </code></pre></div></div>
 
 <p>PHP 7.x로 업그레이드되면서 비슷한 유형끼리 그룹으로 설정할 수 있는 새로운 기능을 추가로 제공합니다.</p>
 
 <p>|문법|</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="c1">// PHP 7+ code</span>
-<span class="c1">// PHP 7+ 버전에서는 같은 유형의 use 를 그룹화하여 처리를 할 수 있습니다.</span>
-<span class="o">&lt;?</span><span class="nx">php</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php
+// PHP 7+ code
+// PHP 7+ 버전에서는 같은 유형의 use 를 그룹화하여 처리를 할 수 있습니다.
+&lt;?php
 
-	<span class="kn">use</span> <span class="nn">some\namespace</span><span class="o">\{</span>
-		<span class="nn">ClassA</span><span class="o">,</span> 
-		<span class="nn">ClassB</span><span class="o">,</span> 
-		<span class="nn">ClassC</span> <span class="k">as</span> <span class="n">C</span>
-	<span class="o">}</span><span class="p">;</span>
+	use some\namespace\{
+		ClassA, 
+		ClassB, 
+		ClassC as C
+	};
 	
-	<span class="kn">use</span> <span class="kn">function</span> <span class="nn">some\namespace</span><span class="o">\{</span>
-		<span class="nn">fn_a</span><span class="o">,</span> 
-		<span class="nn">fn_b</span><span class="o">,</span> 
-		<span class="nn">fn_c</span>
-	<span class="o">}</span><span class="p">;</span>
+	use function some\namespace\{
+		fn_a, 
+		fn_b, 
+		fn_c
+	};
 	
-	<span class="kn">use</span> <span class="kn">const</span> <span class="nn">some\namespace</span><span class="o">\{</span>
-		<span class="nn">ConstA</span><span class="o">,</span> 
-		<span class="nn">ConstB</span><span class="o">,</span> 
-		<span class="nn">ConstC</span>
-	<span class="o">}</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
+	use const some\namespace\{
+		ConstA, 
+		ConstB, 
+		ConstC
+	};
+?&gt;</span>
 </code></pre></div></div>
 
 <p>같은 유형의 그룹은 위의 예처럼 중괄호를 이용하여 처리할 수 있습니다. 코드를 가독화하고 읽기 쉽게 만들어 사용할 수 있습니다.</p>
@@ -270,16 +266,7 @@ use 네임스페이스3;
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -162,7 +158,7 @@ mixed filter_var ( mixed $variable [, int $filter = FILTER_DEFAULT [, mixed $opt
 &lt;?php
 	$int = 100;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (!filter_var($int, FILTER_VALIDATE_INT) === false) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (!filter_var($int, FILTER_VALIDATE_INT) === false) {
 		echo("정수가 유효합니다");
 } else {
 		echo("정수가 아닙니다");
@@ -188,7 +184,7 @@ mixed filter_var ( mixed $variable [, int $filter = FILTER_DEFAULT [, mixed $opt
 &lt;?php
 	$int = 0;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (filter_var($int, FILTER_VALIDATE_INT) === 0 || 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (filter_var($int, FILTER_VALIDATE_INT) === 0 || 
 	!filter_var($int, FILTER_VALIDATE_INT) === false) {
 	echo("Integer is valid");
 } else {
@@ -213,7 +209,7 @@ Integer is valid</p>
 	$min = 1;
 	$max = 200;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$range = array("options" =&gt; array("min_range"=&gt;$min, "max_range"=&gt;$max);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$range = array("options" =&gt; array("min_range"=&gt;$min, "max_range"=&gt;$max);
  
 if (filter_var($int, FILTER_VALIDATE_INT, $range)) === false) {
 		echo("변수 값이 유효한 범위 내에 있지 않습니다.!");
@@ -242,7 +238,7 @@ if (filter_var($int, FILTER_VALIDATE_INT, $range)) === false) {
 &lt;?php
 	$ip = “127.0.0.1”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
 		echo("$ip 는 유효한 IP주소 입니다.");
 } else {
 		echo("$ip 는 유효하지 IP주소 입니다.");
@@ -259,7 +255,7 @@ if (filter_var($int, FILTER_VALIDATE_INT, $range)) === false) {
 &lt;?php
 	$ip = “2001:0db8:85a3:08d3:1319:8a2e:0370:7334”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
 	echo("$ip 는 유효한 IPv6 address");
 } else {
 	echo("$ip 는 유효하지 않는 IPv6 address");
@@ -277,7 +273,7 @@ if (filter_var($int, FILTER_VALIDATE_INT, $range)) === false) {
 &lt;?php
 	$url = “http://www.hojin.io”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === false) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === false) {
 	echo("$url 유효한 URL");
 } else {
 	echo("$url 유효하지 않은 URL");
@@ -293,7 +289,7 @@ http://www.hojin.io 유효하지 않은 URL</p>
 &lt;?php
 	$str = “&lt;h1&gt;Hello World!&lt;/h1&gt;”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$aaa = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$aaa = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 echo $aaa; ?&gt;
 </code></pre></div></div>
 
@@ -308,7 +304,7 @@ Hello World!</p>
 &lt;?php
 	$email = “infohojin@naver.com”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 이메일에 포함된 부정한 글자들은 제거를 합니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// 이메일에 포함된 부정한 글자들은 제거를 합니다.
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
  
 // e-mail 유효성
@@ -351,7 +347,7 @@ Hello World!</p>
 &lt;?php
 	$url = “https://www.jinyphp.com”;</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Remove all illegal characters from a url
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>// Remove all illegal characters from a url
 $url = filter_var($url, FILTER_SANITIZE_URL);
  
 // Validate url
@@ -412,7 +408,7 @@ space	 	-	여백
 &lt;	&#60;	&lt;	보다 작은
 =	=	-	등호
         <blockquote>
-          <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;#62;	&amp;gt;	보다 큰 ?	&amp;#63;	-	물음표 @	&amp;#64;	-	Commercial at A - Z	&amp;#65;-&amp;#90;	-	A부터 Z까지 [	&amp;#91;	-	왼쪽 대괄호 \	&amp;#92;	-	역슬래쉬 ]	&amp;#93;	-	오른쪽 대괄호 ^	&amp;#94;	-	탈자부호 _	&amp;#95;	-	수평선 `	&amp;#96;	-	Acute accent a - z	&amp;#97;-&amp;#122;	-	a부터 z까지 {	&amp;#123;	-	왼쪽 중괄호 |	&amp;#124;	-	수직선 }	&amp;#125;	-	오른쪽 중괄호 ~	&amp;#126;	-	꼬리표
+          <div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="ni">&amp;#62;</span>	<span class="ni">&amp;gt;</span>	보다 큰 ?	<span class="ni">&amp;#63;</span>	-	물음표 @	<span class="ni">&amp;#64;</span>	-	Commercial at A - Z	<span class="ni">&amp;#65;</span>-<span class="ni">&amp;#90;</span>	-	A부터 Z까지 [	<span class="ni">&amp;#91;</span>	-	왼쪽 대괄호 \	<span class="ni">&amp;#92;</span>	-	역슬래쉬 ]	<span class="ni">&amp;#93;</span>	-	오른쪽 대괄호 ^	<span class="ni">&amp;#94;</span>	-	탈자부호 _	<span class="ni">&amp;#95;</span>	-	수평선 `	<span class="ni">&amp;#96;</span>	-	Acute accent a - z	<span class="ni">&amp;#97;</span>-<span class="ni">&amp;#122;</span>	-	a부터 z까지 {	<span class="ni">&amp;#123;</span>	-	왼쪽 중괄호 |	<span class="ni">&amp;#124;</span>	-	수직선 }	<span class="ni">&amp;#125;</span>	-	오른쪽 중괄호 ~	<span class="ni">&amp;#126;</span>	-	꼬리표
 </code></pre></div>          </div>
         </blockquote>
       </dd>
@@ -558,8 +554,8 @@ mixed filter_input ( int $type , string $variable_name [, int $filter = FILTER_D
     $search_html = filter_input(INPUT_GET, ‘search’, FILTER_SANITIZE_SPECIAL_CHARS);
     $search_url = filter_input(INPUT_GET, ‘search’, FILTER_SANITIZE_ENCODED);</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "입력한 검색키워드는 $search_html 입니다.&lt;br&gt;";
-echo "&lt;a href='?search=$search_url'&gt;재검색&lt;/a&gt;"; ?&gt;
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>echo "입력한 검색키워드는 $search_html 입니다.<span class="nt">&lt;br&gt;</span>";
+echo "<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">'?search=$search_url'</span><span class="nt">&gt;</span>재검색<span class="nt">&lt;/a&gt;</span>"; ?&gt;
 </code></pre></div></div>
 
 <p>위의 실험은 filter-13.php?search=jiny 형태로 GET 데이터를 추가하여 스크립트를 호출합니다.</p>
@@ -602,7 +598,7 @@ mixed filter_var_array ( array $data [, mixed $definition [, bool $add_empty = t
         'testarray'     =&gt; '2',
     );</script></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$args = array(
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$args = array(
 'product_id'   =&gt; FILTER_SANITIZE_ENCODED,
 'component'    =&gt; array('filter'    =&gt; FILTER_VALIDATE_INT,
                         'flags'     =&gt; FILTER_FORCE_ARRAY,
@@ -646,16 +642,7 @@ array(6) { [“product_id”]=&gt; string(17) “libgd%3Cscript%3E” [“compon
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

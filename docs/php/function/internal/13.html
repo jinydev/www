@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -43,12 +45,6 @@
           <h1 class="display-3">PHP</h1>
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
-      </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
       </p>
         </div>
       </div>
@@ -184,33 +180,33 @@ bool proc_terminate ( resource $process [, int $signal = 15 ] )</p>
         2 =&gt; array(“file”, “/tmp/error-output.txt”, “a”) // stderr
     );</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$cwd = '/tmp';
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$cwd = '/tmp';
 $env = array('some_option' =&gt; 'aeiou');
 
 $process = proc_open('php', $descriptorspec, $pipes, $cwd, $env);
-echo "proc status&lt;br&gt;";
+echo "proc status<span class="nt">&lt;br&gt;</span>";
 print_r(proc_get_status($process));
-echo "&lt;br&gt;";
+echo "<span class="nt">&lt;br&gt;</span>";
 
 if (is_resource($process)) {
     // $pipes now looks like this:
     // Any error output will be appended to /tmp/error-output.txt
 
-    echo "0 =&gt; writeable handle connected to child stdin &lt;br&gt;";
-    $php_code = "&lt;?php echo 'hello' ?&gt;";
+    echo "0 =&gt; writeable handle connected to child stdin <span class="nt">&lt;br&gt;</span>";
+    $php_code = "<span class="cp">&lt;?php echo 'hello' ?&gt;</span>";
     fwrite($pipes[0], $php_code);
     fclose($pipes[0]);
 
-    echo "1 =&gt; readable handle connected to child stdout &lt;br&gt;";
+    echo "1 =&gt; readable handle connected to child stdout <span class="nt">&lt;br&gt;</span>";
     echo stream_get_contents($pipes[1]);
-    echo "&lt;br&gt;";
+    echo "<span class="nt">&lt;br&gt;</span>";
     fclose($pipes[1]);
 
     // It is important that you close any pipes before calling
     // proc_close in order to avoid a deadlock
     $return_value = proc_close($process);
 
-    echo "command returned $return_value &lt;br&gt;";
+    echo "command returned $return_value <span class="nt">&lt;br&gt;</span>";
 } ?&gt;
 </code></pre></div></div>
 
@@ -237,16 +233,7 @@ command returned 0
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

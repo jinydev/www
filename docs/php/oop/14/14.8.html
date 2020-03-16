@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -44,12 +46,6 @@
           <p>PHP는 웹사이트 개발을 위한 서버사이드 언어 입니다.</p>
      
       </p>
-      <p>
-        <a class="btn btn-secondary btn-sm" href="http://www.yes24.com/Product/Goods/58072924?scode=032&OzSrank=20" role="button">Yes24</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">교보문고</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">알라딘</a>
-                    <a class="btn btn-secondary btn-sm" href="#" role="button">인터파크</a>
-      </p>
         </div>
       </div>
     </div>
@@ -70,7 +66,7 @@
 <h3 id="1481-초기화">14.8.1 초기화</h3>
 <p>__construct() 메서드는 객체 생성 시 초기값 설정을 해주는 특수 메서드입니다. 또는 생성자 메서드라고도 부릅니다.</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">members</span><span class="p">();</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">members</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p>다음과 같이 클래스 인스턴스를 생성할 때 __construct() 메서드는 한 번 실행하게 됩니다. 이 메서드명은 미리 정의된 이름입니다.</p>
@@ -78,7 +74,7 @@
 <p>__construct() 메서드를 사용하기 위해서는 클래스 내에 선언해야 합니다.</p>
 
 <p>|문법|</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">클래스명</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kd">class</span> <span class="nc">클래스명</span>
 <span class="p">{</span>
 	<span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
 	<span class="p">{</span>
@@ -93,7 +89,7 @@
 <p>클래스 상속의 경우 부모의 초기값 매직 메서드는 자동으로 실행되지 않습니다. 이런 경우 별도의 부모 초기값 매직 메서드를 추가해야 합니다.</p>
 
 <p>예제 파일 class-12.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="kd">class</span> <span class="nc">BaseClass</span>
 	<span class="p">{</span>
 		<span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
@@ -132,7 +128,7 @@
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BaseClass 초기화
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>BaseClass 초기화
 SubClass 초기화
 초기화 매개변수 a1 = 인자1
 초기화 매개변수 a2 = 인자2
@@ -151,7 +147,7 @@ hello world!
 <p>PHP 스크립트의 모든 소스가 실행 끝나고 나면 __destruct() 메서드 함수가 실행됩니다.</p>
 
 <p>|문법|</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">클래스명</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kd">class</span> <span class="nc">클래스명</span>
 <span class="p">{</span>
 	<span class="k">function</span> <span class="nf">__destruct</span><span class="p">()</span>
 	<span class="p">{</span>
@@ -161,7 +157,7 @@ hello world!
 </code></pre></div></div>
 
 <p>예제 파일 class-13.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="kd">class</span> <span class="nc">BaseClass</span>
 	<span class="p">{</span>
 		<span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
@@ -187,7 +183,7 @@ hello world!
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BaseClass 초기화
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>BaseClass 초기화
 hello world!
 BaseClass 소멸
 </code></pre></div></div>
@@ -203,7 +199,7 @@ BaseClass 소멸
 <p>만일 클래스 내에서 존재하지 않는 메서드를 호출할 때 오류를 발생하지 않고 __call() 메서드를 호출합니다.</p>
 
 <p>예제 파일 class-### 14.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="kd">class</span> <span class="nc">BaseClass</span>
 	<span class="p">{</span>
 		<span class="k">function</span> <span class="nf">__call</span><span class="p">(</span><span class="nv">$method</span><span class="p">,</span><span class="nv">$params</span><span class="p">)</span>
@@ -219,7 +215,7 @@ BaseClass 소멸
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>오류: 정의되지 않는 메서드 show를 a1, a2, a3호출했습니다.
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>오류: 정의되지 않는 메서드 show를 a1, a2, a3호출했습니다.
 </code></pre></div></div>
 
 <p>위의 예제 에서는 없는 메서드를 호출합니다. 없는 메서드를 호출하게 되면 대신에 __call() 매직 메서드를 호출합니다. __call() 함수는 두 개의 인자를 받습니다. 호출한 메서드명과 입력받은 파라미터 값을 배열로 전달합니다.</p>
@@ -230,7 +226,7 @@ BaseClass 소멸
 <p>__toString() 매직 매서드는 클래스가 문자열로 변환하여 처리될 때 동작합니다. 예로 클래스 객체를 echo $obj;처럼 출력할 때 __toString() 메서드가 동작합니다.</p>
 
 <p>예재 파일 class-15.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="kd">class</span> <span class="nc">TestClass</span>
 	<span class="p">{</span>
     		<span class="k">public</span> <span class="nv">$foo</span><span class="p">;</span>
@@ -254,7 +250,7 @@ BaseClass 소멸
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Hello
 </code></pre></div></div>
 
 <p><br /></p>
@@ -264,7 +260,7 @@ BaseClass 소멸
 <p>__invoke() 매직 메서드는 객체를 함수처럼 호출할 경우에 호출되는 메서드 입니다. $obj() 형태로 호출될 때 실행됩니다.</p>
 
 <p>예제파일) class-16.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="kd">class</span> <span class="nc">dataInt</span>
 	<span class="p">{</span>
     		<span class="k">public</span> <span class="k">function</span> <span class="nf">__invoke</span><span class="p">(</span><span class="nv">$x</span><span class="p">)</span>
@@ -282,7 +278,7 @@ BaseClass 소멸
 </code></pre></div></div>
 
 <p>화면출력)</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int(5) bool(true)
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>int(5) bool(true)
 </code></pre></div></div>
 
 <p><br /></p>
@@ -292,7 +288,7 @@ BaseClass 소멸
 <p>__clone() 매직 메소드는 객체가 복제 되었을 때 실행회는 메서드입니다.</p>
 
 <p>예제파일) class-17.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 
     <span class="kd">class</span> <span class="nc">MyClass</span>
     <span class="p">{</span>
@@ -312,7 +308,7 @@ BaseClass 소멸
 </code></pre></div></div>
 
 <p>화면출력)</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clone object
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>clone object
 </code></pre></div></div>
 
 <p><br /></p>
@@ -322,7 +318,7 @@ BaseClass 소멸
 <p>__set() 매직 메서드는 접근할 수 없는 프로퍼티에 값을 쓰고자 할 때 호출됩니다. __get() 매직 메서드는 접근할 수 없는 프로퍼티의 값을 읽을 경우에 호출됩니다. __isset() 매직 메서드는 접근할 수 없는 프로퍼티에 isset() 함수나 empty() 함수를 사용할 때 호출됩니다. __unset() 매직 매서드는 접근할 수 없는 프로퍼티를 unset() 함수를 사용할 때 호출됩니다.</p>
 
 <p>예제 파일 class-18.php</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
 	<span class="kd">class</span> <span class="nc">MyClass</span>
 	<span class="p">{</span>
 
@@ -367,7 +363,7 @@ BaseClass 소멸
 </code></pre></div></div>
 
 <p>결과</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Setting 'name' to 'jiny' 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Setting 'name' to 'jiny' 
 Is 'name' set? 
 Is 'name' set? 
 Unsetting 'name' 
@@ -404,16 +400,7 @@ Reading 'name'
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br></div>
+</div>
 
     </div>
     <!-- /.row -->

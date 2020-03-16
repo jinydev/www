@@ -13,6 +13,8 @@
                 max-width:100%;
             }
         </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
 
     </head>
@@ -81,7 +83,7 @@
 <p>회원 가입이 되어 있지 않은 경우에는, 먼저 회원 가입을 합니다. 회원가입을 하게 되면 인증서 만료가 되었을 경우에 안내 메일을 받을 수 있습니다.</p>
 
 <p>첫페이지에서 인증받고자 하는 도메인을 입력합니다. 
-도메인을 입력시 <code class="highlighter-rouge">호스트명</code>을 제외하면 자동적으로 도메인과 <code class="highlighter-rouge">www</code>호스트명이 들어간 두개의 설정에 대해서 인증서를 생성하여 줍니다.</p>
+도메인을 입력시 <code class="language-html highlighter-rouge">호스트명</code>을 제외하면 자동적으로 도메인과 <code class="language-html highlighter-rouge">www</code>호스트명이 들어간 두개의 설정에 대해서 인증서를 생성하여 줍니다.</p>
 
 <p><img src="./img/sslforfree_02.png" alt="SSLforfree" /></p>
 
@@ -92,7 +94,7 @@
 <h2 id="네임서버-인증">네임서버 인증</h2>
 <p>도메인 등록기관의 네임서버 설정을 통하여 사이트의 인증을 받는 방법입니다. SSLforfree에서 제공하는 TXT 레코드를 네임서버에 등록하여 인증을 받는 방법입니다.</p>
 
-<p>하단의 <code class="highlighter-rouge">Manually Verify Domain</code>을 클릭하면 다음과 같이 인증을 위한 TXT 정보가 출력이 됩니다.</p>
+<p>하단의 <code class="language-html highlighter-rouge">Manually Verify Domain</code>을 클릭하면 다음과 같이 인증을 위한 TXT 정보가 출력이 됩니다.</p>
 
 <p><img src="./img/sslforfree_03.png" alt="SSLforfree" /></p>
 
@@ -101,7 +103,7 @@
 <h2 id="txt-등록">TXT 등록</h2>
 <p>위의 정보를 자신의 도메인 관리 업체에 등록을 합니다.</p>
 
-<p>도메인 등록 관리 업체마다 적용 방법은 차이점이 있습니다. <code class="highlighter-rouge">후이즈</code>의 경우 네임서버 고급설정으로 들어가서 TXT를 추가할 수 있습니다.</p>
+<p>도메인 등록 관리 업체마다 적용 방법은 차이점이 있습니다. <code class="language-html highlighter-rouge">후이즈</code>의 경우 네임서버 고급설정으로 들어가서 TXT를 추가할 수 있습니다.</p>
 
 <p><img src="./img/txt_whois_01.png" alt="후이즈" /></p>
 
@@ -117,7 +119,7 @@
 
 <p><img src="./img/sslforfree_04.png" alt="SSLforfree" /></p>
 
-<p>TTL을 1로 설정을 하라고 <code class="highlighter-rouge">경고</code> 가 나오는데, 이는 도메인 업체에서 해결을 요청하여야 합니다.</p>
+<p>TTL을 1로 설정을 하라고 <code class="language-html highlighter-rouge">경고</code> 가 나오는데, 이는 도메인 업체에서 해결을 요청하여야 합니다.</p>
 
 <p>정상적으로 인증이 되면, 다음과 같이 인증서 파일을 다운로드 받을 수 있는 화면이 출력 됩니다.</p>
 
@@ -131,18 +133,18 @@
 <p>네임서버 인증방법 이외애 HTTP를 통한 인증을 받는 방법도 있습니다. 네임서버를 통하여 받는 방식보다 좀더 수월합니다.
 이 방식은 국내 도메인 호스팅의 회사들이 다양한 네임서버 설정 지원을 하고 있지 않기 때문에, 좀더 유용한 방법일 수 있습니다.</p>
 
-<p><code class="highlighter-rouge">Manual verification</code>을 선택합니다.</p>
+<p><code class="language-html highlighter-rouge">Manual verification</code>을 선택합니다.</p>
 
 <p><img src="./img/sslforfree_06.png" alt="SSLforfree" /></p>
 
-<p>하단의 <code class="highlighter-rouge">Manually Verify Domain</code>을 클릭하면 서버에 올려 놓을 파일을 다운로드 받을 수 있습니다.</p>
+<p>하단의 <code class="language-html highlighter-rouge">Manually Verify Domain</code>을 클릭하면 서버에 올려 놓을 파일을 다운로드 받을 수 있습니다.</p>
 
 <p><img src="./img/sslforfree_07.png" alt="SSLforfree" /></p>
 
-<p>서버에 <code class="highlighter-rouge">.well-known</code> 폴더를 만들고 안에 다시 <code class="highlighter-rouge">acme-challenge</code>를 만듭니다. 폴더 안에 다운로드 받은 넣어 둡니다.
+<p>서버에 <code class="language-html highlighter-rouge">.well-known</code> 폴더를 만들고 안에 다시 <code class="language-html highlighter-rouge">acme-challenge</code>를 만듭니다. 폴더 안에 다운로드 받은 넣어 둡니다.
 그리고 확인 URL을 클릭하여 인증을 처리합니다.</p>
 
-<p>정상적으로 인증이 완료 되었다면 <code class="highlighter-rouge">Download SSL Certification</code>을 선택합니다.</p>
+<p>정상적으로 인증이 완료 되었다면 <code class="language-html highlighter-rouge">Download SSL Certification</code>을 선택합니다.</p>
 
 <p>정상적으로 인증이 되면, 다음과 같이 인증서 파일을 다운로드 받을 수 있는 화면이 출력 됩니다.</p>
 
@@ -164,16 +166,7 @@
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-
-<select class="form-control">
-    <option>PHP 언어</option>
-    <option>Mysql 데이터베이스</option>
-    <option>Git교과서</option>
-</select>
-<br> 
-
-<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<br><br>
+<br>
 
             <!--에드센스-->
             <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
