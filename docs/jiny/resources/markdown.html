@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JinyDev</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">JinyDev</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mysql.jiny.dev">Mysql</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://git.jiny.dev">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h1 id="마크다운">마크다운</h1>
+<hr />
+<p>마크다운은 텍스트 에디터에서 간단하게 문서를 작성할 수 있는 양식입니다.</p>
+
+<h2 id="변환기">변환기</h2>
+<hr />
+<p>마크다운 문법을 HTML로 출력하기 위해서는 변환기가 필요로 합니다. <code class="language-html highlighter-rouge">지니PHP</code>는 마크다운 웹 변환을 하기 위해서 외부 페키지를 같이 이용합니다.</p>
+
+<p>이 페키지의 기본 원형은 <code class="language-html highlighter-rouge">erusev/parsedown</code> 입니다.</p>
+
+<h2 id="편집기">편집기</h2>
+<hr />
+<p>개발자들에게는 마크다운 문서작성법은 매우 익숙할 것입니다. 
+마크다운은 글의 내용과 함께 몇가지 기호를 같이 사용하게 됩니다. 이러한 작성방식은 일반 사용자에게는 익숙하지 않습니다.</p>
+
+<p>최근에는 여러 종류의 전용 에디터가 많이 있습니다. 대표적으로는 <code class="language-html highlighter-rouge">타이포라</code>라는 무료 에디터가 있습니다. 
+타이포라는 https://typora.io/ 에서 무료로 다운로드 받을 수 있습니다. 전용 에디터를 이용하면 직관적으로 글을 작성할 수 있습니다.</p>
+
+<h2 id="자동경로-처리">자동경로 처리</h2>
+<hr />
+<p>마크다운, html등 문서에 이미지를 넣을 수 있습니다.</p>
+
+<p>문서에 이미지를 삽입하기 위해서는 경로를 같이 설정해야 합니다. 가장 쉽게 이미지를 삽입하는 방법은 <code class="language-html highlighter-rouge">상대경로</code>를 사용하는 것입니다.
+상대경로로 문서를 작성해 두면, 문서편집기에서도 쉽게 이미지를 같이 확인을 할 수 있습니다.</p>
+
+<p>하지만, 이렇게 설정된 상대경로가 프레임워크에서 동작을 할때에는 문제가 발생합니다. 프레임워크에서 외부로 보이는 경로는 <code class="language-html highlighter-rouge">/public</code> 부터 입니다.
+또한 마크다운로 작성된 리소스는 <code class="language-html highlighter-rouge">/resource</code> 로 외부와 내부의 경로가 일치 하지 않습니다.</p>
+
+<p><code class="language-html highlighter-rouge">지니PHP</code>에서는 이렇게 차이가 나는 이미지의 경로를 자동으로 매칭하여 동작을 처리해 주게 됩니다.</p>
+
+<p>문서상에서 <code class="language-html highlighter-rouge">./img/파일명</code> 이렇게 내부 경로를 만들어 놓으면 실제 <code class="language-html highlighter-rouge">view</code>에서 처리할때 <code class="language-html highlighter-rouge">public/_</code>로 이미지를 복사하여 경로를 재설정을 자동으로 처리해 줍니다.</p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/php">PHP 기본문법</a></li>
+    <li class="list-group-item"><a href="https://mysql.jiny.dev">Mysql</a></li>
+    <li class="list-group-item"><a href="https://git.jiny.dev">Git 교과서</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

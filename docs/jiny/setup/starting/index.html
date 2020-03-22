@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JinyDev</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">JinyDev</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mysql.jiny.dev">Mysql</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://git.jiny.dev">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h1 id="서버실행">서버실행</h1>
+<hr />
+<p>지니PHP 프로젝트가 설치가 완료되었다면 이제 서버를 실행하여 사용을 하실 수 있습니다.<br />
+지니PHP는 <code class="language-html highlighter-rouge">아파치</code> 또는 <code class="language-html highlighter-rouge">IIS</code>와 같은 다양한 서버를 통하여 서비스 운영을 할 수 있습니다.</p>
+
+<p><br /></p>
+<h2 id="로컬환경">로컬환경</h2>
+<hr />
+<p>로컬 개발환경은 직접적인 서버와 연결없이 빠른 개발을 할 수 있는 유용한 환경 입니다.<br />
+최근에는 로컬환경에서 개발/테스트를 수행한 후에 실제 서버에 배포하는 형태로 작업이 많이 이루지고 있습니다.</p>
+
+<p>지니PHP 또한 로컬환경에서 서버를 실행, 개발 작업을 할 수 있습니다.</p>
+
+<p><br /></p>
+<h3 id="내장서버">내장서버</h3>
+<hr />
+<p>PHP 5.4버전 부터는 별도의 외부서버의 도움 없이도 자체적인 서버 구동환경을 지원하고 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nx">php</span> <span class="o">-</span><span class="nx">S</span> <span class="nx">localhost</span><span class="o">:</span><span class="mi">8000</span>
+</code></pre></div></div>
+<p>위와 같이 입력하게 되면 현재의 위치를 <code class="language-html highlighter-rouge">root document</code>로 하여 내장 서버를 실행할 수 있습니다.</p>
+
+<p>또는 다른 <code class="language-html highlighter-rouge">root document</code>를 시작포인트로 설정하기 위해서는 <code class="language-html highlighter-rouge">-t</code> 옵션을 같이 사용할 수 있습니다.<br />
+<code class="language-html highlighter-rouge">./public</code>을 문서시작 포인트로 할 경우에는 다음과 같이 입력하면 됩니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nx">php</span> <span class="o">-</span><span class="nx">S</span> <span class="nx">localhost</span><span class="o">:</span><span class="mi">8000</span> <span class="o">-</span><span class="nx">t</span> <span class="o">./</span><span class="k">public</span>
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="아파치">아파치</h3>
+<hr />
+<p>PHP는 오랜기간동안 아파치와 같은 웹서버들과 함께 동작을 하였습니다.<br />
+또한, 실제적인 서버들은 아파치와 같은 서버들로 같이 PHP가 동작을 합니다.</p>
+
+<p>서버에 관한 설정방법은 관련 정보를 참고해 주시길 바랍니다.</p>
+
+<p><br /></p>
+<h2 id="동영상">동영상</h2>
+<hr />
+<p>좀더 쉽게 이해하기 위해서 유투브 동영상을 준비하였습니다. 지니PHP 유투브 체널을 구독하시면 더 많은 정보의 기술자료 동영상을 시청할 수 있습니다</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q2ht5_gLxF8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<p><br />
+<br />
+<br />
+<br /></p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/php">PHP 기본문법</a></li>
+    <li class="list-group-item"><a href="https://mysql.jiny.dev">Mysql</a></li>
+    <li class="list-group-item"><a href="https://git.jiny.dev">Git 교과서</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

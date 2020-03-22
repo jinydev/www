@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JinyDev</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">JinyDev</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mysql.jiny.dev">Mysql</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://git.jiny.dev">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h1 id="테마">테마</h1>
+<hr />
+<p>테마는 사이트의 정체성을 표현할 수 있는 디자인적 요소 입니다. 각각의 모든 사이트 들은 자신들만의 정체성을 가지는 디자인 스타일을 가지고 있습니다.</p>
+
+<p>지니PHP는 사이트의 정체성을 관리할 수 있는 <code class="language-html highlighter-rouge">테마</code>기능을 지원합니다. 테마는 다른말로 <code class="language-html highlighter-rouge">스킨</code>이라는 용어도 같이 사용을 하였습니다.</p>
+
+<ul>
+  <li><a href="./theme/use">테마 사용하기</a></li>
+  <li><a href="./theme/Liquid">Liquid 결합</a></li>
+  <li><a href="./theme/custom">복수테마</a></li>
+  <li><a href="./theme/deploy">테마배포</a></li>
+  <li><a href="./theme/code">코드뷰</a></li>
+</ul>
+
+<p><br /></p>
+<h2 id="디자인의-분리">디자인의 분리</h2>
+<hr />
+<p>기존적인 뷰의 리소스는 디자인과 분리되어 있습니다.  실제적인 동작의 결과만을 출력하고, 보기 좋은 화면으로 보이기 위해서 디자인을 결합하게 됩니다.</p>
+
+<p>디자인은 보통 사이트 전체에 공통적으로 적용이 됩니다. 이렇게 분리된 디자인을 괸리하는 것을 테마라고 합니다.</p>
+
+<p><br /></p>
+<h2 id="결합">결합</h2>
+<hr />
+<p>테마는 분리된 디자인을 가지고 있습니다. 테마는 크게 <code class="language-html highlighter-rouge">레이아웃</code>관 <code class="language-html highlighter-rouge">상단</code>/<code class="language-html highlighter-rouge">하단</code>으로 구성되어 있습니다.</p>
+
+<p>레이아웃은 다시 상단과 하단으로 분리되어 있습니다.
+레이아웃은 컨덴츠를 결합하고, 공통된 상단과 하단을 삽입하여 화면을 출력하게 됩니다.</p>
+
+<p><code class="language-html highlighter-rouge">지니PHP</code>는 하향식 계층구조 보다 상향식 계층구조를 가지고 있습니다.
+하향식 구조는 먼저 레이아웃을 처리하고 상단, 하단 처리 그리고 내용을 처리함니다.
+반면에 지니PHP에서 채택한 상향식은 먼저 처리될 페이지를 우선적으로 처리합니다.</p>
+
+<p>이는 경우에 따라서 테마를 사용하지 않은 경우도 있기 때문입니다.
+이러한 방식은 해더. 퍼터. 레이아웃을 쓰지 않는 유형의 페이지를 처리하는데 더 빠른 속도를 얻을 수 있습니다.</p>
+
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/php">PHP 기본문법</a></li>
+    <li class="list-group-item"><a href="https://mysql.jiny.dev">Mysql</a></li>
+    <li class="list-group-item"><a href="https://git.jiny.dev">Git 교과서</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

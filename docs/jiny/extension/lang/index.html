@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JinyDev</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">JinyDev</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mysql.jiny.dev">Mysql</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://git.jiny.dev">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h1 id="다국어-페키지">다국어 페키지</h1>
+<hr />
+<p><code class="language-html highlighter-rouge">지니PHP</code>는 다국어 처리를 위한 새로운 공개 페키지(<code class="language-html highlighter-rouge">jiny/lang</code>)를 생성(2018.10.14)하였습니다.<br />
+다국어 페키지는 소스코드의 변경없이 다양한 언어의 문자열을 관리하고 출력하는 역활을 수행합니다.</p>
+
+<p><br /></p>
+<h2 id="설치방법">설치방법</h2>
+<hr />
+<p>다국어 페키지의 이름은 <code class="language-html highlighter-rouge">jiny/lang</code>입니다. PHP코드로 작성이 되었으며, 컴포저를 통하여 배포를 합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>composer require jiny/lang
+</code></pre></div></div>
+
+<p>위와 같이 입력하시면 페키지를 설치할 수 있습니다.</p>
+
+<p><br /></p>
+<h2 id="사용방법">사용방법</h2>
+<hr />
+<p>페키지를 설치하시면 간단한 예제 코드가 있습니다.</p>
+
+<p>src/text/index.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$msg</span> <span class="o">=</span> <span class="nx">_msg_init</span><span class="p">();</span>
+<span class="nv">$msg</span><span class="o">-&gt;</span><span class="na">enableTrans</span><span class="p">(</span><span class="s2">"transkey.php"</span><span class="p">);</span>
+
+<span class="nv">$str</span> <span class="o">=</span> <span class="s2">"오류가 발생하였습니다."</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$msg</span><span class="o">-&gt;</span><span class="na">echo</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span><span class="s2">"en"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>컴포저 오토로드를 통하여 인스턴스를 생성후에 사용을 하실 수 있습니다.</p>
+
+<h3 id="인스턴스-생성">인스턴스 생성</h3>
+<hr />
+<p>빠르고 간단한 인스턴스 생성을 위해서 전용 헬퍼함수를 제공합니다. <code class="language-html highlighter-rouge">_msg_init()</code> 함수는 <code class="language-html highlighter-rouge">jiny/lang</code>의 패키지 인스턴스를 생성하여 반환을 합니다.</p>
+
+<h3 id="구글번역-키">구글번역 키</h3>
+<hr />
+<p><code class="language-html highlighter-rouge">jiny/lang</code>은 입력된 문자열을 자동으로 번역처리를 지원합니다. 자동번역을 사용하기 위해서는 구글 번역API 키가 필요로 합니다.</p>
+
+<p>API는 별도의 파일로 작성을 하여 삽입을 합니다. 페키지에는 키작성 방식에 대한 예제파일이 같이 제공됩니다.</p>
+
+<p>transkey.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
+
+<span class="cd">/**
+ * 구글 API 설정파일
+ */</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'API키를 입력해 주세요'</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>이렇게 작성한 키파일의 경로를 <code class="language-html highlighter-rouge">enableTrans()</code> 메소드의 인자값으로 전달을 합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$msg</span><span class="o">-&gt;</span><span class="na">enableTrans</span><span class="p">(</span><span class="s2">"transkey.php"</span><span class="p">);</span>
+</code></pre></div></div>
+<p>키파일을 작성되면 자동적으로 번역기능을 통하여 문자열을 관리하게 됩니다.</p>
+
+<p><br /></p>
+<h2 id="사용방법-1">사용방법</h2>
+<hr />
+<p>문자열의 다국어 처리를 하는 방법은 간단합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$str</span> <span class="o">=</span> <span class="s2">"오류가 발생하였습니다."</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$msg</span><span class="o">-&gt;</span><span class="na">echo</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span><span class="s2">"en"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-html highlighter-rouge">echo()</code>메소드를 호출하시면 됩니다. 호출시 인자값은 2개가 있습니다.<br />
+기준이 되는 문자열과, 언어 코드 입니다. 언어코드는 생략이 가능하나, 생략시에는 입력한 문자열이 반환됩니다.</p>
+
+<p><br /></p>
+<h2 id="동작원리">동작원리</h2>
+<hr />
+<p><code class="language-html highlighter-rouge">jiny/lang</code>의 다국어 처리결과는 파일로 저장이 됩니다.<br />
+각각의 문자열에 맞는 <code class="language-html highlighter-rouge">sha3-512</code> 해시를 생성하여 파일단위로 관리를 합니다.</p>
+
+<p><br /></p>
+<h3 id="리소스경로">리소스경로</h3>
+<hr />
+<p>각각의 문자열 파일은 설정한 디렉토리(<code class="language-html highlighter-rouge">resource/lang</code>)에 저장을 하게 됩니다.
+기본 저장경로를 변경을 원하신다면 <code class="language-html highlighter-rouge">인스턴스 초기값</code>으로 경로를 설정하시면 됩니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$msg</span> <span class="o">=</span> <span class="nx">_msg_init</span><span class="p">(</span><span class="s2">"경로주소"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="파일구성">파일구성</h3>
+<hr />
+<p>문자열 리소스는 json 형태로 저장이 됩니다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"오류가 발생하였습니다."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An error has occurred."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1539499286</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>위와 같이 원문 문자열 <code class="language-html highlighter-rouge">str</code>을 가지고 있습니다. 또한, 각각의 언어코드에 맞게 문자열을 가지고 있습니다.
+문자열은 <code class="language-html highlighter-rouge">작성일자</code>와 <code class="language-html highlighter-rouge">작성자 정보</code>를 같이 가지게 되어 있습니다.</p>
+
+<p><br /></p>
+<h3 id="히스토리-관리">히스토리 관리</h3>
+<hr />
+<p>언어별 문자열은 복수의 배열로 구성이 되어 있습니다. 맨 마지막에 최신 버전을 위에 존재하게 됩니다.</p>
+
+<p><br /></p>
+<h3 id="캐쉬기능">캐쉬기능</h3>
+<hr />
+<p>호출되는 문자열은 파일 형태로 캐쉬되어 있습니다. 매번 번역을 진행하지 않기 때문에 외부 API 서비스 비용을 절감할 수 있습니다.<br />
+또한, 기계번역 외에 <code class="language-html highlighter-rouge">사용자번역</code>을 직접 추가할 수 있습니다. 사용자 번역을 맨 위의 배열값으로 설정하시면 우선 출력 됩니다.</p>
+
+<p><br /></p>
+<h2 id="의존성">의존성</h2>
+<hr />
+<p><code class="language-html highlighter-rouge">jiny/lang</code> 페키지는 몇개의 다른 페키지들을 포함하는 의존관계가 있습니다.<br />
+보다 자세한 것은 <code class="language-html highlighter-rouge">composer.json</code>파일을 참고하시길 바랍니다.</p>
+
+<p><br /></p>
+<h2 id="오픈소스">오픈소스</h2>
+<hr />
+<p><code class="language-html highlighter-rouge">jiny/lang</code>은 오픈소스로 진행되는 응용 페키지 라이브러리 입니다. 모든 소스는 깃허브에 저장되어 있으며 주소는 다음과 같습니다.<br />
+https://github.com/jinyphp/lang.git</p>
+
+<p>누구나 라이브러리 소스 개발에 참여하실 수 있으며, 포크 및 수정후에 풀리퀘스트를 보내주시면 됩니다.</p>
+
+<p><br />
+<br /></p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/php">PHP 기본문법</a></li>
+    <li class="list-group-item"><a href="https://mysql.jiny.dev">Mysql</a></li>
+    <li class="list-group-item"><a href="https://git.jiny.dev">Git 교과서</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,108 @@
+I"k<h1 id="컨트롤러">컨트롤러</h1>
+<hr />
+<p>지니PHP는 <code class="language-html highlighter-rouge">프레임워크</code>로 자신만의 동작 컨트롤러를 만들어 사용을 할 수 있습니다. 컨트롤러는 MVC패턴 중에서 <code class="language-html highlighter-rouge">C</code>를 의미합니다.</p>
+
+<p>컨트롤러는 모델(model)과 뷰(view)사이에서 실제적인 HTTP의 요청을 처리하는 동작을 수행합니다.</p>
+
+<p><br /></p>
+<h2 id="컨트롤러-호출">컨트롤러 호출</h2>
+<hr />
+<p>프레임워크의 부팅과정을 완료한후 url에 매칭된 클래스 파일을 자동으로 로드하여 실행하게 됩니다.<br />
+요청된 HTTP의 동작을 수행하기 위해서 프레임워크는 초기화, 라우팅작업을 걸처서 컨트롤러로 진입을 하게 됩니다.
+컨트롤러는 클래스로 요청된는 HTTP 동작별로 개별 작성을 하게 됩니다.</p>
+
+<p>프레임워크가 컨트롤러를 찾아 호출하는 방법은 2가지 입니다.</p>
+<ul>
+  <li>url 매칭</li>
+  <li>라우팅</li>
+</ul>
+
+<p><br /></p>
+<h3 id="url-방식">url 방식</h3>
+<hr />
+<p>url 매칭은 입력된 url정보값을 통하여 컨트롤러를 선택하는 방법입니다.<br />
+코드이그나이터와 같은 프레임워크는 <code class="language-html highlighter-rouge">http://도메인/컨트롤러/메소드</code> 형태로 url 입력값의 첫번째 인자를 컨트롤러 명으로 사용을 합니다.
+이는 직관적으로 url의 주소만 가지고도 동작처리를 예상할 수 있습니다.</p>
+
+<p>이처럼 프레임워크는 url의 값을 분석하여 다양한 처리를 하게 됩니다. url의 분석은 보통 <code class="language-html highlighter-rouge">부트스트래핑</code>이라는 곳에서 이를 분석하여 처리를 하도록 합니다.
+보다 자세한 구조는 부트스트래핑 소스를 참고해 보시길 바랍니다.</p>
+
+<p><br /></p>
+<h3 id="라우팅-방식">라우팅 방식</h3>
+<p>url 구조를 지정하는 방법 이외에 별도의 전용 <code class="language-html highlighter-rouge">라우터</code> 기능을 이용하여 매핑을 할 수 있습니다.<br />
+라우터는 입력된 url구조를 개발자가 직접 지정한 컨트롤러로 매핑하여 동작을 처리하게 하는 기술입니다.
+보다 자세한 것은 라우팅 설명을 참고하시길 바랍니다.</p>
+
+<p><br /><br /></p>
+<h2 id="파일">파일</h2>
+<hr />
+<p>사용자는 자신만의 개별 컨드롤러를 생성할 수 있습니다.<br />
+또한 컨트롤러는 한개의 파일에 한개의 클래스만 정의를 하여 작성을 하도록 합니다. 컨트롤러는 <code class="language-html highlighter-rouge">/app/controllers</code> 폴더 안에 작성을 하면 됩니다.</p>
+
+<p><br /></p>
+<h3 id="자동로드">자동로드</h3>
+<p>–
+개별로 작성된 컨트롤러 클래스 파일은 프레임워크의 오토로더(autoloader)를 통하여 자동으로 <code class="language-html highlighter-rouge">require</code>처리 됩니다.<br />
+따라서 원하는 컨트롤러 클래스의 파일을 생성하고 호출만 하면 됩니다.</p>
+
+<p><br /></p>
+<h3 id="컨트롤러명">컨트롤러명</h3>
+<hr />
+<p>컨트롤러의 클래스명은 <code class="language-html highlighter-rouge">이름</code>+<code class="language-html highlighter-rouge">Controller</code> 접두사를 같이 사용하여 클래스를 선언을 합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kd">class</span> <span class="nc">클래스명</span> <span class="k">extends</span> <span class="nx">controller</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>뒤에 붙는 <code class="language-html highlighter-rouge">Controller</code> 접두사는 프레임워크에서 자동적으로 처리를 하여 컨트롤러를 생성 호출하게 됩니다.</p>
+
+<p><br /></p>
+<h2 id="컨트롤러-상속">컨트롤러 상속</h2>
+<hr />
+<p>컨트롤러를 생성할때 <code class="language-html highlighter-rouge">지니PHP</code>에서 기본적으로 제공하는 controller 클래스를 상속받아 처리를 해야 합니다.<br />
+이 상위 부모 클래스는 컨트롤러에서 필요한 몇가지 메소드와 프로퍼티를 가지고 있습니다.</p>
+
+<p><br /></p>
+<h2 id="호출">호출</h2>
+<hr />
+<p>지니PHP 코어는 매칭된 컨트롤러 클래스의 인스턴스를 자동으로 생성하여 메소드를 호출하는 형태로 동작을 합니다.<br />
+컨트롤러는 실제적인 동작 처리 루틴이라고 할 수 있습니다.</p>
+
+<p><br /></p>
+<h3 id="기본-메소드">기본 메소드</h3>
+<hr />
+<p>url 요청과 컨트롤러가 매칭되어 있는 경우 기본적으로 동작을 해야 되는 메서드가 필요합니다.</p>
+
+<p>기본 메서드는 <code class="language-html highlighter-rouge">index()</code> 입니다.</p>
+
+<p>예를들어 <code class="language-html highlighter-rouge">도메인/home</code>으로 접속시 <code class="language-html highlighter-rouge">HomeController</code> 컨트롤러가 호출됩니다. 이 컨트롤러는 다양한 매서드를 담고 있는데
+위와 같이 컨트롤러 이름만 있는 경우에는 index 매서스를 호출하게 됩니다.</p>
+
+<p><br /></p>
+<h3 id="지정-메소드">지정 메소드</h3>
+<hr />
+<p>지정 메소드란 자동적으로 선택되지 않고 url구조 또는 라우터를 통하여 호출될 메소드를 지정하는 방법입니다.<br />
+url 구조를 통하여 매칭될 경우에는 <code class="language-html highlighter-rouge">http://도메인/컨트롤러/메소드/값</code>와 같이 두번째의 구분값이 호출될 매소드로 지정하게 되어 있습니다.</p>
+
+<p><br /></p>
+<h2 id="출력">출력</h2>
+<hr />
+<p>컨트롤러는 실제적인 처리 로직들을 담고 있는 코드입니다.<br />
+어떠한 컨트롤러들은 실제적인 동작만 하고 결과를 출력하지 않을 수 있습니다. 또는 다른 컨트롤러는 동작을 한 후에 결과 값을 화면에 출력을 해야 합니다.</p>
+
+<p><br /></p>
+<h3 id="뷰">뷰</h3>
+<hr />
+<p>코드의 동작과 결과를 출력하기 위해서는 <code class="language-html highlighter-rouge">뷰</code>로 전달할 수 있습니다.<br />
+컨트롤러에서 뷰를 호출하여 값을 전달하는 방식은 매우 간단합니다. 뷰 페키지의 헬퍼함수인 <code class="language-html highlighter-rouge">view()</code>를 호출하기면 하면 됩니다.</p>
+
+<p>보다 자세한 뷰의 호출 사용법은 <code class="language-html highlighter-rouge">뷰</code>부분을 참고해 주시길 바랍니다.</p>
+
+<p><br /></p>
+<h3 id="return">return</h3>
+<hr />
+<p>처리결과를 화면에 출력을 하기 위해서는 <code class="language-html highlighter-rouge">return</code>을 사용하도록 합니다. 컨트롤러는 <code class="language-html highlighter-rouge">return</code>을 통하여 값을 반환하게 되고 이를 <code class="language-html highlighter-rouge">reponse</code>로 전달을 하게 됩니다.<br />
+response는 이렇게 반환 받은 값의 타입을 분석하여 브라우저로 전송을 하게 됩니다.</p>
+:ET

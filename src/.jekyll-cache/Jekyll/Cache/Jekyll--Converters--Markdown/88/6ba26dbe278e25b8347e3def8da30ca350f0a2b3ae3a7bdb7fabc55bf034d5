@@ -1,0 +1,48 @@
+I"8<h1 id="페키지">페키지</h1>
+<hr />
+<p>페키지는 <code class="language-html highlighter-rouge">라이브러리</code>와 같은 개념의 코드 집합체 입니다. 라이브러리는 직접 코드를 다운로드 받아 설치 유지 관리하기 불편합니다.
+하지만, 페키지는 코드들을 전문적으로 관리하고 배포를 하게 됩니다.</p>
+
+<p><br /></p>
+<h2 id="페키지-1">페키지</h2>
+<hr />
+<p>지니PHP는 여러개의 자체제작 페키지들을 같이 포함하고 있습니다.<br />
+또한, 각각의 페키지들은 <code class="language-html highlighter-rouge">심포니</code>, <code class="language-html highlighter-rouge">라라벨</code>과 같은 여러 참조되는 페키지들을 포함하고 있습니다.<br />
+지니PHP의 페키지 또한 다른 프레임워크에서도 동작을 하기 위해서 최대한 분리작업을 같이 하고 있습니다.</p>
+
+<h2 id="컴포저">컴포저</h2>
+<hr />
+<p>PHP에서 코드들의 페키지를 잘 관리하고 배포하는 방법으로 <code class="language-html highlighter-rouge">컴포저</code>가 있습니다. 컴포저는 <code class="language-html highlighter-rouge">packgist</code>사에서 개발 배포하고 있는 서비스 입니다.
+최신의 PHP 프레임워크들을 컴포저를 통하여 코드를 배포하고, 유지하는 것이 일반화 되어 가고 있습니다.</p>
+
+<h2 id="지니-페키지">지니 페키지</h2>
+<hr />
+<p><code class="language-html highlighter-rouge">지니PHP</code>는 컴포저로 패키지화 된 14개의 packages로 구성되어 있습니다. 페키지들은 깃허브에 등록되고 packagist 사이트을 통하여 관리하게 됩니다.
+지니PHP의 관련된 페키지들은 https://packagist.org 에서 <code class="language-html highlighter-rouge">jiny</code>로 검색을 해볼 수 있습니다.</p>
+
+<h2 id="확장성">확장성</h2>
+<hr />
+<p>대부분의 프레임워크가 컴포저 페키지를 사용하는 이유는 확정성이 좋기 때문입니다.</p>
+
+<p>패키지로 제작된 라이브러리는 쉽게 검색하고 설치를 할 수 있습니다. 또한, 업데이트도 자동으로 할 수 있어서 매우 편리합니다.
+개발자 스스로 새로운 페키지를 검색하여 <code class="language-html highlighter-rouge">지니PHP</code>에 추가할 수 있습니다. 또는 새로운 코드와 페키지를 공헌할 수도 있습니다.</p>
+
+<p>지니의 모든 기능들은 페키지화 되어 각각의 모듈로 개별화 동작을 합니다.</p>
+
+<h2 id="페키지-개발">페키지 개발</h2>
+<hr />
+<p>새로운 <code class="language-html highlighter-rouge">지니PHP</code> 페키지를 개발할 수 있습니다. 패키지 개발을 통하여 폐쇠적인 프레임워크가 아니라 확장을 위한 개방형 프레임워크로 지향하기 위함입니다.
+지니PHP는 초기 프레임워크의 사용자들을 위해서 몇가지 유용한 페키지를 기본적으로 제공하고 있습니다.</p>
+
+<p>대표적으로 제공되는 플러그인은 <code class="language-html highlighter-rouge">pages</code> 페이지 자동으로 생성해 주는 컨트롤러가 입니다.</p>
+
+<h2 id="페키지확인">페키지확인</h2>
+<hr />
+<p>지니는 컴포저를 기본 탑제하여 다양한 페키지를 결합하여 사용할 수 있습니다. 
+프레임 내에서 composer.json 파일을 읽어 보다 유연한 동작처리를 제어 할 수 있습니다.</p>
+
+<p>지니는 소프트웨어 공학적으로 다양한 디자인 패탄들을 적용하였습니다. 
+그중 파사드 패턴은 프레임 내에서 사용하는 페키지들을 처리하는데 매우 유용한 패턴입니다.</p>
+
+<p>향후 새로운 패키지로 변경을 하더라도 중간 입출력을 담당하는 파샤드 기능을 통하여 최소한의 수정으로 기능을 유지관리 할 수 있습니다.</p>
+:ET

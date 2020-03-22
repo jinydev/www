@@ -1,0 +1,43 @@
+I"^<h1 id="메뉴파일">메뉴파일</h1>
+<hr />
+<p>사이트에 적용되는 메뉴 데이터는 파일DB와 같습니다. <code class="language-html highlighter-rouge">menu</code> 페키지는 지정된 리소스에서 데이터 파일을 읽어 배열화 합니다.</p>
+
+<h2 id="저장위치">저장위치</h2>
+<hr />
+<p>메뉴 데이터의 기본 저장폴더는 <code class="language-html highlighter-rouge">resource/menu</code>입니다.</p>
+
+<p>하지만, 이 기본위치는 변경이 가능합니다. 실제적으로 메뉴 페키지가 리소스 파일을 읽을때 참조하는 값은 사이트 설정값입니다.
+사이트 환경설정 파일 <code class="language-html highlighter-rouge">site.ini</code>에서 지정한 경로의 리소스 파일을 읽어옵니다.</p>
+
+<h2 id="리소스-설정">리소스 설정</h2>
+<hr />
+<p>메뉴의 리소스는 <code class="language-html highlighter-rouge">site.ini</code>에서 지정을 합니다. 이 파일은 <code class="language-html highlighter-rouge">ini</code>타입으로 작성이 되어 있습니다.
+ini는 일반사람들도 쉽게 이해할 수 있는 구조로 설정값을 변경할 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="c1"># 메뉴설정</span>
+<span class="nx">menu_type</span> <span class="o">=</span> <span class="nx">json</span>
+<span class="nx">menu_path</span> <span class="o">=</span> <span class="o">./</span><span class="nx">resource</span><span class="o">/</span><span class="nx">menu</span><span class="o">/</span><span class="nx">menu</span><span class="o">.</span><span class="nx">json</span>
+</code></pre></div></div>
+
+<p>메뉴의 설정값은 크게 2가지로 되어 있습니다.</p>
+
+<h3 id="메뉴타입">메뉴타입</h3>
+<hr />
+<p><code class="language-html highlighter-rouge">menu_type</code>은 파일의 데이터의 구조가 어떻게 되어 있는지를 지정하는 값입니다. 지니의 <code class="language-html highlighter-rouge">menu</code>페키지는 <code class="language-html highlighter-rouge">json</code>과 <code class="language-html highlighter-rouge">php 배열</code> 방식으로 데이터의 값을 지정할 수 있습니다.
+지정된 메뉴의 타입에 따라 전용 드라이버가 동작하여 파일을 읽어 처리하게 됩니다.</p>
+
+<h3 id="경로">경로</h3>
+<p><code class="language-html highlighter-rouge">menu_path</code>는 실제 메뉴 데이터파일을 가르킵니다. 이 파일을 읽어서 배열 데이터를 반환합니다.</p>
+
+<h2 id="이중사이트">이중사이트</h2>
+<hr />
+<p>메뉴의 기본적인 동작은 사이트의 설정값에 따라서 동적으로 메뉴 데이터를 처리할 수 있습니다.</p>
+
+<p>지니PHP는 <code class="language-html highlighter-rouge">/app/conf/config.php</code>에서 동적으로 사이트 설정값을 읽어올 수 있습니다. 이를 같이 이용하면 여러개의 도메인별로 각기 다른 형태의 메뉴를 출력할 수 있습니다.
+즉 A사이트는 A메뉴, B사이트는 B메뉴를 출력할 수 있습니다.</p>
+
+<h2 id="동적-메뉴변경">동적 메뉴변경</h2>
+<hr />
+<p>사이트의 설정값 이외에도 메뉴의 헬퍼함수를 통하여 리소스를 변경할 수도 있습니다.
+중간에 리소스를 변경하게 되면, 서브 폴더마다 다른 메뉴를 적용할 수도 있습니다.</p>
+:ET

@@ -1,0 +1,10 @@
+I"<h1 id="확인">확인</h1>
+<hr />
+
+<h2 id="타임존-확인">타임존 확인</h2>
+<hr />
+<p>로컬의 타임존을 확인합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Info:timezone
+</code></pre></div></div>
+:ET

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JinyDev</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">JinyDev</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mysql.jiny.dev">Mysql</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://git.jiny.dev">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h1 id="헬퍼">헬퍼</h1>
+<hr />
+<p>뷰는 클래스 객체로 되어 있습니다. 뷰의 클래스를 직접 처리하는 것보다 헬퍼함수를 이용하면 편리합니다.</p>
+
+<h2 id="헬퍼함수">헬퍼함수</h2>
+<hr />
+<p>헬퍼함수는 프레임워크 내에서 장소에 구분없이 호출하여 사용을 할 수 있는 장점이 있습니다. 
+또한 클래스의 인스턴스를 가지고 있지 않은 상태에서도 호출을 할 수 있는 장점이 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nx">view</span><span class="p">(</span><span class="nx">파일명</span><span class="p">,</span> <span class="nx">데이터</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-html highlighter-rouge">view()</code> 헬퍼함수는 두개의 인자값을 가지고 있습니다. 
+첫번째는 파일명, 두번째는 데이터 입니다.</p>
+
+<h3 id="파일명">파일명</h3>
+<hr />
+<p>첫번째 인값인 파일명은 뷰의 기본 리소스 파일입니다.
+지정된 경로에서 파일을 읽어서 랜더링을 처리합니다.</p>
+
+<h3 id="데이터">데이터</h3>
+<hr />
+<p>뷰로 전달되는 데이터 입니다. 이 데이터는 다중 배열형태의 키값으로 구성이 되어 있습니다.
+뷰는 전될되는 데이터를 기반으로 뷰 컨덴츠와 동적으로 결합을 하게 됩니다.</p>
+
+<p>만일 모델의 데이터 값이 있는 경우, 먼저 처리하여 같이 뷰로 전달을 해야 합니다.</p>
+
+<h2 id="뷰호출">뷰호출</h2>
+<hr />
+<p>컨트롤러는 작업한 데이터를 뷰로 전달하여 화면에 출력할 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$viewFile</span> <span class="o">=</span> <span class="s2">"home"</span><span class="p">;</span>
+<span class="nv">$viewData</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="nv">$viewFile</span><span class="p">,</span> <span class="nv">$viewData</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-html highlighter-rouge">view()</code>는 컨트롤러에서 제공되는 뷰 호출 매서드 입니다. <code class="language-html highlighter-rouge">view()</code>는 두개의 인자값을 전달 받습니다.</p>
+
+<p>첫번째 인자는 뷰파일의 이름 입니다. 뷰 파일 이름은 문자열로 되어 있습니다. 만일 서브구조로 되어 있다면 디렉토리 구분자를 이용하여 같이 사용할 수 있습니다.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$viewFile = "home";
+$viewFile = "home/test";
+</code></pre></div></div>
+
+<p>뷰 파일은 환경설정에서 설정한 리소스 폴더 안에 있습니다. 뷰 파일의 확장자는 <code class="language-html highlighter-rouge">.htm</code> 파일 입니다. 만일 확장자를 변경하고자 하는 경우에는 환경설정 값을 변경해 주셔야 합니다.</p>
+
+<p>두번재는 뷰로 전달되는 데이터 입니다. 뷰데이터는 배열되 되어 있습니다.</p>
+
+<h2 id="데이터-전달">데이터 전달</h2>
+<hr />
+<p>뷰에서 필요한 데이터는 연상배열로 작성하여 전달합니다. 
+만일 사이트에 메뉴와 설정파일등의 값을 같이 전달하고자 한다면, 미리 사전에 데이터 배열을 생성하여 전달 하여야 합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="c1">// 메뉴 데이터를 읽어옵니다.</span>
+<span class="nv">$viewData</span><span class="p">[</span><span class="s1">'menus'</span><span class="p">]</span> <span class="o">=</span> <span class="nx">menu</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$viewFile</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$screen</span> <span class="o">=</span> <span class="nx">view</span><span class="p">(</span><span class="nv">$viewFile</span><span class="p">,</span> <span class="nv">$viewData</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$screen</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">error_404</span><span class="p">(</span><span class="s2">"404 페이지가 없습니다. from pages!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">error_404</span><span class="p">(</span><span class="s2">"viewFile 값이 없습니다.&lt;br&gt;"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>위의 예제는 기본 <code class="language-html highlighter-rouge">pageController</code>에서 데이터를 전달하는 부분을 캡쳐한 것입니다.</p>
+
+<h2 id="뷰의-반환값">뷰의 반환값</h2>
+<hr />
+<p>뷰의 호출을 실행시 지정된 리소스를 찾지 못하여 처리가 실패하는 경우에는 <code class="language-html highlighter-rouge">null</code>을 반환합니다.
+즉 null은 페이지의 데이터가 없다는 의미로 별도의 처리루틴이 필요합니다.</p>
+
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/php">PHP 기본문법</a></li>
+    <li class="list-group-item"><a href="https://mysql.jiny.dev">Mysql</a></li>
+    <li class="list-group-item"><a href="https://git.jiny.dev">Git 교과서</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

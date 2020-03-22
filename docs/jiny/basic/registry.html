@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JinyDev</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">JinyDev</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mysql.jiny.dev">Mysql</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://git.jiny.dev">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h1 id="레지스트리">레지스트리</h1>
+<hr />
+<p><code class="language-html highlighter-rouge">Application</code>은 레지스트리 클래스를 초기화 하고 관련 몇가지 클래스의 인스턴스를 생성하여 등록하게 됩니다.</p>
+
+<h2 id="레지스트리-기능">레지스트리 기능</h2>
+<hr />
+<p>프레임이 동작을 하면서 일부 객체들은 중복생성될 수도 있습니다. 중복이 어떤 경우에는 유용하지만, 유일해야 하는 경우도 있습니다. 이를 위하여 싱글턴 패턴을 적용하여 객체의 유니크를 보장합니다.</p>
+
+<p>또한 생성되는 객체의 메모리 낭비를 줄이기 위해서 플라이라이트 패턴도 적용을 하였습니다. 대표적으로 프레임워크에서 시용되는 레지스트리 기능 입니다.</p>
+
+<p>필요한 객체가 있을 경우 실시간으로 생성하여 사용합니다. 또한 재사용을 위해서 레지스트리에 저장 재사용 합니다.</p>
+
+<p>약간의 코딩과 개발을 할줄 아는 사람이라면, 한두번 홈페이지 개발을 해보았을 것입니다. 하지만 막상 홈페이지를 만들려고 하면 만만하지 않습니다.</p>
+
+<p>기존 프레임웍은 너무 무겁고. 스스로 코딩하기에는 좀 부담스러운것이 홈페이지 입니다. 더욱이 초보자들을 위한 관리툴 같은 것은 제한적이고. 사용하기에는 번거롭운 부분이 많습니다.</p>
+
+<p>개발자 답게 콘솔 모드에서 간단하게 코드잡업을 하면서 쉽게 사이트를 만드는 방법은 없을까? 이러한 고민들을 묶어서 지니 프레임워크를 시작합니다.</p>
+
+<p>아직 초기라 기능이 부족한 점도 많이 있지만, 이러한 부족함은 약간의 개발능력이 있는 사용자들에게 위임을 합니다. 또한 만들어주신 기능을 공유해 주시면, 더 많은 사용자들에데 도움을 줄 수 있을 것입니다.</p>
+
+<p>또한 필자는 지니 프레임워크에 기능을 추가 할수 있도록 상세한 설명을 가지고 있는 책을 집필 제공합니다.</p>
+
+<h2 id="레지스트리-클래스">레지스트리 클래스</h2>
+<hr />
+<p>레지스트리 클래스는 싱글턴 패턴 방식으로 제작이 되어 있습니다. 싱글톤 패턴은 시스템에서 인스턴스를 한번만 생성이 가능하도록 제한하는 패턴입니다.</p>
+
+<p>만일 시스템에서 레지스트리 인스턴스를 여러개를 만들어 사용을 한다고 하면 많은 혼돈이 발생될 것입니다.</p>
+
+<p>싱클톤으로 만들게 되면, 중복으로 레지스트리 생성을 호출하게 되어도 한번만 생성을 하게 됩니다. 이는 인스턴스 관리를 안전하게 가능합니다.</p>
+
+<h2 id="레지스트리-초기값">레지스트리 초기값</h2>
+<hr />
+<p>프레임웍에서 필요한 필수적인 클래스들이 있을 것입니다. 이 클래스는 프로그램의 시작과 끝까지 필수적으로 필요한 경우일 것입니다.</p>
+
+<p>레지스트리는 클래스의 인스턴스를 동적으로 생성하고 삭제할 수 있습니다.
+하지만 처음에 필요한 클래스들은 초기값을 통하여 프로그램 시작시 미리 시작이 가능하도록 합니다.</p>
+
+<p>초기값은 배열로 <code class="language-html highlighter-rouge">키</code>, <code class="language-html highlighter-rouge">클래스명</code> 한쌍의 배열 형태의 값으로 작성을 합니다.</p>
+
+<p>이렇게 작성된 초기값 배열은 레지스트리를 생성시 인자로 전달이 됩니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$this-&gt;Registry = Registry::init($init);
+unset($init);
+</code></pre></div></div>
+
+<p>초기값 배열은 더이상 필요가 없기 때문에 메모리에서 삭제를 합니다.</p>
+
+<h2 id="setinstance">setInstance</h2>
+<hr />
+<p>레지스트리의 <code class="language-html highlighter-rouge">setInstance</code>메소드는 생성된 클래스의 인스턴스를 키값으로 pool에 저장을 할 수 있는 기능입니다.</p>
+
+<p>레지스트리에 Application 클래스도 접근할 수 있도록 자기 자신을 등록해 줍니다.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$this-&gt;Registry-&gt;setInstance("App", $this);
+</code></pre></div></div>
+
+<p>그리고 미리 생성하여 사용하던 페키지도 등록을 해주도록 합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>$this-&gt;Registry-&gt;setInstance("Packages", $this-&gt;Packages);
+</code></pre></div></div>
+
+<h2 id="pool">pool</h2>
+<hr />
+<p>레지스트리는 인스턴스를 담고 있는 배열을 가지고 있습니다.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>
+</code></pre></div></div>
+
+<h2 id="레지스트리-등록">레지스트리 등록</h2>
+<hr />
+<p>레이지스트리에 클래스 인스턴스를 생성하여 등록을 처리할 수 있습니다.
+레지스트리에 등록된 클래스는 싱글턴과 같은 효과를 보실 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code>
+</code></pre></div></div>
+
+<h1 id="레지스트리-1">레지스트리</h1>
+<hr />
+<p>Application은 레지스트리 클래스를 초기화 하고 관련 몇가지 클래스의 인스턴스를 생성하여 등록하게 됩니다.</p>
+
+<h2 id="레지스트리-클래스-1">레지스트리 클래스</h2>
+<hr />
+<p>레지스트리 클래스는 싱글턴 패턴 방식으로 제작이 되어 있습니다. 싱글톤 패턴은 시스템에서 인스턴스를 한번만 생성이 가능하도록 제한하는 패턴입니다.</p>
+
+<p>만일 시스템에서 레지스트리 인스턴스를 여러개를 만들어 사용을 한다고 하면 많은 혼돈이 발생될 것입니다.</p>
+
+<p>싱클톤으로 만들게 되면, 중복으로 레지스트리 생성을 호출하게 되어도 한번만 생성을 하게 됩니다. 이는 인스턴스 관리를 안전하게 가능합니다.</p>
+
+<h2 id="레지스트리-초기값-1">레지스트리 초기값</h2>
+<hr />
+<p>프레임웍에서 필요한 필수적인 클래스들이 있을 것입니다. 이 클래스는 프로그램의 시작과 끝까지 필수적으로 필요한 경우일 것입니다.</p>
+
+<p>레지스트리는 클래스의 인스턴스를 동적으로 생성하고 삭제할 수 있습니다.
+하지만 처음에 필요한 클래스들은 초기값을 통하여 프로그램 시작시 미리 시작이 가능하도록 합니다.</p>
+
+<p>초기값은 배열로 <code class="language-html highlighter-rouge">키</code>, <code class="language-html highlighter-rouge">클래스명</code> 한쌍의 배열형태의 값으로 작성을 합니다.</p>
+
+<p>이렇게 작성된 초기값 배열은 레지스트리를 생성시 인자로 전달이 됩니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Registry</span> <span class="o">=</span> <span class="nx">Registry</span><span class="o">::</span><span class="na">init</span><span class="p">(</span><span class="nv">$init</span><span class="p">);</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$init</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>초기값 배열은 더이상 필요가 없기 때문에 메모리에서 삭제를 합니다.</p>
+
+<h2 id="setinstance-1">setInstance</h2>
+<hr />
+<p>레지스트리의 <code class="language-html highlighter-rouge">setInstance</code>메소드는 생성된 클래스의 인스턴스를 키값으로 pool에 저장을 할 수 있는 기능입니다.</p>
+
+<p>레지스트리에 Application 클래스도 접근할 수 있도록 자기 자신을 등록해 줍니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Registry</span><span class="o">-&gt;</span><span class="na">setInstance</span><span class="p">(</span><span class="s2">"App"</span><span class="p">,</span> <span class="nv">$this</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>그리고 미리 생성하여 사용하던 페키지도 등록을 해주도록 합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Registry</span><span class="o">-&gt;</span><span class="na">setInstance</span><span class="p">(</span><span class="s2">"Packages"</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Packages</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="pool-1">pool</h2>
+<hr />
+<p>레지스트리는 인스턴스를 담고 있는 배열을 가지고 있습니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code>
+</code></pre></div></div>
+
+<h2 id="레지스트리-등록-1">레지스트리 등록</h2>
+<hr />
+<p>레이지스트리에 클래스 인스턴스를 생성하여 등록을 처리할 수 있습니다.
+레지스트리에 등록된 클래스는 싱글턴과 같은 효과를 보실 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code>
+</code></pre></div></div>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/php">PHP 기본문법</a></li>
+    <li class="list-group-item"><a href="https://mysql.jiny.dev">Mysql</a></li>
+    <li class="list-group-item"><a href="https://git.jiny.dev">Git 교과서</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

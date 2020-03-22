@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JinyDev</title>
+
+        <!--부트스트랩4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            img {
+                max-width:100%;
+            }
+        </style>
+
+        <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+
+    </head>
+    <body>
+        <!--네비게이션--><!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">JinyDev</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mysql.jiny.dev">Mysql</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://git.jiny.dev">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/img/jiny.jpg">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="display-3">JINYDEV</h1>
+                <h2>다양한 IT기술관련 정보를 제공합니다. </h2>
+                <p>개발에 관련된 시스템 및 도구 사용법과 프로그래밍에 대한 언어와 기법들에 대해서 같이 설명을 합니다. <br>
+                    학습량이 많은 쳅터는 별도의 저장로 이동하여 제공합니다.<br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div><!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-9">
+            <h3 id="환경설정">환경설정</h3>
+<hr />
+<p>환경설정은 프로그램이 유연하게 동작을 할 수 있도록 만들는 아이디어 방법 입니다. 이러한 설정값들을 파일 또는 외부 데이터베이스에 저장을 할 수도 있습니다.</p>
+
+<p>데이터를 파일형태로 직렬화 하여 저장을 할 수 있습니다. 만일 설정값들이 고정된 값이라면, 파일로 저장하여 처리하는 방식도 좋습니다. 
+<code class="language-html highlighter-rouge">데이터 직렬화</code>를 통하여 파일을 저장하여 처리하는 방식은 여러가지가 있습니다.</p>
+
+<ul>
+  <li>php array</li>
+  <li>ini</li>
+  <li><a href="./config/yaml">YAML</a></li>
+</ul>
+
+<p>지니는 여러 데이터 직렬화 파일을 읽어 처리를 할 수 있습니다.</p>
+
+<h3 id="페키지">페키지</h3>
+<hr />
+<p>지니 PHP는 저장된 다양한 직렬데이터를 처리 할 수 있도록 패키지를 같이 제공합니다. 이 페키지는 기본적으로 탑제되어 있습니다.</p>
+
+<p>만일 기본설치가 되어 있지 않은 경우에는 다음과 같이 설치를 할 수 있습니다.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nx">composer</span> <span class="k">require</span> <span class="nx">jiny</span><span class="o">/</span><span class="nx">config</span>
+</code></pre></div></div>
+
+<h3 id="설정파일들">설정파일들</h3>
+<hr />
+<p>환경 설정파일은 <code class="language-html highlighter-rouge">/conf</code> 폴더 안에 생성하여 만들 수 있습니다. 이 폴더안에 <code class="language-html highlighter-rouge">yaml</code>, <code class="language-html highlighter-rouge">ini</code>, <code class="language-html highlighter-rouge">json</code> 파일들을 생성하면 됩니다.</p>
+
+<p>환경설정 값이 저장된 <code class="language-html highlighter-rouge">/conf</code> 폴더는 <code class="language-html highlighter-rouge">.env.php</code> 파일에서 경로를 수정할 수 있습니다. 이 설정파일은 지니 PHP에서 반드시 필요로하는 기본 파일입니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">'base'</span><span class="o">=&gt;</span><span class="s1">''</span><span class="p">,</span>
+    <span class="s1">'path'</span><span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'app'</span><span class="o">=&gt;</span><span class="s2">"../app"</span><span class="p">,</span>
+        <span class="s1">'conf'</span> <span class="o">=&gt;</span> <span class="s2">"/conf"</span><span class="p">,</span>
+        <span class="s1">'theme'</span> <span class="o">=&gt;</span> <span class="s2">"/theme"</span><span class="p">,</span>
+        <span class="s1">'view'</span> <span class="o">=&gt;</span> <span class="s2">"/resource/views"</span><span class="p">,</span>
+        <span class="s1">'pages'</span> <span class="o">=&gt;</span> <span class="s2">"/resource/pages"</span><span class="p">,</span>
+        <span class="s1">'layout'</span> <span class="o">=&gt;</span> <span class="s2">"/resource/layout"</span><span class="p">,</span>
+        <span class="s1">'route'</span> <span class="o">=&gt;</span> <span class="s2">"/app/route"</span>
+    <span class="p">],</span>    
+    <span class="s1">'Resource'</span><span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'Indexs'</span><span class="o">=&gt;</span><span class="p">[</span>
+            <span class="s2">"index.htm"</span><span class="p">,</span>
+            <span class="s2">"index.md"</span><span class="p">,</span>
+            <span class="s2">"index.docx"</span>
+        <span class="p">],</span>
+        <span class="s1">'menu'</span><span class="o">=&gt;</span><span class="p">[</span>
+            <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"json"</span><span class="p">,</span>
+            <span class="s1">'path'</span> <span class="o">=&gt;</span> <span class="s2">"/resource/menu"</span><span class="p">,</span>
+            <span class="s1">'file'</span> <span class="o">=&gt;</span> <span class="s2">"menu.json"</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s1">'Tamplate'</span><span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'PreProcess'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s1">'Engine'</span> <span class="o">=&gt;</span> <span class="s2">"Liquid"</span><span class="p">,</span>
+        <span class="s1">'Cache'</span> <span class="o">=&gt;</span> <span class="kc">false</span>
+    <span class="p">]</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p><code class="language-html highlighter-rouge">.env.php</code> 파일은 PHP타입으로 연상 배열 형태로 작성을 합니다. 연상배열은 키:값 형태로 중간에 <code class="language-html highlighter-rouge">=&gt;</code>로 구분합니다.</p>
+
+<h2 id="커스텀-설정">커스텀 설정</h2>
+<hr />
+<p>환경 설정파일은 <code class="language-html highlighter-rouge">/conf</code> 폴더 안에는 한개 이상의 설정파일이 있습니다. 환경설정 파일의 타입은 ini, php, json, yaml로 작성할 수 있습니다. 
+이렇게 작성한 설정파일을 프레임워크 시스템에 로딩을 하여야 합니다.</p>
+
+<p>설정 파일은 한개식, 또는 폴더 전체의 파일을 로드 할 수 있습니다. 이와, 관련된 설정은 PHP언어로 작성된 <code class="language-html highlighter-rouge">/app/conf/congig.php</code> 에서 처리합니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Config</span><span class="o">-&gt;</span><span class="na">setFile</span><span class="p">(</span><span class="s2">"site2.ini"</span><span class="p">,</span> <span class="s2">"site"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이 파일은 프레임워크에서 미리 생성된 클래스 인스턴스를 같이 제공합니다. <code class="language-html highlighter-rouge">$this-&gt;Config</code> 는 <code class="language-html highlighter-rouge">jiny/config</code> 패키지 클래스의 인스턴스 값입니다.</p>
+
+<p>와 같이 <code class="language-html highlighter-rouge">setFile()</code> 메소드를 통하여 로딩을 선택할 수 있습니다. <code class="language-html highlighter-rouge">setFile()</code> 매소드는 두개의 인자를 받습니다. 첫번재는 설정파일명, 두번째는 <code class="language-html highlighter-rouge">키</code>값을 의미합니다.</p>
+
+<h3 id="동적-로딩">동적 로딩</h3>
+<hr />
+<p>서비스에 맞는 설정파일을 상황에 맞게 동적으로 로딩하여 처리할 수 있습니다. <code class="language-html highlighter-rouge">/app/conf/congig.php</code> 는 PHP로 작성된 코드 파일 입니다. 
+아래와 같이 PHP 슈퍼변수를 통하여 도메인, 포트 등에서 따라서 다르게 설정파일을 로딩할 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// echo $_SERVER['SERVER_NAME']."&lt;br&gt;";</span>
+<span class="c1">// echo $_SERVER['SERVER_PORT']."&lt;br&gt;";</span>
+
+<span class="cd">/**
+ * 사용자 정의 환경설정
+ * 도메인, 포트 값을 통하여 환경설정값을 다르게 설정할 수 있습니다.
+ */</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'SERVER_PORT'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Config</span><span class="o">-&gt;</span><span class="na">setFile</span><span class="p">(</span><span class="s2">"site.ini"</span><span class="p">,</span><span class="s2">"site"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Config</span><span class="o">-&gt;</span><span class="na">setFile</span><span class="p">(</span><span class="s2">"site2.ini"</span><span class="p">,</span> <span class="s2">"site"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cd">/**
+ * 사용자 설정파일을 정의할 수 있습니다.
+ */</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Config</span><span class="o">-&gt;</span><span class="na">setFile</span><span class="p">(</span><span class="s2">"test.yml"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이는 하나의 컨덴츠로 여러개의 웹서버를 구축하여 운영을 하는 데 매우 유용할 수 있습니다. 또는 별도의 어드민 계정 사이트를 운영할때도 환경설정을 통하여 분리 할 수도 있습니다.</p>
+
+<h3 id="설정값-읽기">설정값 읽기</h3>
+<hr />
+<p>이렇게 등록된 설정 값들은 특별하게 제공되는 헬퍼함수 <code class="language-html highlighter-rouge">conf()</code>를 통하여 접근을 할 수 있습니다. 핼퍼함수를 제공하는 장점은 인스턴스, 호출 위치에 상관 없이 쉽게 값을 읽어올 수 있기 때문입니다.</p>
+
+<h4 id="값을-읽어오기">값을 읽어오기</h4>
+<p><code class="language-html highlighter-rouge">conf()</code> 헬퍼 함수는 쉽게 설정값을 읽어 올 수 있습니다. 설정값은 다차원 배월 형태로 구성이 되어 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nx">conf</span><span class="p">(</span><span class="s2">"값.값.값"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>다차원 값의 구분은 <code class="language-html highlighter-rouge">점</code>을 이용하여 구분합니다. 만일 지정한 키값이 단일 값일 때는 값을 반환합니다. 또는, 지정 키값이 배열 형태라면 배열을 반환합니다.</p>
+
+<h4 id="값-설정하기">값 설정하기</h4>
+<p>키 값을 읽는 것과 반대로 값을 설정할 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nx">conf</span><span class="p">(</span><span class="s2">"키.키.키"</span><span class="p">,</span> <span class="s2">"값"</span><span class="p">);</span>
+</code></pre></div></div>
+<p>값을 설정할때는 두번재 인자로 키와 값을 같이 설정하면 됩니다.</p>
+
+<h4 id="인스턴스-얻기">인스턴스 얻기</h4>
+<p>헬퍼함수의 인자 키를 전달하지 않는 경우에는 <code class="language-html highlighter-rouge">jiny/config</code>의 인스턴스를 얻을 수 있습니다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nv">$Config</span> <span class="o">=</span> <span class="nx">conf</span><span class="p">();</span>
+<span class="nv">$Config</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">(</span><span class="s2">"ENV.path.conf"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이렇게 얻은 인스턴스를 통하여 내부 매서드를 실행할 수 있습니다.</p>
+
+<h3 id="업그레이드-및-정보">업그레이드 및 정보</h3>
+<hr />
+<p><code class="language-html highlighter-rouge">jiny/config</code> 패키지는 현재 계속 기능을 개선하고 있습니다. 본 페키지 개발에 기여를 원하시는 경우 언제든제 코드를 작성하여 풀리퀘스트를 주시면 감사합니다.
+보다 자세한 내용은 hojin.io 에서 확인이 가능합니다.</p>
+
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-3"><ul class="list-group">
+    <li class="list-group-item list-group-item-dark">Site</li>
+    <li class="list-group-item"><a href="/php">PHP 기본문법</a></li>
+    <li class="list-group-item"><a href="https://mysql.jiny.dev">Mysql</a></li>
+    <li class="list-group-item"><a href="https://git.jiny.dev">Git 교과서</a></li>
+</ul>
+
+<br>
+<ul class="list-group">
+    <li class="list-group-item"><a href="/award">수상</a></li>
+    <li class="list-group-item"><a href="/book">도서</a></li>
+    <li class="list-group-item"><a href="/about">소개</a></li>
+</ul>
+<br>
+
+<script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<br>
+<!--에드센스-->
+            <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <br>
+         </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
+    </div>
+    <!-- /.container -->
+  </footer><!--부트스트랩4-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160048106-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-160048106-1');
+        </script>
+
+    </body>
+
+</html>

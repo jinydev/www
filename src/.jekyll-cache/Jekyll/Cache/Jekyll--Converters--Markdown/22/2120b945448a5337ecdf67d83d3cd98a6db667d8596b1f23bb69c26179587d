@@ -1,0 +1,190 @@
+I"{ <h2 id="지니php">지니PHP</h2>
+<hr />
+<p>지니PHP 개발환경으로 선택해 주신 것에 대해서 감사드립니다.
+지니PHP는 <code class="language-html highlighter-rouge">정적 웹프레임워크</code>로 간단한 웹서비스를 개발하는데 편리한 기능들을 제공합니다.</p>
+
+<p><br /></p>
+
+<h3 id="공식메뉴얼">공식메뉴얼</h3>
+<hr />
+<p>본 페이지는 지니PHP 공식메뉴얼입니다. 공식 메뉴얼은 오픈소스로 진행됩니다. 
+메뉴얼 깃허브 저장소는 <code class="language-html highlighter-rouge">https://github.com/jinyphp/docs</code> 입니다.</p>
+
+<p>메뉴얼의 오탈자, 내용의 보충에 대해서 누구나 참여를 하실 수 있습니다. 
+깃허브 저장소를 <code class="language-html highlighter-rouge">포크</code>하신후에 수정을 해주시면 됩니다. 수정후 pull request를 보내주시면 수정내용을 확인하여 반영하도록 하겠습니다. 
+메뉴얼 제작 참여와 같이 동영상도 같이 제작하여 링크를 보내주셔도 됩니다.</p>
+
+<ul>
+  <li><a href="./intro">지니소개</a>
+    <ul>
+      <li><a href="./intro">지니</a></li>
+      <li><a href="./intro/framwork">프레임워크</a></li>
+      <li><a href="./intro/compatibility">호환성</a></li>
+      <li><a href="./intro/contribution">기여</a></li>
+    </ul>
+  </li>
+  <li><a href="./setup">설치</a>
+    <ul>
+      <li><a href="./setup/jiny/require">요구사항</a></li>
+      <li><a href="./setup/php">php 설치</a></li>
+      <li><a href="./setup/composer">컴포저</a></li>
+      <li><a href="./setup/installer">인스톨러</a></li>
+      <li><a href="./setup/project">프로젝트</a></li>
+      <li><a href="./setup/starting">서버실행</a></li>
+      <li><a href="./setup/direct">직접설치</a></li>
+      <li><a href="./setup/version">버전</a></li>
+    </ul>
+  </li>
+  <li><a href="./docs">문서</a>
+    <ul>
+      <li><a href="./structure">시스템</a>
+        <ul>
+          <li><a href="./structure">구조</a></li>
+          <li><a href="./structure/file">파일</a></li>
+          <li><a href="./structure/folder">폴더</a></li>
+        </ul>
+      </li>
+      <li><a href="./config">설정</a>
+        <ul>
+          <li><a href="./config/env">환경설정</a></li>
+          <li><a href="./config/site">사이트</a>
+            <ul>
+              <li><a href="./config/site/conf">config.php</a></li>
+              <li><a href="./config/site/helpers">헬퍼</a></li>
+            </ul>
+          </li>
+          <li><a href="./config/loading">로딩</a></li>
+          <li><a href="./config/principle">원리</a></li>
+          <li><a href="./config/ini">INI</a></li>
+          <li><a href="./config/json">JSON</a></li>
+          <li><a href="./config/yaml">YMAL</a></li>
+        </ul>
+      </li>
+      <li><a href="./basic">기본원리</a>
+        <ul>
+          <li><a href="./basic/intro">기본</a></li>
+          <li><a href="./basic/pattern">패턴</a></li>
+          <li><a href="./basic/code">코드</a></li>
+          <li><a href="./basic/core">코어</a></li>
+          <li><a href="./basic/bootstraping">부트스트래핑</a></li>
+          <li><a href="./basic/registry">레지스트리</a></li>
+          <li><a href="./basic/locale">로케일</a></li>
+          <li><a href="./basic/router">라우터</a></li>
+          <li><a href="./basic/http">HTTP</a></li>
+          <li><a href="./basic/helper">헬퍼</a></li>
+        </ul>
+      </li>
+      <li><a href="./controllers">컨트롤러</a>
+        <ul>
+          <li><a href="./controllers">개념</a></li>
+          <li><a href="./controllers/practice">실습</a></li>
+          <li><a href="./controllers/principle">원리</a></li>
+          <li><a href="./controllers/middleware">미들웨어</a></li>
+        </ul>
+      </li>
+      <li><a href="./model">모델</a>
+        <ul>
+          <li><a href="./model/database">데이터베이스</a></li>
+          <li><a href="./model/menu">메뉴</a>
+            <ul>
+              <li><a href="./model/menu/menu">구성</a></li>
+              <li><a href="./model/menu/file">파일</a></li>
+              <li><a href="./model/menu/helper">Helper</a></li>
+              <li><a href="./model/menu/data">데이터</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="./resources">리소스</a>
+        <ul>
+          <li><a href="./resources/resource">구조</a>
+            <ul>
+              <li><a href="./resources/resource/resource">리소스</a></li>
+              <li><a href="./resources/resource/type">타입</a></li>
+              <li><a href="./resources/resource/multi">다국어</a></li>
+            </ul>
+          </li>
+          <li><a href="./resources/frontmatter">머리말</a></li>
+          <li><a href="./resources/markdown">마크다운</a></li>
+          <li><a href="./resources/css">CSS</a></li>
+          <li><a href="./resources/javascript">javascript</a></li>
+        </ul>
+      </li>
+      <li><a href="./template">템플릿</a>
+        <ul>
+          <li><a href="./template/template">템플릿</a></li>
+          <li><a href="./template/language">언어</a></li>
+          <li><a href="./template/engine">엔진</a></li>
+          <li><a href="./template/liquid">Liquid</a></li>
+          <li><a href="./template/blade">blade</a></li>
+          <li><a href="./template/carpet">carpet</a></li>
+        </ul>
+      </li>
+      <li><a href="./view">뷰</a>
+        <ul>
+          <li><a href="./view/view">뷰</a></li>
+          <li><a href="./view/call">호출</a></li>
+          <li><a href="./view/helper">헬퍼</a></li>
+          <li><a href="./view/cache">캐쉬</a></li>
+          <li><a href="./view/theme">테마</a>
+            <ul>
+              <li><a href="./view/theme/use">테마사용</a></li>
+              <li><a href="./view/theme/Liquid">템플릿 테마</a></li>
+              <li><a href="./view/theme/custom">복수테마</a></li>
+              <li><a href="./view/theme/deploy">테마배포</a></li>
+              <li><a href="./view/theme/code">코드뷰</a></li>
+            </ul>
+          </li>
+          <li><a href="./view/images">이미지</a></li>
+        </ul>
+      </li>
+      <li><a href="./extension">확장</a>
+        <ul>
+          <li><a href="./extension/package">페키지</a></li>
+          <li><a href="./extension/pages">페이지</a></li>
+        </ul>
+      </li>
+      <li><a href="./cli">CLI</a>
+        <ul>
+          <li><a href="./cli/cli">cli</a></li>
+          <li><a href="./cli/lamp">램프</a></li>
+          <li><a href="./cli/ftp">FTP</a></li>
+          <li><a href="./cli/deploy">deploy</a></li>
+          <li><a href="./cli/backup">백업</a></li>
+          <li><a href="./cli/build">빌드</a></li>
+          <li><a href="./cli/misc">기타</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="작성포맷">작성포맷</h3>
+<hr />
+<p>지니PHP 메뉴얼은 HTML과 Markdown 문법을 통하여 작성할 수 있습니다. 
+대부분의 개발문서들은 마크다운 형식으로 작성되고 있는 것이 트랜드입니다. 기본 문서 또한 마크다운 형식으로 작성 제공됩니다.</p>
+
+<p><br /></p>
+
+<h3 id="다국어-처리">다국어 처리</h3>
+<hr />
+<p>메뉴얼은 다국어로 작성될 수 있습니다. 이는 지니PHP가 다국어 시스템을 지원하는 <code class="language-html highlighter-rouge">웹프레임워크</code>이기 때문입니다. 
+다국어를 작성할때는 <code class="language-html highlighter-rouge">문서명.언어코드.확장자</code> 형태로 작성을 해주시면 됩니다. 기본 언어는 한국어로 되어 있습니다.</p>
+
+<p><br /></p>
+
+<h3 id="동영상-제공">동영상 제공</h3>
+<hr />
+<p>문서의 설명을 보충하기 위해서 일부 <code class="language-html highlighter-rouge">동영상</code> 링크를 같이 제공합니다.</p>
+
+<p><br /></p>
+
+<h3 id="변경">변경</h3>
+<hr />
+<p>메뉴얼의 내용은 깃을 통하여 이력을 추적하고 있습니다. 커밋 로그를 이용하여 변경사항을 보실 수 있습니다. 
+또한, 지니PHP의 업그레이드 및 설계변경으로 맞지 않는 부분들도 있을 수 있습니다. 이는 추후 보완을 하도록 하겠습니다.</p>
+
+<p><br /><br /></p>
+:ET

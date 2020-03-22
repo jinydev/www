@@ -1,0 +1,16 @@
+I"T<h1 id="공식메뉴얼">공식메뉴얼</h1>
+<hr />
+
+<p><code class="language-html highlighter-rouge">지니PHP</code>는 프레임워크를 이해하고 원활한 사용을 위해서 공식 메뉴얼을 제공하고 있습니다.</p>
+
+<p>메뉴얼은 지속적으로 업데이트를 하고 있으나, 코드의 개선으로 일부 기능은 별도의 통보 없이 변경이 될 수도 있습니다.</p>
+
+<p><br /></p>
+<h2 id="다국어">다국어</h2>
+<hr />
+<p><code class="language-html highlighter-rouge">지니PHP</code>는 다국어 페이지 처리가 가능한 프레임워크 입니다. 또한, 공식 사이트 또한 <code class="language-html highlighter-rouge">지니PHP</code>로 동작을 하고 있습니다.<br />
+본 문서는 향후 다양한 언어로 번역되어 제공될 예정입니다.</p>
+
+<p>만일, 사전에 다른언어로 메뉴얼 페이지의 내용을 보고 싶다면은, 자동번역을 같이 이용하셔도 됩니다.<br />
+메뉴얼 우측 상단의 <code class="language-html highlighter-rouge">언어</code>텝을 통하여 변경을 하실 수 있습니다.</p>
+:ET
