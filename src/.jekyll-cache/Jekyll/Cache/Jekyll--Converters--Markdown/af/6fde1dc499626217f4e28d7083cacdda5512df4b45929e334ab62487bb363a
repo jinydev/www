@@ -1,0 +1,34 @@
+I"+<h2 id="award">Award</h2>
+<p>JinyDev는 다양한 프로젝트 진행과 오픈소스를 진행하고 있습니다.<br />
+일부 결과물은 관련 대회에서 수상을 받았습니다. 프로젝트 참여는 누구에게나 열여져 있습니다.</p>
+
+<h3 id="2020년">2020년’</h3>
+
+<h4 id="etri-openapi">Etri OpenAPI</h4>
+<p>Etri에서 진행한 인공지능 서비스 OpenAPI의 활용 개발자 대회가 진행 되었습니다.</p>
+<ul>
+  <li><code class="language-html highlighter-rouge">가작</code>수상</li>
+  <li>일자 : 2020.12.19</li>
+</ul>
+
+<p><img src="./img/etri_openai_001.jpg" alt="" /></p>
+
+<p><img src="./img/etri_openai_002.jpg" alt="" /></p>
+
+<h4 id="제13회-공개소프트-개발자대회">제13회 공개소프트 개발자대회</h4>
+<p>2020년 과학기술부 주관 NIPA에서 제13회 공개소프트 개발자 대회가 진행되었습니다.</p>
+
+<p><img src="./img/oss2013_001.jpg" alt="" /></p>
+
+<p>오픈 API 백엔드 서버를 구축할 수 있는 <code class="language-html highlighter-rouge">jinyAPI</code> 가 <code class="language-html highlighter-rouge">동상</code>을 수상 받았습니다.</p>
+
+<ul>
+  <li>출품작 : jinyAPI</li>
+  <li>일자: 2020.12.4</li>
+</ul>
+
+<h4 id="2019">2019</h4>
+<ul>
+  <li>제12회 공개소프트 개발자대회 금상수상</li>
+</ul>
+:ET

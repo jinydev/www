@@ -1,85 +1,36 @@
 ---
 layout: home
 ---
-## PHP 기초문법
+## 프로그래밍
 <hr>
 
-* 01.[PHP 소개](php01)
-* 02.[PHP 설치](install)
-* 03.[기본구문](php03)
-* 04.[PSR](php04)
-* 05.[상수](php05)
-* 06.[변수](php06)
-* 07.[연산자](php07)
-* 08.[조건제어문](php08)
-* 09.[반복문](php09)
-* 10.[함수](php10)
-* 11.[전처리기](php11)
-* 12.[스코프](php12)
-* 13.[쿠키 세션](php13)
-* 14.[클래스](php14)
-* 15.[클래스 확장](php15)
-* 16.[클로저](php16)
-* 17.[예외처리](php17)
-* 18.[콘솔](php18)
-* 19.[웹페이지](php19)
-* 20.[환경설정](php20)
+프로그래밍을 위한 다양한 언어에 대해서 학습합니다.  
+한개의 언어를 배우신 분이라면, 다른 언어들도 쉽게 학습을 하실 수 있을 것입니다.  
+
+* [php](/php)
+* javascript
 
 <br>
 
-### Mysql
-<hr>
+<div class="row">
+    <div class="col-lg-3">
+        <img src="/book/img/gittext.png"/>
+    </div>
+    <div class="col-md-9">
+        <h4>Git 교과서</h4>
+        <p>
+            <b>코드 이력, 하나도 놓치지 마라!</b> <br>
+            버전 관리 시스템의 이해와 설치부터 커밋, 브랜치, 임시 처리, 병합, 복귀, 서브모듈, 태그까지
+            깃, 소스트리, 깃허브로 실습하며 기본기를 탄탄하게 다진다!
+        </p>
+        <p>
+            <a class="btn btn-secondary btn-sm" href="http://bit.ly/2TP6bKB" role="button">Yes24</a>
+            <a class="btn btn-secondary btn-sm" href="http://bit.ly/2Qb1JDD" role="button">교보문고</a>
+            <a class="btn btn-secondary btn-sm" href="http://bit.ly/3cOAqc1" role="button">알라딘</a>
+            <a class="btn btn-secondary btn-sm" href="http://bit.ly/2TMAeT9" role="button">인터파크</a>
+            <a class="btn btn-secondary btn-sm" href="https://thebook.io/080212/" role="button">길벗</a>
+        </p>
+    </div>
+</div>
 
-* 21.데이터
-* 22.MYSQL 설치
-* 23.SQL
-* 24.연결
-* 25.데이터베이스
-* 26.테이블
-* 27.데이터삽입
-* 28.테이블 수정
-* 29.속성
-* 30.데이터 삽입
-* 31.데이터 조회
-* 32.조건
-* 33.데이터제한
-* 34.데이터정렬
-* 35.복사
-* 36.별칭
-* 37.데이터수정
-* 38.데이터삭제
-* 39.Union
-* 40.조인
-* 41.뷰
-* 42.프로시저
-* 43.트리거
-* 44.트랜잭션
-* 45.함수
-* 46.내장함수
-* 47.인젝션
-* 48.관리툴
-* 49.권한설정
-
-### 응용처리
-<hr>
-
-* 50.[필터](php50)
-* 51.[배열](php51)
-* 52.[문자열](php52)
-* 53.[JSON](php53)
-* 54.[날짜](php54)
-* 55.[파일제어](php55)
-* 56.[CSV](php56)
-* 57.[정규표현식](php57)
-* 58.[URL](php58)
-* 59.[아파치함수](php59)
-* 60.[통신](php60)
-* 61.[CURL](php61)
-* 62.[외부 처리](php62)
-* 63.[메일](php63)
-* 64.[오류처리 함수](php64)
-* 65.[함수](php65)
-* 66.[HTML & FORM](php66)
-* 67.[스크립트](php67)
-* 68.[정보](php68)
-* 69.[오토로딩](php69)
+<br><br>
