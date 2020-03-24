@@ -40,30 +40,32 @@
         </ul>
       </div>
     </div>
-</nav><!-- Main jumbotron for a primary marketing message or call to action -->
+</nav><header>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <img src="/php/img/num1.jpg">
-        </div>
-        <div class="col-lg-9">
-          <h1 class="display-3">PHP</h1>
-          <h2>PHP로 시작하는 프로그래밍 입문</h2>
-          <p>웹서비스 개발을 위한 서버사이드 언어 입니다. </p>
-     
-      </p>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <img src="/php/img/num1.jpg">
+      </div>
+      <div class="col-lg-9">
+        <h1 class="display-3">PHP</h1>
+        <h2>PHP로 시작하는 프로그래밍 입문</h2>
+        <p>웹서비스 개발을 위한 서버사이드 언어 입니다. </p>
+   
+    </p>
       </div>
     </div>
   </div>
-  
+</div>
+</header>
+
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-
         <!-- Post Content Column -->
         <div class="col-lg-9">
+          <section>
             <ol>
   <li>
     <h1 id="html--form">HTML &amp; FORM</h1>
@@ -866,10 +868,13 @@ void header ( string $string [, bool $replace = true [, int $http_response_code 
 <br /><br />
 </form></form></form></form></form>
 
+          </section>
+            
         </div>
 
         <!-- Sidebar Column -->
-        <div class="col-md-3"><ul class="list-group">
+        <div class="col-md-3">
+          <aside><ul class="list-group">
     <li class="list-group-item list-group-item-dark">Site Menu</li>
     <li class="list-group-item"><a href="/php/php">소개</a></li>
     <li class="list-group-item"><a href="/php/install">설치</a></li>
@@ -880,18 +885,23 @@ void header ( string $string [, bool $replace = true [, int $http_response_code 
     <li class="list-group-item"><a href="/php/oop">객체지향</a></li>
 </ul>
 <br>
-</div>
+</aside>
+            
+        </div>
 
     </div>
     <!-- /.row -->
 </div>
-<!-- /.container -->  <!-- Footer -->
+<!-- /.container -->
+        <footer>  <!-- Footer -->
   <footer class="py-3 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; jinydev 2017~2020</p>
     </div>
     <!-- /.container -->
-  </footer><!--부트스트랩4-->
+  </footer></footer>  
+        
+        <!--부트스트랩4-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
