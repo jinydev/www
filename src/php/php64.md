@@ -1,5 +1,7 @@
 ---
 layout: home
+title: "PHP"
+keyword: "jinyphp, php"
 ---
 
 15. 오류처리 함수

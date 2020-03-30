@@ -1,5 +1,7 @@
 ---
 layout: home
+title: "PHP"
+keyword: "jinyphp, php"
 ---
 ## 클래스 확장
 

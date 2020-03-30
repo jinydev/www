@@ -1,5 +1,7 @@
 ---
 layout: home
+title: "PHP"
+keyword: "jinyphp, php"
 ---
 ## 20. 오토로딩
 <hr>

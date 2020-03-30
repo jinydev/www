@@ -1,5 +1,7 @@
 ---
 layout: home
+title: "PHP"
+keyword: "jinyphp, php"
 ---
 
 02. 배열

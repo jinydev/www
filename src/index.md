@@ -17,7 +17,7 @@ layout: home
 
 <div class="row">
     <div class="col-lg-3">
-        <img src="/book/img/gittext.png"/>
+        <img src="/book/img/gittext.png" alt="Git 교과서"/>
     </div>
     <div class="col-md-9">
         <h4>Git 교과서</h4>

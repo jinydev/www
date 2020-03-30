@@ -1,5 +1,7 @@
 ---
 layout: home
+title: "Award"
+keyword: "jinyphp, 공개SW개발자대회, 오픈소스"
 ---
 ## Award
 <hr>

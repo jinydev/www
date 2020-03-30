@@ -4,7 +4,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>JinyDev</title>
+        <!--SEO-->
+        {%- if page.title -%}
+            <title>JinyDev | {{ page.title }}</title>
+            <meta name="title" content="{{ page.title }}" />
+        {%- else -%}
+            <title>JinyDev</title>
+        {%- endif -%}
+
+        {%- if page.description -%}
+            <meta name="description" content="{{ page.description }}" />
+        {%- endif -%}
+
+        {%- if page.keyword -%}
+            <meta name="keyword" content="{{ page.keyword }}" />
+        {%- endif -%}
 
         <!--부트스트랩4-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -14,9 +28,11 @@
             }
         </style>
 
+        <link rel="stylesheet" href="/assets/highlight.css">
+        <link rel="stylesheet" href="/assets/style.css">
+
         <script data-ad-client="ca-pub-3321560028329475" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         
-
     </head>
     <body>
         <!--네비게이션-->

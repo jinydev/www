@@ -1,5 +1,7 @@
 ---
 layout: php
+title: "PHP"
+keyword: "jinyphp, php, 객체지향, oop, class"
 ---
 ## 클로저
 클로저를 이야기할 때 항상 같이 설명하는 부분이 익명 함수입니다. 클로저는 익명 함수와 같이 PHP 5.3으로 업그레이드되면서 적용된 기능입니다.  
