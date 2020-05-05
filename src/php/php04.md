@@ -1,7 +1,7 @@
 ---
-layout: home
-title: "PHP"
-keyword: "jinyphp, php"
+layout: php
+title: "PHP PSR소개"
+keyword: "php, jinyphp, psr, 코딩스타일"
 ---
 ## 04 PSR
 

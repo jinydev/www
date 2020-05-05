@@ -1,6 +1,6 @@
 ---
-layout: home
-title: "PHP"
+layout: php
+title: "PHP 소개"
 keyword: "jinyphp, php"
 ---
 ## PHP 소개

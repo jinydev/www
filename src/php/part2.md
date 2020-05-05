@@ -1,7 +1,7 @@
 ---
 layout: php
 title: "PHP"
-keyword: "jinyphp, php"
+keyword: "php, jinyphp, mysql"
 ---
 ### Mysql
 <hr>

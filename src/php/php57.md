@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: php
 title: "PHP"
 keyword: "jinyphp, php"
 ---

@@ -8,11 +8,11 @@ layout: home
 
 지니PHP는 사이트의 정체성을 관리할 수 있는 `테마`기능을 지원합니다. 테마는 다른말로 `스킨`이라는 용어도 같이 사용을 하였습니다. 
 
-* [테마 사용하기](./theme/use)
-* [Liquid 결합](./theme/Liquid)
-* [복수테마](./theme/custom)
-* [테마배포](./theme/deploy)
-* [코드뷰](./theme/code)
+* [테마 사용하기](use)
+* [Liquid 결합](Liquid)
+* [복수테마](custom)
+* [테마배포](deploy)
+* [코드뷰](code)
 
 <br>
 ## 디자인의 분리

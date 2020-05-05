@@ -1,20 +1,20 @@
 ---
 layout: default
 ---
-<nav>
-    {%- include breadcrumb.html -%}
-</nav>
+<br>
+
+<div class="container">
+    <nav>
+        {%- include breadcrumb.html -%}
+    </nav>
+</div>
 
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-
         <!-- Post Content Column -->
         <div class="col-lg-9">
             <section>
-                <!-- Title -->
-                <h1 class="mt-4">{{ page.title }}</h1>
-                <hr>
                 {{ content }}
             </section>            
         </div>
@@ -24,9 +24,7 @@ layout: default
             <aside>
                 {%- include menu.html -%}
             </aside>
-            
         </div>
-
     </div>
     <!-- /.row -->
 </div>
